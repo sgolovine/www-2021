@@ -3,6 +3,7 @@ title: Building a Guest Book for my Site
 description: I've always wanted to have an old school guestbook for my site. I finally built one using Netlify Functions and Github Gist.
 date: Feb 17, 2021
 slug: make-a-guestbook
+published: true
 ---
 
 Back in the 90's, it was common for websites to have guest books for visitors to

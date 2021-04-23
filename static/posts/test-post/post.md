@@ -1,8 +1,9 @@
 ---
 title: Test Post
 description: This is a test post.
-date: Apr 21, 2021
+date: Apr 23, 2021
 slug: test-post
+published: true
 ---
 
 # Heading 1

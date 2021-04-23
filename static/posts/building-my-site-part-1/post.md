@@ -3,6 +3,8 @@ title: Building SunnyGolovine.com - Part 1
 description: I recently rebuilt my personal website. In this part I'll talk
   about some of the decisions I made.
 date: Feb 07, 2021
+slug: build-my-site-part-1
+published: true
 ---
 
 Earlier this year I had decided to rebuild my personal website. Over the years

@@ -4,6 +4,7 @@ description: In my last post I talked about some of the decisions I made when
   building my site. In this post I'll talk about the architecture
 date: Feb 08, 2021
 slug: building-my-site-part-2
+published: true
 ---
 
 In my last post I talked about some of the decisions I made leading up to

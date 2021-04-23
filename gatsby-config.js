@@ -19,7 +19,8 @@ module.exports = {
       options: {
         extensions: [".md"],
       },
-    }`gatsby-plugin-postcss`,
+    },
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-typescript`,
   ],
 }

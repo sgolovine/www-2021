@@ -6,10 +6,14 @@ module.exports = {
       typography: theme => ({
         DEFAULT: {
           css: {
-            color: theme("colors.gray.800"),
-            h2: {
-              color: theme("colors.brand-yellow"),
-            },
+            color: theme("colors.brand-white"),
+            h1: { color: theme("colors.brand-yellow") },
+            h2: { color: theme("colors.brand-yellow") },
+            h3: { color: theme("colors.brand-yellow") },
+            h4: { color: theme("colors.brand-yellow") },
+            h5: { color: theme("colors.brand-yellow") },
+            h6: { color: theme("colors.brand-yellow") },
+
             code: {
               color: theme("colors.brand-yellow"),
             },

@@ -3,6 +3,7 @@ title: Keeping your Javascript project up to date
 description: A few tips and tricks to keeping dependencies in your JS project fresh
 date: Apr 14, 2021
 slug: keeping-your-react-project-updated
+published: true
 ---
 
 I dread nothing more than running `yarn oudated` on a React project I haven't

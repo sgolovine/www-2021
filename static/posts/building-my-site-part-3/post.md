@@ -5,6 +5,7 @@ description:
   the my blogging workflow
 date: Feb 10, 2021
 slug: building-my-site-part-3
+published: true
 ---
 
 With the site nearing completion I still had two things that needed doing:
