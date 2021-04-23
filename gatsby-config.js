@@ -6,5 +6,16 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [`gatsby-plugin-postcss`, `gatsby-plugin-typescript`],
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/static/posts`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+    `gatsby-plugin-postcss`,
+    `gatsby-plugin-typescript`,
+  ],
 }

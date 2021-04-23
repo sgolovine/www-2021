@@ -1,13 +1,13 @@
 ---
 title: Building a Guest Book for my Site
-description: I've always 
+description: I've always wanted to have an old school guestbook for my site. I finally built one using Netlify Functions and Github Gist.
 date: Feb 17, 2021
 slug: make-a-guestbook
 ---
 
 Back in the 90's, it was common for websites to have guest books for visitors to
 sign. With the exponential growth of the internet in the 2000's, these "Guest
-Books" gave way to social media, and you hardly ever see them anymore. 
+Books" gave way to social media, and you hardly ever see them anymore.
 
 The other day I started to wonder, how hard would it be to implement on these
 days with modern technology. Back then, running a guest book involved setting up
@@ -59,18 +59,16 @@ guest book to reload it's data. To solve this i used `shouldFetchGuestbook`
 along with a `useEffect` hook that would re-fetch the data anytime the flag was
 flipped to true.
 
-
 ## What's Next
 
 I'm not quite done tweaking the guest book. Some improvements:
 
-* Guest book submissions to the bottom of the document, they should go to the
+- Guest book submissions to the bottom of the document, they should go to the
   top
-* There's no profanity filter in place. Shit, I should probably add one....
-* Bot detection/prevention: I'm not doing anything right now to prevent bots
+- There's no profanity filter in place. Shit, I should probably add one....
+- Bot detection/prevention: I'm not doing anything right now to prevent bots
   from making repeated submissions. This is not a huge deal as the worst that
-can happen is I hit Github's rate limit for their API. I didn't want to bog down
-the user experience with a Captcha but a solution will be needed eventually.
-
+  can happen is I hit Github's rate limit for their API. I didn't want to bog down
+  the user experience with a Captcha but a solution will be needed eventually.
 
 You can sign my guest book [here](https://sunnygolovine.com/guestbook)
