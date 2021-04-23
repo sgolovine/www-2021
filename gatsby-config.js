@@ -14,8 +14,12 @@ module.exports = {
         path: `${__dirname}/static/posts`,
       },
     },
-    `gatsby-plugin-mdx`,
-    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".md"],
+      },
+    }`gatsby-plugin-postcss`,
     `gatsby-plugin-typescript`,
   ],
 }
