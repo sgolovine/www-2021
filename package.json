@@ -12,14 +12,18 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "@sendgrid/mail": "^7.4.2",
     "@tailwindcss/typography": "^0.4.0",
     "axios": "^0.21.1",
     "dompurify": "^2.2.7",
     "gatsby": "^3.3.1",
+    "gatsby-plugin-mdx": "^2.3.0",
     "gatsby-plugin-postcss": "^4.3.0",
     "gatsby-plugin-sass": "^4.3.0",
     "gatsby-plugin-typescript": "^3.3.0",
+    "gatsby-source-filesystem": "^3.3.0",
     "gray-matter": "^4.0.2",
     "preact": "^10.5.13",
     "react": "^17.0.1",
