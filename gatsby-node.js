@@ -15,7 +15,6 @@ exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               title
               date
-              description
               slug
             }
             body
@@ -45,7 +44,6 @@ exports.createPages = async ({ graphql, actions }) => {
         postMeta: {
           title: frontmatter.title,
           date: frontmatter.date,
-          description: frontmatter.description,
         },
         postBody: body,
       },

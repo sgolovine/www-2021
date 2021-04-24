@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "name": "Gistmarks",
+      "desc": "Quickly create and share bookmark collections with others using Github Gist. This is the spiritual successor to Fav.sh",
+      "href": "https://gistmarks.io"
+    },
+    {
+      "name": "Webhost Watchdog",
+      "desc": "Webhost Watchdog is a blog for comprehensive reviews of webhosting products. Reviews the most popular webhosting products form the top hosting companies in the market today",
+      "href": "https://webhostwatchdog.com"
+    },
+    {
+      "name": "Fav Bookmark Manager",
+      "desc": "Fav Bookmark Manager (or simply fav.sh) is an open source bookmark manager extension for Chrome and Firefox that syncs with Github Gist. Backup, collect, publish and share you bookmarks all while staying in control of your data.",
+      "href": "https://fav.sh"
+    },
+    {
+      "name": "TipTrack",
+      "desc": "TipTrack is a tip tracking app for servers, bartenders and more. Lets users create custom analytics to track their earnings",
+      "href": "https://tiptrack.app/"
+    }
+  ]
+}

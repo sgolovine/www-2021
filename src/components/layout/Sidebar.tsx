@@ -1,13 +1,11 @@
 import React from "react"
 import { sidebarRoutes } from "~/defines/navigation"
 import { useAnalytics } from "~/hooks/useAnalytics"
-import { useLinkMatch } from "~/hooks/useLinkMatch"
 import { Link } from "gatsby"
 
 interface SidebarLinkProps {
   name: string
   href: string
-  active: boolean
 }
 
 const SidebarLink: React.FC<SidebarLinkProps> = ({ name, href }) => {
@@ -38,7 +36,6 @@ const Sidebar: React.FC = () => {
                 <SidebarLink
                   name={route.name.toUpperCase()}
                   href={route.route}
-                  active={useLinkMatch(route.route)}
                 />
               </li>
             )

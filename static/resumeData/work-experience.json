@@ -1,0 +1,44 @@
+{
+  "workExperience": [
+    {
+      "name": "Ascendum Solutions",
+      "position": "Software Engineer",
+      "startDate": "May 2020",
+      "endDate": "Present",
+      "url": "https://www.ascendum.com",
+      "accomplishments": [
+        "Worked on a team to develop an upcoming social media app for a prominent client in the Healthcare space. Led development in establishing conventions and setting up libraries for other developers to use, as well as implementing key features including push notifications, authentication flows and other 3rd party integrations.",
+        "Worked directly with the client and their development teams in solving the most challenging issues in developing the app including analytics, security and accessibility.",
+        "Collaborated with DevOps to build a robust deployment pipeline able to serve multiple environments, and branch level versioning, allowing QA to quickly install and test developer code and allowing seamless demo progress of the app with the client",
+        "Worked with other teams in the company on an as-needed basis. to shore up development and solve critical issues on a tight deadline.",
+        "Wrote highly portable code, allowing features from one app to be quickly ported to other apps, allowing our client to go live with key features quicker.",
+        "Developed internal tools to help development teams within the company bootstrap React Native applications for new clients quicker. Combining the best practices from existing codebases into a template that can be used to in future projects."
+      ]
+    },
+    {
+      "name": "Cox Automotive (Manheim)",
+      "position": "Full Stack Software Engineer",
+      "startDate": "Aug 2018",
+      "endDate": "Apr 2020",
+      "url": "https://www.coxautoinc.com",
+      "accomplishments": [
+        "Worked on a team to build and maintain several key mobile applications and API's in the Cox Automotive ecosystem. Combined these products resulted in a 20% increase in revenues from online purchasing of vehicles.",
+        "Implemented a deployment process for the CAFS App that reduced the number of issues during deploys by 50% and led to a smoother and better document deployment procedure.",
+        "Architected the theming system within the primary mobile application our team built, allowing the app to be themed for client use.",
+        "Excelled in providing cost and time effective solutions for a number of issues, business use cases and features to our apps and services."
+      ]
+    },
+    {
+      "name": "Rali (Formerly OnQ)",
+      "position": "Junior Software Engineer",
+      "startDate": "Mar 2017",
+      "endDate": "Aug 2018",
+      "url": "https://getrali.com",
+      "accomplishments": [
+        "Collaborated with other developers to help build a learning platform in React and React Native for mobile devices.",
+        "Led an effort to fork an open source WYSIWYG editor and modify it for internal use.",
+        "Continually worked with product owners and UX designers to enhance features and usability of company products and tools."
+      ]
+    }
+  ]
+}
