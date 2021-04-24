@@ -1,9 +1,3 @@
 .link-active {
   @apply text-brand-yellow;
 }
-
-.page-header {
-  @apply text-4xl;
-  @apply font-bold;
-  @apply text-brand-yellow;
-}

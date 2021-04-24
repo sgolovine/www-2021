@@ -1,6 +1,5 @@
 import React from "react"
 import { sidebarRoutes } from "~/defines/navigation"
-import { useAnalytics } from "~/hooks/useAnalytics"
 import { Link } from "gatsby"
 
 interface SidebarLinkProps {
@@ -9,16 +8,8 @@ interface SidebarLinkProps {
 }
 
 const SidebarLink: React.FC<SidebarLinkProps> = ({ name, href }) => {
-  const { trackEvent } = useAnalytics()
   return (
-    <Link
-      to={href}
-      className="text-brand-link"
-      activeClassName="link-active"
-      onClick={() =>
-        trackEvent({ page: "layout", action: `Link Pressed: ${name}` })
-      }
-    >
+    <Link to={href} className="text-brand-link" activeClassName="link-active">
       {name}
     </Link>
   )

@@ -1,84 +1,84 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 const useGuestbook = () => {
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>("")
   const [shouldFetchGuestbook, setShouldFetchGuestbook] = useState<boolean>(
     true
-  );
-  const [guestbookLoading, setGuestbookLoading] = useState<boolean>(false);
-  const [guestbookData, setGuestbookData] = useState<string>("");
+  )
+  const [guestbookLoading, setGuestbookLoading] = useState<boolean>(false)
+  const [guestbookData, setGuestbookData] = useState<string>("")
 
-  const [parsedGuestbookData, setParsedGuestbookData] = useState<string[]>([]);
+  const [parsedGuestbookData, setParsedGuestbookData] = useState<string[]>([])
 
   const [guestbookState, setGuestbookState] = useState<
     "pre" | "submitting" | "post"
-  >("pre");
+  >("pre")
 
-  const [showError, setShowError] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [showError, setShowError] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>("")
 
   useEffect(() => {
     // Add a date to the end of the URL so axios never caches it.
     const url = `https://api.github.com/gists/${
-      process.env.NEXT_PUBLIC_GUESTBOOK_GIST_ID
-    }?rand=${new Date().toString()}`;
+      process.env.GATSBY_GUESTBOOK_GIST_ID
+    }?rand=${new Date().toString()}`
 
     if (shouldFetchGuestbook) {
-      setShouldFetchGuestbook(false);
-      setGuestbookLoading(true);
-      axios.get(url).then((resp) => {
-        setGuestbookLoading(false);
+      setShouldFetchGuestbook(false)
+      setGuestbookLoading(true)
+      axios.get(url).then(resp => {
+        setGuestbookLoading(false)
         setGuestbookData(
-          resp.data.files[process.env.NEXT_PUBLIC_GUESTBOOK_FILENAME as string]
+          resp.data.files[process.env.GATSBY_GUESTBOOK_FILENAME as string]
             .content
-        );
-      });
+        )
+      })
     }
-  }, [shouldFetchGuestbook]);
+  }, [shouldFetchGuestbook])
 
   const updateMessage = (newMessage: string) => {
-    setShowError(false);
-    setErrorMessage("");
-    setMessage(newMessage);
-  };
+    setShowError(false)
+    setErrorMessage("")
+    setMessage(newMessage)
+  }
 
   const submitMessage = async () => {
-    setGuestbookState("submitting");
+    setGuestbookState("submitting")
 
     if (message.length > 160) {
-      setShowError(true);
-      setErrorMessage("Message can only be up to 160 characters!");
-      setGuestbookState("pre");
-      return;
+      setShowError(true)
+      setErrorMessage("Message can only be up to 160 characters!")
+      setGuestbookState("pre")
+      return
     }
     // Submit the message here
     const resp = await axios({
       method: "POST",
       url: "/.netlify/functions/updateGuestbook",
-      validateStatus: (status) => {
-        return status >= 200 && status < 401;
+      validateStatus: status => {
+        return status >= 200 && status < 401
       },
       data: {
         userMessage: message,
       },
-    });
+    })
     if (resp.status === 201) {
-      setGuestbookState("post");
-      setShouldFetchGuestbook(true);
+      setGuestbookState("post")
+      setShouldFetchGuestbook(true)
     }
-  };
+  }
 
   useEffect(() => {
-    const splitData = guestbookData.split("\n");
+    const splitData = guestbookData.split("\n")
     const withoutLines = splitData.reduce((acc: string[], item: string) => {
       if (item) {
-        return [...acc, item];
+        return [...acc, item]
       }
-      return acc;
-    }, []);
-    setParsedGuestbookData(withoutLines);
-  }, [guestbookData]);
+      return acc
+    }, [])
+    setParsedGuestbookData(withoutLines)
+  }, [guestbookData])
 
   return {
     guestbookState,
@@ -90,7 +90,7 @@ const useGuestbook = () => {
     parsedGuestbookData,
     showError,
     errorMessage,
-  };
-};
+  }
+}
 
-export default useGuestbook;
+export default useGuestbook

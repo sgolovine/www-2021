@@ -1,5 +1,6 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
+import { Header } from "~/components/Typography"
 
 type RawData = {
   node: {
@@ -70,7 +71,7 @@ const BlogPage = () => {
   return (
     <div>
       <div className="mb-4">
-        <h1 className="page-header">Posts</h1>
+        <Header>Posts</Header>
         <p>Read the latest posts from my personal blog</p>
       </div>
       <div className="py-6">

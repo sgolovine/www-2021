@@ -1,16 +1,19 @@
+export type ResumeContactInfo = {
+  email: string
+  github: string
+  linkedin: string
+  phone: string
+  website: string
+}
+
+export type ResumeEducation = {
+  degree: string
+  gradDate: string
+  name: string
+}
 export interface ResumeData {
-  contactInfo: {
-    email: string
-    github: string
-    linkedin: string
-    phone: string
-    website: string
-  }
-  education: {
-    degree: string
-    gradDate: string
-    name: string
-  }[]
+  contactInfo: ResumeContactInfo
+  education: {}[]
   sideProjects: {
     type: string
     startDate: string

@@ -1,0 +1,49 @@
+name: Test CI
+
+on:
+  pull_request:
+    branches:
+      - master
+      - dev
+
+jobs:
+  lint-and-test-app:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-versions: [12.x]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Use NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Yarn
+        run: sudo npm install -g yarn
+        env:
+          CI: true
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+        env:
+          CI: true
+
+      - name: Run Typechecking
+        run: yarn tsc
+        env:
+          CI: true
+
+      - name: Run Prettier
+        run: yarn format
+        env:
+          CI: true
+
+      - name: Run Dry Build
+        run: yarn build:dry
+        env:
+          CI: true
