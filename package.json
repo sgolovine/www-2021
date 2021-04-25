@@ -30,6 +30,7 @@
     "gatsby-source-filesystem": "^3.3.0",
     "gatsby-transformer-json": "^3.3.0",
     "gray-matter": "^4.0.2",
+    "jsdom": "^16.5.3",
     "preact": "^10.5.13",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
