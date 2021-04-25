@@ -11,25 +11,29 @@ export type ResumeEducation = {
   gradDate: string
   name: string
 }
+
+export type ResumeSideProjects = {
+  type: string
+  startDate: string
+  endDate: string
+  name: string
+  description: string
+  link: string
+}
+
+export type ResumeWorkExperience = {
+  name: string
+  position: string
+  startDate: string
+  endDate: string
+  accomplishments: string[]
+}
 export interface ResumeData {
   contactInfo: ResumeContactInfo
-  education: {}[]
-  sideProjects: {
-    type: string
-    startDate: string
-    endDate: string
-    name: string
-    description: string
-    link: string
-  }[]
+  education: ResumeEducation[]
+  sideProjects: ResumeSideProjects[]
   skills: string[]
-  workExperience: {
-    name: string
-    position: string
-    startDate: string
-    endDate: string
-    accomplishments: string[]
-  }[]
+  workExperience: ResumeWorkExperience[]
 }
 
 export interface SiteData {

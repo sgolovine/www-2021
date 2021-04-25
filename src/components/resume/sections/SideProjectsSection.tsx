@@ -1,21 +1,21 @@
-import React from "react";
-import { stripHttp } from "~/helpers/stripHttp";
-import { SideProjects } from "~/model/Resume";
-import { OutboundLink } from "../OutboundLink";
-import { SectionHeader } from "../SectionHeader";
+import React from "react"
+import { stripHttp } from "~/helpers/stripHttp"
+import { ResumeSideProjects } from "~/model/SiteData"
+import { OutboundLink } from "../OutboundLink"
+import { SectionHeader } from "../SectionHeader"
 
 type Props = {
-  sideProjects: SideProjects;
-};
+  sideProjects: ResumeSideProjects[]
+}
 
 type SideProjectItemProps = {
-  name: string;
-  link?: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  type: string;
-};
+  name: string
+  link?: string
+  startDate: string
+  endDate: string
+  description: string
+  type: string
+}
 
 const SideProjectItem: React.FC<SideProjectItemProps> = ({
   name,
@@ -50,8 +50,8 @@ const SideProjectItem: React.FC<SideProjectItemProps> = ({
         <p>{description}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const SideProjectsSection: React.FC<Props> = ({ sideProjects }) => {
   return (
@@ -69,9 +69,9 @@ export const SideProjectsSection: React.FC<Props> = ({ sideProjects }) => {
               description={item.description}
               type={item.type}
             />
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
