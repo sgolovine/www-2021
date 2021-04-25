@@ -1,4 +1,8 @@
 .cache
 package.json
 package-lock.json
-public
+.lighthouseci/
+.netlify/
+public/
+node_modules/
+static/
