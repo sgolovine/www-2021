@@ -11,7 +11,8 @@
     "start:netlify": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -43,6 +44,7 @@
     "@babel/core": "^7.13.16",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@lhci/cli": "^0.7.1",
     "autoprefixer": "^10.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-gatsby": "^1.3.0",

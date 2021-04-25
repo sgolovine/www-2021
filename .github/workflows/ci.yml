@@ -50,8 +50,7 @@ jobs:
         env:
           CI: true
 
-      - name: Install Lighthouse CI
-        run: npm install -g @lhci/cli@0.7.x
-
       - name: Run Lighthouse Tests
-        run: lhci autorun
+        run: npm run lighthouse
+        env:
+          CI: true
