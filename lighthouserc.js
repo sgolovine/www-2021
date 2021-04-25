@@ -5,6 +5,9 @@ module.exports = {
     collect: {
       staticDistDir: path.resolve(__dirname, "public"),
     },
+    assert: {
+      preset: "lighthouse:recommended",
+    },
     upload: {
       target: "temporary-public-storage",
     },
