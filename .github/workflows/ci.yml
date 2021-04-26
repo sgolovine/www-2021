@@ -22,27 +22,30 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Yarn
-        run: sudo npm install -g yarn
-        env:
-          CI: true
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
         env:
           CI: true
 
       - name: Run Typechecking
-        run: yarn tsc
+        run: npm run typecheck
         env:
           CI: true
 
       - name: Run Prettier
-        run: yarn format
+        run: npm run format
         env:
           CI: true
 
       - name: Run Dry Build
-        run: yarn build:dry
+        run: npm run build
         env:
           CI: true
