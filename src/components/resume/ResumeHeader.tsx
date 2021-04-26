@@ -6,7 +6,9 @@ import { navigate } from "gatsby"
 const ResumePageHeader = () => {
   // const handlePrint = () => navigate("/resume/print")
 
-  const handleDownload = () => navigate("/doc/resume.pdf")
+  const handleDownload = () => {
+    window.location.replace("/doc/resume.pdf")
+  }
 
   return (
     <div className="flex flex-row justify-between items-center">
