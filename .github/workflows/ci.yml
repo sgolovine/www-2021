@@ -22,27 +22,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Yarn
-        run: sudo npm install -g yarn
-        env:
-          CI: true
-
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install --frozen-lockfile
         env:
           CI: true
 
       - name: Run Typechecking
-        run: yarn tsc
+        run: npm run tsc
         env:
           CI: true
 
       - name: Run Prettier
-        run: yarn format
+        run: npm run format
         env:
           CI: true
 
       - name: Run Dry Build
-        run: yarn build:dry
+        run: npm run build
         env:
           CI: true

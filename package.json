@@ -6,7 +6,6 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "gatsby build",
-    "build:dry": "netlify build --dry",
     "start": "gatsby develop",
     "start:netlify": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
