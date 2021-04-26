@@ -1,21 +1,21 @@
-import React from "react";
-import { stripHttp } from "~/helpers/stripHttp";
-import { WorkExperience } from "~/model/Resume";
-import { OutboundLink } from "../OutboundLink";
-import { SectionHeader } from "../SectionHeader";
+import React from "react"
+import { stripHttp } from "~/helpers/stripHttp"
+import { ResumeWorkExperience } from "~/model/SiteData"
+import { OutboundLink } from "../OutboundLink"
+import { SectionHeader } from "../SectionHeader"
 
 type Props = {
-  workExperience: WorkExperience;
-};
+  workExperience: ResumeWorkExperience[]
+}
 
 type WorkExperienceItemProps = {
-  name: string;
-  position: string;
-  startDate: string;
-  endDate: string;
-  accomplishments: string[];
-  url: string;
-};
+  name: string
+  position: string
+  startDate: string
+  endDate: string
+  accomplishments: string[]
+  url: string
+}
 
 const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
   name,
@@ -46,12 +46,12 @@ const WorkExperienceItem: React.FC<WorkExperienceItemProps> = ({
             <li className="p-2 list-disc list-inside" key={i}>
               {item}
             </li>
-          );
+          )
         })}
       </ul>
     </div>
-  );
-};
+  )
+}
 
 export const WorkExperienceSection: React.FC<Props> = ({ workExperience }) => {
   return (
@@ -67,11 +67,12 @@ export const WorkExperienceSection: React.FC<Props> = ({ workExperience }) => {
               startDate={item.startDate}
               endDate={item.endDate}
               accomplishments={item.accomplishments}
-              url={item.url}
+              // TODO: Fix URL
+              url={"#"}
             />
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}

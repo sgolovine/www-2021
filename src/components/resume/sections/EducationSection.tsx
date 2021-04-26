@@ -1,16 +1,16 @@
-import React from "react";
-import { Education } from "~/model/Resume";
-import { SectionHeader } from "../SectionHeader";
+import React from "react"
+import { ResumeEducation } from "~/model/SiteData"
+import { SectionHeader } from "../SectionHeader"
 
 type Props = {
-  education: Education;
-};
+  education: ResumeEducation[]
+}
 
 type EducationItemProps = {
-  name: string;
-  degree: string;
-  gradDate: string;
-};
+  name: string
+  degree: string
+  gradDate: string
+}
 
 const EducationItem: React.FC<EducationItemProps> = ({
   name,
@@ -27,8 +27,8 @@ const EducationItem: React.FC<EducationItemProps> = ({
         <p>{degree}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const EducationSection: React.FC<Props> = ({ education }) => {
   return (
@@ -43,9 +43,9 @@ export const EducationSection: React.FC<Props> = ({ education }) => {
               degree={item.degree}
               gradDate={item.gradDate}
             />
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
