@@ -1,9 +1,8 @@
 import React, { ReactNode, useEffect, useState } from "react"
-import { CloseIcon } from "~/icons/Close"
-import { Menu } from "~/icons/Menu"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
 import useMedia from "use-media"
+import SEO from "../SEO"
 
 interface Props {
   children: ReactNode
@@ -20,21 +19,20 @@ const Layout: React.FC<Props> = ({ children }) => {
   }, [showMobileMenu])
 
   return (
-    // Outer Container
-    <div className="max-w-3xl mx-auto py-6">
-      <Header />
+    <>
+      <SEO />
+      <div className="max-w-3xl mx-auto py-6">
+        <Header />
 
-      {/* Primary Content */}
-      <div className="flex flex-row">
-        {/* Sidebar */}
-        <div className="pr-10 hidden md:block">
-          <Sidebar />
+        <div className="flex flex-row">
+          <div className="pr-10 hidden md:block">
+            <Sidebar />
+          </div>
+
+          <div className="w-full px-4 md:px-0">{children}</div>
         </div>
-
-        {/* Main Content */}
-        <div className="w-full px-4 md:px-0">{children}</div>
       </div>
-    </div>
+    </>
   )
 }
 
