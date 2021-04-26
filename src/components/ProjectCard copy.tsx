@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import { ExternalLinkIcon } from "~/icons/ExternalLink";
-import { SiteProject } from "~/model";
+import React, { ReactNode } from "react"
+import { ExternalLinkIcon } from "~/icons/ExternalLink"
+import { SiteProject } from "~/model/SiteData"
 
 interface Props {
-  project: SiteProject;
+  project: SiteProject
 }
 
 export const ProjectCard: React.FC<Props> = ({ project }) => (
@@ -19,4 +19,4 @@ export const ProjectCard: React.FC<Props> = ({ project }) => (
     </a>
     <p className="leading-relaxed">{project.desc}</p>
   </div>
-);
+)

@@ -1,16 +1,16 @@
-import React from "react";
-import { stripHttp } from "~/helpers/stripHttp";
-import { ContactInfo } from "~/model/Resume";
+import React from "react"
+import { stripHttp } from "~/helpers/stripHttp"
+import { ResumeContactInfo } from "~/model/SiteData"
 
 type Props = {
-  contactInfo: ContactInfo;
-};
+  contactInfo: ResumeContactInfo
+}
 
 type ContactInfoItemProps = {
-  label: string;
-  value: string;
-  href: string;
-};
+  label: string
+  value: string
+  href: string
+}
 
 const ContactInfoItem: React.FC<ContactInfoItemProps> = ({
   label,
@@ -24,8 +24,8 @@ const ContactInfoItem: React.FC<ContactInfoItemProps> = ({
         {value}
       </a>
     </div>
-  );
-};
+  )
+}
 
 export const ContactInfoSection: React.FC<Props> = ({ contactInfo }) => {
   return (
@@ -62,5 +62,5 @@ export const ContactInfoSection: React.FC<Props> = ({ contactInfo }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
