@@ -22,18 +22,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     // Outer Container
     <div className="max-w-3xl mx-auto py-6">
-      {/* Header */}
-      <div className="text-left px-4 md:px-0 md:text-right py-8 md:py-16 flex flex-row justify-between items-center">
-        <Header />
-        <button
-          onClick={() => setMobMenuOpen(!mobMenuOpen)}
-          className="block md:hidden"
-        >
-          {mobMenuOpen ? <CloseIcon /> : <Menu />}
-        </button>
-        {/* <Menu /> */}
-      </div>
-      {mobMenuOpen && showMobileMenu && <Sidebar />}
+      <Header />
 
       {/* Primary Content */}
       <div className="flex flex-row">
