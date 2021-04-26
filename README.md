@@ -32,3 +32,11 @@ Note that when running in development, the contact form and guestbook will not w
 1. Run `npm run update:check`
 2. If there are any outdated packages run `npm run update:run`
 3. Update the lockfile: `npm install --legacy-peer-deps`
+
+## Updating Resume PDF
+
+NOTE: This will eventually be brought into this repository
+
+1. Clone the [resume repo](https://github.com/sgolovine/resume)
+2. Follow [the readme](https://github.com/sgolovine/resume/blob/master/README.md) to update data and generate a new PDF
+3. Update PDF resume in `~/static/doc/resume.pdf`
