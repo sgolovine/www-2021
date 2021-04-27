@@ -14,8 +14,10 @@ exports.createPages = async ({ graphql, actions }) => {
             id
             frontmatter {
               title
+              description
               date
               slug
+              published
             }
             body
           }
@@ -35,18 +37,21 @@ exports.createPages = async ({ graphql, actions }) => {
     const path = `/blog/post/${frontmatter.slug}`
 
     console.log("Building post -> ", path)
-
-    createPage({
-      path,
-      component: postTemplate,
-      context: {
-        postId: id,
-        postMeta: {
-          title: frontmatter.title,
-          date: frontmatter.date,
+    if (frontmatter.published) {
+      createPage({
+        path,
+        component: postTemplate,
+        context: {
+          postId: id,
+          postMeta: {
+            title: frontmatter.title,
+            description: frontmatter.description,
+            date: frontmatter.date,
+            path: path,
+          },
+          postBody: body,
         },
-        postBody: body,
-      },
-    })
+      })
+    }
   })
 }
