@@ -1,6 +1,7 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
-import React, { useEffect, useState } from "react"
+import { Link } from "gatsby"
+import React from "react"
 import { Header } from "~/components/Typography"
+import useBlogPosts from "~/hooks/useBlogPosts"
 
 type RawData = {
   node: {
@@ -25,48 +26,9 @@ type NormalizedData = {
 const date = new Date()
 
 const BlogPage = () => {
-  const [posts, setPosts] = useState<NormalizedData[]>([])
+  const { allPosts, recentPosts } = useBlogPosts()
 
-  const postQuery = useStaticQuery(graphql`
-    query {
-      allMdx(filter: { frontmatter: { published: { eq: true } } }) {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              date
-              description
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  useEffect(() => {
-    setPosts(
-      postQuery.allMdx.edges
-        .map((item: RawData) => {
-          const { node } = item
-          return {
-            id: node.id,
-            title: node.frontmatter.title,
-            date: new Date(node.frontmatter.date),
-            description: node.frontmatter.description,
-            path: `/blog/post/${node.frontmatter.slug}`,
-          }
-        })
-        .sort((a: NormalizedData, b: NormalizedData) => {
-          return b.date.getTime() - a.date.getTime()
-        })
-    )
-  }, [postQuery])
-
-  useEffect(() => {
-    console.log(posts)
-  }, [posts])
+  console.log(allPosts, recentPosts)
 
   return (
     <div>
@@ -75,9 +37,9 @@ const BlogPage = () => {
         <p>Read the latest posts from my personal blog</p>
       </div>
       <div className="py-6">
-        {posts &&
-          posts.length > 0 &&
-          posts.map(post => {
+        {allPosts &&
+          allPosts.length > 0 &&
+          allPosts.map(post => {
             return (
               <div key={post.id} className="pb-12">
                 <div className="flex flex-row justify-between items-start">
