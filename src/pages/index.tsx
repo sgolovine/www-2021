@@ -1,11 +1,14 @@
 import React from "react"
+import BlogPostItem from "~/components/BlogPostItem"
 import { ProjectCard } from "~/components/ProjectCard"
 import { Section } from "~/components/Section"
-import { Header, Subheader, Text } from "~/components/Typography"
+import { Subheader, Text } from "~/components/Typography"
+import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 
 const IndexPage = () => {
   const { siteData } = useData()
+  const { recentPosts } = useBlogPosts()
 
   return (
     <>
@@ -19,6 +22,15 @@ const IndexPage = () => {
           return <ProjectCard key={index} project={project} />
         })}
       </Section>
+      {recentPosts && recentPosts.length > 0 && (
+        <Section>
+          <Subheader>Recent Posts</Subheader>
+          {/* Recent Posts Placeholder */}
+          {recentPosts.map(post => {
+            return <BlogPostItem key={post.id} post={post} />
+          })}
+        </Section>
+      )}
     </>
   )
 }

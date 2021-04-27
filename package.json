@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "sunny-golovine-dot-com",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "My Personal Website",
   "version": "1.0.0",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
