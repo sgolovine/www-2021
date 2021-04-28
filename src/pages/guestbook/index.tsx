@@ -1,10 +1,12 @@
-import React from "react"
+import { PageProps } from "gatsby"
+import React, { useEffect } from "react"
 import { Button } from "~/components/Button"
 import { TextArea } from "~/components/Input"
 import { Header } from "~/components/Typography"
+import useAnalytics from "~/hooks/useAnalytics"
 import useGuestbook from "~/hooks/useGuestbook"
 
-const GuestbookPage = () => {
+const GuestbookPage = ({ location }: PageProps) => {
   const {
     message,
     updateMessage,
@@ -15,6 +17,15 @@ const GuestbookPage = () => {
     showError,
     errorMessage,
   } = useGuestbook()
+
+  const analytics = useAnalytics()
+
+  useEffect(() => {
+    analytics.trackPage({
+      title: "Guestbook",
+      href: location.href,
+    })
+  }, [location])
 
   return (
     <>
