@@ -1,6 +1,7 @@
-import { Link } from "gatsby"
-import React from "react"
+import { Link, PageProps } from "gatsby"
+import React, { useEffect } from "react"
 import { Header } from "~/components/Typography"
+import useAnalytics from "~/hooks/useAnalytics"
 import useBlogPosts from "~/hooks/useBlogPosts"
 
 type RawData = {
@@ -25,10 +26,16 @@ type NormalizedData = {
 
 const date = new Date()
 
-const BlogPage = () => {
-  const { allPosts, recentPosts } = useBlogPosts()
+const BlogPage = ({ location }: PageProps) => {
+  const { allPosts } = useBlogPosts()
+  const analytics = useAnalytics()
 
-  console.log(allPosts, recentPosts)
+  useEffect(() => {
+    analytics.trackPage({
+      title: "Blog",
+      href: location.href,
+    })
+  }, [location])
 
   return (
     <div>

@@ -1,14 +1,24 @@
-import React from "react"
+import { PageProps } from "gatsby"
+import React, { useEffect } from "react"
 import BlogPostItem from "~/components/BlogPostItem"
 import { ProjectCard } from "~/components/ProjectCard"
 import { Section } from "~/components/Section"
 import { Subheader, Text } from "~/components/Typography"
+import useAnalytics from "~/hooks/useAnalytics"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 
-const IndexPage = () => {
+const IndexPage = ({ location }: PageProps) => {
   const { siteData } = useData()
   const { recentPosts } = useBlogPosts()
+  const analytics = useAnalytics()
+
+  useEffect(() => {
+    analytics.trackPage({
+      title: "Home",
+      href: location.href,
+    })
+  }, [location])
 
   return (
     <>
