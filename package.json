@@ -24,7 +24,7 @@
     "axios": "^0.21.1",
     "dompurify": "^2.2.7",
     "gatsby": "^3.4.0",
-    "gatsby-plugin-mdx": "^2.3.0",
+    "gatsby-plugin-mdx": "^2.4.0",
     "gatsby-plugin-postcss": "^4.3.0",
     "gatsby-plugin-react-helmet": "^4.4.0",
     "gatsby-plugin-sass": "^4.3.0",
