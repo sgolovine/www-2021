@@ -1,5 +1,4 @@
 const path = require("path")
-const { isDeleteExpression } = require("typescript")
 
 const postTemplate = path.resolve(__dirname, "./src/templates/post.tsx")
 

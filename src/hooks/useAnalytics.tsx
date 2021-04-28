@@ -1,4 +1,9 @@
-import { createInstance, useMatomo } from "@datapunt/matomo-tracker-react"
+import {
+  createInstance,
+  MatomoProvider,
+  useMatomo,
+} from "@datapunt/matomo-tracker-react"
+import React, { ReactNode } from "react"
 import {
   ANALYTICS_BASE_URL,
   ANALYTICS_DISABLED,
@@ -18,6 +23,10 @@ interface TrackActionArgs {
   action: string
 }
 
+interface ProviderProps {
+  children: ReactNode
+}
+
 export const matomoInstance = createInstance({
   urlBase: ANALYTICS_BASE_URL,
   siteId: ANALYTICS_SITE_ID,
@@ -28,6 +37,10 @@ export const matomoInstance = createInstance({
   },
   linkTracking: ANALYTICS_LINK_TRACKING_ENABLED,
 })
+
+export const AnalyticsProvider: React.FC<ProviderProps> = ({ children }) => {
+  return <MatomoProvider value={matomoInstance}>{children}</MatomoProvider>
+}
 
 const useAnalytics = () => {
   const { trackPageView, trackEvent } = useMatomo()
