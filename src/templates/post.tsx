@@ -1,12 +1,15 @@
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React, { useEffect } from "react"
+import { PostSEO } from "~/components/SEO"
 
 interface Props {
   pageContext: {
     postBody: string
     postMeta: {
-      date: string
       title: string
+      description: string
+      date: string
+      path: string
     }
   }
 }
@@ -14,16 +17,26 @@ interface Props {
 const PostTemplate: React.FC<Props> = ({ pageContext }) => {
   const { postBody, postMeta } = pageContext
 
+  const canonicalURL = `https://sunnygolovine.com${postMeta.path}`
+
   return (
-    <div>
-      <div className="pb-5 text-center">
-        <h1 className="text-2xl font-bold pb-2">{postMeta.title}</h1>
-        <p className="text-sm text-gray-300 pb-2">{postMeta.date}</p>
+    <>
+      <PostSEO
+        title={postMeta.title}
+        description={postMeta.description}
+        canonicalURL={canonicalURL}
+        date={postMeta.date}
+      />
+      <div>
+        <div className="pb-5 text-center">
+          <h1 className="text-2xl font-bold pb-2">{postMeta.title}</h1>
+          <p className="text-sm text-gray-300 pb-2">{postMeta.date}</p>
+        </div>
+        <div className="prose">
+          <MDXRenderer>{postBody}</MDXRenderer>
+        </div>
       </div>
-      <div className="prose">
-        <MDXRenderer>{postBody}</MDXRenderer>
-      </div>
-    </div>
+    </>
   )
 }
 
