@@ -53,7 +53,7 @@
     "autoprefixer": "^10.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-gatsby": "^1.4.0",
-    "netlify-cli": "^3.23.1",
+    "netlify-cli": "^3.29.5",
     "npm-check-updates": "^11.5.4",
     "postcss": "^8.2.13",
     "prettier": "2.2.1",
