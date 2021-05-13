@@ -46,7 +46,7 @@
     "use-media": "^1.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.16",
+    "@babel/core": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@types/react-helmet": "^6.1.1",
