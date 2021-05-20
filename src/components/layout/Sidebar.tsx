@@ -10,7 +10,7 @@ const Sidebar: React.FC = () => {
         {enabledRoutes.length > 0 &&
           enabledRoutes.map(route => {
             return (
-              <li className="py-2 uppercase font-bold text-lg" key={route.key}>
+              <li className="pb-4 uppercase font-bold text-lg" key={route.key}>
                 <Link
                   to={route.route}
                   className="text-brand-link"
