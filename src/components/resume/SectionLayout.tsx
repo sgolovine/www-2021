@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from "react"
 
 type Props = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 export const SectionLayout: React.FC<Props> = ({ children }) => {
-  return <div className="mb-12">{children}</div>;
-};
+  return <div className="mb-12">{children}</div>
+}

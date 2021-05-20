@@ -3,17 +3,15 @@ import { useEffect, useState } from "react"
 
 const useGuestbook = () => {
   const [message, setMessage] = useState<string>("")
-  const [shouldFetchGuestbook, setShouldFetchGuestbook] = useState<boolean>(
-    true
-  )
+  const [shouldFetchGuestbook, setShouldFetchGuestbook] =
+    useState<boolean>(true)
   const [guestbookLoading, setGuestbookLoading] = useState<boolean>(false)
   const [guestbookData, setGuestbookData] = useState<string>("")
 
   const [parsedGuestbookData, setParsedGuestbookData] = useState<string[]>([])
 
-  const [guestbookState, setGuestbookState] = useState<
-    "pre" | "submitting" | "post"
-  >("pre")
+  const [guestbookState, setGuestbookState] =
+    useState<"pre" | "submitting" | "post">("pre")
 
   const [showError, setShowError] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")

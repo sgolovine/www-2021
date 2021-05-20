@@ -38,13 +38,8 @@ const Notifier: React.FC<NotifierProps> = ({ messageState }) => {
 }
 
 const ContactPage = ({ location }: PageProps) => {
-  const {
-    form,
-    messageState,
-    handleSubmit,
-    handleClear,
-    setFormField,
-  } = useContactForm()
+  const { form, messageState, handleSubmit, handleClear, setFormField } =
+    useContactForm()
   const analytics = useAnalytics()
 
   useEffect(() => {

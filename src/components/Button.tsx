@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 
 interface Props {
-  title?: string;
-  onClick?: () => void;
-  additionalClassNames?: string;
+  title?: string
+  onClick?: () => void
+  additionalClassNames?: string
 }
 
 export const Button: React.FC<Props> = ({
@@ -18,5 +18,5 @@ export const Button: React.FC<Props> = ({
     >
       {title}
     </button>
-  );
-};
+  )
+}
