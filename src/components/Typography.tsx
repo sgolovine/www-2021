@@ -5,7 +5,9 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ children }) => (
-  <h1 className="text-4xl font-bold text-brand-yellow pb-4">{children}</h1>
+  <h1 className="hidden md:block text-4xl font-bold text-brand-yellow pb-4">
+    {children}
+  </h1>
 )
 
 export const Subheader: React.FC<Props> = ({ children }) => (
