@@ -1,11 +1,11 @@
-import React from "react";
+import React from "react"
 
 interface InputProps {
-  value: string;
-  onChange: (newValue: string) => void;
-  label?: string;
-  placeholder?: string;
-  maxLength?: number;
+  value: string
+  onChange: (newValue: string) => void
+  label?: string
+  placeholder?: string
+  maxLength?: number
 }
 
 export const TextInput: React.FC<InputProps> = ({
@@ -24,12 +24,12 @@ export const TextInput: React.FC<InputProps> = ({
       <input
         className="mt-0 border-4 border-brand-yellow shadow rounded-sm text-xl bg-gray-900 text-brand-white px-2 py-1"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
       />
     </div>
-  );
-};
+  )
+}
 
 export const TextArea: React.FC<InputProps> = ({
   value,
@@ -49,10 +49,10 @@ export const TextArea: React.FC<InputProps> = ({
         rows={12}
         className="mt-0 border-4 border-brand-yellow shadow rounded-sm text-xl bg-gray-900 text-brand-white px-2 py-1"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
         maxLength={maxLength}
       />
     </div>
-  );
-};
+  )
+}

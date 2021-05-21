@@ -1,9 +1,9 @@
 import React from "react"
 import { ExternalLinkIcon } from "~/icons/ExternalLink"
+import { SiteProject } from "~/model/SiteData"
 
 interface Props {
-  // TODO: Fix type
-  project: any
+  project: SiteProject
 }
 
 export const ProjectCard: React.FC<Props> = ({ project }) => (

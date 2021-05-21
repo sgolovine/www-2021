@@ -1,9 +1,9 @@
-import React from "react";
-import { SectionHeader } from "../SectionHeader";
+import React from "react"
+import { SectionHeader } from "../SectionHeader"
 
 type Props = {
-  skills: string[];
-};
+  skills: string[]
+}
 
 export const SkillsSection: React.FC<Props> = ({ skills }) => {
   return (
@@ -14,8 +14,8 @@ export const SkillsSection: React.FC<Props> = ({ skills }) => {
           <p key={i} className="py-4">
             {skill}
           </p>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}

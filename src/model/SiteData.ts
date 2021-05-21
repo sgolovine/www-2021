@@ -27,6 +27,7 @@ export type ResumeWorkExperience = {
   startDate: string
   endDate: string
   accomplishments: string[]
+  url: string
 }
 export interface ResumeData {
   contactInfo: ResumeContactInfo

@@ -1,10 +1,10 @@
-import React from "react";
+import React from "react"
 
 type Props = {
-  href: string;
-  name: string;
-  className?: string;
-};
+  href: string
+  name: string
+  className?: string
+}
 
 export const OutboundLink: React.FC<Props> = ({ href, name, className }) => {
   return (
@@ -16,5 +16,5 @@ export const OutboundLink: React.FC<Props> = ({ href, name, className }) => {
     >
       {name}
     </a>
-  );
-};
+  )
+}

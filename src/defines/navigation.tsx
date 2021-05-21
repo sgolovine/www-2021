@@ -8,10 +8,10 @@ export enum Routes {
 }
 
 export const sidebarRoutes: {
-  key: string;
-  name: string;
-  route: Routes;
-  enabled: boolean;
+  key: string
+  name: string
+  route: Routes
+  enabled: boolean
 }[] = [
   { name: "Home", route: Routes.Home, enabled: true, key: "home" },
   { name: "Blog", route: Routes.Blog, enabled: true, key: "blog" },
@@ -34,4 +34,4 @@ export const sidebarRoutes: {
     enabled: true,
     key: "guestbook",
   },
-];
+]

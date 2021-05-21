@@ -67,8 +67,7 @@ export const WorkExperienceSection: React.FC<Props> = ({ workExperience }) => {
               startDate={item.startDate}
               endDate={item.endDate}
               accomplishments={item.accomplishments}
-              // TODO: Fix URL
-              url={"#"}
+              url={item.url}
             />
           )
         })}

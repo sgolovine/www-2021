@@ -1,1 +1,1 @@
-export const BRAND_YELLOW = "#ffd23f";
+export const BRAND_YELLOW = "#ffd23f"
