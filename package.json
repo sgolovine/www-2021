@@ -41,7 +41,7 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-query": "^3.16.0",
-    "sass": "^1.32.11",
+    "sass": "^1.34.0",
     "unzalgo": "^2.1.2",
     "use-media": "^1.4.0"
   },
