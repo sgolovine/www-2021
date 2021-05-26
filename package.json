@@ -32,7 +32,7 @@
     "gatsby-plugin-typescript": "^3.4.0",
     "gatsby-remark-images": "^5.1.0",
     "gatsby-source-filesystem": "^3.4.0",
-    "gatsby-transformer-json": "^3.4.0",
+    "gatsby-transformer-json": "^3.6.0",
     "gray-matter": "^4.0.3",
     "jsdom": "^16.5.3",
     "preact": "^10.5.13",
