@@ -23,7 +23,7 @@
     "@tailwindcss/typography": "^0.4.0",
     "axios": "^0.21.1",
     "dompurify": "^2.2.8",
-    "gatsby": "^3.4.0",
+    "gatsby": "^3.6.1",
     "gatsby-plugin-mdx": "^2.4.0",
     "gatsby-plugin-postcss": "^4.4.0",
     "gatsby-plugin-preact": "^5.4.0",
