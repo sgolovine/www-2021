@@ -50,6 +50,12 @@ export const useData = (): {
             href
             name
           }
+          work {
+            description
+            type
+            name
+            url
+          }
         }
       }
       allResumeDataJson {

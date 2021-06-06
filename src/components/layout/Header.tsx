@@ -11,8 +11,6 @@ import { defaultHeader } from "~/defines/pageHeaders"
 export const Header: React.FC = () => {
   const location = useLocation()
 
-  console.log(location)
-
   const showMobileMenu = useMedia({ maxWidth: "767px" })
   const [mobMenuOpen, setMobMenuOpen] = useState<boolean>(false)
 

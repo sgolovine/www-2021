@@ -5,6 +5,7 @@ export enum Routes {
   Guestbook = "/guestbook",
   Resume = "/resume",
   Links = "/links",
+  Work = "/work",
 }
 
 export const sidebarRoutes: {
@@ -14,6 +15,7 @@ export const sidebarRoutes: {
   enabled: boolean
 }[] = [
   { name: "Home", route: Routes.Home, enabled: true, key: "home" },
+  { name: "Work", route: Routes.Work, enabled: true, key: "work" },
   { name: "Blog", route: Routes.Blog, enabled: true, key: "blog" },
   { name: "Links", route: Routes.Links, enabled: true, key: "links" },
   {

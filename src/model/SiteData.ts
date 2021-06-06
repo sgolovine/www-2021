@@ -64,11 +64,12 @@ export type SiteWork = {
   url?: string
   description: string
   type: "professional" | "side-project"
-}[]
+}
 
 export interface SiteData {
   about: SiteAbout
   contact: SiteContact
   links: SiteLinks[]
   projects: SiteProject[]
+  work: SiteWork[]
 }

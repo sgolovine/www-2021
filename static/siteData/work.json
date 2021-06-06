@@ -32,6 +32,7 @@
     {
       "name": "Fav Bookmark Manager",
       "description": "Chrome and Firefox extension that lets users save a collection of bookmarks to Github Gist. Predecessor to GistMarks.",
+      "url": "https://fav.sh",
       "type": "side-project"
     },
     {
