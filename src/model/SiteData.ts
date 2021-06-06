@@ -59,6 +59,13 @@ export type SiteAbout = {
   bio: string
 }
 
+export type SiteWork = {
+  name: string
+  url?: string
+  description: string
+  type: "professional" | "side-project"
+}[]
+
 export interface SiteData {
   about: SiteAbout
   contact: SiteContact

@@ -1,0 +1,44 @@
+{
+  "work": [
+    {
+      "name": "Cloud Talent",
+      "url": "https://cloud-talent.com",
+      "description": "Client Website. Built with Gatsby and Bootstrap",
+      "type": "professional"
+    },
+    {
+      "name": "Awesome Devtools",
+      "url": "https://awesomedevtools.com",
+      "description": "A collection of developer tools from around the internet. Built with TailwindCSS and Gatsby",
+      "type": "side-project"
+    },
+    {
+      "name": "Gistmarks",
+      "url": "https://gistmarks.io",
+      "description": "Gistmarks lets users create and share bookmark collections using Github Gist.",
+      "type": "side-project"
+    },
+    {
+      "name": "Sydney Communities",
+      "description": "Sydney Communities lets users join communities related to medical conditions and share stories and support each other inside the group Sydney Communities also connects users with free and reduced cost resources around the country using Aunt Bertha.",
+      "type": "professional"
+    },
+    {
+      "name": "Webhost Watchdog",
+      "description": "Webhost Watchdog is a web hosting review site. Webhost Watchdog provides unbiased reviews about various web hosting products",
+      "url": "https://webhostwatchdog.com",
+      "type": "side-project"
+    },
+    {
+      "name": "Fav Bookmark Manager",
+      "description": "Chrome and Firefox extension that lets users save a collection of bookmarks to Github Gist. Predecessor to GistMarks.",
+      "type": "side-project"
+    },
+    {
+      "name": "Next Inspect",
+      "description": "NextInspect is an iOS and Android app that takes users through the process of creating vehicle condition reports in the Manheim ecosystem",
+      "url": "https://apps.apple.com/us/app/next-inspect/id1497586831",
+      "type": "professional"
+    }
+  ]
+}
