@@ -13,7 +13,8 @@
     "clean": "gatsby clean",
     "update:check": "ncu",
     "update:run": "ncu -u",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "ci": "yarn format && yarn typecheck"
   },
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.4.0",

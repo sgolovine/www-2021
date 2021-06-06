@@ -2,8 +2,7 @@ import React, { ReactNode, useEffect, useState } from "react"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
 import useMedia from "use-media"
-import SEO from "../SEO"
-
+import SEO from "~/components/common/SEO"
 interface Props {
   children: ReactNode
 }

@@ -1,8 +1,8 @@
 import { PageProps } from "gatsby"
 import React, { useEffect } from "react"
-import { Button } from "~/components/Button"
-import { TextArea } from "~/components/Input"
-import { Header } from "~/components/Typography"
+import { Button } from "~/components/common/Button"
+import { TextArea } from "~/components/common/Input"
+import { Header } from "~/components/common/Typography"
 import useAnalytics from "~/hooks/useAnalytics"
 import useGuestbook from "~/hooks/useGuestbook"
 

@@ -1,6 +1,6 @@
+import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import React, { useEffect } from "react"
-import { PostSEO } from "~/components/SEO"
+import { PostSEO } from "~/components/common/SEO"
 
 interface Props {
   pageContext: {

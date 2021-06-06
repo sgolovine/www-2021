@@ -1,6 +1,6 @@
 import { PageProps } from "gatsby"
 import React, { ReactNode, useContext, useEffect } from "react"
-import { Header } from "~/components/Typography"
+import { Header } from "~/components/common/Typography"
 import useAnalytics from "~/hooks/useAnalytics"
 import { useData } from "~/hooks/useData"
 import {
