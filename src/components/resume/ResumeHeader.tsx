@@ -1,6 +1,6 @@
 import React from "react"
-import { Button } from "../Button"
-import { Header } from "../Typography"
+import { Button } from "../common/Button"
+import { Header } from "~/components/common/Typography"
 import { navigate } from "gatsby"
 
 const ResumePageHeader = () => {

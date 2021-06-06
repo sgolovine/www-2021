@@ -10,8 +10,9 @@ const useGuestbook = () => {
 
   const [parsedGuestbookData, setParsedGuestbookData] = useState<string[]>([])
 
-  const [guestbookState, setGuestbookState] =
-    useState<"pre" | "submitting" | "post">("pre")
+  const [guestbookState, setGuestbookState] = useState<
+    "pre" | "submitting" | "post"
+  >("pre")
 
   const [showError, setShowError] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")
