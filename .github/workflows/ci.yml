@@ -29,23 +29,28 @@ jobs:
           path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
 
+      - name: Install Yarn
+        run: npm install -g yarn
+        env:
+          CI: true
+
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: yarn install
         env:
           CI: true
 
       - name: Run Typechecking
-        run: npm run typecheck
+        run: yarn typecheck
         env:
           CI: true
 
       - name: Run Prettier
-        run: npm run format
+        run: yarn format
         env:
           CI: true
 
       - name: Run Dry Build
-        run: npm run build
+        run: yarn build
         env:
           CI: true
