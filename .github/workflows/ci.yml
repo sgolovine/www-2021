@@ -14,10 +14,10 @@ jobs:
         node-versions: [14.x]
 
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use NodeJS ${{ matrix.node-version }}
+      - name: Setup NodeJS
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
@@ -27,12 +27,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-
-      - name: Install Yarn
-        run: npm install -g yarn
-        env:
-          CI: true
+          key: node-modules-${{ hashFiles('yarn.json') }}
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
