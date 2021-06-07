@@ -1,9 +1,9 @@
 import { PageProps } from "gatsby"
 import React, { useEffect } from "react"
 import BlogPostItem from "~/components/BlogPostItem"
-import { ProjectCard } from "~/components/ProjectCard"
 import { Section } from "~/components/common/Section"
 import { Subheader, Text } from "~/components/common/Typography"
+import { WorkItem } from "~/components/WorkItem"
 import useAnalytics from "~/hooks/useAnalytics"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
@@ -12,6 +12,8 @@ const IndexPage = ({ location }: PageProps) => {
   const { siteData } = useData()
   const { recentPosts } = useBlogPosts()
   const analytics = useAnalytics()
+
+  const recentWork = siteData.work.slice(0, 4)
 
   useEffect(() => {
     analytics.trackPage({
@@ -27,9 +29,9 @@ const IndexPage = ({ location }: PageProps) => {
         <Text>{siteData.about.bio}</Text>
       </Section>
       <Section>
-        <Subheader>Recent Projects</Subheader>
-        {siteData.projects.map((project, index) => {
-          return <ProjectCard key={index} project={project} />
+        <Subheader>Recent Work</Subheader>
+        {recentWork.map((item, index) => {
+          return <WorkItem work={item} key={index} />
         })}
       </Section>
       {recentPosts && recentPosts.length > 0 && (

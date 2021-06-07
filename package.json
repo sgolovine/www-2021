@@ -23,6 +23,7 @@
     "@sendgrid/mail": "^7.4.4",
     "@tailwindcss/typography": "^0.4.1",
     "axios": "^0.21.1",
+    "classnames": "^2.3.1",
     "dompurify": "^2.2.9",
     "gatsby": "^3.6.2",
     "gatsby-plugin-mdx": "^2.6.0",
@@ -50,6 +51,7 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/classnames": "^2.3.1",
     "@types/react-helmet": "^6.1.1",
     "autoprefixer": "^10.2.6",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -60,5 +62,8 @@
     "prettier": "2.3.1",
     "tailwindcss": "^2.1.4",
     "typescript": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

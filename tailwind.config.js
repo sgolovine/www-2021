@@ -28,6 +28,8 @@ module.exports = {
         linkedin: "#0077B5",
         github: "#181717",
         "brand-yellow": "#ffd23f",
+        "brand-blue": "#5FBFF9",
+        "brand-green": "#20FC8F",
         "brand-white": "#f7fff7",
         "brand-link": "#adb5bd",
         background: "#212529",

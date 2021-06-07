@@ -10,7 +10,7 @@ const BlogPostItem: React.FC<Props> = ({ post }) => {
   return (
     <div key={post.id} className="pb-12">
       <div className="flex flex-row justify-between items-start">
-        <Link className="text-lg text-brand-yellow font-bold" to={post.path}>
+        <Link className="text-lg text-brand-blue font-bold" to={post.path}>
           {post.title}
         </Link>
         <p>{post.date.toLocaleDateString()}</p>
