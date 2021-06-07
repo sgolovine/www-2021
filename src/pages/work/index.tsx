@@ -14,9 +14,9 @@ const WorkPage = () => {
     const headerTextClasses = classnames(
       "text-lg",
       "font-bold",
-      "text-brand-yellow"
+      "text-brand-blue"
     )
-    const iconClasses = classnames("h-6", "w-6", "ml-2", "text-brand-yellow")
+    const iconClasses = classnames("h-6", "w-6", "ml-2", "text-brand-blue")
 
     const typeTextClasses = classnames("text-sm", "font-bold", "p-1")
 

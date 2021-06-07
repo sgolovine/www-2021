@@ -51,7 +51,7 @@ const BlogPage = ({ location }: PageProps) => {
               <div key={post.id} className="pb-12">
                 <div className="flex flex-row justify-between items-start">
                   <Link
-                    className="text-lg text-brand-yellow font-bold"
+                    className="text-lg text-brand-blue font-bold"
                     to={post.path}
                   >
                     {post.title}
