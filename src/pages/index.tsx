@@ -1,9 +1,9 @@
 import { PageProps } from "gatsby"
 import React, { useEffect } from "react"
-import BlogPostItem from "~/components/BlogPostItem"
 import { Section } from "~/components/common/Section"
 import { Subheader, Text } from "~/components/common/Typography"
-import { WorkItem } from "~/components/WorkItem"
+import { RecentPosts } from "~/components/home/RecentPosts"
+import { RecentWork } from "~/components/home/RecentWork"
 import useAnalytics from "~/hooks/useAnalytics"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
@@ -30,17 +30,13 @@ const IndexPage = ({ location }: PageProps) => {
       </Section>
       <Section>
         <Subheader>Recent Work</Subheader>
-        {recentWork.map((item, index) => {
-          return <WorkItem work={item} key={index} />
-        })}
+        <RecentWork recentWork={recentWork} />
       </Section>
       {recentPosts && recentPosts.length > 0 && (
         <Section>
           <Subheader>Recent Posts</Subheader>
           {/* Recent Posts Placeholder */}
-          {recentPosts.map(post => {
-            return <BlogPostItem key={post.id} post={post} />
-          })}
+          <RecentPosts posts={recentPosts} />
         </Section>
       )}
     </>

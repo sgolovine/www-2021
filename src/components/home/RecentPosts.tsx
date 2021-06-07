@@ -2,15 +2,11 @@ import { Link } from "gatsby"
 import React from "react"
 import { BlogPost } from "~/model/BlogPost"
 
-interface Props {
-  post: BlogPost
-}
-
-const BlogPostItem: React.FC<Props> = ({ post }) => {
+const Item: React.FC<{ post: BlogPost }> = ({ post }) => {
   return (
     <div key={post.id} className="pb-12">
       <div className="flex flex-row justify-between items-start">
-        <Link className="text-lg text-brand-blue font-bold" to={post.path}>
+        <Link className="text-lg text-brand-green font-bold" to={post.path}>
           {post.title}
         </Link>
         <p>{post.date.toLocaleDateString()}</p>
@@ -20,4 +16,12 @@ const BlogPostItem: React.FC<Props> = ({ post }) => {
   )
 }
 
-export default BlogPostItem
+export const RecentPosts: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
+  return (
+    <>
+      {posts.map((post, index) => {
+        return <Item post={post} key={index} />
+      })}
+    </>
+  )
+}
