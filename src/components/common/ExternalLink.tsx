@@ -1,6 +1,7 @@
 import classnames from "classnames"
 import { Link } from "gatsby"
 import React from "react"
+import useAnalytics from "~/hooks/useAnalytics"
 import { ExternalLinkIcon } from "~/icons/ExternalLink"
 
 interface Props {
@@ -30,6 +31,8 @@ export const ExternalLink: React.FC<Props> = ({
   sm,
   lg,
 }) => {
+  const { trackAction } = useAnalytics()
+
   const containerClasses = classnames(
     containerClassnames,
     "flex",
@@ -56,12 +59,19 @@ export const ExternalLink: React.FC<Props> = ({
     "text-brand-yellow"
   )
 
+  const trackLinkClick = () => {
+    trackAction({
+      category: "Link Clicked",
+      action: `${href} clicked`,
+    })
+  }
+
   // If we have a defined href and external link
   // Render a regular <a> tag.
   if (href && external) {
     return (
       <span className={containerClasses}>
-        <a className={textClasses} href={href}>
+        <a onClick={trackLinkClick} className={textClasses} href={href}>
           {label}
         </a>
         <ExternalLinkIcon className={iconClasses} />
@@ -72,7 +82,7 @@ export const ExternalLink: React.FC<Props> = ({
     // Gatsby's Link component
   } else if (href) {
     return (
-      <Link className={textClasses} to={href}>
+      <Link onClick={trackLinkClick} className={textClasses} to={href}>
         {label}
       </Link>
     )
