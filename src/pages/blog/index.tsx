@@ -1,5 +1,6 @@
-import { Link, PageProps } from "gatsby"
+import { PageProps } from "gatsby"
 import React, { useEffect } from "react"
+import { ExternalLink } from "~/components/common/ExternalLink"
 import { Header } from "~/components/common/Typography"
 import useAnalytics from "~/hooks/useAnalytics"
 import useBlogPosts from "~/hooks/useBlogPosts"
@@ -23,8 +24,6 @@ type NormalizedData = {
   description: string
   path: string
 }
-
-const date = new Date()
 
 const BlogPage = ({ location }: PageProps) => {
   const { allPosts } = useBlogPosts()
@@ -50,12 +49,7 @@ const BlogPage = ({ location }: PageProps) => {
             return (
               <div key={post.id} className="pb-12">
                 <div className="flex flex-row justify-between items-start">
-                  <Link
-                    className="text-lg text-brand-blue font-bold"
-                    to={post.path}
-                  >
-                    {post.title}
-                  </Link>
+                  <ExternalLink lg href={post.path} label={post.title} />
                   <p>{post.date.toLocaleDateString()}</p>
                 </div>
                 <p className="py-2">{post.description}</p>

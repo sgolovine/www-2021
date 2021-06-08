@@ -1,22 +1,10 @@
 import React from "react"
-import { ExternalLinkIcon } from "~/icons/ExternalLink"
 import { SiteWork } from "~/model/SiteData"
+import { ExternalLink } from "../common/ExternalLink"
 
 const Item: React.FC<{ work: SiteWork }> = ({ work }) => (
   <div className="pb-8">
-    {work.url ? (
-      <a
-        target="_blank"
-        rel="noreferrer noopener"
-        href={work.url}
-        className="flex text-brand-green font-bold flex-row hover:underline"
-      >
-        <span className="pr-2">{work.name}</span>
-        <ExternalLinkIcon />
-      </a>
-    ) : (
-      <p className="pr-2 text-brand-green font-bold">{work.name}</p>
-    )}
+    <ExternalLink external label={work.name} href={work.url} />
     <p className="leading-relaxed">{work.description}</p>
   </div>
 )

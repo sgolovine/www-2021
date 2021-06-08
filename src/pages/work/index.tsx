@@ -4,6 +4,7 @@ import { useData } from "~/hooks/useData"
 import classnames from "classnames"
 import { ExternalLinkIcon } from "~/icons/ExternalLink"
 import { SiteWork } from "~/model/SiteData"
+import { ExternalLink } from "~/components/common/ExternalLink"
 
 const WorkPage = () => {
   const { siteData } = useData()
@@ -11,12 +12,6 @@ const WorkPage = () => {
 
   const renderWorkItem = (item: SiteWork) => {
     const containerClasses = classnames("flex", "flex-row", "items-center")
-    const headerTextClasses = classnames(
-      "text-lg",
-      "font-bold",
-      "text-brand-green"
-    )
-    const iconClasses = classnames("h-6", "w-6", "ml-2", "text-brand-green")
 
     const typeTextClasses = classnames("text-sm", "font-bold", "p-1")
 
@@ -28,19 +23,7 @@ const WorkPage = () => {
     return (
       <div className="pb-12">
         <div className={classnames(containerClasses, "justify-between")}>
-          {item.url ? (
-            <span className={containerClasses}>
-              <a
-                className={classnames(headerTextClasses, "hover:underline")}
-                href={item.url}
-              >
-                {item.name}
-              </a>
-              <ExternalLinkIcon className={iconClasses} />
-            </span>
-          ) : (
-            <p className={headerTextClasses}>{item.name}</p>
-          )}
+          <ExternalLink label={item.name} href={item.url} lg external />
           <span className={containerClasses}>
             <span className={typeDotClasses} />
             <p className={typeTextClasses}>

@@ -1,14 +1,12 @@
-import { Link } from "gatsby"
 import React from "react"
 import { BlogPost } from "~/model/BlogPost"
+import { ExternalLink } from "../common/ExternalLink"
 
 const Item: React.FC<{ post: BlogPost }> = ({ post }) => {
   return (
     <div key={post.id} className="pb-12">
       <div className="flex flex-row justify-between items-start">
-        <Link className="text-lg text-brand-green font-bold" to={post.path}>
-          {post.title}
-        </Link>
+        <ExternalLink href={post.path} label={post.title} />
         <p>{post.date.toLocaleDateString()}</p>
       </div>
       <p className="py-2">{post.description}</p>
