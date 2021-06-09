@@ -45,6 +45,13 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `sunnygolovine.com`,
+        customDomain: `analytics.glvn.co`,
+      },
+    },
     `gatsby-plugin-postcss`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-preact`,
