@@ -14,7 +14,8 @@
     "update:check": "ncu",
     "update:run": "ncu -u",
     "typecheck": "tsc",
-    "ci": "yarn format && yarn typecheck"
+    "ci": "yarn format && yarn typecheck",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.4.0",
@@ -59,7 +60,9 @@
     "babel-preset-gatsby": "^1.6.0",
     "netlify-cli": "^3.35.0",
     "npm-check-updates": "^11.6.0",
+    "patch-package": "^6.4.7",
     "postcss": "^8.3.0",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "2.3.1",
     "tailwindcss": "^2.1.4",
     "typescript": "^4.3.2"
