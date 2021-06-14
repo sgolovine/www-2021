@@ -19,6 +19,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "resume/**/*"],
   "exclude": ["node_modules", ".cache", "public"]
 }

@@ -15,7 +15,9 @@
     "update:run": "ncu -u",
     "typecheck": "tsc",
     "ci": "yarn format && yarn typecheck",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "resume:start": "vite resume",
+    "resume:build": "vite build resume --outDir ../resume-dist"
   },
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.4.0",
@@ -55,6 +57,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@types/classnames": "^2.3.1",
     "@types/react-helmet": "^6.1.1",
+    "@vitejs/plugin-react-refresh": "^1.3.3",
     "autoprefixer": "^10.2.6",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-gatsby": "^1.6.0",
@@ -65,7 +68,8 @@
     "postinstall-postinstall": "^2.1.0",
     "prettier": "2.3.1",
     "tailwindcss": "^2.1.4",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "vite": "^2.3.7"
   },
   "engines": {
     "node": ">=14"
