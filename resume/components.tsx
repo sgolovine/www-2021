@@ -10,17 +10,9 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
   headerText,
   children,
 }) => {
-  const containerClasses = classNames("py-4")
-
-  const headerClasses = classNames(
-    "text-lg",
-    "font-bold",
-    "text-center",
-    "py-4"
-  )
   return (
-    <div className={containerClasses}>
-      <h2 className={headerClasses}>{headerText}</h2>
+    <div className="section-container">
+      <h2 className="section-header">{headerText}</h2>
       <div>{children}</div>
     </div>
   )
