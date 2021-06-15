@@ -1,0 +1,89 @@
+/* Global */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.resume-container {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header */
+.header-container {
+  text-align: center;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header-link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.header-link {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+/* Section */
+.section-container {
+  padding-top: 1rem;
+  /* padding-bottom: 1rem; */
+}
+
+.section-header {
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Items */
+.item-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item-heading {
+  font-size: 0.75rem;
+}
+
+.item-detail {
+  font-size: 0.75rem;
+}
+
+.item-url {
+  text-decoration: none;
+}
+
+.item-content-container {
+  padding-left: 2rem;
+}
+
+.item-content {
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Utilities */
+.text-align-right {
+  text-align: right;
+}

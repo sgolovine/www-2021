@@ -11,32 +11,40 @@ Before running this project. Make sure that you have NodeJS 14+ installed. Also 
 1. Make sure you have NodeJS 14+
 2. Copy `.env.example` to `.env` and replace the values with your own
 3. Install local dependencies (`npm install`)
-4. Start the development server (`npm run start`)
+4. Start the development server (`yarn start`)
 
-Note that when running in development, the contact form and guestbook will not work as they require functions. To test these features run `npm run start:netlify`
+Note that when running in development, the contact form and guestbook will not work as they require functions. To test these features run `yarn start:netlify`
 
 ## Local Formatting and Typechecking
 
-- **format**: `npm run format`
+- **format**: `yarn format`
 
-- **typechecking**: `npm run tsc`
+- **typechecking**: `yarn tsc`
 
 ## Testing Production Builds
 
 0. Make sure you have a defined `.env` file
-1. Run `npm run build` to build the site
-2. Run `npm run serve` to serve the production build
+1. Run `yarn build` to build the site
+2. Run `yarn serve` to serve the production build
 
 ## Keeping packages up to date
 
-1. Run `npm run update:check`
-2. If there are any outdated packages run `npm run update:run`
+1. Run `yarn update:check`
+2. If there are any outdated packages run `yarn update:run`
 3. Update the lockfile: `npm install --legacy-peer-deps`
 
-## Updating Resume PDF
+## Updating the DOC resume.
 
-NOTE: This will eventually be brought into this repository
+To generate a new DOC file of the resume, run `yarn generate-resume`.
 
-1. Clone the [resume repo](https://github.com/sgolovine/resume)
-2. Follow [the readme](https://github.com/sgolovine/resume/blob/master/README.md) to update data and generate a new PDF
-3. Update PDF resume in `~/static/doc/resume.pdf`
+There are several other commands for working on the resume:
+
+`resume:start` - Start the dev server for the resume
+
+`resume:build` - Build the resume to `/resume-dist`
+
+`resume:serve` - Serve a copy of the built resume (requires running `resume:build` first)
+
+`resume:export` - Export the resume to a PDF (requires `resume:serve`)
+
+All of these commands are used internally by `generate-resume`
