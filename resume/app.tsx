@@ -1,5 +1,6 @@
 import React from "react"
 import "../src/styles/tailwind.css"
+// import "gutenberg-css/dist/gutenberg.min.css"
 import resumeContactInfo from "../static/resumeData/contact-info.json"
 import resumeEducation from "../static/resumeData/education.json"
 import resumeSideProjects from "../static/resumeData/side-projects.json"
@@ -7,6 +8,7 @@ import resumeSkills from "../static/resumeData/skills.json"
 import resumeWorkExperience from "../static/resumeData/work-experience.json"
 import classNames from "classnames"
 import { stripHttp } from "../src/helpers/stripHttp"
+import { SectionContainer } from "./components"
 
 function ResumeHeader() {
   const { phone, email, website, linkedin, github } =
@@ -19,8 +21,8 @@ function ResumeHeader() {
     "px-2"
   )
   return (
-    <div className="text-center py-2">
-      <h1 className="text-2xl font-bold leading-loose">Sunny Golovine</h1>
+    <div className="text-center py-2 pb-12">
+      <h1 className="text-xl font-bold leading-loose">Sunny Golovine</h1>
       <div>
         <a className={linkClasses} href={`mailto:${email}`}>
           {email}
@@ -45,20 +47,15 @@ function ResumeHeader() {
 function ResumeSkills() {
   const { skills } = resumeSkills
   return (
-    <div>
-      <h2 className="text-lg font-bold text-center py-4">
-        Core Qualifications
-      </h2>
-      <div className="flex flex-col">
-        {skills.map((skill, index) => {
-          return (
-            <p className="text-sm py-1" key={index}>
-              {skill}
-            </p>
-          )
-        })}
-      </div>
-    </div>
+    <SectionContainer headerText="Core Qualifications">
+      {skills.map((skill, index) => {
+        return (
+          <p className="text-sm py-1" key={index}>
+            {skill}
+          </p>
+        )
+      })}
+    </SectionContainer>
   )
 }
 
@@ -81,8 +78,8 @@ function WorkExperience() {
                 <p className="text-sm">
                   {item.startDate} - {item.endDate}
                 </p>
-                <a className="text-sm" href="#">
-                  {item.url}
+                <a className="text-sm text-blue-600" href={item.url}>
+                  {stripHttp(item.url)}
                 </a>
               </div>
             </div>
@@ -107,8 +104,7 @@ function WorkExperience() {
 function SideProjects() {
   const { sideProjects } = resumeSideProjects
   return (
-    <div>
-      <h2 className="text-lg font-bold text-center py-4">Work Experience</h2>
+    <SectionContainer headerText="Side Projects">
       {sideProjects.map((item, index) => {
         return (
           <div className="py-2" key={index}>
@@ -122,8 +118,8 @@ function SideProjects() {
                 <p className="text-sm">
                   {item.startDate} - {item.endDate}
                 </p>
-                <a className="text-sm" href="#">
-                  {item.link}
+                <a className="text-sm text-blue-600" href={item.link}>
+                  {stripHttp(item.link)}
                 </a>
               </div>
             </div>
@@ -133,7 +129,31 @@ function SideProjects() {
           </div>
         )
       })}
-    </div>
+    </SectionContainer>
+  )
+}
+
+function Education() {
+  const { education } = resumeEducation
+  return (
+    <SectionContainer headerText="Education">
+      {education.map((item, index) => {
+        return (
+          <div className="py-2" key={index}>
+            {/* Header */}
+            <div className="flex flex-row justify-between items-center">
+              <div>
+                <h3 className="font-bold">{item.name}</h3>
+                <p className="text-sm">{item.degree}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm">{item.gradDate}</p>
+              </div>
+            </div>
+          </div>
+        )
+      })}
+    </SectionContainer>
   )
 }
 
@@ -144,6 +164,7 @@ export function App() {
       <ResumeSkills />
       <WorkExperience />
       <SideProjects />
+      <Education />
     </div>
   )
 }

@@ -40,6 +40,7 @@
     "gatsby-source-filesystem": "^3.6.0",
     "gatsby-transformer-json": "^3.6.0",
     "gray-matter": "^4.0.3",
+    "gutenberg-css": "^0.6.1",
     "jsdom": "^16.6.0",
     "preact": "^10.5.13",
     "preact-render-to-string": "^5.1.19",
