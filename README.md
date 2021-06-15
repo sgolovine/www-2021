@@ -33,10 +33,18 @@ Note that when running in development, the contact form and guestbook will not w
 2. If there are any outdated packages run `yarn update:run`
 3. Update the lockfile: `npm install --legacy-peer-deps`
 
-## Working on the Resume
+## Updating the DOC resume.
 
-- **start**: `yarn resume:start`
-- **build**: `yarn resume:build`
+To generate a new DOC file of the resume, run `yarn generate-resume`.
 
-Source files for the resume can be found under `/resume`.
-When a resume is built the resulting source files will be under `/resume-dist`
+There are several other commands for working on the resume:
+
+`resume:start` - Start the dev server for the resume
+
+`resume:build` - Build the resume to `/resume-dist`
+
+`resume:serve` - Serve a copy of the built resume (requires running `resume:build` first)
+
+`resume:export` - Export the resume to a PDF (requires `resume:serve`)
+
+All of these commands are used internally by `generate-resume`
