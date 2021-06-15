@@ -128,7 +128,7 @@ function Education() {
     <SectionContainer headerText="Education">
       {education.map((item, index) => {
         return (
-          <div className="py-2" key={index}>
+          <div key={index}>
             {/* Header */}
             <div className="item-header-container">
               <div>

@@ -16,7 +16,8 @@
     "ci": "yarn format && yarn typecheck",
     "postinstall": "patch-package",
     "resume:start": "vite resume",
-    "resume:build": "vite build resume --outDir ../resume-dist"
+    "resume:build": "vite build resume --outDir ../resume-dist",
+    "resume:serve": "serve -s resume-dist"
   },
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.4.0",
