@@ -5,7 +5,6 @@
 const puppeteer = require("puppeteer")
 const path = require("path")
 const fs = require("fs")
-const handler = require("serve-handler")
 
 // Path to where resume will be stored
 const outputPath = path.resolve(__dirname, "..", "static", "doc", "resume.pdf")
