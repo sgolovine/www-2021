@@ -1,0 +1,37 @@
+# Netlify CMS Configuration File
+# When running in development
+# set the backend name to 'test-repo'
+# otherwise it should be set
+# to 'git-gateway' when running
+# in production
+
+backend:
+  name: test-repo
+  branch: master
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  - name: site-data
+    label: "Site Date"
+    files:
+      - file: "static/cms/site-data/bio.json"
+        label: "Bio"
+        fields:
+          - { label: "Bio", name: "bio", widget: "text" }
+      - file: "static/cms/site-data/contact.json"
+        label: "Contact Info"
+        fields:
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone Number", name: "phone-number", widget: "string" }
+          - {
+              label: "Alternate Phone Number",
+              name: "phone-number-alt",
+              widget: "string",
+            }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+          - { label: "Twitter", name: "twitter", widget: "string" }
+          - { label: "Github", name: "github", widget: "string" }
+          - { label: "LinkedIn", name: "linkedin", widget: "string" }
+          - { label: "The Practical Dev", name: "dev-to", widget: "string" }

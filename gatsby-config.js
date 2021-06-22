@@ -52,6 +52,7 @@ module.exports = {
         customDomain: `analytics.glvn.co`,
       },
     },
+    `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-preact`,
