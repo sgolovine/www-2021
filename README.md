@@ -52,3 +52,11 @@ There are several other commands for working on the resume:
 `resume:export` - Export the resume to a PDF (requires `resume:serve`)
 
 All of these commands are used internally by `generate-resume`
+
+## Working on the CMS
+
+This site uses NetlifyCMS for its content.
+
+- To edit the CMS fields, edit `static/admin/config.yml`
+- To edit preview templates and other addons, see `src/cms/cms.ts`
+- To check the CMS configuration yaml for errors run `yarn cms:lint`
