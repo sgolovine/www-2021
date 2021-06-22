@@ -57,6 +57,7 @@ All of these commands are used internally by `generate-resume`
 
 This site uses NetlifyCMS for its content.
 
-- To edit the CMS fields, edit `static/admin/config.yml`
+- Rather than keeping the config in a single file, this project keeps them under `static/admin/_config` and then generates a config file on the fly.
+- The script that handles creating `config.yml` is located in `scripts/generate-cms-config.js`
 - To edit preview templates and other addons, see `src/cms/cms.ts`
 - To check the CMS configuration yaml for errors run `yarn cms:lint`
