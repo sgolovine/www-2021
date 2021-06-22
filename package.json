@@ -9,7 +9,7 @@
     "start": "gatsby develop",
     "start:netlify": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "clean": "gatsby clean",
+    "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
     "update:check": "ncu",
     "update:run": "ncu -u",
     "typecheck": "tsc",
