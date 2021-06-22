@@ -33,6 +33,10 @@ Note that when running in development, the contact form and guestbook will not w
 2. If there are any outdated packages run `yarn update:run`
 3. Update the lockfile: `npm install --legacy-peer-deps`
 
+## Finding and Removing Unused Packages
+
+This project uses [depcheck](https://www.npmjs.com/package/depcheck) to check for unused dependencies. Run `yarn depcheck` to look for any unused dependencies. Depcheck will throw false positives for packages that aren't directly used in your code. Make sure packages are unused before removing them.
+
 ## Updating the DOC resume.
 
 To generate a new DOC file of the resume, run `yarn generate-resume`.
