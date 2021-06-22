@@ -1,0 +1,6 @@
+backend:
+  name: test-repo
+  branch: master
+
+media_folder: "static/images"
+public_folder: "/images"

@@ -1,0 +1,82 @@
+collections:
+  - name: site-data
+    label: "Site Data"
+    files:
+      - file: "static/cms/site-data/bio.json"
+        name: bio
+        label: "Bio"
+        fields:
+          - label: "Bio"
+            name: "bio"
+            widget: "text"
+
+      - file: "static/cms/site-data/contact.json"
+        name: contact-info
+        label: "Contact Info"
+        fields:
+          - label: "Email"
+            name: "email"
+            widget: "string"
+
+          - label: "Phone Number"
+            name: "phone-number"
+            widget: "string"
+
+          - label: "Alternate Phone Number"
+            name: "phone-number-alt"
+            widget: "string"
+
+          - label: "Instagram"
+            name: "instagram"
+            widget: "string"
+
+          - label: "Twitter"
+            name: "twitter"
+            widget: "string"
+
+          - label: "Github"
+            name: "github"
+            widget: "string"
+
+          - label: "LinkedIn"
+            name: "linkedin"
+            widget: "string"
+
+          - label: "The Practical Dev"
+            name: "dev-to"
+            widget: "string"
+
+      - file: "static/cms/site-data/work.json"
+        name: "work"
+        label: "Work Data"
+        fields:
+          - label: "Previous Work"
+            name: "work-data"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - label: "Name"
+                name: "name"
+                widget: "string"
+
+              - label: "URL"
+                name: "url"
+                widget: "string"
+
+              - label: "Description"
+                name: "description"
+                widget: "text"
+
+              - label: Project Type
+                name: project-type
+                widget: select
+                options:
+                  - label: Side Project
+                    value: side-project
+
+                  - label: Professional Project
+                    value: professional
+
+              - label: Show in Projects
+                name: show-in-projects
+                widget: boolean
