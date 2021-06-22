@@ -1,17 +1,5 @@
-/**
- * This script will clean out all the temporary
- * files and folders inside this project.
- *
- * This script will delete the following:
- * - .cache
- * - node_modules
- * - yarn-error.log
- * - public
- * - resume-dist
- *
- * The script will also run `gatsby clean` at the end
- * To delete any temp files outside of this project folder
- */
+// Clean script
+// Run `yarn clean` to run this script
 
 const fs = require("fs")
 const path = require("path")
