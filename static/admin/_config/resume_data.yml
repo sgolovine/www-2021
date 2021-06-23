@@ -28,7 +28,7 @@ collections:
 
       - file: "static/cms/resume-data/education.json"
         name: education
-        label: "Education Info"
+        label: "Education"
         fields:
           - label: "Education"
             name: education
@@ -44,11 +44,12 @@ collections:
 
               - label: "Graduation Date"
                 name: grad-date
-                widget: string
+                widget: date
+                format: "MMM YYYY"
 
       - file: "static/cms/resume-data/side-projects.json"
         name: side-projects
-        label: "Side Projects Info"
+        label: "Side Projects"
         fields:
           - label: "Side Projects"
             name: side-projects
@@ -60,11 +61,13 @@ collections:
 
               - label: "Start Date"
                 name: start-date
-                widget: datetime
+                widget: date
+                format: "MMM YYYY"
 
               - label: "End Date"
                 name: end-date
-                widget: datetime
+                widget: date
+                format: "MMM YYYY"
 
               - label: "Description"
                 name: description
@@ -77,3 +80,53 @@ collections:
               - label: "Type"
                 name: type
                 widget: string
+
+      - file: "static/cms/resume-data/skills.json"
+        name: skills
+        label: "Skills"
+        fields:
+          - label: "Skills"
+            name: skills
+            widget: list
+            fields:
+              - label: "Skill Description"
+                name: skill
+                widget: text
+
+      - file: "static/cms/resume-data/work-experience.json"
+        name: work
+        label: "Work Experience"
+        fields:
+          - label: "Work Experience"
+            name: work-experience
+            widget: list
+            fields:
+              - label: "Name"
+                name: name
+                widget: string
+
+              - label: "Position"
+                name: position
+                widget: string
+
+              - label: "Start Date"
+                name: start-date
+                widget: date
+                format: "MMM YYYY"
+
+              - label: "End Date"
+                name: end-date
+                widget: date
+                format: "MMM YYYY"
+
+              - label: "URL"
+                name: url
+                widget: string
+
+              - label: "Accomplishments"
+                name: accomplishments
+                widget: list
+                fields:
+                  - label: "Accomplishment"
+                    name: accomplishment
+                    widget: text

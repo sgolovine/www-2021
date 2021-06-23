@@ -48,7 +48,7 @@ collections:
 
       - file: "static/cms/site-data/work.json"
         name: "work"
-        label: "Work Data"
+        label: "Work and Side Projects"
         fields:
           - label: "Previous Work"
             name: "work-data"
@@ -77,6 +77,7 @@ collections:
                   - label: Professional Project
                     value: professional
 
-              - label: Show in Projects
-                name: show-in-projects
+              - label: Show in Recent Work?
+                name: show-in-recent-projects
                 widget: boolean
+                default: false
