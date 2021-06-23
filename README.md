@@ -1,6 +1,14 @@
-# Sunny Golovine DOT COM
+# sunnygolovine.com
 
-Codebase for my personal website
+This is the codebase for my personal website: [sunnygolovine.com](https://sunnygolovine.com)
+
+## Previous Versions
+
+See the previous versions of my personal websites:
+
+- [2020](https://github.com/sgolovine/sunnygolovine.com-2020)
+- [2019](https://github.com/sgolovine/glvn.co)
+- [2018](https://github.com/sgolovine/glvn.io)
 
 ## Pre-requisites
 
