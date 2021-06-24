@@ -1,7 +1,6 @@
 import { PageProps } from "gatsby"
 import React, { ReactNode, useContext, useEffect } from "react"
 import { Header } from "~/components/common/Typography"
-import useAnalytics from "~/hooks/useAnalytics"
 import { useData } from "~/hooks/useData"
 import {
   DevToIcon,
@@ -72,14 +71,6 @@ const LinkItem: React.FC<Props> = ({ title, href, type, itemKey }) => {
 
 const LinkPage = ({ location }: PageProps) => {
   const { siteData } = useData()
-  const analytics = useAnalytics()
-
-  useEffect(() => {
-    analytics.trackPage({
-      title: "Links",
-      href: location.href,
-    })
-  }, [location])
 
   return (
     <>

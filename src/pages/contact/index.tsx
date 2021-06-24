@@ -1,10 +1,9 @@
 import { PageProps } from "gatsby"
-import React, { useContext, useEffect } from "react"
+import React from "react"
 import { Button } from "~/components/common/Button"
 import { TextArea, TextInput } from "~/components/common/Input"
 import { Section } from "~/components/common/Section"
 import { Header } from "~/components/common/Typography"
-import useAnalytics from "~/hooks/useAnalytics"
 import useContactForm, { MessageState } from "~/hooks/useContactForm"
 import { useData } from "~/hooks/useData"
 
@@ -40,14 +39,6 @@ const Notifier: React.FC<NotifierProps> = ({ messageState }) => {
 const ContactPage = ({ location }: PageProps) => {
   const { form, messageState, handleSubmit, handleClear, setFormField } =
     useContactForm()
-  const analytics = useAnalytics()
-
-  useEffect(() => {
-    analytics.trackPage({
-      title: "Contact",
-      href: location.href,
-    })
-  }, [location])
 
   const { siteData } = useData()
 

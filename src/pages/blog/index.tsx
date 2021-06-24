@@ -1,40 +1,10 @@
-import { PageProps } from "gatsby"
-import React, { useEffect } from "react"
+import React from "react"
 import { ExternalLink } from "~/components/common/ExternalLink"
 import { Header } from "~/components/common/Typography"
-import useAnalytics from "~/hooks/useAnalytics"
 import useBlogPosts from "~/hooks/useBlogPosts"
 
-type RawData = {
-  node: {
-    id: string
-    frontmatter: {
-      title: string
-      date: string
-      description: string
-      slug: string
-    }
-  }
-}
-
-type NormalizedData = {
-  id: string
-  title: string
-  date: Date
-  description: string
-  path: string
-}
-
-const BlogPage = ({ location }: PageProps) => {
+const BlogPage = () => {
   const { allPosts } = useBlogPosts()
-  const analytics = useAnalytics()
-
-  useEffect(() => {
-    analytics.trackPage({
-      title: "Blog",
-      href: location.href,
-    })
-  }, [location])
 
   return (
     <div>

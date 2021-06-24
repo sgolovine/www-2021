@@ -1,5 +1,5 @@
 import { PageProps } from "gatsby"
-import React, { useContext, useEffect } from "react"
+import React from "react"
 import { PageLayout } from "~/components/resume/PageLayout"
 import ResumePageHeader from "~/components/resume/ResumeHeader"
 import { SectionLayout } from "~/components/resume/SectionLayout"
@@ -8,19 +8,10 @@ import { EducationSection } from "~/components/resume/sections/EducationSection"
 import { SideProjectsSection } from "~/components/resume/sections/SideProjectsSection"
 import { SkillsSection } from "~/components/resume/sections/SkillsSection"
 import { WorkExperienceSection } from "~/components/resume/sections/WorkExperienceSection"
-import useAnalytics from "~/hooks/useAnalytics"
 import { useData } from "~/hooks/useData"
 
 const ResumePage = ({ location }: PageProps) => {
   const { resumeData } = useData()
-  const analytics = useAnalytics()
-
-  useEffect(() => {
-    analytics.trackPage({
-      title: "Resume",
-      href: location.href,
-    })
-  }, [location])
 
   return (
     <>
