@@ -7,13 +7,10 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "start:netlify": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
     "typecheck": "tsc",
     "ci": "yarn format && yarn typecheck",
-    "update:check": "ncu",
-    "update:run": "ncu -u",
     "resume:start": "vite resume",
     "resume:build": "vite build resume --outDir ../resume-dist",
     "resume:serve": "serve -s resume-dist",
@@ -68,19 +65,17 @@
     "autoprefixer": "^10.2.6",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-gatsby": "^1.6.0",
-    "depcheck": "^1.4.1",
-    "netlify-cli": "^3.35.0",
-    "npm-check-updates": "^11.6.0",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.4.7",
     "postcss": "^8.3.0",
-    "postinstall-postinstall": "^2.1.0",
     "prettier": "2.3.1",
-    "puppeteer": "^10.0.0",
     "serve": "^12.0.0",
     "tailwindcss": "^2.1.4",
     "typescript": "^4.3.2",
     "yaml-lint": "^1.2.4"
+  },
+  "optionalDependencies": {
+    "puppeteer": "^10.0.0"
   },
   "engines": {
     "node": ">=14"
