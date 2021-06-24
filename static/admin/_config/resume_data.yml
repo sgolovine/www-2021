@@ -1,0 +1,132 @@
+collections:
+  - name: resume-data
+    label: "Resume Data"
+    files:
+      - file: "static/cms/resume-data/contact-info.json"
+        name: contact-info
+        label: "Contact Info"
+        fields:
+          - label: "Phone Number"
+            name: phone
+            widget: string
+
+          - label: "Email Address"
+            name: email
+            widget: string
+
+          - label: "Website"
+            name: website
+            widget: string
+
+          - label: "LinkedIn"
+            name: linkedin
+            widget: string
+
+          - label: "Github"
+            name: github
+            widget: string
+
+      - file: "static/cms/resume-data/education.json"
+        name: education
+        label: "Education"
+        fields:
+          - label: "Education"
+            name: education
+            widget: list
+            fields:
+              - label: "College Name"
+                name: college-name
+                widget: string
+
+              - label: "Degree Earned"
+                name: degree-earned
+                widget: string
+
+              - label: "Graduation Date"
+                name: grad-date
+                widget: date
+                format: "MMM YYYY"
+
+      - file: "static/cms/resume-data/side-projects.json"
+        name: side-projects
+        label: "Side Projects"
+        fields:
+          - label: "Side Projects"
+            name: side-projects
+            widget: list
+            fields:
+              - label: "Name"
+                name: name
+                widget: string
+
+              - label: "Start Date"
+                name: start-date
+                widget: date
+                format: "MMM YYYY"
+
+              - label: "End Date"
+                name: end-date
+                widget: date
+                format: "MMM YYYY"
+
+              - label: "Description"
+                name: description
+                widget: text
+
+              - label: "Link"
+                name: link
+                widget: string
+
+              - label: "Type"
+                name: type
+                widget: string
+
+      - file: "static/cms/resume-data/skills.json"
+        name: skills
+        label: "Skills"
+        fields:
+          - label: "Skills"
+            name: skills
+            widget: list
+            fields:
+              - label: "Skill Description"
+                name: skill
+                widget: text
+
+      - file: "static/cms/resume-data/work-experience.json"
+        name: work
+        label: "Work Experience"
+        fields:
+          - label: "Work Experience"
+            name: work-experience
+            widget: list
+            fields:
+              - label: "Name"
+                name: name
+                widget: string
+
+              - label: "Position"
+                name: position
+                widget: string
+
+              - label: "Start Date"
+                name: start-date
+                widget: date
+                format: "MMM YYYY"
+
+              - label: "End Date"
+                name: end-date
+                widget: date
+                format: "MMM YYYY"
+
+              - label: "URL"
+                name: url
+                widget: string
+
+              - label: "Accomplishments"
+                name: accomplishments
+                widget: list
+                fields:
+                  - label: "Accomplishment"
+                    name: accomplishment
+                    widget: text

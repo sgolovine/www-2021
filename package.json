@@ -10,16 +10,20 @@
     "start:netlify": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
-    "update:check": "ncu",
-    "update:run": "ncu -u",
     "typecheck": "tsc",
     "ci": "yarn format && yarn typecheck",
-    "postinstall": "patch-package",
+    "update:check": "ncu",
+    "update:run": "ncu -u",
     "resume:start": "vite resume",
     "resume:build": "vite build resume --outDir ../resume-dist",
     "resume:serve": "serve -s resume-dist",
     "resume:export": "node ./scripts/generate-resume.js",
-    "generate-resume": "npm-run-all resume:build --parallel resume:serve resume:export"
+    "generate-resume": "npm-run-all resume:build --parallel resume:serve resume:export",
+    "cms:generate": "NODE_ENV=development node ./scripts/generate-cms-config.js",
+    "cms:lint": "yamllint ./static/admin/config.yml",
+    "prestart": "yarn cms:generate",
+    "prebuild": "yarn cms:generate",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.4.0",
@@ -32,6 +36,7 @@
     "dompurify": "^2.2.9",
     "gatsby": "^3.6.2",
     "gatsby-plugin-mdx": "^2.6.0",
+    "gatsby-plugin-netlify-cms": "^5.7.1",
     "gatsby-plugin-plausible": "^0.0.7",
     "gatsby-plugin-postcss": "^4.6.0",
     "gatsby-plugin-preact": "^5.6.0",
@@ -42,6 +47,7 @@
     "gatsby-source-filesystem": "^3.6.0",
     "gatsby-transformer-json": "^3.6.0",
     "jsdom": "^16.6.0",
+    "netlify-cms-app": "^2.15.19",
     "preact": "^10.5.13",
     "preact-render-to-string": "^5.1.19",
     "react": "^17.0.2",
@@ -51,6 +57,7 @@
     "use-media": "^1.4.0"
   },
   "devDependencies": {
+    "@alexlafroscia/yaml-merge": "^4.0.0",
     "@babel/core": "^7.14.3",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
@@ -71,7 +78,8 @@
     "puppeteer": "^10.0.0",
     "serve": "^12.0.0",
     "tailwindcss": "^2.1.4",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "yaml-lint": "^1.2.4"
   },
   "engines": {
     "node": ">=14"
