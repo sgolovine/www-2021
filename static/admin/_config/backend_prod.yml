@@ -1,2 +1,4 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: sgolovine/sunnygolovine.com
+  branch: master
