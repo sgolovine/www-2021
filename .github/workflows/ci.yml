@@ -45,6 +45,9 @@ jobs:
         env:
           CI: true
 
+      - name: Lint CMS Config
+        run: yarn cms:lint
+
       - name: Run Dry Build
         run: yarn build
         env:
