@@ -1,0 +1,18 @@
+{
+  "work-data": [
+    {
+      "show-in-recent-projects": true,
+      "name": "Cloud Talent",
+      "url": "https://cloud-talent.com",
+      "description": "Client Website. Built with Gatsby and Bootstrap",
+      "project-type": "professional"
+    },
+    {
+      "show-in-recent-projects": true,
+      "name": "Awesome Devtools",
+      "url": "https://awesomedevtools.com",
+      "description": "A collection of developer tools from around the internet. Built with TailwindCSS and Gatsby",
+      "project-type": "side-project"
+    }
+  ]
+}
