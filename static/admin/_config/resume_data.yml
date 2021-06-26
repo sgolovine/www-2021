@@ -2,30 +2,6 @@ collections:
   - name: resume-data
     label: "Resume Data"
     files:
-      - file: "static/cms/resume-data/contact-info.json"
-        name: contact-info
-        label: "Contact Info"
-        fields:
-          - label: "Phone Number"
-            name: phone
-            widget: string
-
-          - label: "Email Address"
-            name: email
-            widget: string
-
-          - label: "Website"
-            name: website
-            widget: string
-
-          - label: "LinkedIn"
-            name: linkedin
-            widget: string
-
-          - label: "Github"
-            name: github
-            widget: string
-
       - file: "static/cms/resume-data/education.json"
         name: education
         label: "Education"
@@ -64,18 +40,27 @@ collections:
                 widget: date
                 format: "MMM YYYY"
 
+              - label: "Current Project"
+                name: current-project
+                widget: boolean
+                required: false
+                default: false
+
               - label: "End Date"
                 name: end-date
                 widget: date
                 format: "MMM YYYY"
+                required: false
 
               - label: "Description"
                 name: description
                 widget: text
+                required: false
 
               - label: "Link"
                 name: link
                 widget: string
+                required: false
 
               - label: "Type"
                 name: type
@@ -118,14 +103,23 @@ collections:
                 name: end-date
                 widget: date
                 format: "MMM YYYY"
+                required: false
+
+              - label: Current Employer
+                name: current-employer
+                widget: boolean
+                default: false
+                required: false
 
               - label: "URL"
                 name: url
                 widget: string
+                required: false
 
               - label: "Accomplishments"
                 name: accomplishments
                 widget: list
+                required: false
                 fields:
                   - label: "Accomplishment"
                     name: accomplishment
