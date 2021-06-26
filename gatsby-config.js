@@ -24,6 +24,15 @@ module.exports = {
         path: `${__dirname}/static/resumeData`,
       },
     },
+    // We need to rename some current data fields to legacy labels
+    // Before turning this on....
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `cms-data`,
+    //     path: `${__dirname}/static/cms`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

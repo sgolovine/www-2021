@@ -43,7 +43,7 @@ Note that when running in development, the contact form and guestbook will not w
 
 ## Finding and Removing Unused Packages
 
-This project uses [depcheck](https://www.npmjs.com/package/depcheck) to check for unused dependencies. Run `yarn depcheck` to look for any unused dependencies. Depcheck will throw false positives for packages that aren't directly used in your code. Make sure packages are unused before removing them.
+This project uses [depcheck](https://www.npmjs.com/package/depcheck) to check for unused dependencies. Run `npx depcheck` to check for unused dependencies.
 
 ## Updating the DOC resume.
 
