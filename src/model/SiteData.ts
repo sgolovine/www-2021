@@ -73,3 +73,23 @@ export interface SiteData {
   projects: SiteProject[]
   work: SiteWork[]
 }
+
+export interface NewSiteData {
+  bio: string
+  work_data: {
+    name: string
+    description: string
+    project_type: "side-project" | "professional"
+    show_in_recent_projects: boolean
+    url: string | null
+  }[]
+  dev_to: string
+  email: string
+  github: string
+  instagram: string
+  linkedin: string
+  phone_number: string
+  phone_number_alt: string | null
+  twitter: string
+  website: string | null
+}
