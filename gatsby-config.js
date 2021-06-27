@@ -5,25 +5,33 @@
  */
 
 module.exports = {
+  flags: {
+    FAST_DEV: false,
+    PRESERVE_WEBPACK_CACHE: false,
+    PRESERVE_FILE_DOWNLOAD_CACHE: false,
+    PARALLEL_SOURCING: false,
+    LMDB_STORE: false,
+    DEV_SSR: true,
+  },
   /* Your site config here */
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `siteData`,
-        path: `${__dirname}/static/siteData`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `resumeData`,
-        path: `${__dirname}/static/resumeData`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `siteData`,
+    //     path: `${__dirname}/static/siteData`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `resumeData`,
+    //     path: `${__dirname}/static/resumeData`,
+    //   },
+    // },
     // We need to rename some current data fields to legacy labels
     // Before turning this on....
     // {
