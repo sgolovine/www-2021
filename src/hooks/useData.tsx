@@ -1,104 +1,102 @@
-import { useStaticQuery, graphql } from "gatsby"
+// import { useStaticQuery, graphql } from "gatsby"
 import { ResumeData, SiteData } from "~/model/SiteData"
 
-function normalizeData(nodes: any[]) {
-  return nodes.reduce((acc: any, item: any) => {
-    const subsetDataKeys = Object.keys(item)
-    const cleanSubset = subsetDataKeys.reduce((acc, subsetKey) => {
-      if (item[subsetKey]) {
-        return {
-          ...acc,
-          [subsetKey]: item[subsetKey],
-        }
-      } else {
-        return acc
-      }
-    }, {})
+// function normalizeData(nodes: any[]) {
+//   return nodes.reduce((acc: any, item: any) => {
+//     const subsetDataKeys = Object.keys(item)
+//     const cleanSubset = subsetDataKeys.reduce((acc, subsetKey) => {
+//       if (item[subsetKey]) {
+//         return {
+//           ...acc,
+//           [subsetKey]: item[subsetKey],
+//         }
+//       } else {
+//         return acc
+//       }
+//     }, {})
 
-    const subsetKey = Object.keys(cleanSubset)[0]
+//     const subsetKey = Object.keys(cleanSubset)[0]
 
-    return {
-      ...acc,
-      [subsetKey]: cleanSubset[subsetKey as keyof typeof cleanSubset],
-    }
-  }, {})
+//     return {
+//       ...acc,
+//       [subsetKey]: cleanSubset[subsetKey as keyof typeof cleanSubset],
+//     }
+//   }, {})
+// }
+
+const placeholderResumeData: ResumeData = {
+  contactInfo: {
+    email: "string",
+    github: "string",
+    linkedin: "string",
+    phone: "string",
+    website: "string",
+  },
+  education: [
+    {
+      degree: "string",
+      gradDate: "string",
+      name: "string,",
+    },
+  ],
+  sideProjects: [
+    {
+      type: "string",
+      startDate: "string",
+      endDate: "string",
+      name: "string",
+      description: "string",
+      link: "string",
+    },
+  ],
+  skills: ["foo", "bar", "baz"],
+  workExperience: [
+    {
+      name: "string",
+      position: "string",
+      startDate: "string",
+      endDate: "string",
+      accomplishments: ["foo", "bar"],
+      url: "string",
+    },
+  ],
+}
+
+const placeholderSiteData: SiteData = {
+  about: {
+    bio: "foobar",
+  },
+  contact: {
+    email: "string",
+    phone: "string",
+  },
+  links: [
+    {
+      key: "foo",
+      name: "foo",
+      value: "foo",
+      type: "foo",
+    },
+  ],
+  projects: [
+    {
+      name: "foo",
+      href: "foo",
+      desc: "foo",
+    },
+  ],
+  work: [
+    {
+      name: "foo",
+      description: "foo",
+      type: "professional",
+    },
+  ],
 }
 
 export const useData = (): {
   resumeData: ResumeData
   siteData: SiteData
 } => {
-  const query = useStaticQuery(graphql`
-    query {
-      allSiteDataJson {
-        nodes {
-          about {
-            bio
-          }
-          contact {
-            email
-            phone
-          }
-          links {
-            key
-            name
-            type
-            value
-          }
-          projects {
-            desc
-            href
-            name
-          }
-          work {
-            description
-            type
-            name
-            url
-          }
-        }
-      }
-      allResumeDataJson {
-        nodes {
-          contactInfo {
-            email
-            github
-            linkedin
-            phone
-            website
-          }
-          education {
-            degree
-            gradDate
-            name
-          }
-          sideProjects {
-            description
-            endDate
-            link
-            name
-            startDate
-            type
-          }
-          workExperience {
-            accomplishments
-            endDate
-            name
-            position
-            startDate
-            url
-          }
-          skills
-        }
-      }
-    }
-  `)
-
-  const { allSiteDataJson, allResumeDataJson } = query
-
-  const normalizedSiteData = normalizeData(allSiteDataJson.nodes)
-
-  const normalizedResumeData = normalizeData(allResumeDataJson.nodes)
-
-  return { resumeData: normalizedResumeData, siteData: normalizedSiteData }
+  return { resumeData: placeholderResumeData, siteData: placeholderSiteData }
 }

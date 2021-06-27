@@ -1,8 +1,0 @@
-{
-  "skills": [
-    "Extensive experience in implementing React and React Native applications in a variety of enviorments ranging from startups and SMB's to Fortune 500 companies.",
-    "Extensive Experience in building component and styling systems for mobile and web applications, employing tools such as Styled Components, Bootstrap, and TailwindCSS to move quicker in developing frontends UI's.",
-    "Experience with building API's to support mobile applications, utilizing the MERN Stack.",
-    "Experience with integrating applications with cloud providers including AWS and Firebase. Worked with EC2 and S3 to deliver more traditional API's and serverless technology to deliver simpler solutions."
-  ]
-}
