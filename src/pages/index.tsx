@@ -7,12 +7,10 @@ import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 
 const IndexPage = () => {
-  const { siteData, newResumeData } = useData()
+  const { LEGACY_siteData: siteData } = useData()
   const { recentPosts } = useBlogPosts()
 
   const recentWork = siteData.work.slice(0, 4)
-
-  console.log("new resume data", newResumeData)
 
   return (
     <>

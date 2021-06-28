@@ -11,7 +11,7 @@ import { WorkExperienceSection } from "~/components/resume/sections/WorkExperien
 import { useData } from "~/hooks/useData"
 
 const ResumePage = ({ location }: PageProps) => {
-  const { resumeData } = useData()
+  const { LEGACY_resumeData: resumeData } = useData()
 
   return (
     <>

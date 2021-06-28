@@ -169,10 +169,10 @@ function normalizeData<T, R>(data: T[]) {
 }
 
 export const useData = (): {
-  resumeData: ResumeData
-  siteData: SiteData
-  newSiteData: NewSiteData
-  newResumeData: NewResumeData
+  LEGACY_resumeData: ResumeData
+  LEGACY_siteData: SiteData
+  siteData: NewSiteData
+  resumeData: NewResumeData
 } => {
   const query = useStaticQuery<Query>(graphql`
     query {
@@ -238,9 +238,9 @@ export const useData = (): {
     query.allResumeDataJson.nodes
   )
   return {
-    resumeData: placeholderResumeData,
-    siteData: placeholderSiteData,
-    newSiteData: siteData,
-    newResumeData: resumeData,
+    LEGACY_resumeData: placeholderResumeData,
+    LEGACY_siteData: placeholderSiteData,
+    siteData: siteData,
+    resumeData: resumeData,
   }
 }

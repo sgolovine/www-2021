@@ -2,12 +2,11 @@ import React from "react"
 import { Header } from "~/components/common/Typography"
 import { useData } from "~/hooks/useData"
 import classnames from "classnames"
-import { ExternalLinkIcon } from "~/icons/ExternalLink"
 import { SiteWork } from "~/model/SiteData"
 import { ExternalLink } from "~/components/common/ExternalLink"
 
 const WorkPage = () => {
-  const { siteData } = useData()
+  const { LEGACY_siteData: siteData } = useData()
   const { work } = siteData
 
   const renderWorkItem = (item: SiteWork) => {

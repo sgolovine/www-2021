@@ -70,7 +70,7 @@ const LinkItem: React.FC<Props> = ({ title, href, type, itemKey }) => {
 }
 
 const LinkPage = ({ location }: PageProps) => {
-  const { siteData } = useData()
+  const { LEGACY_siteData: siteData } = useData()
 
   return (
     <>

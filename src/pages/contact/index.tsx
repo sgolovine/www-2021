@@ -40,7 +40,7 @@ const ContactPage = ({ location }: PageProps) => {
   const { form, messageState, handleSubmit, handleClear, setFormField } =
     useContactForm()
 
-  const { siteData } = useData()
+  const { LEGACY_siteData: siteData } = useData()
 
   return (
     <>
