@@ -1,5 +1,10 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { NewSiteData, ResumeData, SiteData } from "~/model/SiteData"
+import {
+  NewResumeData,
+  NewSiteData,
+  ResumeData,
+  SiteData,
+} from "~/model/SiteData"
 
 const placeholderResumeData: ResumeData = {
   contactInfo: {
@@ -72,12 +77,15 @@ const placeholderSiteData: SiteData = {
 }
 
 interface Query {
+  allResumeDataJson: {
+    nodes: RawResumeData[]
+  }
   allSiteDataJson: {
-    nodes: RawData[]
+    nodes: RawSiteData[]
   }
 }
 
-interface RawData {
+interface RawSiteData {
   bio: string | null
   dev_to: string | null
   email: string | null
@@ -99,7 +107,44 @@ interface RawData {
     | null
 }
 
-function normalizeSiteData(data: RawData[]) {
+interface RawResumeData {
+  education:
+    | {
+        college_name: string
+        degree_earned: string
+        grad_date: string
+      }[]
+    | null
+  side_projects:
+    | {
+        current_project: boolean
+        description: string
+        end_date: string
+        link: string
+        name: string
+        start_date: string
+        type: string
+      }[]
+    | null
+  skills:
+    | {
+        skill: string
+      }[]
+    | null
+  workExperience: {
+    accomplishments: {
+      accomplishment: string
+    }[]
+    current_employer: boolean
+    end_date: string
+    name: string
+    position: string
+    start_date: string
+    url: string
+  }[]
+}
+
+function normalizeData<T, R>(data: T[]) {
   const normalizedData = data.reduce((acc, item) => {
     const subsetKeys = Object.keys(item)
     const result = subsetKeys.reduce((acc, subsetItem) => {
@@ -118,7 +163,7 @@ function normalizeSiteData(data: RawData[]) {
       ...acc,
       ...result,
     }
-  }, {}) as NewSiteData
+  }, {}) as R
 
   return normalizedData
 }
@@ -127,9 +172,42 @@ export const useData = (): {
   resumeData: ResumeData
   siteData: SiteData
   newSiteData: NewSiteData
+  newResumeData: NewResumeData
 } => {
   const query = useStaticQuery<Query>(graphql`
     query {
+      allResumeDataJson {
+        nodes {
+          education {
+            college_name
+            degree_earned
+            grad_date
+          }
+          side_projects {
+            current_project
+            description
+            end_date
+            link
+            name
+            start_date
+            type
+          }
+          skills {
+            skill
+          }
+          work_experience {
+            accomplishments {
+              accomplishment
+            }
+            current_employer
+            end_date
+            name
+            position
+            start_date
+            url
+          }
+        }
+      }
       allSiteDataJson {
         nodes {
           bio
@@ -153,10 +231,16 @@ export const useData = (): {
       }
     }
   `)
-  const siteData = normalizeSiteData(query.allSiteDataJson.nodes)
+  const siteData = normalizeData<RawSiteData, NewSiteData>(
+    query.allSiteDataJson.nodes
+  )
+  const resumeData = normalizeData<RawResumeData, NewResumeData>(
+    query.allResumeDataJson.nodes
+  )
   return {
     resumeData: placeholderResumeData,
     siteData: placeholderSiteData,
     newSiteData: siteData,
+    newResumeData: resumeData,
   }
 }

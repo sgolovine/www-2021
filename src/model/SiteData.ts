@@ -93,3 +93,34 @@ export interface NewSiteData {
   twitter: string
   website: string | null
 }
+
+export interface NewResumeData {
+  education: {
+    college_name: string
+    degree_earned: string
+    grad_date: string
+  }[]
+  side_projects: {
+    current_project: boolean
+    description: string
+    end_date: string
+    link: string
+    name: string
+    start_date: string
+    type: string
+  }[]
+  skills: {
+    skill: string
+  }[]
+  workExperience: {
+    accomplishments: {
+      accomplishment: string
+    }[]
+    current_employer: boolean
+    end_date: string
+    name: string
+    position: string
+    start_date: string
+    url: string
+  }[]
+}

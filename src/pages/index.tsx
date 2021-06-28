@@ -7,10 +7,12 @@ import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 
 const IndexPage = () => {
-  const { siteData } = useData()
+  const { siteData, newResumeData } = useData()
   const { recentPosts } = useBlogPosts()
 
   const recentWork = siteData.work.slice(0, 4)
+
+  console.log("new resume data", newResumeData)
 
   return (
     <>
@@ -25,7 +27,6 @@ const IndexPage = () => {
       {recentPosts && recentPosts.length > 0 && (
         <Section>
           <Subheader>Recent Posts</Subheader>
-          {/* Recent Posts Placeholder */}
           <RecentPosts posts={recentPosts} />
         </Section>
       )}
