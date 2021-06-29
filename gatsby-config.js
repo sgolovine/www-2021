@@ -18,22 +18,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `siteData`,
-    //     path: `${__dirname}/static/siteData`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `resumeData`,
-    //     path: `${__dirname}/static/resumeData`,
-    //   },
-    // },
-    // We need to rename some current data fields to legacy labels
-    // Before turning this on....
     {
       resolve: `gatsby-source-filesystem`,
       options: {
