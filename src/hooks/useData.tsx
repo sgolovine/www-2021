@@ -1,104 +1,207 @@
-import { useStaticQuery, graphql } from "gatsby"
-import { ResumeData, SiteData } from "~/model/SiteData"
+import { graphql, useStaticQuery } from "gatsby"
+import { SiteData, ResumeData } from "~/model/SiteData"
 
-function normalizeData(nodes: any[]) {
-  return nodes.reduce((acc: any, item: any) => {
-    const subsetDataKeys = Object.keys(item)
-    const cleanSubset = subsetDataKeys.reduce((acc, subsetKey) => {
-      if (item[subsetKey]) {
+const placeholderResumeData: any = {
+  contactInfo: {
+    email: "string",
+    github: "string",
+    linkedin: "string",
+    phone: "string",
+    website: "string",
+  },
+  education: [
+    {
+      degree: "string",
+      gradDate: "string",
+      name: "string,",
+    },
+  ],
+  sideProjects: [
+    {
+      type: "string",
+      startDate: "string",
+      endDate: "string",
+      name: "string",
+      description: "string",
+      link: "string",
+    },
+  ],
+  skills: ["foo", "bar", "baz"],
+  workExperience: [
+    {
+      name: "string",
+      position: "string",
+      startDate: "string",
+      endDate: "string",
+      accomplishments: ["foo", "bar"],
+      url: "string",
+    },
+  ],
+}
+
+interface Query {
+  allResumeDataJson: {
+    nodes: RawResumeData[]
+  }
+  allSiteDataJson: {
+    nodes: RawSiteData[]
+  }
+}
+
+interface RawSiteData {
+  bio: string | null
+  dev_to: string | null
+  email: string | null
+  github: string | null
+  instagram: string | null
+  linkedin: string | null
+  phone_number: string | null
+  phone_number_alt: string | null
+  twitter: string | null
+  website: string | null
+  work_data:
+    | {
+        name: string
+        description: string
+        project_type: "side-project" | "professional"
+        show_in_recent_projects: boolean
+        url: string | null
+      }[]
+    | null
+}
+
+interface RawResumeData {
+  education:
+    | {
+        college_name: string
+        degree_earned: string
+        grad_date: string
+      }[]
+    | null
+  side_projects:
+    | {
+        current_project: boolean
+        description: string
+        end_date: string
+        link: string
+        name: string
+        start_date: string
+        type: string
+      }[]
+    | null
+  skills:
+    | {
+        skill: string
+      }[]
+    | null
+  workExperience: {
+    accomplishments: {
+      accomplishment: string
+    }[]
+    current_employer: boolean
+    end_date: string
+    name: string
+    position: string
+    start_date: string
+    url: string
+  }[]
+}
+
+function normalizeData<T, R>(data: T[]) {
+  const normalizedData = data.reduce((acc, item) => {
+    const subsetKeys = Object.keys(item)
+    const result = subsetKeys.reduce((acc, subsetItem) => {
+      const currentItem = item[subsetItem as keyof typeof item]
+
+      if (currentItem) {
         return {
           ...acc,
-          [subsetKey]: item[subsetKey],
+          [subsetItem]: currentItem,
         }
-      } else {
-        return acc
       }
+      return acc
     }, {})
-
-    const subsetKey = Object.keys(cleanSubset)[0]
 
     return {
       ...acc,
-      [subsetKey]: cleanSubset[subsetKey as keyof typeof cleanSubset],
+      ...result,
     }
-  }, {})
+  }, {}) as R
+
+  return normalizedData
 }
 
 export const useData = (): {
-  resumeData: ResumeData
+  LEGACY_resumeData: any
   siteData: SiteData
+  resumeData: ResumeData
 } => {
-  const query = useStaticQuery(graphql`
+  const query = useStaticQuery<Query>(graphql`
     query {
-      allSiteDataJson {
+      allResumeDataJson {
         nodes {
-          about {
-            bio
+          education {
+            college_name
+            degree_earned
+            grad_date
           }
-          contact {
-            email
-            phone
-          }
-          links {
-            key
-            name
-            type
-            value
-          }
-          projects {
-            desc
-            href
-            name
-          }
-          work {
+          side_projects {
+            current_project
             description
-            type
+            end_date
+            link
             name
+            start_date
+            type
+          }
+          skills {
+            skill
+          }
+          work_experience {
+            accomplishments {
+              accomplishment
+            }
+            current_employer
+            end_date
+            name
+            position
+            start_date
             url
           }
         }
       }
-      allResumeDataJson {
+      allSiteDataJson {
         nodes {
-          contactInfo {
-            email
-            github
-            linkedin
-            phone
-            website
-          }
-          education {
-            degree
-            gradDate
+          bio
+          dev_to
+          email
+          github
+          instagram
+          linkedin
+          phone_number
+          phone_number_alt
+          twitter
+          website
+          work_data {
             name
-          }
-          sideProjects {
             description
-            endDate
-            link
-            name
-            startDate
-            type
-          }
-          workExperience {
-            accomplishments
-            endDate
-            name
-            position
-            startDate
+            project_type
+            show_in_recent_projects
             url
           }
-          skills
         }
       }
     }
   `)
-
-  const { allSiteDataJson, allResumeDataJson } = query
-
-  const normalizedSiteData = normalizeData(allSiteDataJson.nodes)
-
-  const normalizedResumeData = normalizeData(allResumeDataJson.nodes)
-
-  return { resumeData: normalizedResumeData, siteData: normalizedSiteData }
+  const siteData = normalizeData<RawSiteData, SiteData>(
+    query.allSiteDataJson.nodes
+  )
+  const resumeData = normalizeData<RawResumeData, ResumeData>(
+    query.allResumeDataJson.nodes
+  )
+  return {
+    LEGACY_resumeData: placeholderResumeData,
+    siteData: siteData,
+    resumeData: resumeData,
+  }
 }

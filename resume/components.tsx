@@ -1,4 +1,3 @@
-import classNames from "classnames"
 import React, { ReactNode } from "react"
 
 interface SectionContainerProps {

@@ -10,13 +10,15 @@ const IndexPage = () => {
   const { siteData } = useData()
   const { recentPosts } = useBlogPosts()
 
-  const recentWork = siteData.work.slice(0, 4)
+  const recentWork = siteData.work_data.filter(
+    item => item.show_in_recent_projects === true
+  )
 
   return (
     <>
       <Section>
         <Subheader>About Me</Subheader>
-        <Text>{siteData.about.bio}</Text>
+        <Text>{siteData.bio}</Text>
       </Section>
       <Section>
         <Subheader>Recent Work</Subheader>
@@ -25,7 +27,6 @@ const IndexPage = () => {
       {recentPosts && recentPosts.length > 0 && (
         <Section>
           <Subheader>Recent Posts</Subheader>
-          {/* Recent Posts Placeholder */}
           <RecentPosts posts={recentPosts} />
         </Section>
       )}

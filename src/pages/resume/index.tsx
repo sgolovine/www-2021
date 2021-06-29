@@ -1,4 +1,3 @@
-import { PageProps } from "gatsby"
 import React from "react"
 import { PageLayout } from "~/components/resume/PageLayout"
 import ResumePageHeader from "~/components/resume/ResumeHeader"
@@ -10,23 +9,29 @@ import { SkillsSection } from "~/components/resume/sections/SkillsSection"
 import { WorkExperienceSection } from "~/components/resume/sections/WorkExperienceSection"
 import { useData } from "~/hooks/useData"
 
-const ResumePage = ({ location }: PageProps) => {
-  const { resumeData } = useData()
+const ResumePage = () => {
+  const { siteData, resumeData } = useData()
 
   return (
     <>
       <ResumePageHeader />
       <PageLayout>
-        <ContactInfoSection contactInfo={resumeData.contactInfo} />
+        <ContactInfoSection
+          phone={siteData.phone_number}
+          email={siteData.email}
+          website={siteData.website}
+          github={siteData.github}
+          linkedin={siteData.linkedin}
+        />
         <hr className="my-6" />
         <SectionLayout>
           <SkillsSection skills={resumeData.skills} />
         </SectionLayout>
         <SectionLayout>
-          <WorkExperienceSection workExperience={resumeData.workExperience} />
+          <WorkExperienceSection workExperience={resumeData.work_experience} />
         </SectionLayout>
         <SectionLayout>
-          <SideProjectsSection sideProjects={resumeData.sideProjects} />
+          <SideProjectsSection sideProjects={resumeData.side_projects} />
         </SectionLayout>
         <SectionLayout>
           <EducationSection education={resumeData.education} />
