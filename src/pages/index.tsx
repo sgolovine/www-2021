@@ -7,16 +7,18 @@ import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 
 const IndexPage = () => {
-  const { LEGACY_siteData: siteData } = useData()
+  const { siteData } = useData()
   const { recentPosts } = useBlogPosts()
 
-  const recentWork = siteData.work.slice(0, 4)
+  const recentWork = siteData.work_data.filter(
+    item => item.show_in_recent_projects === true
+  )
 
   return (
     <>
       <Section>
         <Subheader>About Me</Subheader>
-        <Text>{siteData.about.bio}</Text>
+        <Text>{siteData.bio}</Text>
       </Section>
       <Section>
         <Subheader>Recent Work</Subheader>
