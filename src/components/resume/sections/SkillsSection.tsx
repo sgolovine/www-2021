@@ -1,8 +1,9 @@
 import React from "react"
+import { ResumeSkillsData } from "~/model/SiteData"
 import { SectionHeader } from "../SectionHeader"
 
 type Props = {
-  skills: string[]
+  skills: ResumeSkillsData[]
 }
 
 export const SkillsSection: React.FC<Props> = ({ skills }) => {
@@ -12,7 +13,7 @@ export const SkillsSection: React.FC<Props> = ({ skills }) => {
       {skills.map((skill, i) => {
         return (
           <p key={i} className="py-4">
-            {skill}
+            {skill.skill}
           </p>
         )
       })}

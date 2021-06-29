@@ -1,5 +1,5 @@
 import React from "react"
-import { SiteWork, SiteWorkData } from "~/model/SiteData"
+import { SiteWorkData } from "~/model/SiteData"
 import { ExternalLink } from "../common/ExternalLink"
 
 export const RecentWork: React.FC<{ recentWork: SiteWorkData[] }> = ({

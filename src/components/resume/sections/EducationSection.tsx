@@ -1,9 +1,9 @@
 import React from "react"
-import { ResumeEducation } from "~/model/SiteData"
+import { ResumeEducationData } from "~/model/SiteData"
 import { SectionHeader } from "../SectionHeader"
 
 type Props = {
-  education: ResumeEducation[]
+  education: ResumeEducationData[]
 }
 
 type EducationItemProps = {
@@ -39,9 +39,9 @@ export const EducationSection: React.FC<Props> = ({ education }) => {
           return (
             <EducationItem
               key={i}
-              name={item.name}
-              degree={item.degree}
-              gradDate={item.gradDate}
+              name={item.college_name}
+              degree={item.degree_earned}
+              gradDate={item.grad_date}
             />
           )
         })}

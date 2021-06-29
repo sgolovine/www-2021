@@ -1,11 +1,11 @@
 import React from "react"
 import { stripHttp } from "~/helpers/stripHttp"
-import { ResumeSideProjects } from "~/model/SiteData"
+import { ResumeSideProjectsData } from "~/model/SiteData"
 import { OutboundLink } from "../OutboundLink"
 import { SectionHeader } from "../SectionHeader"
 
 type Props = {
-  sideProjects: ResumeSideProjects[]
+  sideProjects: ResumeSideProjectsData[]
 }
 
 type SideProjectItemProps = {
@@ -64,8 +64,8 @@ export const SideProjectsSection: React.FC<Props> = ({ sideProjects }) => {
               key={index}
               name={item.name}
               link={item.link}
-              startDate={item.startDate}
-              endDate={item.endDate}
+              startDate={item.start_date}
+              endDate={item.end_date}
               description={item.description}
               type={item.type}
             />
