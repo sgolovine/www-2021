@@ -66,13 +66,13 @@ export type SiteWork = {
   type: "professional" | "side-project"
 }
 
-export interface SiteData {
-  about: SiteAbout
-  contact: SiteContact
-  links: SiteLinks[]
-  projects: SiteProject[]
-  work: SiteWork[]
-}
+// export interface SiteData {
+//   about: SiteAbout
+//   contact: SiteContact
+//   links: SiteLinks[]
+//   projects: SiteProject[]
+//   work: SiteWork[]
+// }
 
 export type SiteWorkData = {
   name: string

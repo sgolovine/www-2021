@@ -1,10 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby"
-import {
-  NewResumeData,
-  NewSiteData,
-  ResumeData,
-  SiteData,
-} from "~/model/SiteData"
+import { NewResumeData, NewSiteData, ResumeData } from "~/model/SiteData"
 
 const placeholderResumeData: ResumeData = {
   contactInfo: {
@@ -40,38 +35,6 @@ const placeholderResumeData: ResumeData = {
       endDate: "string",
       accomplishments: ["foo", "bar"],
       url: "string",
-    },
-  ],
-}
-
-const placeholderSiteData: SiteData = {
-  about: {
-    bio: "foobar",
-  },
-  contact: {
-    email: "string",
-    phone: "string",
-  },
-  links: [
-    {
-      key: "foo",
-      name: "foo",
-      value: "foo",
-      type: "foo",
-    },
-  ],
-  projects: [
-    {
-      name: "foo",
-      href: "foo",
-      desc: "foo",
-    },
-  ],
-  work: [
-    {
-      name: "foo",
-      description: "foo",
-      type: "professional",
     },
   ],
 }
@@ -170,7 +133,6 @@ function normalizeData<T, R>(data: T[]) {
 
 export const useData = (): {
   LEGACY_resumeData: ResumeData
-  LEGACY_siteData: SiteData
   siteData: NewSiteData
   resumeData: NewResumeData
 } => {
@@ -239,7 +201,6 @@ export const useData = (): {
   )
   return {
     LEGACY_resumeData: placeholderResumeData,
-    LEGACY_siteData: placeholderSiteData,
     siteData: siteData,
     resumeData: resumeData,
   }
