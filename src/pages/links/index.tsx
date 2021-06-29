@@ -1,5 +1,4 @@
-import { PageProps } from "gatsby"
-import React, { ReactNode, useContext, useEffect } from "react"
+import React from "react"
 import { Header } from "~/components/common/Typography"
 import { useData } from "~/hooks/useData"
 import {
@@ -16,8 +15,8 @@ import { ExternalLinkIcon2 } from "~/icons/ExternalLink"
 interface Props {
   title: string
   href: string
-  type: string
-  itemKey: string
+  type?: string
+  icon: string
 }
 
 function getIcon(key: string) {
@@ -41,7 +40,7 @@ function getIcon(key: string) {
   }
 }
 
-function formatLink(link: string, type: string) {
+function formatLink(link: string, type?: string) {
   switch (type) {
     case "phone":
       return `tel:${link}`
@@ -52,8 +51,8 @@ function formatLink(link: string, type: string) {
   }
 }
 
-const LinkItem: React.FC<Props> = ({ title, href, type, itemKey }) => {
-  const Icon = getIcon(itemKey)
+const LinkItem: React.FC<Props> = ({ title, href, type, icon }) => {
+  const Icon = getIcon(icon)
   const formattedHref = formatLink(href, type)
 
   return (
@@ -69,24 +68,38 @@ const LinkItem: React.FC<Props> = ({ title, href, type, itemKey }) => {
   )
 }
 
-const LinkPage = ({ location }: PageProps) => {
+const LinkPage = () => {
   const { siteData } = useData()
 
   return (
     <>
       <Header>Links</Header>
       <div>
-        {siteData.links.map(link => {
-          return (
-            <LinkItem
-              key={link.key}
-              itemKey={link.key}
-              title={link.name}
-              href={link.value}
-              type={link.type}
-            />
-          )
-        })}
+        <LinkItem
+          title="Phone"
+          href={siteData.linkedin}
+          type="phone"
+          icon="phone"
+        />
+        <LinkItem
+          title="Email"
+          href={siteData.email}
+          type="email"
+          icon="email"
+        />
+        <LinkItem
+          title="Instagram"
+          href={siteData.instagram}
+          icon="instagram"
+        />
+        <LinkItem title="Twitter" href={siteData.twitter} icon="twitter" />
+        <LinkItem title="Github" href={siteData.github} icon="github" />
+        <LinkItem title="LinkedIn" href={siteData.linkedin} icon="linkedin" />
+        <LinkItem
+          title="The Practical Dev"
+          href={siteData.dev_to}
+          icon="devto"
+        />
       </div>
     </>
   )

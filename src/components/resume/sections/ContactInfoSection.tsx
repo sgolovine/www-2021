@@ -1,9 +1,12 @@
 import React from "react"
 import { stripHttp } from "~/helpers/stripHttp"
-import { ResumeContactInfo } from "~/model/SiteData"
 
 type Props = {
-  contactInfo: ResumeContactInfo
+  phone: string
+  email: string
+  website: string | null
+  github: string
+  linkedin: string
 }
 
 type ContactInfoItemProps = {
@@ -27,37 +30,41 @@ const ContactInfoItem: React.FC<ContactInfoItemProps> = ({
   )
 }
 
-export const ContactInfoSection: React.FC<Props> = ({ contactInfo }) => {
+export const ContactInfoSection: React.FC<Props> = ({
+  phone,
+  email,
+  website,
+  github,
+  linkedin,
+}) => {
   return (
     <div>
       <div className="flex flex-col sm:flex-row sm:justify-between items-initial sm:items-start">
         <div className="self-start w-full sm:w-1/3">
-          <ContactInfoItem
-            label="Phone"
-            value={contactInfo.phone}
-            href={`tel:${contactInfo.phone}`}
-          />
+          <ContactInfoItem label="Phone" value={phone} href={`tel:${phone}`} />
           <ContactInfoItem
             label="Email"
-            value={contactInfo.email}
-            href={`mailto:${contactInfo.email}`}
+            value={email}
+            href={`mailto:${email}`}
           />
         </div>
         <div className="self-end w-full sm:w-1/2">
-          <ContactInfoItem
-            label="Website"
-            value={stripHttp(contactInfo.website)}
-            href={contactInfo.website}
-          />
+          {website && (
+            <ContactInfoItem
+              label="Website"
+              value={stripHttp(website)}
+              href={website}
+            />
+          )}
           <ContactInfoItem
             label="Github"
-            value={stripHttp(contactInfo.github)}
-            href={contactInfo.github}
+            value={stripHttp(github)}
+            href={github}
           />
           <ContactInfoItem
             label="LinkedIn"
-            value={stripHttp(contactInfo.linkedin)}
-            href={contactInfo.linkedin}
+            value={stripHttp(linkedin)}
+            href={linkedin}
           />
         </div>
       </div>
