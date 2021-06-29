@@ -1,4 +1,3 @@
-import { PageProps } from "gatsby"
 import React from "react"
 import { Button } from "~/components/common/Button"
 import { TextArea, TextInput } from "~/components/common/Input"
@@ -36,11 +35,11 @@ const Notifier: React.FC<NotifierProps> = ({ messageState }) => {
   return <WrapperComponent>{messageState.message}</WrapperComponent>
 }
 
-const ContactPage = ({ location }: PageProps) => {
+const ContactPage = () => {
   const { form, messageState, handleSubmit, handleClear, setFormField } =
     useContactForm()
 
-  const { LEGACY_siteData: siteData } = useData()
+  const { siteData } = useData()
 
   return (
     <>
@@ -49,9 +48,7 @@ const ContactPage = ({ location }: PageProps) => {
         <p>
           Enter your information below to send me a message. You can also email
           me directly at{" "}
-          <a href={`mailto:${siteData.contact.email}`}>
-            {siteData.contact.email}
-          </a>
+          <a href={`mailto:${siteData.email}`}>{siteData.email}</a>
         </p>
       </Section>
       <Notifier messageState={messageState} />

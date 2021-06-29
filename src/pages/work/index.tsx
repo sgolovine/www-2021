@@ -2,21 +2,20 @@ import React from "react"
 import { Header } from "~/components/common/Typography"
 import { useData } from "~/hooks/useData"
 import classnames from "classnames"
-import { SiteWork } from "~/model/SiteData"
+import { SiteWorkData } from "~/model/SiteData"
 import { ExternalLink } from "~/components/common/ExternalLink"
 
 const WorkPage = () => {
-  const { LEGACY_siteData: siteData } = useData()
-  const { work } = siteData
+  const { siteData } = useData()
 
-  const renderWorkItem = (item: SiteWork) => {
+  const renderWorkItem = (item: SiteWorkData) => {
     const containerClasses = classnames("flex", "flex-row", "items-center")
 
     const typeTextClasses = classnames("text-sm", "font-bold", "p-1")
 
     const typeDotClasses = classnames("h-3", "w-3", "rounded-full", {
-      "bg-blue-400": item.type === "professional",
-      "bg-green-400": item.type === "side-project",
+      "bg-blue-400": item.project_type === "professional",
+      "bg-green-400": item.project_type === "side-project",
     })
 
     return (
@@ -26,7 +25,7 @@ const WorkPage = () => {
           <span className={containerClasses}>
             <span className={typeDotClasses} />
             <p className={typeTextClasses}>
-              {item.type === "professional"
+              {item.project_type === "professional"
                 ? "Professional Project"
                 : "Side Project"}
             </p>
@@ -41,7 +40,7 @@ const WorkPage = () => {
     <>
       <Header>Work</Header>
       <div>
-        {work.map((item, index) => {
+        {siteData.work_data.map((item, index) => {
           return <div key={index}>{renderWorkItem(item)}</div>
         })}
       </div>
