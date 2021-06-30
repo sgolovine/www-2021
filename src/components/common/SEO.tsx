@@ -14,8 +14,7 @@ const robots = "index, follow"
 const keywords = "portfolio, personal website, javascript, react"
 const image = "/social-image.jpg"
 
-const SEO = () => {
-  return (
+const SEO = () => (
     <Helmet>
       {/* Base Tags */}
       <html lang="en" />
@@ -43,7 +42,6 @@ const SEO = () => {
       <meta name="twitter:image" content={image} />
     </Helmet>
   )
-}
 
 export const PostSEO: React.FC<PostSEOProps> = ({
   title,

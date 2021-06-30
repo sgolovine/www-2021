@@ -55,9 +55,7 @@ const useGuestbook = () => {
     const resp = await axios({
       method: "POST",
       url: "/.netlify/functions/updateGuestbook",
-      validateStatus: status => {
-        return status >= 200 && status < 401
-      },
+      validateStatus: status => status >= 200 && status < 401,
       data: {
         userMessage: message,
       },

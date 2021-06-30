@@ -13,6 +13,9 @@ jobs:
       matrix:
         node-versions: [14.x]
 
+    env:
+      CI: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,23 +35,18 @@ jobs:
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
-        env:
-          CI: true
 
       - name: Run Typechecking
         run: yarn typecheck
-        env:
-          CI: true
 
       - name: Run Prettier
         run: yarn format
-        env:
-          CI: true
+
+      - name: Run ESLint
+        run: yarn lint
 
       - name: Lint CMS Config
         run: yarn cms:lint
 
       - name: Run Dry Build
         run: yarn build
-        env:
-          CI: true

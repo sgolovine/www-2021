@@ -24,8 +24,7 @@ const SideProjectItem: React.FC<SideProjectItemProps> = ({
   endDate,
   description,
   type,
-}) => {
-  return (
+}) => (
     <div className="py-4">
       <div className="flex flex-row justify-between">
         <div>
@@ -51,15 +50,12 @@ const SideProjectItem: React.FC<SideProjectItemProps> = ({
       </div>
     </div>
   )
-}
 
-export const SideProjectsSection: React.FC<Props> = ({ sideProjects }) => {
-  return (
+export const SideProjectsSection: React.FC<Props> = ({ sideProjects }) => (
     <div>
       <SectionHeader>Side Projects</SectionHeader>
       <div>
-        {sideProjects.map((item, index) => {
-          return (
+        {sideProjects.map((item, index) => (
             <SideProjectItem
               key={index}
               name={item.name}
@@ -69,9 +65,7 @@ export const SideProjectsSection: React.FC<Props> = ({ sideProjects }) => {
               description={item.description}
               type={item.type}
             />
-          )
-        })}
+          ))}
       </div>
     </div>
   )
-}

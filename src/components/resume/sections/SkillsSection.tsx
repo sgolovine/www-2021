@@ -6,17 +6,13 @@ type Props = {
   skills: ResumeSkillsData[]
 }
 
-export const SkillsSection: React.FC<Props> = ({ skills }) => {
-  return (
+export const SkillsSection: React.FC<Props> = ({ skills }) => (
     <div>
       <SectionHeader>Core Qualifications</SectionHeader>
-      {skills.map((skill, i) => {
-        return (
+      {skills.map((skill, i) => (
           <p key={i} className="py-4">
             {skill.skill}
           </p>
-        )
-      })}
+        ))}
     </div>
   )
-}

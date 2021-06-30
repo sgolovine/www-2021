@@ -27,7 +27,7 @@ const baseConfigPath = path.resolve(configRoot, "base.yml")
 const siteDataConfigPath = path.resolve(configRoot, "site_data.yml")
 const resumeDataConfigPath = path.resolve(configRoot, "resume_data.yml")
 
-;(function () {
+;(() => {
   console.log("🚚 Generating CMS configuration file")
   console.log(`Mode: ${process.env.NODE_ENV}`)
 

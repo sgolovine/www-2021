@@ -67,18 +67,20 @@ export const ExternalLink: React.FC<Props> = ({
         <ExternalLinkIcon className={iconClasses} />
       </span>
     )
-    // If we have an href but external is not specified
-    // We can assume that the link is internal and use
-    // Gatsby's Link component
-  } else if (href) {
+  }
+
+  // If we have an href but external is not specified
+  // We can assume that the link is internal and use
+  // Gatsby's Link component
+  if (href) {
     return (
       <Link className={textClasses} to={href}>
         {label}
       </Link>
     )
-    // In the case of us not having an href
-    // We render a <p> tag instead
-  } else {
-    return <p className={textClasses}>{label}</p>
   }
+
+  // In the case of us not having an href
+  // We render a <p> tag instead
+  return <p className={textClasses}>{label}</p>
 }
