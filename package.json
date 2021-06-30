@@ -10,7 +10,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
     "typecheck": "tsc",
-    "lint": "eslint src/**/*.{ts,tsx} scripts/**/*.js resume/**/*.tsx",
+    "lint": "eslint 'src/**/*.{ts,tsx}' 'scripts/**/*.js' 'resume/**/*.tsx'",
     "ci": "yarn format && yarn typecheck",
     "resume:start": "vite resume",
     "resume:build": "vite build resume --outDir ../resume-dist",
