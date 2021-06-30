@@ -1,11 +1,8 @@
 import React from "react"
 import { Button } from "../common/Button"
 import { Header } from "~/components/common/Typography"
-import { navigate } from "gatsby"
 
 const ResumePageHeader = () => {
-  // const handlePrint = () => navigate("/resume/print")
-
   const handleDownload = () => {
     window.location.replace("/doc/resume.pdf")
   }

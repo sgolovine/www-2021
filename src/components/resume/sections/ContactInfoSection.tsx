@@ -19,16 +19,14 @@ const ContactInfoItem: React.FC<ContactInfoItemProps> = ({
   label,
   value,
   href,
-}) => {
-  return (
-    <div className="flex flex-row justify-between">
-      <p className="w-20 font-bold text-sm">{label}</p>
-      <a href={href} className="text-sm hover:underline">
-        {value}
-      </a>
-    </div>
-  )
-}
+}) => (
+  <div className="flex flex-row justify-between">
+    <p className="w-20 font-bold text-sm">{label}</p>
+    <a href={href} className="text-sm hover:underline">
+      {value}
+    </a>
+  </div>
+)
 
 export const ContactInfoSection: React.FC<Props> = ({
   phone,
@@ -36,38 +34,32 @@ export const ContactInfoSection: React.FC<Props> = ({
   website,
   github,
   linkedin,
-}) => {
-  return (
-    <div>
-      <div className="flex flex-col sm:flex-row sm:justify-between items-initial sm:items-start">
-        <div className="self-start w-full sm:w-1/3">
-          <ContactInfoItem label="Phone" value={phone} href={`tel:${phone}`} />
+}) => (
+  <div>
+    <div className="flex flex-col sm:flex-row sm:justify-between items-initial sm:items-start">
+      <div className="self-start w-full sm:w-1/3">
+        <ContactInfoItem label="Phone" value={phone} href={`tel:${phone}`} />
+        <ContactInfoItem label="Email" value={email} href={`mailto:${email}`} />
+      </div>
+      <div className="self-end w-full sm:w-1/2">
+        {website && (
           <ContactInfoItem
-            label="Email"
-            value={email}
-            href={`mailto:${email}`}
+            label="Website"
+            value={stripHttp(website)}
+            href={website}
           />
-        </div>
-        <div className="self-end w-full sm:w-1/2">
-          {website && (
-            <ContactInfoItem
-              label="Website"
-              value={stripHttp(website)}
-              href={website}
-            />
-          )}
-          <ContactInfoItem
-            label="Github"
-            value={stripHttp(github)}
-            href={github}
-          />
-          <ContactInfoItem
-            label="LinkedIn"
-            value={stripHttp(linkedin)}
-            href={linkedin}
-          />
-        </div>
+        )}
+        <ContactInfoItem
+          label="Github"
+          value={stripHttp(github)}
+          href={github}
+        />
+        <ContactInfoItem
+          label="LinkedIn"
+          value={stripHttp(linkedin)}
+          href={linkedin}
+        />
       </div>
     </div>
-  )
-}
+  </div>
+)

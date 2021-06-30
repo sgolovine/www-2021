@@ -15,8 +15,7 @@ const BlogPage = () => {
       <div className="py-6">
         {allPosts &&
           allPosts.length > 0 &&
-          allPosts.map(post => {
-            return (
+          allPosts.map(post => (
               <div key={post.id} className="pb-12">
                 <div className="flex flex-row justify-between items-start">
                   <ExternalLink lg href={post.path} label={post.title} />
@@ -24,8 +23,7 @@ const BlogPage = () => {
                 </div>
                 <p className="py-2">{post.description}</p>
               </div>
-            )
-          })}
+            ))}
       </div>
     </div>
   )

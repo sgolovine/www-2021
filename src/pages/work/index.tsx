@@ -1,7 +1,7 @@
 import React from "react"
+import classnames from "classnames"
 import { Header } from "~/components/common/Typography"
 import { useData } from "~/hooks/useData"
-import classnames from "classnames"
 import { SiteWorkData } from "~/model/SiteData"
 import { ExternalLink } from "~/components/common/ExternalLink"
 
@@ -40,9 +40,7 @@ const WorkPage = () => {
     <>
       <Header>Work</Header>
       <div>
-        {siteData.work_data.map((item, index) => {
-          return <div key={index}>{renderWorkItem(item)}</div>
-        })}
+        {siteData.work_data.map((item, index) => <div key={index}>{renderWorkItem(item)}</div>)}
       </div>
     </>
   )

@@ -1,10 +1,9 @@
-import { graphql, useStaticQuery } from "gatsby"
 import React, { useEffect, useState } from "react"
 import useMedia from "use-media"
+import { useLocation } from "@reach/router"
 import { CloseIcon } from "~/icons/Close"
 import { Menu } from "~/icons/Menu"
 import MobileMenu from "./MobileMenu"
-import { useLocation } from "@reach/router"
 import { getPageHeader } from "~/helpers/getHeader"
 import { defaultHeader } from "~/defines/pageHeaders"
 
@@ -31,6 +30,7 @@ export const Header: React.FC = () => {
           <h1 className="text-3xl">{headerText}</h1>
         </div>
         <button
+          type="button"
           onClick={() => setMobMenuOpen(!mobMenuOpen)}
           className="block md:hidden"
         >
