@@ -21,7 +21,7 @@ function deleteDir(dirName, dirPath) {
   }
 }
 
-;(function () {
+;(() => {
   deleteDir(".cache", cachePath)
   deleteDir("node_modules", nodeModulesPath)
   deleteDir("yarn-error.log", yarnErrorLogPath)

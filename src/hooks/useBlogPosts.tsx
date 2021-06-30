@@ -47,9 +47,9 @@ const useBlogPosts = (): {
           path: `/blog/post/${node.frontmatter.slug}`,
         }
       })
-      .sort((a: BlogPost, b: BlogPost) => {
-        return b.date.getTime() - a.date.getTime()
-      }) ?? []
+      .sort(
+        (a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime()
+      ) ?? []
 
   return {
     allPosts,

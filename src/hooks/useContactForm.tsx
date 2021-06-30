@@ -59,9 +59,7 @@ const useContactForm = () => {
     const resp = await axios({
       method: "POST",
       url: "/.netlify/functions/sendEmail",
-      validateStatus: status => {
-        return status >= 200 && status < 401
-      },
+      validateStatus: status => status >= 200 && status < 401,
       data: {
         name: form.name,
         email: form.email,

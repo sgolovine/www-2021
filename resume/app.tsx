@@ -37,13 +37,11 @@ function ResumeSkills() {
   const { skills } = skillsInfo
   return (
     <SectionContainer headerText="Core Qualifications">
-      {skills.map((skill, index) => {
-        return (
-          <p className="item-content" key={index}>
-            {skill}
-          </p>
-        )
-      })}
+      {skills.map((skill, index) => (
+        <p className="item-content" key={index}>
+          {skill}
+        </p>
+      ))}
     </SectionContainer>
   )
 }
@@ -52,38 +50,34 @@ function WorkExperience() {
   const workExperience = workExperienceInfo["work-experience"]
   return (
     <SectionContainer headerText="Work Experience">
-      {workExperience.map((item, index) => {
-        return (
-          <div key={index}>
-            {/* Header */}
-            <div className="item-header-container">
-              <div>
-                <h3 className="item-heading">{item.name}</h3>
-                <p className="item-detail">{item.position}</p>
-              </div>
-              <div className="item-detail text-align-right">
-                <p className="item-detail">
-                  {item["start-date"]} - {item["end-date"]}
-                </p>
-                <a className="item-detail item-url " href={item.url}>
-                  {stripHttp(item.url)}
-                </a>
-              </div>
+      {workExperience.map((item, index) => (
+        <div key={index}>
+          {/* Header */}
+          <div className="item-header-container">
+            <div>
+              <h3 className="item-heading">{item.name}</h3>
+              <p className="item-detail">{item.position}</p>
             </div>
-            <div className="p-4">
-              <ul>
-                {item.accomplishments.map((item, index) => {
-                  return (
-                    <li className="item-content" key={index}>
-                      {item}
-                    </li>
-                  )
-                })}
-              </ul>
+            <div className="item-detail text-align-right">
+              <p className="item-detail">
+                {item["start-date"]} - {item["end-date"]}
+              </p>
+              <a className="item-detail item-url " href={item.url}>
+                {stripHttp(item.url)}
+              </a>
             </div>
           </div>
-        )
-      })}
+          <div className="p-4">
+            <ul>
+              {item.accomplishments.map((item, index) => (
+                <li className="item-content" key={index}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
     </SectionContainer>
   )
 }
@@ -92,32 +86,30 @@ function SideProjects() {
   const sideProjects = sideProjectsInfo["side-projects"]
   return (
     <SectionContainer headerText="Side Projects">
-      {sideProjects.map((item, index) => {
-        return (
-          <div key={index}>
-            {/* Header */}
-            <div className="item-header-container">
-              <div>
-                <h3 className="item-heading">{item.name}</h3>
-                <p className="item-detail">{item.type}</p>
-              </div>
-              <div className="text-align-right">
-                <p className="item-detail">
-                  {item["start-date"]} - {item["end-date"]}
-                </p>
-                {item.link && (
-                  <a className="item-detail item-url" href={item.link}>
-                    {stripHttp(item.link)}
-                  </a>
-                )}
-              </div>
+      {sideProjects.map((item, index) => (
+        <div key={index}>
+          {/* Header */}
+          <div className="item-header-container">
+            <div>
+              <h3 className="item-heading">{item.name}</h3>
+              <p className="item-detail">{item.type}</p>
             </div>
-            <ul>
-              <li className="item-content">{item.description}</li>
-            </ul>
+            <div className="text-align-right">
+              <p className="item-detail">
+                {item["start-date"]} - {item["end-date"]}
+              </p>
+              {item.link && (
+                <a className="item-detail item-url" href={item.link}>
+                  {stripHttp(item.link)}
+                </a>
+              )}
+            </div>
           </div>
-        )
-      })}
+          <ul>
+            <li className="item-content">{item.description}</li>
+          </ul>
+        </div>
+      ))}
     </SectionContainer>
   )
 }
@@ -126,22 +118,20 @@ function Education() {
   const { education } = educationInfo
   return (
     <SectionContainer headerText="Education">
-      {education.map((item, index) => {
-        return (
-          <div key={index}>
-            {/* Header */}
-            <div className="item-header-container">
-              <div>
-                <h3 className="item-heading">{item["college-name"]}</h3>
-                <p className="item-detail">{item["degree-earned"]}</p>
-              </div>
-              <div className="text-align-right">
-                <p className="item-detail">{item["grad-date"]}</p>
-              </div>
+      {education.map((item, index) => (
+        <div key={index}>
+          {/* Header */}
+          <div className="item-header-container">
+            <div>
+              <h3 className="item-heading">{item["college-name"]}</h3>
+              <p className="item-detail">{item["degree-earned"]}</p>
+            </div>
+            <div className="text-align-right">
+              <p className="item-detail">{item["grad-date"]}</p>
             </div>
           </div>
-        )
-      })}
+        </div>
+      ))}
     </SectionContainer>
   )
 }

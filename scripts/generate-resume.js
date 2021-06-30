@@ -11,7 +11,7 @@ const outputPath = path.resolve(__dirname, "..", "static", "doc", "resume.pdf")
 // Dev server path
 const devServerPath = `http://localhost:5000`
 
-;(async function () {
+;(async () => {
   // Open the browser
   const browser = await puppeteer.launch({ headless: true })
 

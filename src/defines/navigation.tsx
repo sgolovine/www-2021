@@ -1,38 +1,30 @@
-export enum Routes {
-  Home = "/",
-  Blog = "/blog",
-  Contact = "/contact",
-  Guestbook = "/guestbook",
-  Resume = "/resume",
-  Links = "/links",
-  Work = "/work",
-}
-
-export const sidebarRoutes: {
+interface SidebarRoutes {
   key: string
   name: string
-  route: Routes
+  route: string
   enabled: boolean
-}[] = [
-  { name: "Home", route: Routes.Home, enabled: true, key: "home" },
-  { name: "Work", route: Routes.Work, enabled: true, key: "work" },
-  { name: "Blog", route: Routes.Blog, enabled: true, key: "blog" },
-  { name: "Links", route: Routes.Links, enabled: true, key: "links" },
+}
+
+export const sidebarRoutes: SidebarRoutes[] = [
+  { name: "Home", route: "/", enabled: true, key: "home" },
+  { name: "Work", route: "/work", enabled: true, key: "work" },
+  { name: "Blog", route: "/blog", enabled: true, key: "blog" },
+  { name: "Links", route: "/links", enabled: true, key: "links" },
   {
     name: "Resume",
-    route: Routes.Resume,
+    route: "/resume",
     enabled: true,
     key: "resume",
   },
   {
     name: "Contact",
-    route: Routes.Contact,
+    route: "/contact",
     enabled: true,
     key: "contact",
   },
   {
     name: "Guestbook",
-    route: Routes.Guestbook,
+    route: "/guestbook",
     enabled: true,
     key: "guestbook",
   },

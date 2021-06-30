@@ -201,7 +201,7 @@ export const useData = (): {
   )
   return {
     LEGACY_resumeData: placeholderResumeData,
-    siteData: siteData,
-    resumeData: resumeData,
+    siteData,
+    resumeData,
   }
 }

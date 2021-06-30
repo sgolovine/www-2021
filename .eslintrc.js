@@ -13,5 +13,17 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  rules: {
+    "import/extensions": 0,
+    camelcase: 0,
+    "react/prop-types": 0,
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": 0,
+    "arrow-body-style": ["error", "as-needed"],
+    "react/no-array-index-key": 0,
+    "no-use-before-define": 0,
+    "import/prefer-default-export": 0,
+    "no-console": "warn",
+    "no-shadow": 0,
+  },
 }
