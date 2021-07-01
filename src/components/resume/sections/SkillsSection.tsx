@@ -7,12 +7,12 @@ type Props = {
 }
 
 export const SkillsSection: React.FC<Props> = ({ skills }) => (
-    <div>
-      <SectionHeader>Core Qualifications</SectionHeader>
-      {skills.map((skill, i) => (
-          <p key={i} className="py-4">
-            {skill.skill}
-          </p>
-        ))}
-    </div>
-  )
+  <div>
+    <SectionHeader>Core Qualifications</SectionHeader>
+    {skills.map((skill, i) => (
+      <p key={i} className="py-4">
+        {skill.skill}
+      </p>
+    ))}
+  </div>
+)

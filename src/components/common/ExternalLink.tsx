@@ -10,6 +10,9 @@ interface Props {
   // whether to render Link to a
   external?: boolean
 
+  // disable icon on external links
+  noIcon?: boolean
+
   // optional classnames
   containerClassnames?: string
   textClassnames?: string
@@ -24,6 +27,7 @@ export const ExternalLink: React.FC<Props> = ({
   label,
   href,
   external = false,
+  noIcon = false,
   containerClassnames,
   textClassnames,
   iconClassnames,
@@ -64,7 +68,7 @@ export const ExternalLink: React.FC<Props> = ({
         <a className={textClasses} href={href}>
           {label}
         </a>
-        <ExternalLinkIcon className={iconClasses} />
+        {!noIcon && <ExternalLinkIcon className={iconClasses} />}
       </span>
     )
   }

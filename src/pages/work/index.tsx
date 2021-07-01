@@ -40,7 +40,9 @@ const WorkPage = () => {
     <>
       <Header>Work</Header>
       <div>
-        {siteData.work_data.map((item, index) => <div key={index}>{renderWorkItem(item)}</div>)}
+        {siteData.work_data.map((item, index) => (
+          <div key={index}>{renderWorkItem(item)}</div>
+        ))}
       </div>
     </>
   )

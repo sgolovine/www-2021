@@ -1,10 +1,69 @@
 import React from "react"
 import { ExternalLink } from "~/components/common/ExternalLink"
-import { Header } from "~/components/common/Typography"
+import { Loader } from "~/components/common/Loader"
+import { Header, Subheader } from "~/components/common/Typography"
+import { formatPostDate } from "~/helpers/formatPostDate"
 import useBlogPosts from "~/hooks/useBlogPosts"
+import { useData } from "~/hooks/useData"
+import { Error } from "~/components/common/Error"
 
 const BlogPage = () => {
-  const { allPosts } = useBlogPosts()
+  const { localPosts, remotePosts, remotePostsError, remotePostsLoading } =
+    useBlogPosts()
+
+  const {
+    siteData: { dev_to },
+  } = useData()
+
+  const renderLocalPosts = () => (
+    <div className="py-6">
+      {localPosts &&
+        localPosts.length > 0 &&
+        localPosts.map(post => (
+          <div key={post.id} className="pb-12">
+            <div className="flex flex-row justify-between items-start">
+              <ExternalLink lg href={post.path} label={post.title} />
+              <p>{formatPostDate(post.date)}</p>
+            </div>
+            <p className="py-2">{post.description}</p>
+          </div>
+        ))}
+    </div>
+  )
+
+  const renderRemotePosts = () => {
+    if (remotePostsLoading) {
+      return (
+        <div className="flex flex-row justify-center mt-12">
+          <Loader />
+        </div>
+      )
+    }
+    if (remotePostsError) {
+      return <Error message="Error Fetching Posts" />
+    }
+    return (
+      <div className="py-6">
+        {remotePosts &&
+          remotePosts.length > 0 &&
+          remotePosts.map(post => (
+            <div key={post.id} className="pb-12">
+              <div className="flex flex-row justify-between items-start">
+                <ExternalLink
+                  lg
+                  noIcon
+                  external
+                  href={post.path}
+                  label={post.title}
+                />
+                <p>{formatPostDate(post.date)}</p>
+              </div>
+              <p className="py-2">{post.description}</p>
+            </div>
+          ))}
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -12,19 +71,14 @@ const BlogPage = () => {
         <Header>Posts</Header>
         <p>Read the latest posts from my personal blog</p>
       </div>
-      <div className="py-6">
-        {allPosts &&
-          allPosts.length > 0 &&
-          allPosts.map(post => (
-              <div key={post.id} className="pb-12">
-                <div className="flex flex-row justify-between items-start">
-                  <ExternalLink lg href={post.path} label={post.title} />
-                  <p>{post.date.toLocaleDateString()}</p>
-                </div>
-                <p className="py-2">{post.description}</p>
-              </div>
-            ))}
+      {renderLocalPosts()}
+      <div className="mb-4">
+        <Subheader>The Practical Dev</Subheader>
+        <p>
+          Read my latest posts on <a href={dev_to}>Dev.to</a>
+        </p>
       </div>
+      {renderRemotePosts()}
     </div>
   )
 }
