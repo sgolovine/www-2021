@@ -47,15 +47,12 @@ const GuestbookPage = () => {
             <pre>Loading...</pre>
           ) : (
             parsedGuestbookData.map((item, index) => (
-                <div
-                  key={index}
-                  className="border p-3 my-2 hover:shadow rounded"
-                >
-                  <p className="mb-4" key={`gb-item-${index}-${item[0]}`}>
-                    {item}
-                  </p>
-                </div>
-              ))
+              <div key={index} className="border p-3 my-2 hover:shadow rounded">
+                <p className="mb-4" key={`gb-item-${index}-${item[0]}`}>
+                  {item}
+                </p>
+              </div>
+            ))
           )}
         </div>
       </div>

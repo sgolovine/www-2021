@@ -17,7 +17,7 @@ Before running this project. Make sure that you have NodeJS 14+ installed. Also 
 ## Running in Development
 
 1. Make sure you have NodeJS 14+
-2. Copy `.env.example` to `.env` and replace the values with your own
+2. Copy `.env.example` to `.env.development` and replace the values with your own
 3. Install local dependencies (`npm install`)
 4. Start the development server (`yarn start`)
 
@@ -31,7 +31,7 @@ Note that when running in development, the contact form and guestbook will not w
 
 ## Testing Production Builds
 
-0. Make sure you have a defined `.env` file
+0. Make sure you have a defined `.env.development` file
 1. Run `yarn build` to build the site
 2. Run `yarn serve` to serve the production build
 

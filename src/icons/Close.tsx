@@ -1,9 +1,15 @@
 import React from "react"
 
-export const CloseIcon = () => (
+interface Props {
+  className?: string
+}
+
+export const CloseIcon: React.FC<Props> = ({
+  className = "h-6 w-6 text-brand-yellow",
+}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6 text-brand-yellow"
+    className={className}
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
