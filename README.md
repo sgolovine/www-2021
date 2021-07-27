@@ -37,9 +37,10 @@ Note that when running in development, the contact form and guestbook will not w
 
 ## Keeping packages up to date
 
-1. Run `yarn update:check`
-2. If there are any outdated packages run `yarn update:run`
-3. Update the lockfile: `npm install --legacy-peer-deps`
+1. Install `npm-check-updates`: `npm install -g npm-check-updates`
+2. Check for outdated deps: `ncu`
+3. Update any outdated packages `ncu -u`
+4. (Post Update) Run `yarn` to update the lockfile.
 
 ## Finding and Removing Unused Packages
 
