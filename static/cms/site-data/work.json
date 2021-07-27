@@ -47,6 +47,13 @@
       "description": "NextInspect is an iOS and Android app that takes users through the process of creating vehicle condition reports in the Manheim ecosystem",
       "url": "https://apps.apple.com/us/app/next-inspect/id1497586831",
       "project-type": "professional"
+    },
+    {
+      "show-in-recent-projects": true,
+      "name": "Save the Date",
+      "url": "https://savethedate.sunnygolovine.com",
+      "description": "Save the Date is a wedding invitation template with reservation and calendar support",
+      "project-type": "side-project"
     }
   ]
 }
