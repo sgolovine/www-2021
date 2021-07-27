@@ -35,16 +35,30 @@ Note that when running in development, the contact form and guestbook will not w
 1. Run `yarn build` to build the site
 2. Run `yarn serve` to serve the production build
 
-## Keeping packages up to date
+## Maintainence
 
-1. Install `npm-check-updates`: `npm install -g npm-check-updates`
+### Keeping packages up to date
+
+This project uses [npm-check-update](https://www.npmjs.com/package/npm-check-update) to keep packages up to date
+
+1. Install the package: `npm install -g npm-check-updates`
 2. Check for outdated deps: `ncu`
 3. Update any outdated packages `ncu -u`
 4. (Post Update) Run `yarn` to update the lockfile.
 
-## Finding and Removing Unused Packages
+### Finding and Removing Unused Packages
 
-This project uses [depcheck](https://www.npmjs.com/package/depcheck) to check for unused dependencies. Run `npx depcheck` to check for unused dependencies.
+This project uses [depcheck](https://www.npmjs.com/package/depcheck) to check for unused dependencies.
+
+1. Run `npx depcheck` to check for updates
+2. Fix any dependency issues (stay vigilant for false positives)
+
+### Pruning
+
+This project uses [ts-prune]("https://github.com/nadeesha/ts-prune") to check for any dead code paths.
+
+1. Run `npx ts-prune`
+2. Remove any unused code (stay vigilant for false positives)
 
 ## Updating the DOC resume.
 
