@@ -4,3 +4,7 @@ publish_mode: editorial_workflow
 site_url: https://sunnygolovine.com
 display_url: https://sunnygolovine.com
 locale: en
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
