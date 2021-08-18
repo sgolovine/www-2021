@@ -26,6 +26,7 @@ const prodBackendPath = path.resolve(configRoot, "backend_prod.yml")
 const baseConfigPath = path.resolve(configRoot, "base.yml")
 const siteDataConfigPath = path.resolve(configRoot, "site_data.yml")
 const resumeDataConfigPath = path.resolve(configRoot, "resume_data.yml")
+const docsDataConfigPath = path.resolve(configRoot, "docs_data.yml")
 
 ;(() => {
   console.log("🚚 Generating CMS configuration file")
@@ -38,7 +39,8 @@ const resumeDataConfigPath = path.resolve(configRoot, "resume_data.yml")
     backend,
     baseConfigPath,
     siteDataConfigPath,
-    resumeDataConfigPath
+    resumeDataConfigPath,
+    docsDataConfigPath
   )
 
   try {

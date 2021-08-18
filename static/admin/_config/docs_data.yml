@@ -1,0 +1,27 @@
+collections:
+  - name: docs-data
+    label: "Docs Data"
+    folder: "static/cms/docs-data"
+    create: true
+    fields:
+      - name: title
+        label: "Doc Title"
+        widget: string
+      
+      - name: 'description',
+        label: 'Doc Description', 
+        widget: 'markdown', 
+        options:
+          minimal: true,
+          buttons: [bold, italic]
+          mode: [raw]
+
+      - name: 'tags', 
+        label: 'Tags (Comma Seperated)',
+        widget: 'text'
+      
+      - name: 'content', 
+        label: 'Content'
+        widget: 'markdown'
+        options:
+          buttons: [bold, italic, quote, code, heading-one, heading-two, heading-three]
