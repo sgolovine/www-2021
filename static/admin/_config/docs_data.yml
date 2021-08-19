@@ -13,11 +13,11 @@ collections:
         label: "Doc Title"
         widget: string
 
-      - name: tags, 
+      - name: tags
         label: "Tags (Comma Seperated)"
         widget: string
       
-      - name: body, 
+      - name: body 
         label: "Doc Content"
         widget: markdown
         modes: [raw]
