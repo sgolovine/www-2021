@@ -1,6 +1,7 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { PostSEO } from "~/components/common/SEO"
+import { withLayout } from "~/components/layout/withLayout"
 
 interface Props {
   pageContext: {
@@ -40,4 +41,4 @@ const PostTemplate: React.FC<Props> = ({ pageContext }) => {
   )
 }
 
-export default PostTemplate
+export default withLayout(PostTemplate)

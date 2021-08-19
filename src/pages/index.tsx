@@ -3,6 +3,7 @@ import { Section } from "~/components/common/Section"
 import { Subheader, Text } from "~/components/common/Typography"
 import { RecentPosts } from "~/components/home/RecentPosts"
 import { RecentWork } from "~/components/home/RecentWork"
+import { withLayout } from "~/components/layout/withLayout"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 
@@ -34,4 +35,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default withLayout(IndexPage)

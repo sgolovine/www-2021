@@ -3,6 +3,7 @@ import { Button } from "~/components/common/Button"
 import { TextArea, TextInput } from "~/components/common/Input"
 import { Section } from "~/components/common/Section"
 import { Header } from "~/components/common/Typography"
+import { withLayout } from "~/components/layout/withLayout"
 import useContactForm, { MessageState } from "~/hooks/useContactForm"
 import { useData } from "~/hooks/useData"
 
@@ -86,4 +87,5 @@ const ContactPage = () => {
   )
 }
 
-export default ContactPage
+// ts-prune-ignore-next
+export default withLayout(ContactPage)
