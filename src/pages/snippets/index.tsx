@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import { Header } from "~/components/common/Typography"
-import { withLayout } from "~/components/layout/withLayout"
+import { withMainLayout } from "~/components/layout"
 import { useSnippets } from "~/hooks/useSnippets"
 
 const SnippetsPage = () => {
@@ -29,4 +29,4 @@ const SnippetsPage = () => {
 }
 
 // ts-prune-ignore-next
-export default withLayout(SnippetsPage)
+export default withMainLayout(SnippetsPage)

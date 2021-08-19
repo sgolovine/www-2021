@@ -3,9 +3,9 @@ import { Button } from "~/components/common/Button"
 import { TextArea, TextInput } from "~/components/common/Input"
 import { Section } from "~/components/common/Section"
 import { Header } from "~/components/common/Typography"
-import { withLayout } from "~/components/layout/withLayout"
 import useContactForm, { MessageState } from "~/hooks/useContactForm"
 import { useData } from "~/hooks/useData"
+import { withMainLayout } from "~/components/layout"
 
 interface NotifierProps {
   messageState: MessageState
@@ -88,4 +88,4 @@ const ContactPage = () => {
 }
 
 // ts-prune-ignore-next
-export default withLayout(ContactPage)
+export default withMainLayout(ContactPage)

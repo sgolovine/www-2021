@@ -6,7 +6,7 @@ import { formatPostDate } from "~/helpers/formatPostDate"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 import { Error } from "~/components/common/Error"
-import { withLayout } from "~/components/layout/withLayout"
+import { withMainLayout } from "~/components/layout"
 
 const BlogPage = () => {
   const { localPosts, remotePosts, remotePostsError, remotePostsLoading } =
@@ -85,4 +85,4 @@ const BlogPage = () => {
 }
 
 // ts-prune-ignore-next
-export default withLayout(BlogPage)
+export default withMainLayout(BlogPage)

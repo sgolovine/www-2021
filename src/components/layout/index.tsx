@@ -1,25 +1,27 @@
-import React, { ReactNode } from "react"
-import Header from "./Header"
-import Sidebar from "./Sidebar"
+import React from "react"
+import MainLayout from "~/components/layout/mainLayout"
+import SnippetLayout from "~/components/layout/snippetLayout"
 
-interface Props {
-  children: ReactNode
-}
+export const withMainLayout =
+  <Props extends object>(
+    Component: React.ComponentType<Props>
+  ): React.FC<Props> =>
+  ({ ...props }) =>
+    (
+      <MainLayout>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...(props as Props)} />
+      </MainLayout>
+    )
 
-const Layout: React.FC<Props> = ({ children }) => (
-  <>
-    <div className="max-w-3xl mx-auto py-6">
-      <Header />
-
-      <div className="flex flex-row">
-        <div className="pr-10 hidden md:block">
-          <Sidebar />
-        </div>
-
-        <div className="w-full px-4 md:px-0">{children}</div>
-      </div>
-    </div>
-  </>
-)
-
-export default Layout
+export const withSnippetLayout =
+  <Props extends object>(
+    Component: React.ComponentType<Props>
+  ): React.FC<Props> =>
+  ({ ...props }) =>
+    (
+      <SnippetLayout>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...(props as Props)} />
+      </SnippetLayout>
+    )
