@@ -8,6 +8,7 @@ export const mobilePageHeaders = {
   "/resume": "Resume",
   "/contact": "Contact",
   "/guestbook": "Guestbook",
+  "/snippets": "Snippets",
 }
 
 export type PageHeaderKeys = keyof typeof mobilePageHeaders

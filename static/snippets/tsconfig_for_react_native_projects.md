@@ -1,6 +1,8 @@
 ---
 title: TSConfig For React Native Projects
 tags: react,javascript
+slug: ts-config-for-react-native-projects
+published: true
 ---
 
 TSConfig.json for React Web Projects

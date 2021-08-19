@@ -68,8 +68,13 @@ const useBlogPosts = (): {
   }, [])
 
   const postQuery = useStaticQuery(graphql`
-    query {
-      allMdx(filter: { frontmatter: { published: { eq: true } } }) {
+    query PostHomePageQuery {
+      allMdx(
+        filter: {
+          frontmatter: { published: { eq: true } }
+          fileAbsolutePath: { regex: "/posts/" }
+        }
+      ) {
         edges {
           node {
             id
