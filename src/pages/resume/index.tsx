@@ -1,4 +1,5 @@
 import React from "react"
+import { withLayout } from "~/components/layout/withLayout"
 import { PageLayout } from "~/components/resume/PageLayout"
 import ResumePageHeader from "~/components/resume/ResumeHeader"
 import { SectionLayout } from "~/components/resume/SectionLayout"
@@ -42,4 +43,4 @@ const ResumePage = () => {
 }
 
 // ts-prune-ignore-next
-export default ResumePage
+export default withLayout(ResumePage)

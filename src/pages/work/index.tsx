@@ -4,6 +4,7 @@ import { Header } from "~/components/common/Typography"
 import { useData } from "~/hooks/useData"
 import { SiteWorkData } from "~/model/SiteData"
 import { ExternalLink } from "~/components/common/ExternalLink"
+import { withLayout } from "~/components/layout/withLayout"
 
 const WorkPage = () => {
   const { siteData } = useData()
@@ -48,4 +49,4 @@ const WorkPage = () => {
   )
 }
 
-export default WorkPage
+export default withLayout(WorkPage)

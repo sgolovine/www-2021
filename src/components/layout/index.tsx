@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
-import SEO from "~/components/common/SEO"
 
 interface Props {
   children: ReactNode
@@ -9,7 +8,6 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => (
   <>
-    <SEO />
     <div className="max-w-3xl mx-auto py-6">
       <Header />
 

@@ -2,6 +2,7 @@ import React from "react"
 import { Button } from "~/components/common/Button"
 import { TextArea } from "~/components/common/Input"
 import { Header } from "~/components/common/Typography"
+import { withLayout } from "~/components/layout/withLayout"
 import useGuestbook from "~/hooks/useGuestbook"
 
 const GuestbookPage = () => {
@@ -61,4 +62,4 @@ const GuestbookPage = () => {
 }
 
 // ts-prune-ignore-next
-export default GuestbookPage
+export default withLayout(GuestbookPage)

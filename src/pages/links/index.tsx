@@ -1,5 +1,6 @@
 import React from "react"
 import { Header } from "~/components/common/Typography"
+import { withLayout } from "~/components/layout/withLayout"
 import { useData } from "~/hooks/useData"
 import {
   DevToIcon,
@@ -105,4 +106,4 @@ const LinkPage = () => {
   )
 }
 
-export default LinkPage
+export default withLayout(LinkPage)
