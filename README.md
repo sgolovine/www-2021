@@ -2,6 +2,12 @@
 
 This is the codebase for my personal website: [sunnygolovine.com](https://sunnygolovine.com)
 
+## Statuses
+
+[![Test CI](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/ci.yml/badge.svg)](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/ci.yml)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fcc5dfd2-8bb8-47c9-9cc6-c65653e4d33d/deploy-status)](https://app.netlify.com/sites/sunnygolovine/deploys)
+
 ## Previous Versions
 
 See the previous versions of my personal websites:
