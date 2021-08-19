@@ -13,6 +13,11 @@ collections:
         label: "Doc Title"
         widget: string
 
+      - name: slug
+        label: "Slug"
+        widget: string
+        default: /snippet-name
+
       - name: tags
         label: "Tags (Comma Seperated)"
         widget: string
