@@ -1,11 +1,11 @@
 ---
 title: TSConfig For React Native Projects
-tags: react,javascript
 slug: ts-config-for-react-native-projects
+tags: react,javascript
 published: true
 ---
 
-TSConfig.json for React Web Projects
+
 
 <!-- Make sure to change the language -->
 ```json
