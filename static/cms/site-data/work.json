@@ -2,6 +2,13 @@
   "work-data": [
     {
       "show-in-recent-projects": true,
+      "name": "TipTrack",
+      "url": "https://tiptrack.app",
+      "description": "TipTrack is a tip tracker for iOS and Android that was built with React Native. TipTrack lets you enter tips into the app then create custom metrics to track every aspect about those tips.",
+      "project-type": "side-project"
+    },
+    {
+      "show-in-recent-projects": true,
       "name": "Cloud Talent",
       "url": "https://cloud-talent.com",
       "description": "Client Website. Built with Gatsby and Bootstrap",
