@@ -35,6 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const { id, frontmatter, body } = post.node
     const path = `/blog/post/${frontmatter.slug}`
 
+    // eslint-disable-next-line no-console
     console.log("Building post -> ", path)
     if (frontmatter.published) {
       createPage({
@@ -46,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
             title: frontmatter.title,
             description: frontmatter.description,
             date: frontmatter.date,
-            path: path,
+            path,
           },
           postBody: body,
         },
