@@ -1,6 +1,6 @@
 ---
 title: Gatsby Node Config For Blogs
-slug: /gatsby-blog
+slug: gatsby-blog
 tags: javascript,react,gatsby
 ---
 Modify this snippet as needed

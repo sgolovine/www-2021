@@ -1,6 +1,6 @@
 ---
 title: "Babel RC with Module Resolver Support "
-slug: /snippet-name
+slug: babelrc-with-mod-resolver
 tags: react,react-native,javascript
 ---
 `babel.config.js` for Gatsby Based projects. Here make sure that the proper presets are added and installed

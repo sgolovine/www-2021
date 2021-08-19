@@ -1,6 +1,6 @@
 ---
 title: Prettier Configuration
-slug: /prettier-config
+slug: prettier-config
 tags: javascript,react
 ---
 Brief description of your code snippet

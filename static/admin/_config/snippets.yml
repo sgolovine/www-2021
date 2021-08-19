@@ -16,7 +16,6 @@ collections:
       - name: slug
         label: "Snippet Slug"
         widget: string
-        default: /snippet-name
 
       - name: tags
         label: "Snippet Tags (Comma Seperated)"
