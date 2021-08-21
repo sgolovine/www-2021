@@ -2,6 +2,7 @@
 title: Prettier Configuration
 slug: prettier-config
 tags: javascript,react
+published: true
 ---
 Brief description of your code snippet
 
