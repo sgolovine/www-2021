@@ -69,5 +69,6 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-preact`,
+    `gatsby-plugin-sitemap`,
   ],
 }
