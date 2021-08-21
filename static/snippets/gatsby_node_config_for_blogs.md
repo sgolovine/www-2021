@@ -2,6 +2,7 @@
 title: Gatsby Node Config For Blogs
 slug: gatsby-blog
 tags: javascript,react,gatsby
+published: true
 ---
 Modify this snippet as needed
 
