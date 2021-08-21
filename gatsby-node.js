@@ -22,7 +22,6 @@ exports.createPages = async ({ graphql, actions }) => {
               description
               date
               slug
-              published
             }
             body
           }
@@ -31,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const docsQuery = await graphql(`
+  const snippetsQuery = await graphql(`
     query DocsQuery {
       allMdx(
         filter: {
@@ -45,7 +44,6 @@ exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               title
               slug
-              published
             }
             body
           }
@@ -58,13 +56,13 @@ exports.createPages = async ({ graphql, actions }) => {
     throw postQuery.errors
   }
 
-  if (docsQuery.errors) {
-    throw docsQuery.errors
+  if (snippetsQuery.errors) {
+    throw snippetsQuery.errors
   }
 
   const posts = postQuery.data.allMdx.edges
 
-  const docs = docsQuery.data.allMdx.edges
+  const snippets = snippetsQuery.data.allMdx.edges
 
   posts.forEach(post => {
     const { id, frontmatter, body } = post.node
@@ -72,45 +70,41 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // eslint-disable-next-line no-console
     console.log("Building post -> ", path)
-    if (frontmatter.published) {
-      createPage({
-        path,
-        component: postTemplate,
-        context: {
-          postId: id,
-          postMeta: {
-            title: frontmatter.title,
-            description: frontmatter.description,
-            date: frontmatter.date,
-            path,
-          },
-          postBody: body,
+    createPage({
+      path,
+      component: postTemplate,
+      context: {
+        postId: id,
+        postMeta: {
+          title: frontmatter.title,
+          description: frontmatter.description,
+          date: frontmatter.date,
+          path,
         },
-      })
-    }
+        postBody: body,
+      },
+    })
   })
 
-  docs.forEach(doc => {
+  snippets.forEach(doc => {
     // eslint-disable-next-line no-console
     const { id, frontmatter, body } = doc.node
     const path = `/snippets/snippet/${frontmatter.slug}`
 
-    if (frontmatter.published) {
-      // eslint-disable-next-line no-console
-      console.log("Building snippet -> ", path)
-      createPage({
-        path,
-        component: snippetTemplate,
-        context: {
-          id,
-          meta: {
-            title: frontmatter.title,
-            description: frontmatter.description,
-            path,
-          },
-          body,
+    // eslint-disable-next-line no-console
+    console.log("Building snippet -> ", path)
+    createPage({
+      path,
+      component: snippetTemplate,
+      context: {
+        id,
+        meta: {
+          title: frontmatter.title,
+          description: frontmatter.description,
+          path,
         },
-      })
-    }
+        body,
+      },
+    })
   })
 }

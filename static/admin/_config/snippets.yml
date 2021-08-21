@@ -20,6 +20,10 @@ collections:
       - name: tags
         label: "Snippet Tags (Comma Seperated)"
         widget: string
+
+      - name: published
+        label: Published
+        widget: boolean
       
       - name: body 
         label: "Snippet Content"
