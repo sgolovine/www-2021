@@ -18,7 +18,12 @@ export interface SnippetsQuery {
 export const useSnippets = () => {
   const snippetsQuery = useStaticQuery<SnippetsQuery>(graphql`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/snippets/" } }) {
+      allMdx(
+        filter: {
+          fileAbsolutePath: { regex: "/snippets/" }
+          frontmatter: { published: { eq: true } }
+        }
+      ) {
         edges {
           node {
             id

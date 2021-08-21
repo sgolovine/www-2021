@@ -5,6 +5,9 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://sunnygolovine.com`,
+  },
   flags: {
     FAST_DEV: false,
     PRESERVE_WEBPACK_CACHE: false,

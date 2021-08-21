@@ -12,6 +12,7 @@
     "typecheck": "tsc",
     "lint": "eslint 'src/**/*.{ts,tsx}' 'scripts/**/*.js' 'resume/**/*.tsx'",
     "ci": "yarn format && yarn typecheck",
+    "serve": "gatsby serve",
     "resume:start": "vite resume",
     "resume:build": "vite build resume --outDir ../resume-dist",
     "resume:serve": "serve -s resume-dist",
