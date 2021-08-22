@@ -49,12 +49,7 @@ Note that when running in development, the contact form and guestbook will not w
 
 ### Configure Feature Flags
 
-Some parts of this site use Netlify Functions to work. Such as the guestbook and contact pages. This features can be disabled through feature flags
-
-| Flag                          | Description                |
-| ----------------------------- | -------------------------- |
-| GATSBY_FEATURE_CONTACT_PAGE   | Enables the Contact Page   |
-| GATSBY_FEATURE_GUESTBOOK_PAGE | Enables the Guestbook Page |
+WIP
 
 ### Local Formatting and Typechecking
 
