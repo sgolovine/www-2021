@@ -4,6 +4,11 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+require("dotenv").config({
+  path: ".env",
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://sunnygolovine.com`,

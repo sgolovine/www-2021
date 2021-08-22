@@ -1,4 +1,8 @@
+import { strToBool } from "~/helpers/stringToBool"
+
 export const features = {
-  contactPage: Boolean(process.env.GATSBY_FEATURE_CONTACT_PAGE),
-  guestbookPage: Boolean(process.env.GATSBY_FEATURE_GUESTBOOK_PAGE),
+  contactPage: strToBool(process.env.GATSBY_FEATURE_CONTACT_PAGE),
+  guestbookPage: strToBool(process.env.GATSBY_FEATURE_GUESTBOOK_PAGE),
 }
+
+console.log("features", features)

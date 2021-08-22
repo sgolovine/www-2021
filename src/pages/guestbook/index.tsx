@@ -1,8 +1,10 @@
 import React from "react"
 import { Button } from "~/components/common/Button"
 import { TextArea } from "~/components/common/Input"
+import { Section } from "~/components/common/Section"
 import { Header } from "~/components/common/Typography"
 import { withMainLayout } from "~/components/layout"
+import { features } from "~/defines/features"
 import useGuestbook from "~/hooks/useGuestbook"
 
 const GuestbookPage = () => {
@@ -16,6 +18,17 @@ const GuestbookPage = () => {
     showError,
     errorMessage,
   } = useGuestbook()
+
+  if (!features.guestbookPage) {
+    return (
+      <>
+        <Header>GuestBook</Header>
+        <Section>
+          <p>This feature is disabled</p>
+        </Section>
+      </>
+    )
+  }
 
   return (
     <>
