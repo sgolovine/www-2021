@@ -1,7 +1,7 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { PostSEO } from "~/components/common/SEO"
-import { withMainLayout } from "~/components/layout"
+import { PostLayout } from "~/components/layout"
 
 interface Props {
   pageContext: {
@@ -12,11 +12,18 @@ interface Props {
       date: string
       path: string
     }
+    otherPosts: {
+      id: string
+      title: string
+      link: string
+    }[]
   }
 }
 
 const PostTemplate: React.FC<Props> = ({ pageContext }) => {
-  const { postBody, postMeta } = pageContext
+  const { postBody, postMeta, otherPosts } = pageContext
+
+  console.log("pageContext", otherPosts)
 
   const canonicalURL = `https://sunnygolovine.com${postMeta.path}`
 
@@ -28,17 +35,20 @@ const PostTemplate: React.FC<Props> = ({ pageContext }) => {
         canonicalURL={canonicalURL}
         date={postMeta.date}
       />
-      <div>
-        <div className="pb-5 text-center">
-          <h1 className="text-2xl font-bold pb-2">{postMeta.title}</h1>
-          <p className="text-sm text-gray-300 pb-2">{postMeta.date}</p>
-        </div>
+      <PostLayout
+        showAuthor
+        title={postMeta.title}
+        description={postMeta.description}
+        date={postMeta.date}
+        backRoute="/blog"
+        extraContent={() => <h1>Foobar</h1>}
+      >
         <div className="prose">
           <MDXRenderer>{postBody}</MDXRenderer>
         </div>
-      </div>
+      </PostLayout>
     </>
   )
 }
 
-export default withMainLayout(PostTemplate)
+export default PostTemplate

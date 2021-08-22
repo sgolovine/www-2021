@@ -3,6 +3,10 @@ const path = require("path")
 const postTemplate = path.resolve(__dirname, "./src/templates/post.tsx")
 const snippetTemplate = path.resolve(__dirname, "./src/templates/snippet.tsx")
 
+function buildPostPath(path) {
+  return `/blog/post/${path}`
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -66,7 +70,24 @@ exports.createPages = async ({ graphql, actions }) => {
 
   posts.forEach(post => {
     const { id, frontmatter, body } = post.node
-    const path = `/blog/post/${frontmatter.slug}`
+    const path = buildPostPath(frontmatter.slug)
+
+    // Other Posts
+    // These are posts that appear at the bottom
+    // of the blog post. This should be the last 5
+    // posts not including the current post, sorted descending order
+    const otherPosts = posts
+      .filter(post => post.node.id !== id)
+      .sort(
+        (postA, postB) =>
+          new Date(postB.node.frontmatter.date).getTime() -
+          new Date(postA.node.frontmatter.date).getTime()
+      )
+      .map(currPost => ({
+        id: currPost.node.id,
+        title: currPost.node.frontmatter.title,
+        link: buildPostPath(currPost.node.frontmatter.slug),
+      }))
 
     // eslint-disable-next-line no-console
     console.log("Building post -> ", path)
@@ -82,6 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path,
         },
         postBody: body,
+        otherPosts,
       },
     })
   })
