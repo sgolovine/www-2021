@@ -16,7 +16,6 @@ module.exports = {
     LMDB_STORE: false,
     DEV_SSR: true,
   },
-  /* Your site config here */
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
