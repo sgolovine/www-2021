@@ -72,3 +72,6 @@ resume-dist
 
 # Netlify CMS
 static/admin/config.yml
+
+# Posts Script
+static/posts/remotePosts.json
