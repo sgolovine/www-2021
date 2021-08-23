@@ -3,6 +3,14 @@ const path = require("path")
 const postTemplate = path.resolve(__dirname, "./src/templates/post.tsx")
 const snippetTemplate = path.resolve(__dirname, "./src/templates/snippet.tsx")
 
+// eslint-disable-next-line import/no-dynamic-require
+const remotePosts = require(path.resolve(
+  __dirname,
+  "static",
+  "posts",
+  "remotePosts.json"
+))
+
 function buildPostPath(path) {
   return `/blog/post/${path}`
 }
@@ -76,18 +84,30 @@ exports.createPages = async ({ graphql, actions }) => {
     // These are posts that appear at the bottom
     // of the blog post. This should be the last 5
     // posts not including the current post, sorted descending order
-    const otherPosts = posts
+    const otherLocalPosts = posts
       .filter(post => post.node.id !== id)
-      .sort(
-        (postA, postB) =>
-          new Date(postB.node.frontmatter.date).getTime() -
-          new Date(postA.node.frontmatter.date).getTime()
-      )
       .map(currPost => ({
         id: currPost.node.id,
         title: currPost.node.frontmatter.title,
         link: buildPostPath(currPost.node.frontmatter.slug),
+        postType: "local",
+        date: currPost.node.frontmatter.date,
       }))
+
+    const otherRemotePosts =
+      remotePosts &&
+      remotePosts.posts.map(item => ({
+        id: item.id,
+        title: item.title,
+        link: item.url,
+        postType: "remote",
+        date: item.date,
+      }))
+
+    const otherPosts = [...otherLocalPosts, ...otherRemotePosts].sort(
+      (postA, postB) =>
+        new Date(postA.date).getTime() - new Date(postB.date).getTime()
+    )
 
     // eslint-disable-next-line no-console
     console.log("Building post -> ", path)

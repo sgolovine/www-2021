@@ -23,9 +23,9 @@ interface Props {
 const PostTemplate: React.FC<Props> = ({ pageContext }) => {
   const { postBody, postMeta, otherPosts } = pageContext
 
-  console.log("pageContext", otherPosts)
-
   const canonicalURL = `https://sunnygolovine.com${postMeta.path}`
+
+  console.log(otherPosts)
 
   return (
     <>

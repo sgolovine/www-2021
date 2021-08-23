@@ -21,7 +21,7 @@ export const PostLayout: React.FC<Props> = ({
 }) => (
   <div className="max-w-2xl mx-auto">
     <div className="py-6 text-left">
-      <div className="px-4 flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center justify-between">
         <BackButton backRoute={backRoute} />
         {date && <p className="text-brand-yellow font-bold">{date}</p>}
       </div>
