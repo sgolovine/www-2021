@@ -23,6 +23,7 @@ function formatPost(post) {
   return {
     id: post.id,
     title: post.title,
+    description: post.description,
     url: post.url,
     date: post.published_at,
   }
