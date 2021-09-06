@@ -49,4 +49,4 @@ jobs:
         run: yarn cms:lint
 
       - name: Run Dry Build
-        run: yarn build
+        run: yarn dry-build
