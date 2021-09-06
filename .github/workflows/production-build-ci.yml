@@ -4,11 +4,10 @@
 
 name: Production Test Build CI
 
-# TODO: Add "on" conditions
-# on:
-#   pull_request:
-#     branches:
-#       - master
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   production-tests:
