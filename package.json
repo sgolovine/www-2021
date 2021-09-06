@@ -6,8 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "dry-build": "gatsby build",
+    "dry-build": "NODE_ENV=development yarn fetch-dry-build-files && gatsby build",
     "start": "gatsby develop",
+    "start-cold": "NODE_ENV=development yarn fetch-dry-build-files && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
     "typecheck": "tsc",
@@ -23,6 +24,7 @@
     "cms:generate:prod": "NODE_ENV=production node ./scripts/generate-cms-config.js",
     "cms:lint": "yamllint ./static/admin/_config/*.yml",
     "fetch-remote-posts": "node ./scripts/fetch-remote-blog-posts.js",
+    "fetch-dry-build-files": "node ./scripts/generate-dry-build-files.js",
     "prestart": "yarn cms:generate:dev && yarn fetch-remote-posts",
     "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts",
     "postinstall": "patch-package"
