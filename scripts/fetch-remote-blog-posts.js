@@ -30,13 +30,13 @@ function formatPost(post) {
 }
 
 ;(() => {
-  if (!process.env.DEV_USERNAME) {
+  if (!process.env.GATSBY_DEV_USERNAME) {
     console.error(
       "Dev username not found. Please set DEV_USERNAME in your .env"
     )
     process.exit(1)
   }
-  const url = createUrl(process.env.DEV_USERNAME)
+  const url = createUrl(process.env.GATSBY_DEV_USERNAME)
 
   console.log("🚚 Fetching Posts from Dev.to")
 
