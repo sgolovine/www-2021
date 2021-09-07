@@ -1,7 +1,20 @@
 const path = require("path")
+const { v4: uuid } = require("uuid")
 
 const postTemplate = path.resolve(__dirname, "./src/templates/post.tsx")
 const snippetTemplate = path.resolve(__dirname, "./src/templates/snippet.tsx")
+
+// eslint-disable-next-line import/no-dynamic-require
+const remotePosts = require(path.resolve(
+  __dirname,
+  "static",
+  "posts",
+  "remotePosts.json"
+))
+
+function buildPostPath(path) {
+  return `/blog/post/${path}`
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -66,7 +79,37 @@ exports.createPages = async ({ graphql, actions }) => {
 
   posts.forEach(post => {
     const { id, frontmatter, body } = post.node
-    const path = `/blog/post/${frontmatter.slug}`
+    const path = buildPostPath(frontmatter.slug)
+
+    // Fetch other local posts
+    const otherLocalPosts = posts
+      .filter(post => post.node.id !== id)
+      .map(currPost => ({
+        id: uuid(),
+        title: currPost.node.frontmatter.title,
+        link: buildPostPath(currPost.node.frontmatter.slug),
+        postType: "local",
+        date: currPost.node.frontmatter.date,
+      }))
+
+    // Fetch other remote posts (from dev.to)
+    const otherRemotePosts =
+      remotePosts &&
+      remotePosts.posts.map(item => ({
+        id: uuid(),
+        title: item.title,
+        link: item.url,
+        postType: "remote",
+        date: item.date,
+      }))
+
+    // Combine into one array, sort and pick the 5 most recent.
+    const otherPosts = [...otherLocalPosts, ...otherRemotePosts]
+      .sort(
+        (postA, postB) =>
+          new Date(postB.date).getTime() - new Date(postA.date).getTime()
+      )
+      .slice(0, 5)
 
     // eslint-disable-next-line no-console
     console.log("Building post -> ", path)
@@ -82,6 +125,7 @@ exports.createPages = async ({ graphql, actions }) => {
           path,
         },
         postBody: body,
+        otherPosts,
       },
     })
   })

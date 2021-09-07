@@ -1,7 +1,9 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { PostSEO } from "~/components/common/SEO"
-import { withMainLayout } from "~/components/layout"
+import { PostLayout } from "~/components/layout"
+import { ExternalLink } from "~/components/common/ExternalLink"
+import { Subheader } from "~/components/common/Typography"
 
 interface Props {
   pageContext: {
@@ -12,13 +14,37 @@ interface Props {
       date: string
       path: string
     }
+    otherPosts: {
+      id: string
+      title: string
+      link: string
+      date: string
+      postType: "local" | "remote"
+    }[]
   }
 }
 
 const PostTemplate: React.FC<Props> = ({ pageContext }) => {
-  const { postBody, postMeta } = pageContext
+  const { postBody, postMeta, otherPosts } = pageContext
 
   const canonicalURL = `https://sunnygolovine.com${postMeta.path}`
+
+  const renderExtraContent = () => (
+    <div>
+      <Subheader>More Posts</Subheader>
+      <div className="flex flex-col">
+        {otherPosts.map(post => (
+          <ExternalLink
+            lg
+            label={post.title}
+            href={post.link}
+            external={post.postType === "remote"}
+            containerClassnames="py-2"
+          />
+        ))}
+      </div>
+    </div>
+  )
 
   return (
     <>
@@ -28,17 +54,20 @@ const PostTemplate: React.FC<Props> = ({ pageContext }) => {
         canonicalURL={canonicalURL}
         date={postMeta.date}
       />
-      <div>
-        <div className="pb-5 text-center">
-          <h1 className="text-2xl font-bold pb-2">{postMeta.title}</h1>
-          <p className="text-sm text-gray-300 pb-2">{postMeta.date}</p>
-        </div>
+      <PostLayout
+        showAuthor
+        title={postMeta.title}
+        description={postMeta.description}
+        date={postMeta.date}
+        backRoute="/blog"
+        extraContent={renderExtraContent}
+      >
         <div className="prose">
           <MDXRenderer>{postBody}</MDXRenderer>
         </div>
-      </div>
+      </PostLayout>
     </>
   )
 }
 
-export default withMainLayout(PostTemplate)
+export default PostTemplate

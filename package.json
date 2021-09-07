@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "dry-build": "NODE_ENV=development yarn fetch-dry-build-files && gatsby build",
     "start": "gatsby develop",
+    "start-cold": "NODE_ENV=development yarn fetch-dry-build-files && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
     "typecheck": "tsc",
@@ -21,8 +23,10 @@
     "cms:generate:dev": "NODE_ENV=development node ./scripts/generate-cms-config.js",
     "cms:generate:prod": "NODE_ENV=production node ./scripts/generate-cms-config.js",
     "cms:lint": "yamllint ./static/admin/_config/*.yml",
-    "prestart": "yarn cms:generate:dev",
-    "prebuild": "yarn cms:generate:prod",
+    "fetch-remote-posts": "node ./scripts/fetch-remote-blog-posts.js",
+    "fetch-dry-build-files": "node ./scripts/generate-dry-build-files.js",
+    "prestart": "yarn cms:generate:dev && yarn fetch-remote-posts",
+    "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -54,7 +58,8 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "unzalgo": "^2.1.2",
-    "use-media": "^1.4.0"
+    "use-media": "^1.4.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@alexlafroscia/yaml-merge": "^4.0.0",
@@ -64,6 +69,7 @@
     "@types/classnames": "^2.3.1",
     "@types/react-dom": "^17.0.7",
     "@types/react-helmet": "^6.1.1",
+    "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "autoprefixer": "^10.2.6",
