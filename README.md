@@ -20,9 +20,11 @@ This is the codebase for my personal website: [sunnygolovine.com](https://sunnyg
 
 ## Statuses
 
-[![Test CI](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/ci.yml/badge.svg)](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/ci.yml)
+[![Production Tests CI](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-tests-ci.yml/badge.svg)](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-tests-ci.yml)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/fcc5dfd2-8bb8-47c9-9cc6-c65653e4d33d/deploy-status)](https://app.netlify.com/sites/sunnygolovine/deploys)
+
+[![Test Build CI](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-build-ci.yml/badge.svg)](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-build-ci.yml)
 
 ## Previous Versions
 
