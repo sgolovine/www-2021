@@ -2,7 +2,7 @@
 # Anything is pushed to production. And report back the current
 # Build status
 
-name: Production Test Build CI
+name: Test Build CI
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
       - develop # for testing purposes
 
 jobs:
-  production-tests:
+  test-build:
     runs-on: ubuntu-latest
 
     env:
