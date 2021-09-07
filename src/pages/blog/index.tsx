@@ -1,16 +1,13 @@
 import React from "react"
 import { ExternalLink } from "~/components/common/ExternalLink"
-import { Loader } from "~/components/common/Loader"
 import { Header, Subheader } from "~/components/common/Typography"
 import { formatPostDate } from "~/helpers/formatPostDate"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
-import { Error } from "~/components/common/Error"
 import { withMainLayout } from "~/components/layout"
 
 const BlogPage = () => {
-  const { localPosts, remotePosts, remotePostsError, remotePostsLoading } =
-    useBlogPosts()
+  const { localPosts, remotePosts } = useBlogPosts()
 
   const {
     siteData: { dev_to },
@@ -32,39 +29,27 @@ const BlogPage = () => {
     </div>
   )
 
-  const renderRemotePosts = () => {
-    if (remotePostsLoading) {
-      return (
-        <div className="flex flex-row justify-center mt-12">
-          <Loader />
-        </div>
-      )
-    }
-    if (remotePostsError) {
-      return <Error message="Error Fetching Posts" />
-    }
-    return (
-      <div className="py-6">
-        {remotePosts &&
-          remotePosts.length > 0 &&
-          remotePosts.map(post => (
-            <div key={post.id} className="pb-12">
-              <div className="flex flex-row justify-between items-start">
-                <ExternalLink
-                  lg
-                  noIcon
-                  external
-                  href={post.path}
-                  label={post.title}
-                />
-                <p>{formatPostDate(post.date)}</p>
-              </div>
-              <p className="py-2">{post.description}</p>
+  const renderRemotePosts = () => (
+    <div className="py-6">
+      {remotePosts &&
+        remotePosts.length > 0 &&
+        remotePosts.map(post => (
+          <div key={post.id} className="pb-12">
+            <div className="flex flex-row justify-between items-start">
+              <ExternalLink
+                lg
+                noIcon
+                external
+                href={post.path}
+                label={post.title}
+              />
+              <p>{formatPostDate(post.date)}</p>
             </div>
-          ))}
-      </div>
-    )
-  }
+            <p className="py-2">{post.description}</p>
+          </div>
+        ))}
+    </div>
+  )
 
   return (
     <div>

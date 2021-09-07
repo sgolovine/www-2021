@@ -1,16 +1,30 @@
-import axios from "axios"
 import { useStaticQuery, graphql } from "gatsby"
-import { useEffect, useState } from "react"
+import { v4 as uuid } from "uuid"
 import { BlogPost } from "~/model/BlogPost"
 
-type RawData = {
-  node: {
-    id: string
-    frontmatter: {
-      title: string
-      date: string
-      description: string
-      slug: string
+interface QueryType {
+  allMdx: {
+    edges: {
+      node: {
+        id: string
+        frontmatter: {
+          title: string
+          date: string
+          description: string
+          slug: string
+        }
+      }
+    }[]
+  }
+  file: {
+    childPostsJson: {
+      posts: {
+        id: number
+        title: string
+        description: string
+        url: string
+        date: string
+      }[]
     }
   }
 }
@@ -19,55 +33,8 @@ const useBlogPosts = (): {
   localPosts: BlogPost[]
   remotePosts: BlogPost[]
   recentPosts: BlogPost[]
-  remotePostsLoading: boolean
-  remotePostsError: boolean
 } => {
-  const [remotePostsLoading, setRemotePostsLoading] = useState<boolean>(false)
-  const [remotePostsError, setRemotePostsError] = useState<boolean>(false)
-  const [remotePosts, setRemotePosts] = useState<BlogPost[]>([])
-
-  // Fetch posts from dev.to
-  // We do not fetch the entire post
-  // We just will fetch the titles, descriptions and href to the actual post
-  useEffect(() => {
-    if (process.env.GATSBY_DEV_USERNAME) {
-      setRemotePostsError(false)
-      setRemotePostsLoading(true)
-      const fetchUrl = `https://dev.to/api/articles?username=${process.env.GATSBY_DEV_USERNAME}`
-      axios
-        .get(fetchUrl)
-        .then(resp => {
-          setRemotePostsLoading(false)
-          if (resp && resp.data && resp.data.length > 0) {
-            setRemotePosts(
-              resp.data.map(
-                (item: {
-                  id: number
-                  canonical_url: string
-                  title: string
-                  description: string
-                  published_timestamp: string
-                }) => ({
-                  id: item.id,
-                  title: item.title,
-                  date: item.published_timestamp,
-                  path: item.canonical_url,
-                  description: item.description,
-                })
-              )
-            )
-          }
-        })
-        .catch(err => {
-          setRemotePostsLoading(false)
-          setRemotePostsError(true)
-          // eslint-disable-next-line no-console
-          console.error(err)
-        })
-    }
-  }, [])
-
-  const postQuery = useStaticQuery(graphql`
+  const postQuery = useStaticQuery<QueryType>(graphql`
     query PostHomePageQuery {
       allMdx(
         filter: {
@@ -87,12 +54,36 @@ const useBlogPosts = (): {
           }
         }
       }
+      file(absolutePath: { regex: "/posts/remotePosts.json/" }) {
+        childPostsJson {
+          posts {
+            date
+            id
+            title
+            description
+            url
+          }
+        }
+      }
     }
   `)
 
-  const localPosts =
+  const remotePosts: BlogPost[] =
+    postQuery.file.childPostsJson.posts
+      .map(post => ({
+        id: uuid(),
+        title: post.title,
+        date: new Date(post.date),
+        description: post.description,
+        path: post.url,
+      }))
+      .sort(
+        (a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime()
+      ) ?? []
+
+  const localPosts: BlogPost[] =
     postQuery?.allMdx?.edges
-      .map((item: RawData) => {
+      .map(item => {
         const { node } = item
         return {
           id: node.id,
@@ -106,12 +97,14 @@ const useBlogPosts = (): {
         (a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime()
       ) ?? []
 
+  const recentPosts: BlogPost[] = [...localPosts, ...remotePosts]
+    .sort((a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime())
+    .slice(0, 3)
+
   return {
     localPosts,
     remotePosts,
-    remotePostsLoading,
-    remotePostsError,
-    recentPosts: localPosts.slice(0, 3),
+    recentPosts,
   }
 }
 
