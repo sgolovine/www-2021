@@ -27,5 +27,6 @@ module.exports = {
     "no-shadow": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "no-underscore-dangle": 0,
+    "react/require-default-props": 0,
   },
 }

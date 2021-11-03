@@ -6,6 +6,7 @@ interface InputProps {
   onChange: (newValue: string) => void
   label?: string
   placeholder?: string
+  // eslint-disable-next-line react/no-unused-prop-types
   maxLength?: number
 }
 

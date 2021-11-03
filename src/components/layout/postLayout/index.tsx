@@ -5,7 +5,6 @@ interface Props {
   title: string
   backRoute: string
   description?: string
-  showAuthor?: boolean
   date?: string
   children: ReactNode
   extraContent?: () => ReactNode
