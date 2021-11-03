@@ -13,6 +13,7 @@ This is the codebase for my personal website: [sunnygolovine.com](https://sunnyg
     - [Testing Production Builds](#testing-production-builds)
     - [Updating the DOC resume.](#updating-the-doc-resume)
     - [Working on the CMS](#working-on-the-cms)
+    - [Dry Building](#dry-building)
   - [Maintainence](#maintainence)
     - [Keeping packages up to date](#keeping-packages-up-to-date)
     - [Finding and Removing Unused Packages](#finding-and-removing-unused-packages)
@@ -87,6 +88,10 @@ This site uses NetlifyCMS for its content.
 - The script that handles creating `config.yml` is located in `scripts/generate-cms-config.js`
 - To edit preview templates and other addons, see `src/cms/cms.ts`
 - To check the CMS configuration yaml for errors run `yarn cms:lint`
+
+### Dry Building
+
+To ensure that the site can always build, we do a "dry build" of the site. To do this we must first create stubs for remote blog posts and for the CMS configuration. This is done via the `fetch-dry-build-files` command which runs the `generate-dry-build-files.js` script in `scripts`.
 
 ## Maintainence
 

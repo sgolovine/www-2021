@@ -9,10 +9,6 @@ jobs:
   pr-tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-versions: [14.x]
-
     env:
       CI: true
 
@@ -20,10 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v1
+     - name: Setup NodeJS
+        uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16
 
       - name: Cache Node Modules
         id: cache-node-modules
