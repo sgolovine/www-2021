@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import React from "react"
 import { BlogItem } from "~/components/blog/BlogItem"
+import { HomeNav } from "~/components/home/HomeNav"
 import { LinkItem } from "~/components/links/LinkItem"
 import Punk from "~/components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
@@ -39,6 +40,7 @@ const IndexPage = () => {
         <h1 className="text-5xl font-heading font-black italic text-center">
           Sunny Golovine
         </h1>
+        <HomeNav />
       </div>
       <div className={sectionClasses}>
         <h2 className={headingClasses}>About Me</h2>

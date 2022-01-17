@@ -9,7 +9,7 @@ interface Props {
 const MobileMenu: React.FC<Props> = ({ closeMenu }) => {
   const enabledRoutes = sidebarRoutes.filter(route => route.enabled)
   return (
-    <div className="absolute bg-background w-full shadow-bottom">
+    <div className="absolute bg-off-black background w-full shadow-bottom">
       <ul className="block text-center">
         {enabledRoutes.length > 0 &&
           enabledRoutes.map(route => (

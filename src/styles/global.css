@@ -1,7 +1,7 @@
 html,
 body {
   /* background-color: #212529; */
-  @apply bg-background;
+  @apply bg-off-black;
 }
 
 h1,
