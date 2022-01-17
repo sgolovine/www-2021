@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import React from "react"
 
 interface Props {
@@ -13,7 +14,21 @@ export const Button: React.FC<Props> = ({
 }) => (
   <button
     type="button"
-    className={`h-12 w-44 border-4 py-2 px-6 rounded shadow border-brand-yellow text-brand-white font-bold ${additionalClassNames}`}
+    className={classNames(
+      [
+        "h-12",
+        "w-44",
+        "border-4",
+        "py-2",
+        "px-6",
+        "rounded",
+        "shadow",
+        "border-brand-yellow",
+        "text-brand-white",
+        "font-bold",
+      ],
+      additionalClassNames
+    )}
     onClick={onClick}
   >
     {title}
