@@ -3,7 +3,7 @@ import useMedia from "use-media"
 import { useLocation } from "@reach/router"
 import { CloseIcon } from "~/icons/Close"
 import { Menu } from "~/icons/Menu"
-import MobileMenu from "./MobileMenu"
+import MobileMenu from "../mobileMenu/MobileMenu"
 import { getPageHeader } from "~/helpers/getHeader"
 import { defaultHeader } from "~/defines/pageHeaders"
 
@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <div className="text-left px-4 md:px-0 md:text-right py-8 md:py-16 flex flex-row justify-between items-center">
+      <div className="text-left px-4 md:px-0 md:text-right py-4 md:py-16 flex flex-row justify-between items-center">
         <div className="pr-4 md:pr-0">
           <h1 className="text-3xl">{headerText}</h1>
         </div>
