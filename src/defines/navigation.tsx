@@ -1,5 +1,3 @@
-import { features } from "./features"
-
 interface SidebarRoute {
   key: string
   name: string
@@ -29,13 +27,7 @@ export const sidebarRoutes: SidebarRoutes = [
   {
     name: "Contact",
     route: "/contact",
-    enabled: features.contactPage,
+    enabled: true,
     key: "contact",
-  },
-  {
-    name: "Guestbook",
-    route: "/guestbook",
-    enabled: features.guestbookPage,
-    key: "guestbook",
   },
 ].filter(item => item.enabled)

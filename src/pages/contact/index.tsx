@@ -6,7 +6,6 @@ import { Header } from "~/components/common/Typography"
 import useContactForm, { MessageState } from "~/hooks/useContactForm"
 import { useData } from "~/hooks/useData"
 import { withMainLayout } from "~/components/layout"
-import { features } from "~/defines/features"
 
 interface NotifierProps {
   messageState: MessageState
@@ -41,17 +40,6 @@ const ContactPage = () => {
     useContactForm()
 
   const { siteData } = useData()
-
-  if (!features.contactPage) {
-    return (
-      <>
-        <Header>Contact</Header>
-        <Section>
-          <p>This feature is disabled</p>
-        </Section>
-      </>
-    )
-  }
 
   return (
     <>

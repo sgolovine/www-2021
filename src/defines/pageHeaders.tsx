@@ -7,7 +7,6 @@ export const mobilePageHeaders = {
   "/links": "Links",
   "/resume": "Resume",
   "/contact": "Contact",
-  "/guestbook": "Guestbook",
   "/snippets": "Snippets",
 }
 
