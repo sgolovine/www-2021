@@ -1,12 +1,10 @@
 import React from "react"
-import { BRAND_YELLOW } from "~/defines/colors"
 
 export const ArrowLeft: React.FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
+    className="h-6 w-6 stroke-brand-yellow"
     viewBox="0 0 24 24"
-    stroke={BRAND_YELLOW}
   >
     <path
       strokeLinecap="round"
