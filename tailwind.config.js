@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   darkMode: "class",
   content: ["./src/**/*.tsx"],
@@ -32,7 +33,10 @@ module.exports = {
         "brand-green": "#20FC8F",
         "brand-white": "#f7fff7",
         "brand-link": "#adb5bd",
-        background: "#212529",
+        "off-black": "#212529",
+      },
+      fontFamily: {
+        heading: ["Montserrat", "sans-serif"],
       },
     },
   },

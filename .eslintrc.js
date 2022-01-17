@@ -22,7 +22,13 @@ module.exports = {
     "import/prefer-default-export": 0,
     "no-console": "warn",
     "no-shadow": 0,
+    "consistent-return": 0,
+    // Disable some accessability rules for now
+    // Will re-enable later when we do full acc
+    // On the site.
     "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
     "no-underscore-dangle": 0,
     // Disable some react rules.
     // Typescript takes care of this already

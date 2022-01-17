@@ -1,7 +1,4 @@
-import React from "react"
-import { Header } from "~/components/common/Typography"
-import { withMainLayout } from "~/components/layout"
-import { useData } from "~/hooks/useData"
+import React, { useState } from "react"
 import {
   DevToIcon,
   EmailIcon,
@@ -12,12 +9,14 @@ import {
   TwitterIcon,
 } from "~/icons/Brands"
 import { ExternalLinkIcon2 } from "~/icons/ExternalLink"
+import { stripHttp } from "~/helpers/stripHttp"
 
 interface Props {
   title: string
   href: string
   type?: string
   icon: string
+  showPreviewOnHover?: boolean
 }
 
 function getIcon(key: string) {
@@ -52,9 +51,25 @@ function formatLink(link: string, type?: string) {
   }
 }
 
-const LinkItem: React.FC<Props> = ({ title, href, type, icon }) => {
+export const LinkItem: React.FC<Props> = ({
+  title,
+  href,
+  type,
+  icon,
+  showPreviewOnHover,
+}) => {
   const Icon = getIcon(icon)
   const formattedHref = formatLink(href, type)
+
+  const [isHovering, setIsHovering] = useState<boolean>(false)
+
+  const handleEnter = () => {
+    setIsHovering(true)
+  }
+
+  const handleLeave = () => {
+    setIsHovering(false)
+  }
 
   return (
     <span className="flex flex-row items-center mb-6">
@@ -62,48 +77,14 @@ const LinkItem: React.FC<Props> = ({ title, href, type, icon }) => {
       <a
         href={formattedHref}
         className="ml-2 text-2xl text-brand-link font-bold hover:text-brand-yellow"
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
       >
         {title}
       </a>
+      {showPreviewOnHover && isHovering && (
+        <p className="ml-4 text-sm text-brand-link">{stripHttp(href)}</p>
+      )}
     </span>
   )
 }
-
-const LinkPage = () => {
-  const { siteData } = useData()
-
-  return (
-    <>
-      <Header>Links</Header>
-      <div>
-        <LinkItem
-          title="Phone"
-          href={siteData.linkedin}
-          type="phone"
-          icon="phone"
-        />
-        <LinkItem
-          title="Email"
-          href={siteData.email}
-          type="email"
-          icon="email"
-        />
-        <LinkItem
-          title="Instagram"
-          href={siteData.instagram}
-          icon="instagram"
-        />
-        <LinkItem title="Twitter" href={siteData.twitter} icon="twitter" />
-        <LinkItem title="Github" href={siteData.github} icon="github" />
-        <LinkItem title="LinkedIn" href={siteData.linkedin} icon="linkedin" />
-        <LinkItem
-          title="The Practical Dev"
-          href={siteData.dev_to}
-          icon="devto"
-        />
-      </div>
-    </>
-  )
-}
-
-export default withMainLayout(LinkPage)

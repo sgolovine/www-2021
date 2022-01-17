@@ -29,6 +29,12 @@ interface QueryType {
   }
 }
 
+function sortBlogPosts(posts: BlogPost[]) {
+  return posts.sort(
+    (a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime()
+  )
+}
+
 const useBlogPosts = (): {
   localPosts: BlogPost[]
   remotePosts: BlogPost[]
@@ -68,34 +74,30 @@ const useBlogPosts = (): {
     }
   `)
 
-  const remotePosts: BlogPost[] =
-    postQuery.file.childPostsJson.posts
-      .map(post => ({
-        id: uuid(),
-        title: post.title,
-        date: new Date(post.date),
-        description: post.description,
-        path: post.url,
-      }))
-      .sort(
-        (a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime()
-      ) ?? []
+  const remotePosts: BlogPost[] = sortBlogPosts(
+    postQuery.file.childPostsJson.posts.map(post => ({
+      id: uuid(),
+      title: post.title,
+      date: new Date(post.date),
+      description: post.description,
+      path: post.url,
+      type: "remote",
+    })) ?? []
+  )
 
-  const localPosts: BlogPost[] =
-    postQuery?.allMdx?.edges
-      .map(item => {
-        const { node } = item
-        return {
-          id: node.id,
-          title: node.frontmatter.title,
-          date: new Date(node.frontmatter.date),
-          description: node.frontmatter.description,
-          path: `/blog/post/${node.frontmatter.slug}`,
-        }
-      })
-      .sort(
-        (a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime()
-      ) ?? []
+  const localPosts: BlogPost[] = sortBlogPosts(
+    postQuery?.allMdx?.edges.map(item => {
+      const { node } = item
+      return {
+        id: node.id,
+        title: node.frontmatter.title,
+        date: new Date(node.frontmatter.date),
+        description: node.frontmatter.description,
+        path: `/blog/post/${node.frontmatter.slug}`,
+        type: "local",
+      }
+    }) ?? []
+  )
 
   const recentPosts: BlogPost[] = [...localPosts, ...remotePosts]
     .sort((a: BlogPost, b: BlogPost) => b.date.getTime() - a.date.getTime())
