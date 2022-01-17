@@ -6,6 +6,7 @@ import "./src/styles/tailwind.css"
 import "./src/styles/global.css"
 import "./src/styles/styles.css"
 import "./src/styles/loader.css"
+import "./src/styles/punk.css"
 
 export const wrapPageElement = ({ element }) => (
   <>
