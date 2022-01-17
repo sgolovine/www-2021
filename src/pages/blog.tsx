@@ -1,10 +1,9 @@
 import React from "react"
-import { ExternalLink } from "~/components/common/ExternalLink"
 import { Header, Subheader } from "~/components/common/Typography"
-import { formatPostDate } from "~/helpers/formatPostDate"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 import { withMainLayout } from "~/components/layout"
+import { BlogItem } from "~/components/blog/BlogItem"
 
 const BlogPage = () => {
   const { localPosts, remotePosts } = useBlogPosts()
@@ -18,13 +17,12 @@ const BlogPage = () => {
       {localPosts &&
         localPosts.length > 0 &&
         localPosts.map(post => (
-          <div key={post.id} className="pb-12">
-            <div className="flex flex-row justify-between items-start">
-              <ExternalLink lg href={post.path} label={post.title} />
-              <p>{formatPostDate(post.date)}</p>
-            </div>
-            <p className="py-2">{post.description}</p>
-          </div>
+          <BlogItem
+            path={post.path}
+            title={post.title}
+            date={post.date}
+            description={post.description}
+          />
         ))}
     </div>
   )
@@ -34,19 +32,13 @@ const BlogPage = () => {
       {remotePosts &&
         remotePosts.length > 0 &&
         remotePosts.map(post => (
-          <div key={post.id} className="pb-12">
-            <div className="flex flex-row justify-between items-start">
-              <ExternalLink
-                lg
-                noIcon
-                external
-                href={post.path}
-                label={post.title}
-              />
-              <p>{formatPostDate(post.date)}</p>
-            </div>
-            <p className="py-2">{post.description}</p>
-          </div>
+          <BlogItem
+            path={post.path}
+            title={post.title}
+            date={post.date}
+            description={post.description}
+            external
+          />
         ))}
     </div>
   )

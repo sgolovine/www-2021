@@ -4,4 +4,5 @@ export type BlogPost = {
   date: Date
   description: string
   path: string
+  type: "local" | "remote"
 }
