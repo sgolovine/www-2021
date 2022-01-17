@@ -11,20 +11,19 @@ import { features } from "~/defines/features"
 interface NotifierProps {
   messageState: MessageState
 }
+const Error: React.FC<{ children: string }> = ({ children }) => (
+  <div className="my-2 p-4 border rounded bg-red-400 border-red-600">
+    <p className="font-bold">{children}</p>
+  </div>
+)
+
+const Success: React.FC<{ children: string }> = ({ children }) => (
+  <div className="my-2 p-4 border rounded bg-green-400 border-green-600">
+    <p className="font-bold">{children}</p>
+  </div>
+)
 
 const Notifier: React.FC<NotifierProps> = ({ messageState }) => {
-  const Error: React.FC<{ children: string }> = ({ children }) => (
-    <div className="my-2 p-4 border rounded bg-red-400 border-red-600">
-      <p className="font-bold">{children}</p>
-    </div>
-  )
-
-  const Success: React.FC<{ children: string }> = ({ children }) => (
-    <div className="my-2 p-4 border rounded bg-green-400 border-green-600">
-      <p className="font-bold">{children}</p>
-    </div>
-  )
-
   if (
     !messageState.show ||
     messageState.type === null ||

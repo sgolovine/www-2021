@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - master
+      - dev-2022
 
 jobs:
   test-build:
