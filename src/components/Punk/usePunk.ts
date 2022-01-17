@@ -4,9 +4,9 @@ import { EyeColor, LookDirection } from "./types"
 export const PUNK_COLORS = ["#8c5851", "#8972b1", "#6a8494", "#75a475"]
 
 export function getRandomIntInclusive(min: number, max: number): number {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(
+    Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.floor(min)
+  )
 }
 
 export function removeItemAtIndex<T>(array: T[], item: T): T[] {
