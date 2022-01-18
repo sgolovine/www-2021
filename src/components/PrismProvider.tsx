@@ -48,21 +48,16 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => (
   </Highlight>
 )
 
-// Code Syntax Highlighting
-const components = {
-  pre: (preProps: any) => {
-    const props = preToCodeBlock(preProps)
-    if (props) {
-      return (
-        <CodeBlock codeString={props.codeString} language={props.language} />
-      )
-    }
-    return <pre {...preProps} />
-  },
+const Pre = (preProps: any) => {
+  const props = preToCodeBlock(preProps)
+  if (props) {
+    return <CodeBlock codeString={props.codeString} language={props.language} />
+  }
+  return <pre {...preProps} />
 }
 
 const PrismProvider: React.FC = ({ children }) => (
-  <MDXProvider components={components}>{children}</MDXProvider>
+  <MDXProvider components={{ pre: Pre }}>{children}</MDXProvider>
 )
 
 export default PrismProvider
