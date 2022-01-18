@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { withSnippetLayout } from "~/components/layout"
 import { ArrowLeft } from "~/icons/ArrowLeft"
+import PrismProvider from "~/components/PrismProvider"
 
 interface Props {
   pageContext: {
@@ -31,7 +32,9 @@ const SnippetTemplate: React.FC<Props> = ({ pageContext }) => {
         <h1 className="text-4xl font-bold">{meta.title}</h1>
       </div>
       <div className="prose mx-auto">
-        <MDXRenderer>{body}</MDXRenderer>
+        <PrismProvider>
+          <MDXRenderer>{body}</MDXRenderer>
+        </PrismProvider>
       </div>
     </>
   )
