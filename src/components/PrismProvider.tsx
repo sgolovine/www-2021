@@ -5,9 +5,12 @@
  */
 import { MDXProvider } from "@mdx-js/react"
 import classNames from "classnames"
+import copy from "copy-to-clipboard"
 import Highlight, { defaultProps, Language } from "prism-react-renderer"
 import vsDark from "prism-react-renderer/themes/vsDark"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { CheckmarkIcon } from "~/icons/CheckmarkIcon"
+import { CopyIcon } from "~/icons/CopyIcon"
 import * as languageIcons from "~/icons/languageIcons"
 
 interface CodeBlockProps {
@@ -48,6 +51,16 @@ function preToCodeBlock(preProps: any) {
 const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => {
   const [isHovering, setIsHovering] = useState<boolean>(false)
 
+  const [hasClicked, setHasClicked] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (hasClicked) {
+      setTimeout(() => {
+        setHasClicked(false)
+      }, 15000)
+    }
+  }, [hasClicked])
+
   const textHintClasses = classNames(
     "text-sm",
     "mr-2",
@@ -60,6 +73,13 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => {
       "opacity-0": !isHovering,
     }
   )
+
+  const handleClick = () => {
+    if (!hasClicked) {
+      setHasClicked(true)
+    }
+    copy(codeString)
+  }
 
   return (
     <Highlight
@@ -82,6 +102,13 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => {
                 >
                   {icon}
                 </div>
+                <button
+                  onClick={handleClick}
+                  type="button"
+                  className="p-1 mx-1"
+                >
+                  {hasClicked ? <CheckmarkIcon /> : <CopyIcon />}
+                </button>
               </div>
               {tokens.map((line, i) => (
                 <div {...getLineProps({ line, key: i })}>
