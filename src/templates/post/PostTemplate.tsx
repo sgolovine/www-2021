@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
+import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
 import { ExternalLink } from "~/components/common/ExternalLink"
 import { Subheader } from "~/components/common/Typography"
+import CodeBlock from "./CodeBlock"
 
 interface Props {
   pageContext: {
@@ -22,6 +25,33 @@ interface Props {
       postType: "local" | "remote"
     }[]
   }
+}
+
+function preToCodeBlock(preProps: any) {
+  if (preProps?.children?.props?.mdxType === "code") {
+    const { children: codeString, className = "" } = preProps.children.props
+
+    const match = className.match(/language-([\0-\uFFFF]*)/)
+
+    return {
+      codeString: codeString.trim(),
+      language: match != null ? match[1] : "",
+    }
+  }
+  return undefined
+}
+
+// Code Syntax Highlighting
+const components = {
+  pre: (preProps: any) => {
+    const props = preToCodeBlock(preProps)
+    if (props) {
+      return (
+        <CodeBlock codeString={props.codeString} language={props.language} />
+      )
+    }
+    return <pre {...preProps} />
+  },
 }
 
 const PostTemplate: React.FC<Props> = ({ pageContext }) => {
@@ -63,7 +93,9 @@ const PostTemplate: React.FC<Props> = ({ pageContext }) => {
         extraContent={renderExtraContent}
       >
         <div className="prose">
-          <MDXRenderer>{postBody}</MDXRenderer>
+          <MDXProvider components={components}>
+            <MDXRenderer>{postBody}</MDXRenderer>
+          </MDXProvider>
         </div>
       </PostLayout>
     </>

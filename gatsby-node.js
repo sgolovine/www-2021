@@ -1,7 +1,10 @@
 const path = require("path")
 const { v4: uuid } = require("uuid")
 
-const postTemplate = path.resolve(__dirname, "./src/templates/post.tsx")
+const postTemplate = path.resolve(
+  __dirname,
+  "./src/templates/post/PostTemplate.tsx"
+)
 const snippetTemplate = path.resolve(__dirname, "./src/templates/snippet.tsx")
 
 // eslint-disable-next-line import/no-dynamic-require
