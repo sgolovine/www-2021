@@ -36,7 +36,7 @@ collections:
 
           <!-- Make sure to change the language -->
 
-          ```js
+          ```javascript
           
 
           function foo() {

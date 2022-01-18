@@ -7,7 +7,7 @@ published: true
 Modify this snippet as needed
 
 <!-- Make sure to change the language -->
-```js
+```javascript
 const path = require("path")
 
 const postTemplate = path.resolve(__dirname, "./src/templates/post.tsx")
