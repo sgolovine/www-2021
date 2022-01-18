@@ -9,7 +9,7 @@ A simple helper to easily add breakpoints with styled components
 
 Helper:
 
-```js
+```javascript
 
 import { CSSObject, css } from "styled-components";
 
@@ -38,7 +38,7 @@ export const Breakpoint = (breakpoint: Sizes, styles: CSSObject) => css`
 Usage:
 
 
-```js
+```javascript
 
 const StyledThing = styled.div`
   ${Breakpoint('sm', {

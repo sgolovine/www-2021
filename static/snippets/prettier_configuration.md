@@ -21,7 +21,7 @@ Brief description of your code snippet
 `prettier.config.js`
 
 
-```js
+```javascript
 
 module.exports = {
   arrowParens: 'avoid',
