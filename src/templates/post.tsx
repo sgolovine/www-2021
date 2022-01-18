@@ -3,8 +3,6 @@ import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
-import { ExternalLink } from "~/components/common/ExternalLink"
-import { Subheader } from "~/components/common/Typography"
 import PrismProvider from "~/components/PrismProvider"
 
 interface Props {
@@ -31,23 +29,6 @@ const PostTemplate: React.FC<Props> = ({ pageContext }) => {
 
   const canonicalURL = `https://sunnygolovine.com${postMeta.path}`
 
-  const renderExtraContent = () => (
-    <div>
-      <Subheader>More Posts</Subheader>
-      <div className="flex flex-col">
-        {otherPosts.map(post => (
-          <ExternalLink
-            lg
-            label={post.title}
-            href={post.link}
-            external={post.postType === "remote"}
-            containerClassnames="py-2"
-          />
-        ))}
-      </div>
-    </div>
-  )
-
   return (
     <>
       <PostSEO
@@ -62,7 +43,7 @@ const PostTemplate: React.FC<Props> = ({ pageContext }) => {
         description={postMeta.description}
         date={postMeta.date}
         backRoute="/blog"
-        extraContent={renderExtraContent}
+        otherPosts={otherPosts}
       >
         <div className="prose">
           <PrismProvider>
