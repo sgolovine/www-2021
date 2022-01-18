@@ -7,7 +7,7 @@ published: true
 `babel.config.js` for Gatsby Based projects. Here make sure that the proper presets are added and installed
 
 <!-- Make sure to change the language -->
-```js
+```javascript
 
 module.exports = {
   presets: [
@@ -33,7 +33,7 @@ module.exports = {
 
 `babel.config.js` for React Native Projects. The primary change here are the presets
 
-```js
+```javascript
 
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],

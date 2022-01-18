@@ -3,14 +3,32 @@
  * This component provides prism syntax highlighting to any
  * MDXRenderer
  */
-import React from "react"
 import { MDXProvider } from "@mdx-js/react"
+import classNames from "classnames"
 import Highlight, { defaultProps, Language } from "prism-react-renderer"
 import vsDark from "prism-react-renderer/themes/vsDark"
+import React, { useState } from "react"
+import * as languageIcons from "~/icons/languageIcons"
 
 interface CodeBlockProps {
   codeString: string
   language: Language
+}
+
+function renderLanguageIcon(lang: Language) {
+  switch (lang) {
+    case "bash":
+      return <languageIcons.BashIcon />
+    case "markup":
+      return <languageIcons.HTMLIcon />
+    case "javascript":
+      return <languageIcons.JavascriptIcon />
+    case "json":
+      return <languageIcons.JsonIcon />
+    default:
+      // eslint-disable-next-line react/jsx-no-useless-fragment
+      return <></>
+  }
 }
 
 function preToCodeBlock(preProps: any) {
@@ -27,26 +45,58 @@ function preToCodeBlock(preProps: any) {
   return undefined
 }
 
-const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => (
-  <Highlight
-    {...defaultProps}
-    theme={vsDark}
-    code={codeString}
-    language={language}
-  >
-    {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre className={className} style={style}>
-        {tokens.map((line, i) => (
-          <div {...getLineProps({ line, key: i })}>
-            {line.map((token, key) => (
-              <span {...getTokenProps({ token, key })} />
-            ))}
+const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => {
+  const [isHovering, setIsHovering] = useState<boolean>(false)
+
+  const textHintClasses = classNames(
+    "text-sm",
+    "mr-2",
+    "m-0",
+    "p-0",
+    "transition-all",
+    "linear",
+    {
+      "opacity-100": isHovering,
+      "opacity-0": !isHovering,
+    }
+  )
+
+  return (
+    <Highlight
+      {...defaultProps}
+      theme={vsDark}
+      code={codeString}
+      language={language}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => {
+        const icon = renderLanguageIcon(language)
+        return (
+          <div>
+            <pre className={className} style={style}>
+              <div className="p-0 m-0 flex flex-row items-center justify-end">
+                <p className={textHintClasses}>{language}</p>
+                <div
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                  className="h-6 w-6"
+                >
+                  {icon}
+                </div>
+              </div>
+              {tokens.map((line, i) => (
+                <div {...getLineProps({ line, key: i })}>
+                  {line.map((token, key) => (
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </pre>
           </div>
-        ))}
-      </pre>
-    )}
-  </Highlight>
-)
+        )
+      }}
+    </Highlight>
+  )
+}
 
 const Pre = (preProps: any) => {
   const props = preToCodeBlock(preProps)

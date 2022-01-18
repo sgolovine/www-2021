@@ -10,7 +10,7 @@ Brief description of your code snippet
 
 Config for React Native
 
-```js
+```javascript
 
 module.exports = {
   env: {
@@ -89,7 +89,7 @@ module.exports = {
 
 For React Projects
 
-```js
+```javascript
 
 module.exports = {
   env: {
