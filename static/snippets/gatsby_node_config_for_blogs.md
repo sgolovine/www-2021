@@ -6,6 +6,8 @@ tags: javascript,react,gatsby
 published: true
 ---
 
+gatsby-node.js:
+
 ```javascript
 const path = require("path")
 

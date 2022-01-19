@@ -6,6 +6,8 @@ tags: react,react-native,javascript
 published: true
 ---
 
+React Web
+
 ```javascript
 module.exports = {
   presets: [
@@ -26,6 +28,8 @@ module.exports = {
   ],
 }
 ```
+
+React Native
 
 ```javascript
 module.exports = {

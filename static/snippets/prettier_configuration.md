@@ -6,7 +6,7 @@ tags: javascript,react
 published: true
 ---
 
-JSON Config
+JSON Config:
 
 ```json
 {
@@ -18,7 +18,7 @@ JSON Config
 
 
 
-JS Config
+JS Config:
 
 ```javascript
 
