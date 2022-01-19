@@ -1,0 +1,55 @@
+.punk-border-container {
+  /** Variables */
+  --punk-size: 256px;
+  --container-padding: 15px;
+  --container-size: calc(var(--punk-size) + var(--container-padding));
+  --container-border-radius: 7.5px;
+  --punk-svg-size: 120px;
+
+  /** Core Styling **/
+  height: var(--container-size);
+  width: var(--container-size);
+  padding: calc(var(--container-padding) / 2);
+  background-color: white;
+  border-radius: var(--container-border-radius);
+}
+
+.punk-container {
+  height: var(--punk-size);
+  width: var(--punk-size);
+  border-radius: var(--container-border-radius);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.punk-container-top {
+  /* Button padding */
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.punk-container-bottom {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.punk-svg-container {
+  width: var(--punk-svg-size);
+}
+
+.punk-button {
+  border: none;
+  background: none;
+}
+
+/* 
+ * This is required otherwise the punk will render
+ * With borders around every rect.
+ */
+#sgg-punk rect {
+  shape-rendering: crispEdges;
+}

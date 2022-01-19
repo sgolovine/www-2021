@@ -13,6 +13,10 @@ collections:
         label: "Snippet Title"
         widget: string
 
+      - name: description
+        label: "Snippet Description"
+        widget: text 
+
       - name: slug
         label: "Snippet Slug"
         widget: string
@@ -36,7 +40,7 @@ collections:
 
           <!-- Make sure to change the language -->
 
-          ```js
+          ```javascript
           
 
           function foo() {

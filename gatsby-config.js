@@ -15,15 +15,15 @@ module.exports = {
   },
   flags: {
     FAST_DEV: false,
-    PRESERVE_WEBPACK_CACHE: false,
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
     PARALLEL_SOURCING: false,
-    LMDB_STORE: false,
-    DEV_SSR: true,
+    DETECT_NODE_MUTATIONS: false,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,

@@ -3,11 +3,11 @@ export const defaultPostHeader = "Post"
 
 export const mobilePageHeaders = {
   "/": defaultHeader,
+  "/work": "Work",
   "/blog": "Blog",
   "/links": "Links",
   "/resume": "Resume",
   "/contact": "Contact",
-  "/guestbook": "Guestbook",
   "/snippets": "Snippets",
 }
 

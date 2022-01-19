@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import React from "react"
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 
 export const OutboundLink: React.FC<Props> = ({ href, name, className }) => (
   <a
-    className={`${className} hover:underline`}
+    className={classNames("hover:underline", className)}
     href={href}
     target="_blank"
     rel="noopener noreferrer"

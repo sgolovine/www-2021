@@ -5,26 +5,33 @@ const fs = require("fs")
 const path = require("path")
 
 const projectRoot = path.resolve(__dirname, "..")
-const cachePath = path.resolve(projectRoot, ".cache")
-const nodeModulesPath = path.resolve(projectRoot, "node_modules")
-const yarnErrorLogPath = path.resolve(projectRoot, "yarn-error.log")
-const publicPath = path.resolve(projectRoot, "public")
-const resumeDistPath = path.resolve(projectRoot, "resume-dist")
 
-function deleteDir(dirName, dirPath) {
+/**
+ * Add files here to be deleted by the script
+ * For deeply nested items, use path/to/file.tsx
+ */
+const config = [
+  ".cache",
+  "test.txt",
+  "node_modules",
+  "yarn-error.log",
+  "public",
+  "resume-dist",
+]
+
+function deleteArtifact(file) {
+  const artifactPath = path.resolve(projectRoot, file)
   try {
-    console.info(`Deleting ${dirName}`)
-    fs.rmdirSync(dirPath, { recursive: true })
+    if (fs.existsSync(artifactPath)) {
+      console.log(`Deleting: ${file}`)
+      fs.rmSync(artifactPath, { recursive: true })
+    } else {
+      console.log(`Skipping: ${file} (file does not exist)`)
+    }
   } catch (e) {
-    console.error(`Error deleting ${dirName}`)
-    console.error(e)
+    console.log(`Error: ${file}`)
+    console.log(e)
   }
 }
 
-;(() => {
-  deleteDir(".cache", cachePath)
-  deleteDir("node_modules", nodeModulesPath)
-  deleteDir("yarn-error.log", yarnErrorLogPath)
-  deleteDir("public", publicPath)
-  deleteDir("resume-dist", resumeDistPath)
-})()
+;(() => config.map(file => deleteArtifact(file)))()

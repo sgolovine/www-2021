@@ -1,5 +1,7 @@
 # sunnygolovine.com
 
+test change
+
 This is the codebase for my personal website: [sunnygolovine.com](https://sunnygolovine.com)
 
 - [sunnygolovine.com](#sunnygolovinecom)
@@ -34,20 +36,29 @@ See the previous versions of my personal websites:
 - [2019](https://github.com/sgolovine/glvn.co)
 - [2018](https://github.com/sgolovine/glvn.io)
 
+## 2022 Updates
+
+New Year! New Website? Most years I will build a new website, however this year I will just be updating this website. Some upcoming changes:
+
+- ~~New Homepage~~
+- New Resume
+- Better Blog Layout
+- Better Snippets Layout
+
 ## Development
 
 ### Pre-requisites
 
 Before running this project. Make sure that you have NodeJS 14+ installed. Also make sure you are running the latest version of NPM
 
-### Setting up your dev enviorment
+### Setting up your dev environment
 
 1. Make sure you have NodeJS 14+
-2. Copy `.env.example` to `.env.development` and replace the values with your own
-3. Install local dependencies (`npm install`)
+2. Copy `.env.example` to `.env` and replace the values with your own
+3. Install local dependencies (`yarn install`)
 4. Start the development server (`yarn start`)
 
-Note that when running in development, the contact form and guestbook will not work as they require functions. To test these features run `yarn start:netlify`
+Note that when running in development, the contact form will not work as it requires functions. To test these features run `yarn start:netlify`
 
 ### Configure Feature Flags
 

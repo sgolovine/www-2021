@@ -1,15 +1,14 @@
 ---
 title: Styled Components Breakpoint Helper
+description: A breakpoint helper for styled components.
 slug: styled-components-breakpoint-helper
 tags: styled-components, css
 published: true
 ---
-A simple helper to easily add breakpoints with styled components
-
 
 Helper:
 
-```js
+```javascript
 
 import { CSSObject, css } from "styled-components";
 
@@ -38,7 +37,7 @@ export const Breakpoint = (breakpoint: Sizes, styles: CSSObject) => css`
 Usage:
 
 
-```js
+```javascript
 
 const StyledThing = styled.div`
   ${Breakpoint('sm', {
