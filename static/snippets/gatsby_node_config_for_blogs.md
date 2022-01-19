@@ -1,12 +1,13 @@
 ---
 title: Gatsby Node Config For Blogs
+description: gatsby-node.js configuration for Gatsby sites that have a blog.
 slug: gatsby-blog
 tags: javascript,react,gatsby
 published: true
 ---
-Modify this snippet as needed
 
-<!-- Make sure to change the language -->
+gatsby-node.js:
+
 ```javascript
 const path = require("path")
 

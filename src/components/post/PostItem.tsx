@@ -5,12 +5,12 @@ import { ExternalLink } from "../common/ExternalLink"
 interface Props {
   path: string
   title: string
-  date: string | Date
-  description: string
+  date?: string | Date
+  description?: string
   external?: boolean
 }
 
-export const BlogItem: React.FC<Props> = ({
+export const PostItem: React.FC<Props> = ({
   path,
   title,
   date,
@@ -26,8 +26,8 @@ export const BlogItem: React.FC<Props> = ({
         href={path}
         label={title}
       />
-      <p>{formatPostDate(date)}</p>
+      {date && <p>{formatPostDate(date)}</p>}
     </div>
-    <p className="py-2">{description}</p>
+    {description && <p className="py-2">{description}</p>}
   </div>
 )

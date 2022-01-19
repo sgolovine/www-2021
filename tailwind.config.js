@@ -8,18 +8,30 @@ module.exports = {
         DEFAULT: {
           css: {
             color: theme("colors.brand-white"),
-            h1: { color: theme("colors.brand-yellow") },
-            h2: { color: theme("colors.brand-yellow") },
-            h3: { color: theme("colors.brand-yellow") },
-            h4: { color: theme("colors.brand-yellow") },
-            h5: { color: theme("colors.brand-yellow") },
-            h6: { color: theme("colors.brand-yellow") },
-
-            code: {
+            h1: {
               color: theme("colors.brand-yellow"),
             },
+            h2: {
+              color: theme("colors.brand-yellow"),
+            },
+            h3: {
+              color: theme("colors.brand-yellow"),
+            },
+            h4: {
+              color: theme("colors.brand-yellow"),
+            },
+            h5: {
+              color: theme("colors.brand-yellow"),
+            },
+            h6: {
+              color: theme("colors.brand-yellow"),
+            },
+
+            code: {
+              color: theme("colors.brand-blue"),
+            },
             a: {
-              color: theme("colors.brand-link"),
+              color: theme("colors.brand-yellow"),
             },
           },
         },

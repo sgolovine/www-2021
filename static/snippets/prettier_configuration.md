@@ -1,13 +1,12 @@
 ---
 title: Prettier Configuration
+description: Prettier configuration, comes with both JS and JSON variants.
 slug: prettier-config
 tags: javascript,react
 published: true
 ---
-Brief description of your code snippet
 
-<!-- Make sure to change the language -->
-`.prettierrc`
+JSON Config:
 
 ```json
 {
@@ -18,8 +17,8 @@ Brief description of your code snippet
 ```
 
 
-`prettier.config.js`
 
+JS Config:
 
 ```javascript
 

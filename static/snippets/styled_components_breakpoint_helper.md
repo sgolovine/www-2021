@@ -1,11 +1,10 @@
 ---
 title: Styled Components Breakpoint Helper
+description: A breakpoint helper for styled components.
 slug: styled-components-breakpoint-helper
 tags: styled-components, css
 published: true
 ---
-A simple helper to easily add breakpoints with styled components
-
 
 Helper:
 

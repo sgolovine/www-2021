@@ -1,13 +1,44 @@
 ---
-title: TSConfig For React Native Projects
-slug: ts-config-for-react-native-projects
+title: TSConfig For React Projects
+description: Typescript configuration for React Web and Native Projects.
+slug: ts-config-for-react-projects
 tags: react,javascript
 published: true
 ---
 
+React Web:
+
+```json
+  {
+  "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "lib": ["DOM", "ES5", "ES6"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", ".cache", "public"]
+}
+
+```
 
 
-<!-- Make sure to change the language -->
+React Native:
+
 ```json
   {
     "compileOnSave": true,

@@ -1,17 +1,15 @@
 ---
 title: ESLint Config for React/React Native
+description: This configuration will get you started with ESLint for either web or mobile project. Comes with package.json script and VSCode support.
 slug: eslint-config
 tags: react,react-native
+
 published: true
 ---
-Brief description of your code snippet
 
-<!-- Make sure to change the language -->
-
-Config for React Native
+React Native
 
 ```javascript
-
 module.exports = {
   env: {
     es6: true,
@@ -84,13 +82,11 @@ module.exports = {
     ],
   },
 };
-
 ```
 
-For React Projects
+React Web
 
 ```javascript
-
 module.exports = {
   env: {
     es6: true,
@@ -137,7 +133,6 @@ module.exports = {
     ],
   },
 };
-
 ```
 
 VSCode Configuration

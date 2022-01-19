@@ -1,14 +1,14 @@
 ---
-title: "Babel RC with Module Resolver Support "
+title: Babel RC with Module Resolver Support
+description: This BabelRC configuration for React and React Native comes with Module Resolver Support as well as the proper presets for web and mobile
 slug: babelrc-with-mod-resolver
 tags: react,react-native,javascript
 published: true
 ---
-`babel.config.js` for Gatsby Based projects. Here make sure that the proper presets are added and installed
 
-<!-- Make sure to change the language -->
+React Web
+
 ```javascript
-
 module.exports = {
   presets: [
     "babel-preset-gatsby",
@@ -27,14 +27,11 @@ module.exports = {
     ],
   ],
 }
-
 ```
 
-
-`babel.config.js` for React Native Projects. The primary change here are the presets
+React Native
 
 ```javascript
-
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
@@ -50,5 +47,4 @@ module.exports = {
     ],
   ],
 };
-
 ```
