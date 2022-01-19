@@ -4,8 +4,8 @@ import { Helmet } from "react-helmet"
 interface PostSEOProps {
   title: string
   description: string
-  canonicalURL: string
-  date: string
+  path: string
+  date?: string
 }
 
 const title = "Sunny Golovine"
@@ -46,10 +46,11 @@ const SEO = () => (
 export const PostSEO: React.FC<PostSEOProps> = ({
   title,
   description,
-  canonicalURL,
+  path,
   date,
 }) => {
-  const formattedDate = new Date(date).toISOString()
+  const formattedDate = date ? new Date(date).toISOString() : null
+  const canonicalURL = `https://sunnygolovine.com${path}`
   return (
     <Helmet>
       <title>{title}</title>
@@ -61,7 +62,9 @@ export const PostSEO: React.FC<PostSEOProps> = ({
       <meta name="twitter:description" content={description} />
 
       <meta name="og:author" content="Sunny Golovine" />
-      <meta name="og:published_time" content={formattedDate} />
+      {formattedDate && (
+        <meta name="og:published_time" content={formattedDate} />
+      )}
 
       <link rel="canonical" href={canonicalURL} />
     </Helmet>

@@ -1,9 +1,9 @@
 import React from "react"
 import { Header, Subheader } from "~/components/common/Typography"
+import { withMainLayout } from "~/components/layout"
+import { PostItem } from "~/components/post/PostItem"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
-import { withMainLayout } from "~/components/layout"
-import { BlogItem } from "~/components/blog/BlogItem"
 
 const BlogPage = () => {
   const { localPosts, remotePosts } = useBlogPosts()
@@ -17,7 +17,7 @@ const BlogPage = () => {
       {localPosts &&
         localPosts.length > 0 &&
         localPosts.map(post => (
-          <BlogItem
+          <PostItem
             path={post.path}
             title={post.title}
             date={post.date}
@@ -32,7 +32,7 @@ const BlogPage = () => {
       {remotePosts &&
         remotePosts.length > 0 &&
         remotePosts.map(post => (
-          <BlogItem
+          <PostItem
             path={post.path}
             title={post.title}
             date={post.date}

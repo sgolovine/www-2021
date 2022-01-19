@@ -1,9 +1,9 @@
 import classNames from "classnames"
 import React, { useState } from "react"
-import { BlogItem } from "~/components/blog/BlogItem"
 import { HomeNav } from "~/components/home/HomeNav"
 import MobileMenu from "~/components/layout/mobileMenu/MobileMenu"
 import { LinkItem } from "~/components/links/LinkItem"
+import { PostItem } from "~/components/post/PostItem"
 import Punk from "~/components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
 import useBlogPosts from "~/hooks/useBlogPosts"
@@ -106,7 +106,7 @@ const IndexPage = () => {
         <div className={sectionClasses}>
           <h2 className={headingClasses}>Recent Posts</h2>
           {recentPosts.map(post => (
-            <BlogItem
+            <PostItem
               path={post.path}
               title={post.title}
               date={post.date}

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import React from "react"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
 import PrismProvider from "~/components/PrismProvider"
@@ -27,15 +27,13 @@ interface Props {
 const PostTemplate: React.FC<Props> = ({ pageContext }) => {
   const { postBody, postMeta, otherPosts } = pageContext
 
-  const canonicalURL = `https://sunnygolovine.com${postMeta.path}`
-
   return (
     <>
       <PostSEO
         title={postMeta.title}
         description={postMeta.description}
-        canonicalURL={canonicalURL}
         date={postMeta.date}
+        path={postMeta.path}
       />
       <PostLayout
         showAuthor

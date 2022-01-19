@@ -7,8 +7,9 @@ export interface SnippetsQuery {
         id: string
         frontmatter: {
           title: string
-          tags: string
+          // tags: string
           slug: string
+          description: string
         }
       }
     }[]
@@ -29,7 +30,7 @@ export const useSnippets = () => {
             id
             frontmatter {
               title
-              tags
+              description
               slug
             }
           }
@@ -41,7 +42,8 @@ export const useSnippets = () => {
   const snippets = snippetsQuery.allMdx.edges.map(item => ({
     id: item.node.id,
     title: item.node.frontmatter.title,
-    tags: item.node.frontmatter.tags.split(","),
+    // tags: item.node.frontmatter.tags.split(","),
+    description: item.node.frontmatter.description,
     path: `/snippets/snippet/${item.node.frontmatter.slug}`,
   }))
 

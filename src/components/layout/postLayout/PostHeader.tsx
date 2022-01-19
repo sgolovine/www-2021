@@ -33,9 +33,11 @@ const PostHeader: React.FC<HeaderProps> = ({
         {title}
       </h1>
     </div>
-    <div className="my-4 border-2 border-slate-600 p-4 rounded-lg">
-      <p className="text-lg">{description}</p>
-    </div>
+    {description && (
+      <div className="my-4 border-2 border-slate-600 p-4 rounded-lg">
+        <p className="text-lg">{description}</p>
+      </div>
+    )}
   </div>
 )
 

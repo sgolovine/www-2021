@@ -57,6 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               title
               slug
+              description
             }
             body
           }
