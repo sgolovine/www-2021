@@ -1,13 +1,11 @@
 ---
 title: TSConfig For React Projects
+description: Typescript configuration for React web projects
 tags: react,javascript
 slug: ts-config-for-react-projects
 published: true
 ---
 
-TSConfig.json for React Web Projects
-
-<!-- Make sure to change the language -->
 ```json
   {
   "compilerOptions": {

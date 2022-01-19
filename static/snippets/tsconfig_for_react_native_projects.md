@@ -1,13 +1,11 @@
 ---
 title: TSConfig For React Native Projects
+description: Typescript configuration for React Native Projects.
 slug: ts-config-for-react-native-projects
 tags: react,javascript
 published: true
 ---
 
-
-
-<!-- Make sure to change the language -->
 ```json
   {
     "compileOnSave": true,
