@@ -42,8 +42,8 @@ New Year! New Website? Most years I will build a new website, however this year 
 
 - ~~New Homepage~~
 - New Resume
-- Better Blog Layout
-- Better Snippets Layout
+- ~~Better Blog Layout~~
+- ~~Better Snippets Layout~~
 
 ## Development
 
