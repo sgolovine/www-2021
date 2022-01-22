@@ -1,11 +1,11 @@
+import { useLocation } from "@reach/router"
 import React, { useEffect, useState } from "react"
 import useMedia from "use-media"
-import { useLocation } from "@reach/router"
+import { defaultHeader } from "~/defines/pageHeaders"
+import { getPageHeader } from "~/helpers/getHeader"
 import { CloseIcon } from "~/icons/Close"
 import { Menu } from "~/icons/Menu"
 import MobileMenu from "../mobileMenu/MobileMenu"
-import { getPageHeader } from "~/helpers/getHeader"
-import { defaultHeader } from "~/defines/pageHeaders"
 
 export const Header: React.FC = () => {
   const location = useLocation()
@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
     <>
       <div className="text-left px-4 md:px-0 md:text-right py-4 md:py-16 flex flex-row justify-between items-center">
         <div className="pr-4 md:pr-0">
-          <h1 className="text-3xl">{headerText}</h1>
+          <h1 className="font-heading font-extrabold text-3xl">{headerText}</h1>
         </div>
         <button
           type="button"
