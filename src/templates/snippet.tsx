@@ -28,7 +28,7 @@ const SnippetTemplate: React.FC<Props> = ({ pageContext }) => {
       <PostLayout
         title={meta.title}
         description={meta.description}
-        backRoute="/snippets"
+        type="snippet"
       >
         <div className="prose mx-auto">
           <PrismProvider>
