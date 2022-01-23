@@ -40,8 +40,8 @@ const PostTemplate: React.FC<Props> = ({ pageContext }) => {
         title={postMeta.title}
         description={postMeta.description}
         date={postMeta.date}
-        backRoute="/blog"
         otherPosts={otherPosts}
+        type="post"
       >
         <div className="prose">
           <PrismProvider>

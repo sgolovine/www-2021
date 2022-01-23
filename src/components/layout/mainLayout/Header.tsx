@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react"
 import useMedia from "use-media"
 import { defaultHeader } from "~/defines/pageHeaders"
 import { getPageHeader } from "~/helpers/getHeader"
-import { CloseIcon } from "~/icons/Close"
-import { Menu } from "~/icons/Menu"
 import MobileMenu from "../mobileMenu/MobileMenu"
+import { MobileMenuButton } from "../mobileMenu/MobileMenuIcon"
 
 export const Header: React.FC = () => {
   const location = useLocation()
@@ -29,13 +28,11 @@ export const Header: React.FC = () => {
         <div className="pr-4 md:pr-0">
           <h1 className="font-heading font-extrabold text-3xl">{headerText}</h1>
         </div>
-        <button
-          type="button"
+
+        <MobileMenuButton
+          open={mobMenuOpen}
           onClick={() => setMobMenuOpen(!mobMenuOpen)}
-          className="block md:hidden"
-        >
-          {mobMenuOpen ? <CloseIcon /> : <Menu />}
-        </button>
+        />
       </div>
       {mobMenuOpen && showMobileMenu && (
         <MobileMenu closeMenu={() => setMobMenuOpen(false)} />

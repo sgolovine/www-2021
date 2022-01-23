@@ -2,14 +2,13 @@ import classNames from "classnames"
 import React, { useState } from "react"
 import { HomeNav } from "~/components/home/HomeNav"
 import MobileMenu from "~/components/layout/mobileMenu/MobileMenu"
+import { MobileMenuButton } from "~/components/layout/mobileMenu/MobileMenuIcon"
 import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
 import Punk from "~/components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
 import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
-import { CloseIcon } from "~/icons/Close"
-import { Menu } from "~/icons/Menu"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -39,12 +38,10 @@ const IndexPage = () => {
   return (
     <div className="max-w-3xl mx-auto my-4">
       <div className="flex md:hidden p-4 flex-row justify-end items-center">
-        <button
-          type="button"
+        <MobileMenuButton
+          open={mobileMenuOpen}
           onClick={() => setMobileMenuOpen(prevState => !prevState)}
-        >
-          {mobileMenuOpen ? <CloseIcon /> : <Menu />}
-        </button>
+        />
       </div>
       <div className="block md:hidden">
         {mobileMenuOpen && (

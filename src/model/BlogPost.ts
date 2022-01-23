@@ -14,3 +14,5 @@ export type OtherPosts = {
   date: string
   postType: "local" | "remote"
 }
+
+export type PostType = "post" | "snippet"
