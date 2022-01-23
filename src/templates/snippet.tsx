@@ -1,8 +1,8 @@
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
+import { PrismProvider } from "~/components/codeblocks"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
-import PrismProvider from "~/components/PrismProvider"
 
 interface Props {
   pageContext: {

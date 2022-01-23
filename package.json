@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "dev": "run-p start-cms-proxy start",
     "build": "gatsby build",
     "dry-build": "NODE_ENV=development yarn fetch-dry-build-files && gatsby build",
     "start": "gatsby develop",
@@ -25,6 +26,7 @@
     "cms:lint": "yamllint ./static/admin/_config/*.yml",
     "fetch-remote-posts": "node ./scripts/fetch-remote-blog-posts.js",
     "fetch-dry-build-files": "node ./scripts/generate-dry-build-files.js",
+    "start-cms-proxy": "netlify-cms-proxy-server",
     "prestart": "yarn cms:generate:dev && yarn fetch-remote-posts",
     "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts",
     "postinstall": "patch-package"
@@ -90,6 +92,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "netlify-cms-proxy-server": "^1.3.23",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.4.7",
     "postcss": "^8.4.5",

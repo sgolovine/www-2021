@@ -1,9 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/**
- * This component provides prism syntax highlighting to any
- * MDXRenderer
- */
-import { MDXProvider } from "@mdx-js/react"
 import classNames from "classnames"
 import copy from "copy-to-clipboard"
 import Highlight, { defaultProps, Language } from "prism-react-renderer"
@@ -11,44 +6,17 @@ import vsDark from "prism-react-renderer/themes/vsDark"
 import React, { useEffect, useState } from "react"
 import { CheckmarkIcon } from "~/icons/CheckmarkIcon"
 import { CopyIcon } from "~/icons/CopyIcon"
-import * as languageIcons from "~/icons/languageIcons"
+import { renderLanguageIcon } from "./helpers"
 
 interface CodeBlockProps {
   codeString: string
   language: Language
 }
 
-function renderLanguageIcon(lang: Language) {
-  switch (lang) {
-    case "bash":
-      return <languageIcons.BashIcon />
-    case "markup":
-      return <languageIcons.HTMLIcon />
-    case "javascript":
-      return <languageIcons.JavascriptIcon />
-    case "json":
-      return <languageIcons.JsonIcon />
-    default:
-      // eslint-disable-next-line react/jsx-no-useless-fragment
-      return <></>
-  }
-}
-
-function preToCodeBlock(preProps: any) {
-  if (preProps?.children?.props?.mdxType === "code") {
-    const { children: codeString, className = "" } = preProps.children.props
-
-    const match = className.match(/language-([\0-\uFFFF]*)/)
-
-    return {
-      codeString: codeString.trim(),
-      language: match != null ? match[1] : "",
-    }
-  }
-  return undefined
-}
-
-const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({
+  codeString,
+  language,
+}) => {
   const [isHovering, setIsHovering] = useState<boolean>(false)
 
   const [hasClicked, setHasClicked] = useState<boolean>(false)
@@ -124,17 +92,3 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ codeString, language }) => {
     </Highlight>
   )
 }
-
-const Pre = (preProps: any) => {
-  const props = preToCodeBlock(preProps)
-  if (props) {
-    return <CodeBlock codeString={props.codeString} language={props.language} />
-  }
-  return <pre {...preProps} />
-}
-
-const PrismProvider: React.FC = ({ children }) => (
-  <MDXProvider components={{ pre: Pre }}>{children}</MDXProvider>
-)
-
-export default PrismProvider

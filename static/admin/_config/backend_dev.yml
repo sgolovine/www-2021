@@ -1,2 +1,4 @@
 backend:
-  name: test-repo
+  name: git-gateway
+
+local_backend: true
