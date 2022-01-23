@@ -6,7 +6,6 @@ import vsDark from "prism-react-renderer/themes/vsDark"
 import React, { useEffect, useState } from "react"
 import { CheckmarkIcon } from "~/icons/CheckmarkIcon"
 import { CopyIcon } from "~/icons/CopyIcon"
-import { renderLanguageIcon } from "./helpers"
 
 interface CodeBlockProps {
   codeString: string
@@ -17,8 +16,6 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   codeString,
   language,
 }) => {
-  const [isHovering, setIsHovering] = useState<boolean>(false)
-
   const [hasClicked, setHasClicked] = useState<boolean>(false)
 
   useEffect(() => {
@@ -30,16 +27,17 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   }, [hasClicked])
 
   const textHintClasses = classNames(
-    "text-sm",
+    "text-xs",
     "mr-2",
     "m-0",
-    "p-0",
+    "p-1",
+    "rounded-sm",
     "transition-all",
     "linear",
-    {
-      "opacity-100": isHovering,
-      "opacity-0": !isHovering,
-    }
+    "text-gray-900",
+    "uppercase",
+    "font-bold",
+    "bg-brand-yellow"
   )
 
   const handleClick = () => {
@@ -56,39 +54,25 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       code={codeString}
       language={language}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        const icon = renderLanguageIcon(language)
-        return (
-          <div>
-            <pre className={className} style={style}>
-              <div className="p-0 m-0 flex flex-row items-center justify-end">
-                <p className={textHintClasses}>{language}</p>
-                <div
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                  className="h-6 w-6"
-                >
-                  {icon}
-                </div>
-                <button
-                  onClick={handleClick}
-                  type="button"
-                  className="p-1 mx-1"
-                >
-                  {hasClicked ? <CheckmarkIcon /> : <CopyIcon />}
-                </button>
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <div>
+          <pre className={className} style={style}>
+            <div className="p-0 m-0 flex flex-row items-center justify-end">
+              <p className={textHintClasses}>{language}</p>
+              <button onClick={handleClick} type="button" className="p-1 mx-1">
+                {hasClicked ? <CheckmarkIcon /> : <CopyIcon />}
+              </button>
+            </div>
+            {tokens.map((line, i) => (
+              <div {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
               </div>
-              {tokens.map((line, i) => (
-                <div {...getLineProps({ line, key: i })}>
-                  {line.map((token, key) => (
-                    <span {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
-            </pre>
-          </div>
-        )
-      }}
+            ))}
+          </pre>
+        </div>
+      )}
     </Highlight>
   )
 }
