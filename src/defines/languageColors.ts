@@ -5,9 +5,3 @@ export const languageColors: Partial<Record<Language, string>> = {
   javascript: "#F7DF1E",
   json: "#000000",
 }
-
-// export enum LanguageColors {
-//   Html = "#E34F26",
-//   Javascript = "#F7DF1E",
-//   Json = "#000000",
-// }

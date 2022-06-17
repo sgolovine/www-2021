@@ -28,8 +28,7 @@
     "fetch-dry-build-files": "node ./scripts/generate-dry-build-files.js",
     "start-cms-proxy": "netlify-cms-proxy-server",
     "prestart": "yarn cms:generate:dev && yarn fetch-remote-posts",
-    "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts",
-    "postinstall": "patch-package"
+    "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts"
   },
   "dependencies": {
     "@mdx-js/mdx": "v1",
@@ -44,7 +43,6 @@
     "gatsby-plugin-image": "^2.16.1",
     "gatsby-plugin-mdx": "^3.16.1",
     "gatsby-plugin-netlify-cms": "^6.16.0",
-    "gatsby-plugin-plausible": "^0.0.7",
     "gatsby-plugin-postcss": "^5.16.0",
     "gatsby-plugin-preact": "^6.16.0",
     "gatsby-plugin-react-helmet": "^5.16.0",
@@ -95,7 +93,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "netlify-cms-proxy-server": "^1.3.24",
     "npm-run-all": "^4.1.5",
-    "patch-package": "^6.4.7",
     "postcss": "^8.4.14",
     "prettier": "2.7.1",
     "serve": "^13.0.2",
