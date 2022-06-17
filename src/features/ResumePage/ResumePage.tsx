@@ -1,5 +1,5 @@
 import React from "react"
-import { withMainLayout } from "~/components/layout"
+import { withNewLayout } from "~/components/layout"
 import { PageLayout } from "./components/PageLayout"
 import ResumePageHeader from "./components/ResumeHeader"
 import { SectionLayout } from "./components/SectionLayout"
@@ -43,4 +43,4 @@ const ResumePage: React.FC = () => {
 }
 
 // ts-prune-ignore-next
-export default withMainLayout(ResumePage)
+export default withNewLayout(ResumePage)

@@ -1,6 +1,6 @@
 import React from "react"
-import { Header } from "~/components/common/Typography"
-import { withMainLayout } from "~/components/layout"
+import { Header } from "~/components/common/Header"
+import { withNewLayout } from "~/components/layout"
 import { WorkItem } from "~/components/work/WorkItem"
 import { useData } from "~/hooks/useData"
 
@@ -9,7 +9,7 @@ const WorkPage: React.FC = () => {
 
   return (
     <>
-      <Header>Work</Header>
+      <Header title="Work" />
       <div>
         {siteData.work_data.map((item, index) => (
           <WorkItem
@@ -25,4 +25,4 @@ const WorkPage: React.FC = () => {
   )
 }
 
-export default withMainLayout(WorkPage)
+export default withNewLayout(WorkPage)

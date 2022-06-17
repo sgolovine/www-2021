@@ -8,7 +8,7 @@ const ResumePageHeader = () => {
   }
 
   return (
-    <div className="flex flex-row justify-between items-center">
+    <div className="flex flex-row justify-between items-center my-4">
       <Header>Resume</Header>
       <Button title="Download PDF" onClick={handleDownload} />
     </div>
