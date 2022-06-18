@@ -71,4 +71,5 @@ export const PostSEO: React.FC<PostSEOProps> = ({
   )
 }
 
+// ts-prune-ignore-next
 export default SEO

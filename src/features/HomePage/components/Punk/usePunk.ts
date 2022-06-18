@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import { EyeColor, LookDirection } from "./types"
 
-export const PUNK_COLORS = ["#8c5851", "#8972b1", "#6a8494", "#75a475"]
+const PUNK_COLORS = ["#8c5851", "#8972b1", "#6a8494", "#75a475"]
 
-export function getRandomIntInclusive(min: number, max: number): number {
+function getRandomIntInclusive(min: number, max: number): number {
   return Math.floor(
     Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.floor(min)
   )
 }
 
-export function removeItemAtIndex<T>(array: T[], item: T): T[] {
+function removeItemAtIndex<T>(array: T[], item: T): T[] {
   const index = array.indexOf(item)
   return [...array.slice(0, index), ...array.slice(index + 1)]
 }
