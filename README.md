@@ -117,14 +117,14 @@ This project uses [npm-check-update](https://www.npmjs.com/package/npm-check-upd
 
 This project uses [depcheck](https://www.npmjs.com/package/depcheck) to check for unused dependencies.
 
-1. Run `npx depcheck` to check for updates
+1. Run `yarn find-unused-packages` to check for updates
 2. Fix any dependency issues (stay vigilant for false positives)
 
 ### Pruning
 
 This project uses [ts-prune]("https://github.com/nadeesha/ts-prune") to check for any dead code paths.
 
-1. Run `npx ts-prune`
+1. Run `yarn find-unused-code`
 2. Remove any unused code (stay vigilant for false positives)
 
 ## Resume

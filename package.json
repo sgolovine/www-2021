@@ -40,6 +40,7 @@
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
+    "dayjs": "^1.11.3",
     "gatsby": "^4.16.0",
     "gatsby-plugin-image": "^2.16.1",
     "gatsby-plugin-mdx": "^3.16.1",
@@ -68,6 +69,7 @@
   "devDependencies": {
     "@alexlafroscia/yaml-merge": "^4.1.0",
     "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@types/classnames": "^2.3.1",

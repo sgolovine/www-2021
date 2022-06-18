@@ -1,3 +1,16 @@
+export type ResumeWorkItem = {
+  name: string
+  url?: string
+  startDate: string
+  endDate: string
+  positions: {
+    position: string
+    startDate?: string
+    endDate?: string
+    summary: string[]
+  }[]
+}
+
 export interface Resume {
   basics: {
     name: string
@@ -12,18 +25,7 @@ export interface Resume {
     >
     profiles: Record<"network" | "username" | "url", string>[]
   }
-  work: {
-    name: string
-    url?: string
-    startDate: string
-    endDate: string
-    positions: {
-      position: string
-      startDate?: string
-      endDate?: string
-      summary: string[]
-    }[]
-  }[]
+  work: ResumeWorkItem[]
   education: Record<
     "institution" | "url" | "area" | "studyType" | "startDate" | "endDate",
     string
