@@ -1,0 +1,130 @@
+{
+  "$schema": "schema.json",
+  "basics": {
+    "name": "Sunny Golovine",
+    "label": "Software Engineering Manager",
+    "image": "",
+    "email": "sunny@golovinemail.org",
+    "phone": "(678) 646-2358",
+    "url": "https://sunnygolovine.com",
+    "summary": "A brief summary of me. This is a placeholder for now",
+    "location": {
+      "address": "1235 S Birch St",
+      "postalCode": "80246",
+      "city": "Denver",
+      "countryCode": "US",
+      "region": "Colorado"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "SunnyGolovine",
+        "url": "https://linkedin.com/in/SunnyGolovine"
+      },
+      {
+        "network": "Github",
+        "username": "sgolovine",
+        "url": "https://github.com/sgolovine"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Ascendum Solutions",
+      "url": "https://ascendum.com",
+      "startDate": "2020-03-20",
+      "endDate": "PRESENT",
+      "positions": [
+        {
+          "position": "Software Engineering Manager",
+          "startDate": "2022-02-02",
+          "endDate": "PRESENT",
+          "summary": ["Some Descriptions Here"]
+        },
+        {
+          "position": "Technical Lead",
+          "startDate": "2021-06-01",
+          "endDate": "2022-02-01",
+          "summary": ["Some Descriptions Here"]
+        },
+        {
+          "position": "Senior Software Engineer",
+          "startDate": "2020-03-20",
+          "endDate": "2021-06-01",
+          "summary": ["Some Descriptions Here"]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Georgia Southern University",
+      "url": "https://georgiasouthern.edu",
+      "area": "Computer Science",
+      "studyType": "Bachelor",
+      "startDate": "2015-01-01",
+      "endDate": "2017-05-31"
+    },
+    {
+      "institution": "Georgia State University",
+      "url": "https://perimeter.gsu.edu",
+      "area": "Science",
+      "studyType": "Associates",
+      "startDate": "2012-09-01",
+      "endDate": "2014-12-01"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web Development",
+      "level": "Senior",
+      "keywords": ["HTML", "CSS", "Javascript", "React", "Svelte", "ViteJS"]
+    },
+    {
+      "name": "Mobile Development",
+      "level": "Senior",
+      "keywords": ["React Native"]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Mid",
+      "keywords": ["NodeJS", "Firebase", "ExpressJS"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Crewsum",
+      "description": "A SaaS application for helping recruiters keep track of placements, track time, and send out invoices to clients.",
+      "highlights": [
+        "Frontend built using React and MaterialUI",
+        "Backend built using Express.JS",
+        "Hosted on Firebase",
+        "Backend uses cloud functions",
+        "Firestore and Realtime DB used for storing user and app data"
+      ],
+      "keywords": ["React", "Serverless", "ExpressJS", "Firebase"]
+    },
+    {
+      "name": "TipTrack",
+      "description": "An iOS app for tracking tips",
+      "highlights": [
+        "Frontend built using React Native",
+        "All data stored on the users device",
+        "Users can create their own metrics, filtering tips through a number of criteria",
+        "Graphs used to visualize earnings, hours worked and more"
+      ],
+      "keywords": ["iOS", "React Native"]
+    },
+    {
+      "name": "Awesome Devtools",
+      "description": "A website for finding great web developer tools",
+      "highlights": [
+        "Frontend built with React (GatsbyJS)",
+        "All data hosted locally, no backend for fetching main data",
+        "FaunaDB used for gathering user submissions",
+        "Wrote a custom UI for approving/rejecting user submissions"
+      ],
+      "keywords": ["React", "Gatsby"]
+    }
+  ]
+}
