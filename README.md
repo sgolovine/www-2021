@@ -126,3 +126,10 @@ This project uses [ts-prune]("https://github.com/nadeesha/ts-prune") to check fo
 
 1. Run `npx ts-prune`
 2. Remove any unused code (stay vigilant for false positives)
+
+## Resume
+
+The new resume is stored in `static/resume`. Inside you will find two files:
+
+- resume.json: This is the actual resume. All data for the resume is stored here.
+- schema.json: This is the schema for the resume. It's a heavily modified version of [JSON Resume](https://jsonresume.org/schema/)

@@ -39,19 +39,70 @@
           "position": "Software Engineering Manager",
           "startDate": "2022-02-02",
           "endDate": "PRESENT",
-          "summary": ["Some Descriptions Here"]
+          "summary": [
+            "Managed a team of 4 direct reports",
+            "Collaborated with other managers on day to day managerial tasks",
+            "Engaged with team members to implement personal growth goals for the year, checking in with them throughout the year to continue working on their goals",
+            "Worked to improve frontend team velocity, implementing a number of strategies that resulted in the team having 50% higher velocity on story cards"
+          ]
         },
         {
           "position": "Technical Lead",
           "startDate": "2021-06-01",
-          "endDate": "2022-02-01",
-          "summary": ["Some Descriptions Here"]
+          "endDate": "PRESENT",
+          "summary": [
+            "Led a frontend team in creating a platform for a Fortune 100 company. Utilized React and React Native to build both web and mobile applications for the client.",
+            "Architected a number of solutions to combat technical debt from a very early stage, resulting in far less tech debt in the long run and higher team productivity as a result",
+            "Led several smaller efforts to build out additional features in the primary mobile app of a Fortune 100 company.",
+            "Coached several mid-level and junior developers on the team, ensuring that they were equipped for success and assisting them in resolving blockers"
+          ]
         },
         {
           "position": "Senior Software Engineer",
           "startDate": "2020-03-20",
           "endDate": "2021-06-01",
-          "summary": ["Some Descriptions Here"]
+          "summary": [
+            "Worked on a team to develop a Greenfield React Native application for a Fortune 500 company in the healthcare space. Introduced new architectural ideas that saved the development team time in implementing key feature in the app",
+            "Collaborated with DevOps to build a robust deployment pipeline able to serve multiple environments and branch level versioning, allowing QA to quickly install and test developer code and allowing seamless demo progress of the app with the client",
+            "Oversaw the technical feasibility of new features suggested by the client as well as estimating the time and bandwidth required for implementation. Worked with leadership, design and QA to ensure that project deadlines were met",
+            "Implemented key features including push notifications, mapping, and integrations with 3rd party providers. Ensured that both iOS and Android users on new and older devices received a performant and consistent experience",
+            "Wrote highly portable code, allowing features from one app to be quickly ported to other apps, allowing our client to go live with key features quicker"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cox Automotive",
+      "url": "https://coxautoinc.com",
+      "startDate": "2018-08-01",
+      "endDate": "2020-03-01",
+      "positions": [
+        {
+          "position": "Software Engineer",
+          "summary": [
+            "Utilized technologies including: React Native, ReactJS, ExpressJS, Ruby on Rails, AWS (S3, Cloudfront, Dynamo, Lambda).",
+            "Worked to build and maintain several key applications in the Cox Automotive ecosystem including: The CAFS App, Next Inspect, Vehicle Data Service, Disclosures API, Order a Concierge, Direct Sale and Vehicle Address Book. Combined these products helped the company increase digital sales 20%.",
+            "Led development and deployment of NextInspect. The commercial variant of the CAFS App.",
+            "Implemented a deployment process for the CAFS App that reduced the number of issues during deploys by 50% and led to a smoother and better document deployment procedure.",
+            "Built the theming system within the CAFS App, allowing the app to be themed for client use.",
+            "Excelled in providing cost and time effective solutions for a number of issues, business use cases and features to our apps and services."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OnQ",
+      "startDate": "2017-06-01",
+      "endDate": "2018-08-01",
+      "positions": [
+        {
+          "position": "Junior Software Engineer",
+          "summary": [
+            "Leveraged technologies including: React Native, ReactJS, DraftJS, Firebase, Java (Spring Framework)",
+            "Collaborated alongside senior developers on several key key projects in the OnQ ecosystem",
+            "Led an effort to fork and maintain an open source WYSIWYG editor, adding new features and theming support. Used within the OnQ web platform.",
+            "Continually worked with product owners and UX designers to enhance features and usability of company products and tools."
+          ]
         }
       ]
     }
