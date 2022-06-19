@@ -13,16 +13,11 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
     "typecheck": "tsc",
-    "lint": "eslint 'src/**/*.{ts,tsx}' 'scripts/**/*.js' 'resume/**/*.tsx'",
+    "lint": "eslint 'src/**/*.{ts,tsx}' 'scripts/**/*.js'",
     "ci": "run-s format typecheck lint find-unused-code find-unused-packages",
     "find-unused-code": "ts-prune -p ./tsconfig.json --error",
     "find-unused-packages": "depcheck --config=./.depcheckrc.yml",
     "serve": "gatsby serve",
-    "resume:start": "vite resume",
-    "resume:build": "vite build resume --outDir ../resume-dist",
-    "resume:serve": "serve -s resume-dist",
-    "resume:export": "node ./scripts/generate-resume.js",
-    "generate-resume": "npm-run-all resume:build --parallel resume:serve resume:export",
     "cms:generate:dev": "NODE_ENV=development node ./scripts/generate-cms-config.js",
     "cms:generate:prod": "NODE_ENV=production node ./scripts/generate-cms-config.js",
     "cms:lint": "yamllint ./static/admin/_config/*.yml",
@@ -73,7 +68,6 @@
     "@babel/preset-typescript": "^7.17.12",
     "@types/classnames": "^2.3.1",
     "@types/mdx-js__react": "^1.5.5",
-    "@types/react-dom": "^17",
     "@types/react-headroom": "^2.2.2",
     "@types/react-helmet": "^6.1.5",
     "@types/uuid": "^8.3.4",
@@ -100,11 +94,7 @@
     "tailwindcss": "^3.1.3",
     "ts-prune": "^0.10.3",
     "typescript": "^4.7.3",
-    "vite": "^2.9.12",
     "yaml-lint": "^1.7.0"
-  },
-  "optionalDependencies": {
-    "puppeteer": "^14.4.1"
   },
   "engines": {
     "node": ">=16.13.x",
