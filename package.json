@@ -27,7 +27,8 @@
     "prestart": "yarn cms:generate:dev && yarn fetch-remote-posts",
     "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts",
     "resume:dev": "node ./scripts/resume/devServer.js",
-    "resume:build": "node ./scripts/resume/buildServer.js"
+    "resume:build": "node ./scripts/resume/buildServer.js",
+    "resume:export": "echo 'command not implemented yet' && exit 0"
   },
   "dependencies": {
     "@mdx-js/mdx": "v1",
