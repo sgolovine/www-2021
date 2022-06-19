@@ -3,7 +3,12 @@ module.exports = {
     "babel-preset-gatsby",
     "@babel/preset-react",
     "@babel/preset-typescript",
-    "@babel/preset-env",
+    [
+      "@babel/preset-env",
+      {
+        loose: true,
+      },
+    ],
   ],
   plugins: [
     [
