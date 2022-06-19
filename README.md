@@ -40,9 +40,9 @@ See the previous versions of my personal websites:
 
 New Year! New Website? Most years I will build a new website, however this year I will just be updating this website. Some upcoming changes:
 
-- NEW LAYOUT!
+- ~~NEW LAYOUT!~~
 - ~~New Homepage~~
-- New Resume
+- ~~New Resume~~
 - ~~Better Blog Layout~~
 - ~~Better Snippets Layout~~
 
