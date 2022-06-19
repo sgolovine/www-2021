@@ -1,15 +1,35 @@
+type ResumeWorkItemPosition = {
+  position: string
+  startDate?: string
+  endDate?: string
+  summary: string[]
+}
+
 export type ResumeWorkItem = {
   name: string
   url?: string
   startDate: string
   endDate: string
-  positions: {
-    position: string
-    startDate?: string
-    endDate?: string
-    summary: string[]
-  }[]
+  positions: ResumeWorkItemPosition[]
 }
+
+export type ResumeSkillItem = {
+  name: string
+  level: string
+  keywords: string[]
+}
+
+export type ResumeProjectsItem = {
+  name: string
+  description: string
+  highlights: string[]
+  keywords: string[]
+}
+
+export type ResumeEducationItem = Record<
+  "institution" | "url" | "area" | "studyType" | "startDate" | "endDate",
+  string
+>
 
 export interface Resume {
   basics: {
@@ -26,19 +46,7 @@ export interface Resume {
     profiles: Record<"network" | "username" | "url", string>[]
   }
   work: ResumeWorkItem[]
-  education: Record<
-    "institution" | "url" | "area" | "studyType" | "startDate" | "endDate",
-    string
-  >[]
-  skills: {
-    name: string
-    level: string
-    keywords: string[]
-  }[]
-  projects: {
-    name: string
-    description: string
-    highlights: string[]
-    keywords: string[]
-  }[]
+  education: ResumeEducationItem[]
+  skills: ResumeSkillItem[]
+  projects: ResumeProjectsItem[]
 }
