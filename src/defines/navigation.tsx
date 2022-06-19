@@ -5,7 +5,7 @@ interface SidebarRoute {
   enabled: boolean
 }
 
-export type SidebarRoutes = SidebarRoute[]
+type SidebarRoutes = SidebarRoute[]
 
 export const sidebarRoutes: SidebarRoutes = [
   { name: "Home", route: "/", enabled: true, key: "home" },

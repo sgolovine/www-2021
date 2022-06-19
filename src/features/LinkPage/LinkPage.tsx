@@ -1,6 +1,7 @@
 import React from "react"
-import { Header } from "~/components/common/Typography"
-import { withMainLayout } from "~/components/layout"
+import { Header } from "~/components/common/Header"
+import { withNewLayout } from "~/components/layout"
+import { ContentContainer } from "~/components/layout/ContentContainer"
 import { LinkItem } from "~/components/links/LinkItem"
 import { useData } from "~/hooks/useData"
 
@@ -9,8 +10,8 @@ const LinkPage: React.FC = () => {
 
   return (
     <>
-      <Header>Links</Header>
-      <div>
+      <Header title="Links" />
+      <ContentContainer>
         <LinkItem
           title="Phone"
           href={siteData.linkedin}
@@ -55,9 +56,9 @@ const LinkPage: React.FC = () => {
           icon="devto"
           showPreviewOnHover
         />
-      </div>
+      </ContentContainer>
     </>
   )
 }
 
-export default withMainLayout(LinkPage)
+export default withNewLayout(LinkPage)

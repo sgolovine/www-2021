@@ -1,0 +1,2 @@
+ignores: ["gatsby-remark-images", "autoprefixer", "cssnano"]
+skip-missing: true

@@ -47,6 +47,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `resume`,
+        path: `${__dirname}/static/resume`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".md"],
@@ -58,13 +65,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-plausible`,
-      options: {
-        domain: `sunnygolovine.com`,
-        customDomain: `analytics.glvn.co`,
       },
     },
     {

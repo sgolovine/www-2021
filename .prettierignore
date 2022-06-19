@@ -2,4 +2,9 @@
 package.json
 package-lock.json
 public/
-static/
+static/admin/
+static/cms/
+static/doc/
+static/fonts/
+static/posts/
+static/snippets/

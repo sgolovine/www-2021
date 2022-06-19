@@ -20,13 +20,13 @@ export interface SiteData {
   website: string | null
 }
 
-export interface ResumeEducationData {
+interface ResumeEducationData {
   college_name: string
   degree_earned: string
   grad_date: string
 }
 
-export interface ResumeSideProjectsData {
+interface ResumeSideProjectsData {
   current_project: boolean
   description: string
   end_date: string
@@ -36,15 +36,15 @@ export interface ResumeSideProjectsData {
   type: string
 }
 
-export interface ResumeSkillsData {
+interface ResumeSkillsData {
   skill: string
 }
 
-export interface ResumeWorkExperienceAccomplishments {
+interface ResumeWorkExperienceAccomplishments {
   accomplishment: string
 }
 
-export interface ResumeWorkExperienceData {
+interface ResumeWorkExperienceData {
   accomplishments: ResumeWorkExperienceAccomplishments[]
   current_employer: boolean
   end_date: string

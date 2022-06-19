@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 
-export interface SnippetsQuery {
+interface SnippetsQuery {
   allMdx: {
     edges: {
       node: {

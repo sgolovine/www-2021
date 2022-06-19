@@ -1,6 +1,7 @@
 import React from "react"
-import { Header } from "~/components/common/Typography"
-import { withMainLayout } from "~/components/layout"
+import { Header } from "~/components/common/Header"
+import { withNewLayout } from "~/components/layout"
+import { ContentContainer } from "~/components/layout/ContentContainer"
 import { PostItem } from "~/components/post/PostItem"
 import { useSnippets } from "~/hooks/useSnippets"
 
@@ -10,19 +11,23 @@ const SnippetsPage: React.FC = () => {
   return (
     <>
       <div className="mb-4">
-        <Header>Snippets</Header>
-        <p>Code snippets and commonly used configurations</p>
-      </div>
-      {snippets.map(snippet => (
-        <PostItem
-          key={snippet.id}
-          title={snippet.title}
-          description={snippet.description}
-          path={snippet.path}
+        <Header
+          title="Snippets"
+          additionalText="Code snippets and commonly used configurations"
         />
-      ))}
+      </div>
+      <ContentContainer>
+        {snippets.map(snippet => (
+          <PostItem
+            key={snippet.id}
+            title={snippet.title}
+            description={snippet.description}
+            path={snippet.path}
+          />
+        ))}
+      </ContentContainer>
     </>
   )
 }
 
-export default withMainLayout(SnippetsPage)
+export default withNewLayout(SnippetsPage)

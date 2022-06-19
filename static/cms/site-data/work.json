@@ -2,6 +2,13 @@
   "work-data": [
     {
       "show-in-recent-projects": true,
+      "name": "Crewsum",
+      "url": "#",
+      "description": "Crewsum is an upcoming talent management platform that lets you track timesheet approvals, send out invoices and much more. Built in conjunction with Cloud Talent Services.",
+      "project-type": "side-project"
+    },
+    {
+      "show-in-recent-projects": true,
       "name": "TipTrack",
       "url": "https://tiptrack.app",
       "description": "TipTrack is a tip tracker for iOS and Android that was built with React Native. TipTrack lets you enter tips into the app then create custom metrics to track every aspect about those tips.",
@@ -29,7 +36,7 @@
       "project-type": "side-project"
     },
     {
-      "show-in-recent-projects": true,
+      "show-in-recent-projects": false,
       "name": "Sydney Communities",
       "description": "Sydney Communities lets users join communities related to medical conditions and share stories and support each other inside the group Sydney Communities also connects users with free and reduced cost resources around the country using Aunt Bertha.",
       "project-type": "professional"
