@@ -68,8 +68,8 @@ yarn-error.log
 .pnp.js
 .yarn-integrity
 
-# Resume Output File
-resume-dist
+# Resume Output Files
+.resume-dist
 
 # Netlify CMS
 static/admin/config.yml
