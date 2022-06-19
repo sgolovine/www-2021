@@ -1,135 +1,116 @@
-# sunnygolovine.com
+<!-- [ Header ] -->
+<div style="width:100%;display:flex;flex-direction:row;justify-content:center;">
+  <div style="height:600px;">
+    <img alt="website-screenshot" src="./screenshots/website.png" />
+  </div>
+</div>
+<div style="text-align:center;">
+  <a href="https://sunnygolovine.com">
+    <h2>sunnygolovine.com</h2>
+  </a>
+  <p>Repository for my personal website</p>
+</div>
 
-test change
+<!-- [ Badges ] -->
+<div style="display:flex;flex-direction:row;justify-content:center;">
+  <div style="margin-left:5px;margin-right:5px">
+    <img  src="https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-tests-ci.yml/badge.svg" />
+  </div>
+  <div style="margin-left:5px;margin-right:5px">
+    <img  src="https://api.netlify.com/api/v1/badges/fcc5dfd2-8bb8-47c9-9cc6-c65653e4d33d/deploy-status"/>
+  </div>
+  <div style="margin-left:5px;margin-right:5px">
+    <img src="https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-build-ci.yml/badge.svg"/>
+  </div>
+</div>
 
-This is the codebase for my personal website: [sunnygolovine.com](https://sunnygolovine.com)
+## Getting Started
 
-- [sunnygolovine.com](#sunnygolovinecom)
-  - [Statuses](#statuses)
-  - [Previous Versions](#previous-versions)
-  - [Development](#development)
-    - [Pre-requisites](#pre-requisites)
-    - [Setting up your dev enviorment](#setting-up-your-dev-enviorment)
-    - [Configure Feature Flags](#configure-feature-flags)
-    - [Local Formatting and Typechecking](#local-formatting-and-typechecking)
-    - [Testing Production Builds](#testing-production-builds)
-    - [Updating the DOC resume.](#updating-the-doc-resume)
-    - [Working on the CMS](#working-on-the-cms)
-  - [Maintainence](#maintainence)
-    - [Keeping packages up to date](#keeping-packages-up-to-date)
-    - [Finding and Removing Unused Packages](#finding-and-removing-unused-packages)
-    - [Pruning](#pruning)
+Follow these steps to get the project up and running on your machine.
 
-## Statuses
+1. Make sure that you have NodeJS installed. It is recommended to use [NVM](https://github.com/nvm-sh/nvm). You should install v16+
 
-[![Production Tests CI](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-tests-ci.yml/badge.svg)](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-tests-ci.yml)
+2. Clone this repository:
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fcc5dfd2-8bb8-47c9-9cc6-c65653e4d33d/deploy-status)](https://app.netlify.com/sites/sunnygolovine/deploys)
+```bash
 
-[![Test Build CI](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-build-ci.yml/badge.svg)](https://github.com/sgolovine/sunnygolovine.com/actions/workflows/production-build-ci.yml)
+git clone https://github.com/sgolovine/sunnygolovine.com
 
-## Previous Versions
+```
 
-See the previous versions of my personal websites:
+3. Install Pre-requisites: You should have [Yarn](https://yarnpkg.com/) installed, the package manager used in this project.
 
-- [2020](https://github.com/sgolovine/sunnygolovine.com-2020)
-- [2019](https://github.com/sgolovine/glvn.co)
-- [2018](https://github.com/sgolovine/glvn.io)
+```bash
 
-## 2022 Updates
+npm install -g yarn
 
-New Year! New Website? Most years I will build a new website, however this year I will just be updating this website. Some upcoming changes:
+```
 
-- ~~NEW LAYOUT!~~
-- ~~New Homepage~~
-- ~~New Resume~~
-- ~~Better Blog Layout~~
-- ~~Better Snippets Layout~~
+4. Install Dependencies: This should be run inside the project directory.
 
-## Development
+```bash
 
-### Pre-requisites
+yarn install
 
-Before running this project. Make sure that you have NodeJS 14+ installed. Also make sure you are running the latest version of NPM
+```
 
-### Setting up your dev environment
+5. Run the Project
 
-1. Make sure you have NodeJS 14+
-2. Copy `.env.example` to `.env` and replace the values with your own
-3. Install local dependencies (`yarn install`)
-4. Start the development server (`yarn start`)
+```bash
 
-Note that when running in development, the contact form will not work as it requires functions. To test these features run `yarn start:netlify`
+yarn dev
 
-### Configure Feature Flags
+```
 
-WIP
+## Maintenance
 
-### Local Formatting and Typechecking
+This section covers the ways this project is kept clean. This project uses the following devtools:
 
-- **format**: `yarn format`
+- [Typescript](https://www.typescriptlang.org/): Used for typechecking
+- [ESLint](https://eslint.org/): Used for linting
+- [Prettier](https://prettier.io/): Used for code formatting
+- [ts-prune](https://github.com/nadeesha/ts-prune): Used in conjunction with Typescript to find dead code.
+- [depcheck](https://github.com/depcheck/depcheck): Checks for unused dependencies.
 
-- **typechecking**: `yarn tsc`
+Below is a table of all maintenance commands. All commands should be run like:
 
-### Testing Production Builds
+```bash
 
-0. Make sure you have a defined `.env.development` file
-1. Run `yarn build` to build the site
-2. Run `yarn serve` to serve the production build
+yarn <<command_name>>
 
-### Updating the DOC resume.
+```
 
-To generate a new DOC file of the resume, run `yarn generate-resume`.
+| Command                | Description             | Tool       | Config             | Part of `ci` Command |
+| ---------------------- | ----------------------- | ---------- | ------------------ | -------------------- |
+| `ci`                   | Runs all commands       | All        | ---                | ---                  |
+| `typecheck` / `tsc`    | Run typechecking        | Typescript | `tsconfig.json`    | yes                  |
+| `lint`                 | Run lining              | ESLint     | `.eslintrc.js`     | yes                  |
+| `format`               | Format code             | Prettier   | `.prettierrc`      | yes                  |
+| `clean`                | Clean project           | Script     | ---                | no                   |
+| `find-unused-code`     | Find unused (dead) code | ts-prune   | `.ts-prunerc.json` | yes                  |
+| `find-unused-packages` | Find unused packages    | depcheck   | `.depcheckrc.yml`  | yes                  |
+| `cms:lint`             | Lint CMS config         | yamllint   | ---                | no                   |
 
-There are several other commands for working on the resume:
+## Architecture
 
-`resume:start` - Start the dev server for the resume
+This section goes over the architecture of teh website. The website is built with [Gatsby](https://www.gatsbyjs.com/) and is hosted on [Netlify](https://www.netlify.com/).
 
-`resume:build` - Build the resume to `/resume-dist`
+### Data
 
-`resume:serve` - Serve a copy of the built resume (requires running `resume:build` first)
+- **Website Data**: Data for the website is inputted via [NetlifyCMS](https://www.netlifycms.org/). This data is stored in `static/cms/site-data`. It is read by Gatsby using [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/) and [gatsby-transformer-json](https://www.gatsbyjs.com/plugins/gatsby-transformer-json/).
+- **Blog Data**: Blog posts are located in `static/posts`. Blog posts use [MDX](https://mdxjs.com/) to render the posts.
+- **Snippets Data**: Snippets are the same as blog posts under the hood. They are also rendered using [MDX](https://mdxjs.com/)
+- **Resume Data**: Resume data is stored in `static/resume/resume.json` and uses a heavily modified version of [JSON Resume](https://jsonresume.org/)
+- **dev.to posts** - The blog also fetches posts from dev.to. These are fetched using `scripts/fetch-remote-blog-posts.js` script. The data is stored in `static/posts/remotePosts.js`
 
-`resume:export` - Export the resume to a PDF (requires `resume:serve`)
+### Folder Structure
 
-All of these commands are used internally by `generate-resume`
+The folder structure uses a modified version of [bulletproof react](https://github.com/alan2207/bulletproof-react). All pages are stored in `src/features` and are only referenced in `src/pages`. This allows for a more flexible model over the standard Gatsby model.
 
-### Working on the CMS
+### UI
 
-This site uses NetlifyCMS for its content.
+The UI for the site is built using [TailwindCSS](https://tailwindcss.com/). We also use several utilities like [classnames](https://www.npmjs.com/package/classnames) for custom CSS logic intertwined with JS.
 
-- Rather than keeping the config in a single file, this project keeps them under `static/admin/_config` and then generates a config file on the fly.
-- The script that handles creating `config.yml` is located in `scripts/generate-cms-config.js`
-- To edit preview templates and other addons, see `src/cms/cms.ts`
-- To check the CMS configuration yaml for errors run `yarn cms:lint`
+### Dry Building
 
-## Maintainence
-
-### Keeping packages up to date
-
-This project uses [npm-check-update](https://www.npmjs.com/package/npm-check-update) to keep packages up to date
-
-1. Install the package: `npm install -g npm-check-updates`
-2. Check for outdated deps: `ncu`
-3. Update any outdated packages `ncu -u`
-4. (Post Update) Run `yarn` to update the lockfile.
-
-### Finding and Removing Unused Packages
-
-This project uses [depcheck](https://www.npmjs.com/package/depcheck) to check for unused dependencies.
-
-1. Run `yarn find-unused-packages` to check for updates
-2. Fix any dependency issues (stay vigilant for false positives)
-
-### Pruning
-
-This project uses [ts-prune]("https://github.com/nadeesha/ts-prune") to check for any dead code paths.
-
-1. Run `yarn find-unused-code`
-2. Remove any unused code (stay vigilant for false positives)
-
-## Resume
-
-The new resume is stored in `static/resume`. Inside you will find two files:
-
-- resume.json: This is the actual resume. All data for the resume is stored here.
-- schema.json: This is the schema for the resume. It's a heavily modified version of [JSON Resume](https://jsonresume.org/schema/)
+Part of the "Production CI" is doing a "dry build" to make sure that no code changes caused errors in the Gatsby build process. Dry building is just like regular builds except, we do not fetch actual data for the website and instead use a script to inject test data to speed up the process. The script for generating these files can be located at: `scripts/generate-dry-build-files.js`
