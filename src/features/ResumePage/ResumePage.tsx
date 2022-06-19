@@ -5,6 +5,7 @@ import { WorkItem } from "./components/WorkItem"
 import { ProjectItem } from "./components/ProjectItem"
 import { EducationItem } from "./components/EducationItem"
 import { ControlSubheader } from "./components/ControlSubheader"
+import { SkillsItem } from "./components/SkillsItem"
 
 const ResumePage: React.FC = () => {
   const { data } = useResumeData()
@@ -26,6 +27,7 @@ const ResumePage: React.FC = () => {
             <p>{data.basics.summary}</p>
           </div>
         </div>
+
         <div className="py-4">
           <h2 className="text-2xl">Work</h2>
           {data.work.map((workItem, index) => (
@@ -52,6 +54,17 @@ const ResumePage: React.FC = () => {
               />
             ))}
           </div>
+        </div>
+        <div className="py-4">
+          <h2 className="text-2xl">Skills</h2>
+          {data.skills.map((skillsItem, index) => (
+            <SkillsItem
+              key={index}
+              name={skillsItem.name}
+              level={skillsItem.level}
+              keywords={skillsItem.keywords}
+            />
+          ))}
         </div>
         <div className="py-4">
           <h2 className="text-2xl">Education</h2>
