@@ -104,6 +104,10 @@ The UI for the site is built using [TailwindCSS](https://tailwindcss.com/). We a
 
 Part of the "Production CI" is doing a "dry build" to make sure that no code changes caused errors in the Gatsby build process. Dry building is just like regular builds except, we do not fetch actual data for the website and instead use a script to inject test data to speed up the process. The script for generating these files can be located at: `scripts/generate-dry-build-files.js`
 
+### PDF Resume
+
+TBD
+
 ## Creating a PDF Resume
 
 In addition to hosting the resume on the website, there is a workflow to generate a PDF from `resume.json`. Under the hood, we have a custom NodeJS script which starts a dev server for us, then we will spin up puppeteer to "print" the page to a PDF document. The commands to work on and generate a PDF resume are below. All commands should be run like: `yarn <<command_name>>`:
