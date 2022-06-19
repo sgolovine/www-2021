@@ -38,7 +38,7 @@ export interface Resume {
     image?: string
     phone: string
     url: string
-    summary: string
+    summary: string[]
     location: Record<
       "address" | "postalCode" | "city" | "countryCode" | "region",
       string

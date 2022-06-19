@@ -6,7 +6,11 @@
     "email": "sunny@golovinemail.org",
     "phone": "(678) 646-2358",
     "url": "https://sunnygolovine.com",
-    "summary": "A brief summary of me. This is a placeholder for now",
+    "summary": [
+      "I'm a Senior Software Engineer specializing in building applications in React and React Native as well as other modern Javascript frameworks like Angular, Svelte and Vue.",
+      "I have worked for startups and large fortune 500 companies where I have helped them deliver and outstanding and memorable customer experience through web and mobile applications. My method involves constant communications with leadership and across design and QA teams to ensure that we can deliver a highly performant, reliable and beautiful apps to our customers.",
+      "Outside of work I have worked a on a number of side projects from React Native applications that are currently published in the iOS and Android App Stores, several web apps, Chrome and Firefox extensions and more."
+    ],
     "location": {
       "address": "1235 S Birch St",
       "postalCode": "80246",

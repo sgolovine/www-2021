@@ -24,7 +24,11 @@ const ResumePage: React.FC = () => {
         <div className="py-4 pt-6">
           <h2 className="text-2xl">Summary</h2>
           <div className="pt-4 pb-12">
-            <p>{data.basics.summary}</p>
+            {data.basics.summary.map((paragraph, index) => (
+              <p className="pb-4" key={index}>
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
 
