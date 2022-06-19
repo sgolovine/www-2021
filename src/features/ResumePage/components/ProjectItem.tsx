@@ -7,7 +7,7 @@ export const ProjectItem: React.FC<ResumeProjectsItem> = ({
   highlights,
   keywords,
 }) => (
-  <div className="pb-12">
+  <div className="pt-4 pb-12">
     <p className="text-xl font-bold">{name}</p>
     <p>{description}</p>
     <div className="pt-4">

@@ -46,21 +46,19 @@ export const WorkItem: React.FC<ResumeWorkItem> = ({
           position.endDate ?? endDate
         )
 
-        const borderColors = [
-          ...(index === 0 ? ["border-green-400"] : ""),
-          ...(index === 1 ? ["border-blue-400"] : ""),
-          ...(index === 2 ? ["border-lime-400"] : ""),
-          ...(index === 3 ? ["border-orange-400"] : ""),
-          ...(index === 4 ? ["border-yellow-400"] : ""),
-          ...(index === 5 ? ["border-teal-400"] : ""),
-        ]
-
         const borderClassnames = classNames(
           "my-4",
           "ml-2",
           "pl-4",
           "border-l-2",
-          ...borderColors
+          {
+            "border-green-400": index === 0,
+            "border-blue-400": index === 1,
+            "border-lime-400": index === 2,
+            "border-orange-400": index === 3,
+            "border-yellow-400": index === 4,
+            "border-teal-400": index === 5,
+          }
         )
 
         return (
