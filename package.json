@@ -14,7 +14,7 @@
     "clean": "gatsby clean && node scripts/clean-project.js && yarn install",
     "typecheck": "tsc",
     "lint": "eslint 'src/**/*.{ts,tsx}' 'scripts/**/*.js' 'resume/**/*.tsx'",
-    "ci": "yarn format && yarn typecheck",
+    "ci": "run-s format typecheck lint find-unused-code find-unused-packages",
     "find-unused-code": "ts-prune -p ./tsconfig.json --error",
     "find-unused-packages": "depcheck --config=./.depcheckrc.yml",
     "serve": "gatsby serve",
@@ -63,7 +63,6 @@
     "react-dom": "^17",
     "react-headroom": "^3.2.0",
     "react-helmet": "^6.1.0",
-    "use-media": "^1.4.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
