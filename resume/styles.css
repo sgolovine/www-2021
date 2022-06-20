@@ -1,3 +1,54 @@
-h1 {
-  color: red;
+:root {
+  font-family: sans-serif;
+}
+
+section {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+section > h2 {
+  font-size: large;
+  font-weight: bold;
+  padding-bottom: var(--space-8);
+}
+
+.container {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+  padding-left: var(--space-24);
+  padding-right: var(--space-24);
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  text-align: left;
+}
+
+.header-right {
+  text-align: right;
+}
+
+.header-left h1 {
+  font-size: x-large;
+  font-weight: bold;
+  line-height: var(--space-32);
+}
+
+.header-right p {
+  font-size: var(--size-14);
+  line-height: var(--space-20);
+  color: var(--text-grey);
+}
+
+
+.summary-text {
+  line-height: var(--space-20);
+  margin-bottom: var(--space-8);
 }

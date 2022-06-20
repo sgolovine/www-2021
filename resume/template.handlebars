@@ -5,14 +5,52 @@
   <title>
     Sunny Golovine
   </title>
+  <link rel="stylesheet" type="text/css" href="./variables.css">
   <link rel="stylesheet" type="text/css" href="./reset.css">
   <link rel="stylesheet" type="text/css" href="./styles.css">
+  <link rel="stylesheet" type="text/css" href="../node_modules/gutenberg-css/dist/gutenberg.min.css">
 </head>
 
 <body>
-  <h1>
-    Resume for Sunny Golovine
-  </h1>
+  <div class="container">
+    <div class="header-container">
+      <div class="header-left">
+        <h1>
+          {{basics.name}}
+        </h1>
+        <p>
+          {{basics.label}}
+        </p>
+      </div>
+      <div class="header-right">
+        <p>
+          {{basics.location.city}}, {{basics.location.region}}
+        </p>
+        <p>
+          {{basics.email}}
+        </p>
+        <p>
+          {{basics.phone}}
+        </p>
+      </div>
+    </div>
+
+    <section>
+      <h2>
+        Summary
+      </h2>
+      {{#each basics.summary}}
+      <p class="summary-text">
+        {{.}}
+      </p>
+      {{/each}}
+    </section>
+
+    <section>
+
+    </section>
+
+  </div>
 </body>
 
 </html>
