@@ -64,7 +64,12 @@
 
         {{#if this.hasSinglePosition}}
         {{!-- Single Position Section --}}
-        <p>Single Position</p>
+        <p class="detail-text small-text">{{this.singlePosition.position}}</p>
+        <div class="sub-item-container">
+          {{#each this.singlePosition.summary}}
+          <p class="summary-items-text">{{this}}</p>
+          {{/each}}
+        </div>
         {{else}}
         {{!-- Multi Position Section --}}
         <div>
@@ -103,16 +108,63 @@
 
     <section>
       <h2>Projects</h2>
+      {{#each projects}}
+      <div class="item-container">
+        <h3>{{this.name}}</h3>
+        <p>{{this.description}}</p>
+        <div class="sub-item-container">
+          {{#each this.highlights}}
+          <p class="summary-items-text">{{this}}</p>
+          {{/each}}
+          <div class="keywords-container">
+            {{#each this.keywords}}
+            <div class="keyword-container">
+              <p class="keyword-text">
+                {{this}}
+              </p>
+            </div>
+            {{/each}}
+          </div>
 
+        </div>
+      </div>
+      {{/each}}
+    </section>
+
+
+
+    <section>
+      <h2>Skills</h2>
+      {{#each skills}}
+      <div class="item-container">
+        <h3>{{this.name}}</h3>
+        <p class="detail-text small-text">{{this.level}}</p>
+        <div class="keywords-container">
+          {{#each this.keywords}}
+          <div class="keyword-container">
+            <p class="keyword-text">{{this}}</p>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{/each}}
     </section>
 
     <section>
       <h2>Education</h2>
-
-    </section>
-
-    <section>
-      <h2>Skills</h2>
+      {{#each education}}
+      <div class="item-container">
+        <div class="flex-between">
+          <h3>{{this.institution}}</h3>
+          <p class="detail-text small-text">
+            {{this.startDate}} - {{this.endDate}}
+          </p>
+        </div>
+        <p class="detail-text small-text">
+          {{this.studyType}} - {{this.area}}
+        </p>
+      </div>
+      {{/each}}
 
     </section>
 

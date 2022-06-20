@@ -102,3 +102,26 @@ h4 {
   padding-bottom: var(--space-8);
   padding-left: var(--space-16);
 }
+
+/** Keywords CSS */
+.keywords-container {
+  padding-top: var(--space-8);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.keyword-container {
+  background-color: #333;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 99px;
+}
+
+.keyword-text {
+  color: #fff;
+}

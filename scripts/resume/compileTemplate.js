@@ -84,7 +84,7 @@ function formatData(rawResumeData) {
         tenure: getTenure(workItem.startDate, workItem.endDate),
         hasSinglePosition,
         singlePosition: hasSinglePosition
-          ? formatPosition(workItem.position[0])
+          ? formatPosition(workItem.positions[0])
           : {},
         positions: workItem.positions.map(formatPosition),
       }
@@ -174,7 +174,7 @@ function compileTemplate() {
       logError("Could not parse template data", e)
     }
   } catch (e) {
-    logError("Could not parse template data", e)
+    logError("Could not read template data", e)
   }
 }
 
