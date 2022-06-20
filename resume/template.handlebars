@@ -12,24 +12,24 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="header-container">
-      <div class="header-left">
-        <h1>
+  <div class="document-container">
+    <div class="flex-between">
+      <div class="text-left">
+        <h1 class="document-title">
           {{basics.name}}
         </h1>
-        <p>
+        <p class="detail-text">
           {{basics.label}}
         </p>
       </div>
-      <div class="header-right">
-        <p>
+      <div class="text-right">
+        <p class="detail-text">
           {{basics.location.city}}, {{basics.location.region}}
         </p>
-        <p>
+        <p class="detail-text">
           {{basics.email}}
         </p>
-        <p>
+        <p class="detail-text">
           {{basics.phone}}
         </p>
       </div>
@@ -41,12 +41,78 @@
       </h2>
       {{#each basics.summary}}
       <p class="summary-text">
-        {{.}}
+        {{this}}
       </p>
       {{/each}}
     </section>
 
     <section>
+      <h2>Work Experience</h2>
+      {{#each work}}
+      <div class="item-container">
+        <div class="flex-between">
+          <h3>
+            {{this.name}}
+          </h3>
+          <p class="detail-text small-text">
+            {{this.startDate}} - {{this.endDate}}
+          </p>
+        </div>
+        <p class="detail-text small-text">
+          {{this.tenure}}
+        </p>
+
+        {{#if this.hasSinglePosition}}
+        {{!-- Single Position Section --}}
+        <p>Single Position</p>
+        {{else}}
+        {{!-- Multi Position Section --}}
+        <div>
+          {{#each this.positions}}
+          <div class="sub-item-container">
+            {{!-- Positions Header --}}
+            <div class="flex-between">
+              <h4>
+                {{this.position}}
+              </h4>
+              <p class="detail-text small-text">
+                {{this.startDate}} - {{this.endDate}}
+              </p>
+            </div>
+
+            {{!-- Positions Tenure --}}
+            <p class="detail-text small-text">
+              {{this.tenure}}
+            </p>
+
+            {{!-- Positions Summary --}}
+            <div>
+              {{#each this.summary}}
+              <p class="summary-items-text">{{this}}</p>
+              {{/each}}
+            </div>
+          </div>
+
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+      {{/each}}
+
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+
+    </section>
+
+    <section>
+      <h2>Education</h2>
+
+    </section>
+
+    <section>
+      <h2>Skills</h2>
 
     </section>
 

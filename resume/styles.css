@@ -7,48 +7,98 @@ section {
   padding-bottom: var(--space-16);
 }
 
-section > h2 {
-  font-size: large;
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: var(--space-8);
+
+}
+
+h3 {
+  font-size: 20px;
   font-weight: bold;
   padding-bottom: var(--space-8);
 }
 
-.container {
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
-  padding-left: var(--space-24);
-  padding-right: var(--space-24);
+
+h4 {
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.header-container {
+/** General Helper Classes */
+.flex-between {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.header-left {
+.text-left {
   text-align: left;
 }
 
-.header-right {
+.text-right {
   text-align: right;
 }
 
-.header-left h1 {
-  font-size: x-large;
-  font-weight: bold;
-  line-height: var(--space-32);
-}
-
-.header-right p {
+.detail-text {
   font-size: var(--size-14);
   line-height: var(--space-20);
   color: var(--text-grey);
 }
 
+.small-text {
+  font-size: small;
+}
 
+/* 
+ * Header and Container Classes
+ * These classes are only used by the header
+ * of the document. They should not be re-used anywhere
+ * Else in the document
+ */
+.document-container {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+  padding-left: var(--space-24);
+  padding-right: var(--space-24);
+}
+
+.document-title {
+  font-size: 28px;
+  font-weight: bold;
+  line-height: var(--space-32);
+}
+
+
+/** Summary Section */
 .summary-text {
   line-height: var(--space-20);
   margin-bottom: var(--space-8);
+}
+
+
+/** General Section Classes */
+.item-container {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-16);
+}
+
+.item-header {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.sub-item-container {
+  padding-top: var(--space-8);
+  padding-left: var(--space-8);
+  padding-bottom: var(--space-16);
+}
+
+.summary-items-text {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  padding-left: var(--space-16);
 }

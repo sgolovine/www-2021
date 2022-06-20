@@ -3,6 +3,7 @@ const fs = require("fs")
 const Handlebars = require("handlebars")
 const glob = require("glob")
 const path = require("path")
+const dayjs = require("dayjs")
 
 const {
   resumeDataPath,
@@ -14,15 +15,109 @@ const {
 
 const { logError } = require("./log")
 
+const DATE_PRESENT = "PRESENT"
+
+function getTenure(startDate, endDate) {
+  const MS_IN_HR = 3600000
+  const HRS_IN_DAY = 24
+  const DAYS_IN_MONTH = 31
+  const MONTHS_IN_YR = 12
+
+  const actualStartDate =
+    startDate === DATE_PRESENT ? dayjs() : dayjs(startDate)
+  const actualEndDate = endDate === DATE_PRESENT ? dayjs() : dayjs(endDate)
+  const elapsedMs = actualEndDate.diff(actualStartDate)
+  const elapsedHrs = elapsedMs / MS_IN_HR
+  const elapsedDays = Math.floor(elapsedHrs / HRS_IN_DAY)
+  // Total number of months in the period
+  const elapsedMonths = Math.floor(elapsedDays / DAYS_IN_MONTH)
+
+  const years = Math.floor(elapsedMonths / MONTHS_IN_YR)
+  const residualMonths = elapsedMonths % MONTHS_IN_YR
+
+  if (years === 0) {
+    return `${residualMonths} mos`
+  }
+  return `${years} yrs ${residualMonths} mos`
+}
+
+function formatData(rawResumeData) {
+  const DATE_FORMAT = "MMM YYYY"
+
+  return {
+    ...rawResumeData,
+    work: rawResumeData.work.map(workItem => {
+      const formattedStartDate =
+        workItem.startDate === DATE_PRESENT
+          ? "Present"
+          : dayjs(workItem.startDate).format(DATE_FORMAT)
+      const formattedEndDate =
+        workItem.endDate === DATE_PRESENT
+          ? "Present"
+          : dayjs(workItem.endDate).format(DATE_FORMAT)
+
+      const hasSinglePosition = !!(workItem.positions.length === 1)
+
+      const formatPosition = position => {
+        const rawStartDate = position.startDate || workItem.startDate
+        const rawEndDate = position.endDate || workItem.endDate
+        const formattedStartDate =
+          rawStartDate === DATE_PRESENT
+            ? "Present"
+            : dayjs(rawStartDate).format(DATE_FORMAT)
+        const formattedEndDate =
+          rawEndDate === DATE_PRESENT
+            ? "Present"
+            : dayjs(rawEndDate).format(DATE_FORMAT)
+        return {
+          ...position,
+          startDate: formattedStartDate,
+          endDate: formattedEndDate,
+          tenure: getTenure(rawStartDate, rawEndDate),
+        }
+      }
+
+      return {
+        ...workItem,
+        startDate: formattedStartDate,
+        endDate: formattedEndDate,
+        tenure: getTenure(workItem.startDate, workItem.endDate),
+        hasSinglePosition,
+        singlePosition: hasSinglePosition
+          ? formatPosition(workItem.position[0])
+          : {},
+        positions: workItem.positions.map(formatPosition),
+      }
+    }),
+    education: rawResumeData.education.map(educationItem => {
+      const formattedStartDate =
+        educationItem.startDate === DATE_PRESENT
+          ? "Present"
+          : dayjs(educationItem.startDate).format(DATE_FORMAT)
+      const formattedEndDate =
+        educationItem.endDate === DATE_PRESENT
+          ? "Present"
+          : dayjs(educationItem.endDate).format(DATE_FORMAT)
+
+      return {
+        ...educationItem,
+        startDate: formattedStartDate,
+        endDate: formattedEndDate,
+      }
+    }),
+  }
+}
+
 function compileTemplate() {
   try {
     const resumeData = fs.readFileSync(resumeDataPath, "utf-8")
     const templateData = fs.readFileSync(templatePath, "utf-8")
     try {
       const parsedResumeData = JSON.parse(resumeData)
+      const normalizedResumeData = formatData(parsedResumeData)
       try {
         const handlebarsTemplate = Handlebars.compile(templateData)
-        const finalHtml = handlebarsTemplate(parsedResumeData)
+        const finalHtml = handlebarsTemplate(normalizedResumeData)
         try {
           /**
            * Checks if the output directory exists
