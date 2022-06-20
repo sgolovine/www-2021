@@ -7,6 +7,12 @@ function logError(message, internalError) {
   process.exit(1)
 }
 
+function logInfo(message, customNamespace) {
+  const namespace = customNamespace || "INFO"
+  console.log(`[${namespace}] ${message}\n`)
+}
+
 module.exports = {
   logError,
+  logInfo,
 }

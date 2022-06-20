@@ -106,14 +106,25 @@ Part of the "Production CI" is doing a "dry build" to make sure that no code cha
 
 ### PDF Resume
 
-TBD
+In order to export our JSON Resume as a PDF, a number of tools are used:
+
+- [handlebars](): Used for templating the resume.
+- [puppeteer](): Used for exporting the web page to a PDF
+- [nodeHttpServer](): Used for programmatically spinning up a dev server.
+
+Below are the relevant locations for all files:
+
+- Script Files: `/scripts/resume`
+- Resume Template Files: `/resume`
+- Resume Data Files: `/static/resume`
 
 ## Creating a PDF Resume
 
 In addition to hosting the resume on the website, there is a workflow to generate a PDF from `resume.json`. Under the hood, we have a custom NodeJS script which starts a dev server for us, then we will spin up puppeteer to "print" the page to a PDF document. The commands to work on and generate a PDF resume are below. All commands should be run like: `yarn <<command_name>>`:
 
-| Command         | Description                         |
-| --------------- | ----------------------------------- |
-| `resume:dev`    | Start the development server.       |
-| `resume:build`  | Builds the production JS bundle     |
-| `resume:export` | Exports the prod JS bundle to a PDF |
+| Command        | Description                   |
+| -------------- | ----------------------------- |
+| `resume:dev`   | Start the development server. |
+| `resume:build` | Builds the resume to a PDF    |
+
+When a resume is exported, it is exported to the following format: `resume-{{month}}-{{day}}-{{year}}.pdf`. If a file of the same name already exists, it will overwrite that file. An easy strategy to quickly test changes in a PDF viewer is to build the resume, open it in a PDF viewer, then re-run `resume:build` to update the file

@@ -13,7 +13,7 @@ const {
   templateDir,
 } = require("./constants")
 
-const { logError } = require("./log")
+const { logError, logInfo } = require("./log")
 
 const DATE_PRESENT = "PRESENT"
 
@@ -151,7 +151,7 @@ function compileTemplate() {
                 const destFilePath = path.resolve(templateOutputDir, file)
                 try {
                   fs.copyFileSync(srcFilePath, destFilePath)
-                  console.log(
+                  logInfo(
                     `Copied ${file} from ${srcFilePath} to ${destFilePath}`
                   )
                 } catch (e) {
@@ -163,7 +163,7 @@ function compileTemplate() {
             logError("Could not copy CSS", e)
           }
 
-          console.log(`Wrote file to ${templateOutputPath}`)
+          logInfo(`Wrote file to ${templateOutputPath}`)
         } catch (e) {
           logError("Could not write output file", e)
         }
