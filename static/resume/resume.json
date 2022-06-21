@@ -16,7 +16,7 @@
       "postalCode": "80246",
       "city": "Denver",
       "countryCode": "US",
-      "region": "Colorado"
+      "region": "CO"
     },
     "profiles": [
       {
@@ -115,7 +115,7 @@
       "institution": "Georgia Southern University",
       "url": "https://georgiasouthern.edu",
       "area": "Computer Science",
-      "studyType": "Bachelor",
+      "studyType": "Bachelors",
       "startDate": "2015-01-01",
       "endDate": "2017-05-31"
     },

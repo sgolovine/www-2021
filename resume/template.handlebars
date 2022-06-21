@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    Sunny Golovine
+  </title>
+  <link rel="stylesheet" type="text/css" href="./variables.css">
+  <link rel="stylesheet" type="text/css" href="./reset.css">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <link rel="stylesheet" type="text/css" href="../node_modules/gutenberg-css/dist/gutenberg.min.css">
+</head>
+
+<body>
+  <div class="document-container">
+    <div class="flex-between">
+      <div class="text-left">
+        <h1 class="document-title">
+          {{basics.name}}
+        </h1>
+        <p class="detail-text">
+          {{basics.label}}
+        </p>
+      </div>
+      <div class="text-right">
+        <p class="detail-text">
+          {{basics.location.city}}, {{basics.location.region}}
+        </p>
+        <p class="detail-text">
+          {{basics.email}}
+        </p>
+        <p class="detail-text">
+          {{basics.phone}}
+        </p>
+      </div>
+    </div>
+
+    <section>
+      <h2>
+        Summary
+      </h2>
+      {{#each basics.summary}}
+      <p class="summary-text">
+        {{this}}
+      </p>
+      {{/each}}
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      {{#each work}}
+      <div class="item-container">
+        <div class="flex-between">
+          <h3>
+            {{this.name}}
+          </h3>
+          <p class="detail-text small-text">
+            {{this.startDate}} - {{this.endDate}}
+          </p>
+        </div>
+        <p class="detail-text small-text">
+          {{this.tenure}}
+        </p>
+
+        {{#if this.hasSinglePosition}}
+        {{!-- Single Position Section --}}
+        <p class="detail-text small-text">{{this.singlePosition.position}}</p>
+        <div class="sub-item-container">
+          {{#each this.singlePosition.summary}}
+          <p class="summary-items-text">{{this}}</p>
+          {{/each}}
+        </div>
+        {{else}}
+        {{!-- Multi Position Section --}}
+        <div>
+          {{#each this.positions}}
+          <div class="sub-item-container">
+            {{!-- Positions Header --}}
+            <div class="flex-between">
+              <h4>
+                {{this.position}}
+              </h4>
+              <p class="detail-text small-text">
+                {{this.startDate}} - {{this.endDate}}
+              </p>
+            </div>
+
+            {{!-- Positions Tenure --}}
+            <p class="detail-text small-text">
+              {{this.tenure}}
+            </p>
+
+            {{!-- Positions Summary --}}
+            <div>
+              {{#each this.summary}}
+              <p class="summary-items-text">{{this}}</p>
+              {{/each}}
+            </div>
+          </div>
+
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+      {{/each}}
+
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      {{#each projects}}
+      <div class="item-container">
+        <h3>{{this.name}}</h3>
+        <p>{{this.description}}</p>
+        <div class="sub-item-container">
+          {{#each this.highlights}}
+          <p class="summary-items-text">{{this}}</p>
+          {{/each}}
+          <div class="keywords-container">
+            {{#each this.keywords}}
+            <div class="keyword-container">
+              <p class="keyword-text">
+                {{this}}
+              </p>
+            </div>
+            {{/each}}
+          </div>
+
+        </div>
+      </div>
+      {{/each}}
+    </section>
+
+
+
+    <section>
+      <h2>Skills</h2>
+      {{#each skills}}
+      <div class="item-container">
+        <h3>{{this.name}}</h3>
+        <p class="detail-text small-text">{{this.level}}</p>
+        <div class="keywords-container">
+          {{#each this.keywords}}
+          <div class="keyword-container">
+            <p class="keyword-text">{{this}}</p>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{/each}}
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      {{#each education}}
+      <div class="item-container">
+        <div class="flex-between">
+          <h3>{{this.institution}}</h3>
+          <p class="detail-text small-text">
+            {{this.startDate}} - {{this.endDate}}
+          </p>
+        </div>
+        <p class="detail-text small-text">
+          {{this.studyType}} - {{this.area}}
+        </p>
+      </div>
+      {{/each}}
+
+    </section>
+
+  </div>
+</body>
+
+</html>
