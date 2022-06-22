@@ -13,7 +13,7 @@ const ResumePage: React.FC = () => {
   return (
     <>
       <ControlSubheader />
-      <div className="max-w-3xl mx-auto my-4">
+      <div className="max-w-3xl mx-auto my-4 px-4">
         <div>
           <h1 className="text-3xl">{data.basics.name}</h1>
           <p className="text-sm pt-2">{data.basics.label}</p>

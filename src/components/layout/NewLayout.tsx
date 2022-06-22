@@ -9,6 +9,7 @@ interface Props {
 
 export const NewLayout: React.FC<Props> = ({ children, noContentMargin }) => {
   const classes = classNames("mx-auto", {
+    "px-4": !noContentMargin,
     "max-w-3xl": !noContentMargin,
     "my-4": !noContentMargin,
   })
