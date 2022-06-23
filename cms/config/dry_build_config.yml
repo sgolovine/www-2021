@@ -1,0 +1,23 @@
+media_folder: "static/images"
+public_folder: "/images"
+publish_mode: editorial_workflow
+site_url: https://sunnygolovine.com
+display_url: https://sunnygolovine.com
+locale: en
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
+backend:
+  name: test-repo
+collections:
+  - name: site-data
+    label: "Site Data"
+    files:
+      - file: "public/cms/site-data/bio.json"
+        name: bio
+        label: "Bio"
+        fields:
+          - label: "Bio"
+            name: "bio"
+            widget: "text"

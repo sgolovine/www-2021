@@ -55,10 +55,6 @@ typings/
 .env*
 !.env.example
 
-# gatsby files
-.cache/
-public
-
 # Mac files
 .DS_Store
 
@@ -73,6 +69,7 @@ yarn-error.log
 
 # Netlify CMS
 static/admin/config.yml
+cms/config.yml
 
 # Posts Script
 static/posts/remotePosts.json

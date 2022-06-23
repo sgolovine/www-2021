@@ -1,0 +1,4 @@
+backend:
+  name: github
+  repo: sgolovine/sunnygolovine.com
+  branch: master

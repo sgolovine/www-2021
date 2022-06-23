@@ -2,7 +2,6 @@
 import React from "react"
 import SEO from "~/components/common/SEO"
 import { PageContext } from "./types"
-
 // Styles
 import "../styles/font.css"
 import "../styles/tailwind.css"

@@ -19,7 +19,7 @@ function main() {
   // Render pages
   app.get("*", async (req, res, next) => {
     const url = req.originalUrl
-    const { httpResponse } = await renderPage({ url })
+    const { httpResponse } = await renderPage({ isProduction: true, url })
 
     if (!httpResponse) {
       return next()
