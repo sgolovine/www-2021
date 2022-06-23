@@ -3,6 +3,7 @@ import React from "react"
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr"
 import type { PageContext } from "./types"
 import { ROOT_EL } from "./defaults"
+import { PageWrapper } from "./PageWrapper"
 
 // ts-prune-ignore-next
 export const passToClient = ["pageProps", "urlPathname"]
@@ -11,7 +12,9 @@ export const passToClient = ["pageProps", "urlPathname"]
 // ts-prune-ignore-next
 export async function render({ Page, pageProps, documentProps }: PageContext) {
   // eslint-disable-next-line react/jsx-props-no-spreading
-  const pageHtml = ReactDOMServer.renderToString(<Page {...pageProps} />)
+  const pageHtml = ReactDOMServer.renderToString(
+    <PageWrapper Page={Page} pageProps={pageProps} />
+  )
 
   const title = documentProps?.title ?? "Placeholder page title"
 
