@@ -28,8 +28,8 @@
     "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts",
     "resume:dev": "node ./scripts/resume/devServer.js",
     "resume:build": "node ./scripts/resume/buildServer.js",
-    "vite:server:dev": "ts-node ./internals/server.dev.js",
-    "vite:server:prod": "ts-node ./internals/server.prod.js",
+    "vite:server:dev": "ts-node ./internals/server.dev.ts",
+    "vite:server:prod": "ts-node ./internals/server.prod.ts",
     "vite:dev": "yarn vite:server:dev",
     "vite:build": "vite build && vite build --ssr && vite-plugin-ssr prerender"
   },

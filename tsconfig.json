@@ -1,24 +1,31 @@
 {
   "compilerOptions": {
-    "strict": true,
     "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "Node",
     "jsx": "react",
-    "moduleResolution": "node",
-    "lib": ["DOM", "ES5", "ES6"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "noEmit": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     },
+    "strict": true,
+    "allowJs": false,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["src/**/*", "resume/**/*", "scripts/resume/buildServer.js"],
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["src/**/*", "resume/**/*"],
   "exclude": ["node_modules", ".cache", "public"]
 }
