@@ -27,7 +27,11 @@
     "prestart": "yarn cms:generate:dev && yarn fetch-remote-posts",
     "prebuild": "yarn cms:generate:prod && yarn fetch-remote-posts",
     "resume:dev": "node ./scripts/resume/devServer.js",
-    "resume:build": "node ./scripts/resume/buildServer.js"
+    "resume:build": "node ./scripts/resume/buildServer.js",
+    "vite:server:dev": "ts-node ./internals/server.dev.js",
+    "vite:server:prod": "ts-node ./internals/server.prod.js",
+    "vite:dev": "yarn vite:server:dev",
+    "vite:build": "vite build && vite build --ssr && vite-plugin-ssr prerender"
   },
   "dependencies": {
     "@mdx-js/mdx": "v1",
