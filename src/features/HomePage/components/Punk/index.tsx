@@ -1,5 +1,4 @@
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
 import PunkSVG from "./PunkSVG"
 import { usePunk } from "./usePunk"
 
@@ -24,16 +23,16 @@ const Punk = () => {
           <button type="button" className="punk-button" onClick={toggleShades}>
             <div>
               {showShades ? (
-                <StaticImage
-                  src="./assets/eyes.png"
+                <img
+                  src="/assets/eyes.png"
                   alt="eyes"
                   placeholder="none"
                   height={48}
                   width={48}
                 />
               ) : (
-                <StaticImage
-                  src="./assets/sunglasses.png"
+                <img
+                  src="/assets/sunglasses.png"
                   alt="shades"
                   placeholder="none"
                   height={48}

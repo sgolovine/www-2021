@@ -1,0 +1,48 @@
+{
+  "side-projects": [
+    {
+      "current-project": true,
+      "start-date": "Jan 2021",
+      "end-date": "Jun 2021",
+      "name": "Gistmarks",
+      "description": "Quickly create and share bookmark collections with others using Github Gist",
+      "link": "https://gistmarks.io",
+      "type": "Website"
+    },
+    {
+      "current-project": true,
+      "start-date": "Jan 2020",
+      "end-date": "Jun 2021",
+      "name": "Webhost Watchdog",
+      "description": "Web hosting review website. Utilizes React, GatsbyJS and JAMStack Technologies to run with virtually no overhead cost.",
+      "link": "https://webhostwatchdog.com",
+      "type": "Website"
+    },
+    {
+      "current-project": true,
+      "start-date": "Jan 2019",
+      "end-date": "Jun 2021",
+      "name": "TipTrack",
+      "description": "A tip tracker app for iOS and Android. Keeps track of tips earned and lets the user create custom metrics from their tip data. TipTrack was built using React Native and relies on client side logic to compute tip analytics. Available in the Apple App Store",
+      "link": "https://tiptrack.app",
+      "type": "iOS and Android App"
+    },
+    {
+      "current-project": false,
+      "start-date": "Jan 2018",
+      "end-date": "Jan 2020",
+      "name": "Fav Bookmark Manager",
+      "description": "An open source browser extension that lets users create bookmarks and sync them with Github Gist. Succeeded by Gistmarks",
+      "link": "https://fav.sh",
+      "type": "Browser Extension"
+    },
+    {
+      "current-project": false,
+      "start-date": "Jan 2017",
+      "end-date": "Jan 2018",
+      "name": "CopyBin",
+      "description": "CopyBin was an Android app that let users quickly copy canned responses",
+      "type": "Android App"
+    }
+  ]
+}

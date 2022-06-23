@@ -1,0 +1,158 @@
+{
+  "posts": [
+    {
+      "id": 739324,
+      "title": "The best way to use SVG icons in React.",
+      "description": "There are tons of libraries out there that will help you with icons in React, but there's an even easier way.",
+      "url": "https://dev.to/sgolovine/the-best-way-to-use-svg-icons-in-react-3ckm",
+      "date": "2021-06-25T16:03:51Z"
+    },
+    {
+      "id": 730202,
+      "title": "10 UI Frameworks for your Next React Project",
+      "description": "A list of 10 awesome UI libraries that will help you bootstrap your next React project",
+      "url": "https://dev.to/sgolovine/10-ui-frameworks-for-your-next-react-project-o6k",
+      "date": "2021-06-16T14:38:41Z"
+    },
+    {
+      "id": 728048,
+      "title": "Building a blog with Gatsby from scratch",
+      "description": "Build a blog with Gatsby completely from scratch.",
+      "url": "https://dev.to/sgolovine/building-a-blog-with-gatsby-from-scratch-52c3",
+      "date": "2021-06-14T15:59:52Z"
+    },
+    {
+      "id": 724457,
+      "title": "Roll your own URL shortener using Netlify Redirects.",
+      "description": "Learn how to create a dead simple URL shortener using Netlify Redirects.",
+      "url": "https://dev.to/sgolovine/roll-your-own-url-shortener-using-netlify-redirects-3k3h",
+      "date": "2021-06-11T14:12:52Z"
+    },
+    {
+      "id": 718590,
+      "title": "Removing secrets from a git repo",
+      "description": "Removing a secret from a git is harder than just deleting the file and committing. In this guide I will show how to make sure your secrets never get discovered.",
+      "url": "https://dev.to/sgolovine/removing-secrets-from-a-git-repo-1ljf",
+      "date": "2021-06-05T01:23:26Z"
+    },
+    {
+      "id": 681286,
+      "title": "Persisting useReducer with a custom React Hook",
+      "description": "When I was building a new app I decided to use react hooks rather than Redux. Here's how it went and what I used in place of redux-persist.",
+      "url": "https://dev.to/sgolovine/persisting-usereducer-with-a-custom-react-hook-1j27",
+      "date": "2021-04-28T13:45:14Z"
+    },
+    {
+      "id": 676482,
+      "title": "Awesome Git Shortcuts",
+      "description": "Git is probably the most used tool in my toolbox. Here are some shortcuts (aliases) I created to move faster.",
+      "url": "https://dev.to/sgolovine/awesome-git-shortcuts-2bpd",
+      "date": "2021-04-23T16:00:33Z"
+    },
+    {
+      "id": 670540,
+      "title": "Migrating from NPM to Yarn",
+      "description": "Migrate your JS project from NPM to Yarn with one command",
+      "url": "https://dev.to/sgolovine/migrating-from-npm-to-yarn-2ih3",
+      "date": "2021-04-18T15:10:38Z"
+    },
+    {
+      "id": 668224,
+      "title": "Opt your Netlify, Vercel or Github Pages site out of Google's FLoC Network",
+      "description": "Google recently announced FLoC which is a new method to track users. In this post I will show an easy way to opt-out of FLoC.",
+      "url": "https://dev.to/sgolovine/opt-your-netlify-vercel-or-github-pages-site-out-of-google-s-floc-network-3nhl",
+      "date": "2021-04-16T13:52:19Z"
+    },
+    {
+      "id": 664272,
+      "title": "Your \"Awesome\" list sucks. Make it better with GistMarks.",
+      "description": "Awesome lists kind of suck. Here's how to make them better.",
+      "url": "https://dev.to/sgolovine/your-awesome-list-sucks-make-it-better-with-gistmarks-2n34",
+      "date": "2021-04-13T15:06:32Z"
+    },
+    {
+      "id": 541514,
+      "title": "Create your own NFC business card.",
+      "description": "NFC Business cards are all the rage now, learn how to create your own.",
+      "url": "https://dev.to/sgolovine/create-your-own-nfc-business-card-1606",
+      "date": "2020-12-13T17:30:46Z"
+    },
+    {
+      "id": 523155,
+      "title": "Github Actions for your Javascript Project: In less than 5 minutes.",
+      "description": "Copy my Github Actions workflow and add CI to your project in less than five minutes.",
+      "url": "https://dev.to/sgolovine/github-actions-for-your-javascript-project-in-less-than-5-minutes-54dc",
+      "date": "2020-11-23T17:50:30Z"
+    },
+    {
+      "id": 521511,
+      "title": "Transforming data with Array.reduce",
+      "description": "Array.reduce is one the most misunderstood Array function. Today I'll explain what it is, how it works, and why you should use it more often.",
+      "url": "https://dev.to/sgolovine/transforming-data-with-array-reduce-1h4d",
+      "date": "2020-11-21T18:23:32Z"
+    },
+    {
+      "id": 506197,
+      "title": "How to backup your Github code to Gitlab",
+      "description": "Github is perhaps the most important internet account a developer has. Here is how to backup your code from Github to Gitlab",
+      "url": "https://dev.to/sgolovine/how-to-backup-your-github-code-to-gitlab-35nl",
+      "date": "2020-11-04T14:53:09Z"
+    },
+    {
+      "id": 430459,
+      "title": "Using Psychology and iOS 14's Library to Cut Down on Screentime",
+      "description": "Cut down on screentime by implementing a single screen policy on your home screen.",
+      "url": "https://dev.to/sgolovine/using-psychology-and-ios-14-s-library-to-cut-down-on-screentime-20gl",
+      "date": "2020-08-17T18:16:38Z"
+    },
+    {
+      "id": 421377,
+      "title": "Lets talk about \"Clean Path\" and \"Clean Network\"",
+      "description": "Sec. Pompeo outlined 5 parts to the \"Clean Network\" initiative. Lets discuss them real quick",
+      "url": "https://dev.to/sgolovine/lets-talk-about-clean-path-and-clean-network-4mm9",
+      "date": "2020-08-07T13:12:09Z"
+    },
+    {
+      "id": 391415,
+      "title": "Why I love Hacker News",
+      "description": "Hacker News is a tiny social network made by YCombinator. And it's my favorite social network of all time.",
+      "url": "https://dev.to/sgolovine/why-i-love-hacker-news-3a66",
+      "date": "2020-07-10T12:59:41Z"
+    },
+    {
+      "id": 348260,
+      "title": "You Probably Don't Need a Mac",
+      "description": "You might hate me for this but your wallet won't",
+      "url": "https://dev.to/sgolovine/you-probably-don-t-need-a-mac-5enc",
+      "date": "2020-06-02T15:21:34Z"
+    },
+    {
+      "id": 302098,
+      "title": "My Resume Workflow",
+      "description": "A look at how I write my resume.",
+      "url": "https://dev.to/sgolovine/my-resume-workflow-2gfh",
+      "date": "2020-04-07T23:56:33Z"
+    },
+    {
+      "id": 286674,
+      "title": "Building a Web Extension in React",
+      "description": "Building an extension with React is pretty straightforward but has some wired quirks.",
+      "url": "https://dev.to/sgolovine/building-a-web-extension-in-react-38hp",
+      "date": "2020-03-23T19:23:06Z"
+    },
+    {
+      "id": 130548,
+      "title": "I built a bookmark manager",
+      "description": "I built a bookmark manager for all those cool and quirky bookmarks",
+      "url": "https://dev.to/sgolovine/i-built-a-bookmark-manager-1hin",
+      "date": "2019-07-01T13:12:41Z"
+    },
+    {
+      "id": 64797,
+      "title": "Let's talk about fitness",
+      "description": "The last 2 years have been a roller coaster in my life. Graduated college, moved to my own place, got...",
+      "url": "https://dev.to/sgolovine/lets-talk-about-fitness-2j8c",
+      "date": "2018-11-25T15:28:58Z"
+    }
+  ]
+}

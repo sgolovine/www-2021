@@ -1,0 +1,240 @@
+backend:
+  name: git-gateway
+local_backend: true
+media_folder: static/images
+public_folder: /images
+publish_mode: editorial_workflow
+site_url: https://sunnygolovine.com
+display_url: https://sunnygolovine.com
+locale: en
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: _
+collections:
+  - name: site-data
+    label: Site Data
+    files:
+      - file: public/cms/site-data/bio.json
+        name: bio
+        label: Bio
+        fields:
+          - label: Bio
+            name: bio
+            widget: text
+      - file: public/cms/site-data/contact.json
+        name: contact-info
+        label: Contact Info
+        fields:
+          - label: Email
+            name: email
+            widget: string
+          - label: Phone Number
+            name: phone-number
+            widget: string
+          - label: Alternate Phone Number
+            name: phone-number-alt
+            widget: string
+            required: false
+          - label: Instagram
+            name: instagram
+            widget: string
+          - label: Twitter
+            name: twitter
+            widget: string
+          - label: Github
+            name: github
+            widget: string
+          - label: LinkedIn
+            name: linkedin
+            widget: string
+          - label: The Practical Dev
+            name: dev-to
+            widget: string
+          - label: Website
+            name: website
+            widget: string
+            required: false
+            default: https://sunnygolovine.com
+      - file: public/cms/site-data/work.json
+        name: work
+        label: Work and Side Projects
+        fields:
+          - label: Previous Work
+            name: work-data
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: URL
+                name: url
+                widget: string
+                required: false
+              - label: Description
+                name: description
+                widget: text
+                required: false
+              - label: Project Type
+                name: project-type
+                widget: select
+                options:
+                  - label: Side Project
+                    value: side-project
+                  - label: Professional Project
+                    value: professional
+              - label: Show in Recent Work?
+                name: show-in-recent-projects
+                widget: boolean
+                default: false
+  - name: resume-data
+    label: Resume Data
+    files:
+      - file: public/cms/resume-data/education.json
+        name: education
+        label: Education
+        fields:
+          - label: Education
+            name: education
+            widget: list
+            fields:
+              - label: College Name
+                name: college-name
+                widget: string
+              - label: Degree Earned
+                name: degree-earned
+                widget: string
+              - label: Graduation Date
+                name: grad-date
+                widget: date
+                format: MMM YYYY
+      - file: public/cms/resume-data/side-projects.json
+        name: side-projects
+        label: Side Projects
+        fields:
+          - label: Side Projects
+            name: side-projects
+            widget: list
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Start Date
+                name: start-date
+                widget: date
+                format: MMM YYYY
+              - label: Current Project
+                name: current-project
+                widget: boolean
+                required: false
+                default: false
+              - label: End Date
+                name: end-date
+                widget: date
+                format: MMM YYYY
+                required: false
+              - label: Description
+                name: description
+                widget: text
+                required: false
+              - label: Link
+                name: link
+                widget: string
+                required: false
+              - label: Type
+                name: type
+                widget: string
+      - file: public/cms/resume-data/skills.json
+        name: skills
+        label: Skills
+        fields:
+          - label: Skills
+            name: skills
+            widget: list
+            fields:
+              - label: Skill Description
+                name: skill
+                widget: text
+      - file: public/cms/resume-data/work-experience.json
+        name: work
+        label: Work Experience
+        fields:
+          - label: Work Experience
+            name: work-experience
+            widget: list
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Position
+                name: position
+                widget: string
+              - label: Start Date
+                name: start-date
+                widget: date
+                format: MMM YYYY
+              - label: End Date
+                name: end-date
+                widget: date
+                format: MMM YYYY
+                required: false
+              - label: Current Employer
+                name: current-employer
+                widget: boolean
+                default: false
+                required: false
+              - label: URL
+                name: url
+                widget: string
+                required: false
+              - label: Accomplishments
+                name: accomplishments
+                widget: list
+                required: false
+                fields:
+                  - label: Accomplishment
+                    name: accomplishment
+                    widget: text
+  - name: snippets
+    identifier_field: docs
+    label: Snippets
+    label_singular: Snippet
+    description: Documentation and Code Snippets
+    folder: static/snippets
+    create: true
+    extension: md
+    format: frontmatter
+    fields:
+      - name: title
+        label: Snippet Title
+        widget: string
+      - name: description
+        label: Snippet Description
+        widget: text
+      - name: slug
+        label: Snippet Slug
+        widget: string
+      - name: tags
+        label: Snippet Tags (Comma Seperated)
+        widget: string
+      - name: published
+        label: Published
+        widget: boolean
+      - name: body
+        label: Snippet Content
+        widget: markdown
+        modes:
+          - raw
+        buttons: []
+        default: |
+          Brief description of your code snippet
+
+          <!-- Make sure to change the language -->
+          ```javascript
+
+          function foo() {
+            console.log('bar')
+          }
+
+          ```

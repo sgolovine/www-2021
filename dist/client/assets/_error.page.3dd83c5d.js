@@ -1,0 +1,1 @@
+import{j as e,F as n,a as r}from"./src/root/_default.page.client.tsx.e1721306.js";function t({is404:o}){return o?e(n,{children:[r("h1",{children:"404 Page Not Found"}),r("p",{children:"This page could not be found."})]}):e(n,{children:[r("h1",{children:"500 Internal Server Error"}),r("p",{children:"Something went wrong."})]})}export{t as Page};

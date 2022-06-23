@@ -1,0 +1,184 @@
+{
+  "basics": {
+    "name": "Sunny Golovine",
+    "label": "Software Engineering Manager",
+    "image": "",
+    "email": "sunny@golovinemail.org",
+    "phone": "(678) 646-2358",
+    "url": "https://sunnygolovine.com",
+    "summary": [
+      "I'm a Senior Software Engineer specializing in building applications in React and React Native as well as other modern Javascript frameworks like Angular, Svelte and Vue.",
+      "I have worked for startups and large fortune 500 companies where I have helped them deliver and outstanding and memorable customer experience through web and mobile applications. My method involves constant communications with leadership and across design and QA teams to ensure that we can deliver a highly performant, reliable and beautiful apps to our customers.",
+      "Outside of work I have worked a on a number of side projects from React Native applications that are currently published in the iOS and Android App Stores, several web apps, Chrome and Firefox extensions and more."
+    ],
+    "location": {
+      "address": "1235 S Birch St",
+      "postalCode": "80246",
+      "city": "Denver",
+      "countryCode": "US",
+      "region": "CO"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "SunnyGolovine",
+        "url": "https://linkedin.com/in/SunnyGolovine"
+      },
+      {
+        "network": "Github",
+        "username": "sgolovine",
+        "url": "https://github.com/sgolovine"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Ascendum Solutions",
+      "url": "https://ascendum.com",
+      "startDate": "2020-03-20",
+      "endDate": "PRESENT",
+      "positions": [
+        {
+          "position": "Software Engineering Manager",
+          "startDate": "2022-02-02",
+          "endDate": "PRESENT",
+          "summary": [
+            "Managed a team of 4 direct reports",
+            "Collaborated with other managers on day to day managerial tasks",
+            "Engaged with team members to implement personal growth goals for the year, checking in with them throughout the year to continue working on their goals",
+            "Worked to improve frontend team velocity, implementing a number of strategies that resulted in the team having 50% higher velocity on story cards"
+          ]
+        },
+        {
+          "position": "Technical Lead",
+          "startDate": "2021-06-01",
+          "endDate": "PRESENT",
+          "summary": [
+            "Led a frontend team in creating a platform for a Fortune 100 company. Utilized React and React Native to build both web and mobile applications for the client.",
+            "Architected a number of solutions to combat technical debt from a very early stage, resulting in far less tech debt in the long run and higher team productivity as a result",
+            "Led several smaller efforts to build out additional features in the primary mobile app of a Fortune 100 company.",
+            "Coached several mid-level and junior developers on the team, ensuring that they were equipped for success and assisting them in resolving blockers"
+          ]
+        },
+        {
+          "position": "Senior Software Engineer",
+          "startDate": "2020-03-20",
+          "endDate": "2021-06-01",
+          "summary": [
+            "Worked on a team to develop a Greenfield React Native application for a Fortune 500 company in the healthcare space. Introduced new architectural ideas that saved the development team time in implementing key feature in the app",
+            "Collaborated with DevOps to build a robust deployment pipeline able to serve multiple environments and branch level versioning, allowing QA to quickly install and test developer code and allowing seamless demo progress of the app with the client",
+            "Oversaw the technical feasibility of new features suggested by the client as well as estimating the time and bandwidth required for implementation. Worked with leadership, design and QA to ensure that project deadlines were met",
+            "Implemented key features including push notifications, mapping, and integrations with 3rd party providers. Ensured that both iOS and Android users on new and older devices received a performant and consistent experience",
+            "Wrote highly portable code, allowing features from one app to be quickly ported to other apps, allowing our client to go live with key features quicker"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cox Automotive",
+      "url": "https://coxautoinc.com",
+      "startDate": "2018-08-01",
+      "endDate": "2020-03-01",
+      "positions": [
+        {
+          "position": "Software Engineer",
+          "summary": [
+            "Utilized technologies including: React Native, ReactJS, ExpressJS, Ruby on Rails, AWS (S3, Cloudfront, Dynamo, Lambda).",
+            "Worked to build and maintain several key applications in the Cox Automotive ecosystem including: The CAFS App, Next Inspect, Vehicle Data Service, Disclosures API, Order a Concierge, Direct Sale and Vehicle Address Book. Combined these products helped the company increase digital sales 20%.",
+            "Led development and deployment of NextInspect. The commercial variant of the CAFS App.",
+            "Implemented a deployment process for the CAFS App that reduced the number of issues during deploys by 50% and led to a smoother and better document deployment procedure.",
+            "Built the theming system within the CAFS App, allowing the app to be themed for client use.",
+            "Excelled in providing cost and time effective solutions for a number of issues, business use cases and features to our apps and services."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OnQ",
+      "startDate": "2017-06-01",
+      "endDate": "2018-08-01",
+      "positions": [
+        {
+          "position": "Junior Software Engineer",
+          "summary": [
+            "Leveraged technologies including: React Native, ReactJS, DraftJS, Firebase, Java (Spring Framework)",
+            "Collaborated alongside senior developers on several key key projects in the OnQ ecosystem",
+            "Led an effort to fork and maintain an open source WYSIWYG editor, adding new features and theming support. Used within the OnQ web platform.",
+            "Continually worked with product owners and UX designers to enhance features and usability of company products and tools."
+          ]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Georgia Southern University",
+      "url": "https://georgiasouthern.edu",
+      "area": "Computer Science",
+      "studyType": "Bachelors",
+      "startDate": "2015-01-01",
+      "endDate": "2017-05-31"
+    },
+    {
+      "institution": "Georgia State University",
+      "url": "https://perimeter.gsu.edu",
+      "area": "Science",
+      "studyType": "Associates",
+      "startDate": "2012-09-01",
+      "endDate": "2014-12-01"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web Development",
+      "level": "Senior",
+      "keywords": ["HTML", "CSS", "Javascript", "React", "Svelte", "ViteJS"]
+    },
+    {
+      "name": "Mobile Development",
+      "level": "Senior",
+      "keywords": ["React Native"]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Mid",
+      "keywords": ["NodeJS", "Firebase", "ExpressJS"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Crewsum",
+      "description": "A SaaS application for helping recruiters keep track of placements, track time, and send out invoices to clients.",
+      "highlights": [
+        "Frontend built using React and MaterialUI",
+        "Backend built using Express.JS",
+        "Hosted on Firebase",
+        "Backend uses cloud functions",
+        "Firestore and Realtime DB used for storing user and app data"
+      ],
+      "keywords": ["React", "Serverless", "ExpressJS", "Firebase"]
+    },
+    {
+      "name": "TipTrack",
+      "description": "An iOS app for tracking tips",
+      "highlights": [
+        "Frontend built using React Native",
+        "All data stored on the users device",
+        "Users can create their own metrics, filtering tips through a number of criteria",
+        "Graphs used to visualize earnings, hours worked and more"
+      ],
+      "keywords": ["iOS", "React Native"]
+    },
+    {
+      "name": "Awesome Devtools",
+      "description": "A website for finding great web developer tools",
+      "highlights": [
+        "Frontend built with React (GatsbyJS)",
+        "All data hosted locally, no backend for fetching main data",
+        "FaunaDB used for gathering user submissions",
+        "Wrote a custom UI for approving/rejecting user submissions"
+      ],
+      "keywords": ["React", "Gatsby"]
+    }
+  ]
+}
