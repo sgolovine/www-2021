@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import React from "react"
 import { sidebarRoutes } from "~/defines/navigation"
 
@@ -8,14 +7,15 @@ export const HomeNav = () => {
 
   return (
     <div className="flex flex-row items-center justify-evenly py-4">
+      {/* TODO: Migrate Link */}
       {routesToRender.map(route => (
-        <Link
+        <a
           className="text-lg font-heading font-bold hover:bg-brand-yellow hover:text-off-black px-2 py-1 rounded-sm"
           key={route.key}
-          to={route.route}
+          href={route.route}
         >
           {route.name}
-        </Link>
+        </a>
       ))}
     </div>
   )

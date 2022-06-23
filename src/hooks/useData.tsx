@@ -1,52 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby"
-import { SiteData, ResumeData } from "~/model/SiteData"
-
-const placeholderResumeData: any = {
-  contactInfo: {
-    email: "string",
-    github: "string",
-    linkedin: "string",
-    phone: "string",
-    website: "string",
-  },
-  education: [
-    {
-      degree: "string",
-      gradDate: "string",
-      name: "string,",
-    },
-  ],
-  sideProjects: [
-    {
-      type: "string",
-      startDate: "string",
-      endDate: "string",
-      name: "string",
-      description: "string",
-      link: "string",
-    },
-  ],
-  skills: ["foo", "bar", "baz"],
-  workExperience: [
-    {
-      name: "string",
-      position: "string",
-      startDate: "string",
-      endDate: "string",
-      accomplishments: ["foo", "bar"],
-      url: "string",
-    },
-  ],
-}
-
-interface Query {
-  allResumeDataJson: {
-    nodes: RawResumeData[]
-  }
-  allSiteDataJson: {
-    nodes: RawSiteData[]
-  }
-}
+import { SiteData } from "~/model/SiteData"
 
 interface RawSiteData {
   bio: string | null
@@ -68,43 +20,6 @@ interface RawSiteData {
         url: string | null
       }[]
     | null
-}
-
-interface RawResumeData {
-  education:
-    | {
-        college_name: string
-        degree_earned: string
-        grad_date: string
-      }[]
-    | null
-  side_projects:
-    | {
-        current_project: boolean
-        description: string
-        end_date: string
-        link: string
-        name: string
-        start_date: string
-        type: string
-      }[]
-    | null
-  skills:
-    | {
-        skill: string
-      }[]
-    | null
-  workExperience: {
-    accomplishments: {
-      accomplishment: string
-    }[]
-    current_employer: boolean
-    end_date: string
-    name: string
-    position: string
-    start_date: string
-    url: string
-  }[]
 }
 
 function normalizeData<T, R>(data: T[]) {
@@ -131,77 +46,42 @@ function normalizeData<T, R>(data: T[]) {
   return normalizedData
 }
 
-export const useData = (): {
-  LEGACY_resumeData: any
-  siteData: SiteData
-  resumeData: ResumeData
-} => {
-  const query = useStaticQuery<Query>(graphql`
-    query {
-      allResumeDataJson {
-        nodes {
-          education {
-            college_name
-            degree_earned
-            grad_date
-          }
-          side_projects {
-            current_project
-            description
-            end_date
-            link
-            name
-            start_date
-            type
-          }
-          skills {
-            skill
-          }
-          work_experience {
-            accomplishments {
-              accomplishment
-            }
-            current_employer
-            end_date
-            name
-            position
-            start_date
-            url
-          }
-        }
-      }
-      allSiteDataJson {
-        nodes {
-          bio
-          dev_to
-          email
-          github
-          instagram
-          linkedin
-          phone_number
-          phone_number_alt
-          twitter
-          website
-          work_data {
-            name
-            description
-            project_type
-            show_in_recent_projects
-            url
-          }
-        }
-      }
-    }
-  `)
+export const useData = () => {
+  // Placeholder query data
+  const query = {
+    allSiteDataJson: {
+      nodes: [
+        {
+          bio: "",
+          dev_to: "",
+          email: "",
+
+          github: "",
+          instagram: "",
+          linkedin: "",
+          phone_number: "",
+          phone_number_alt: "",
+          twitter: "",
+          website: "",
+          work_data: [
+            {
+              name: "",
+              description: "",
+              project_type: "side_project" as "side-project",
+              show_in_recent_projects: false,
+              url: "",
+            },
+          ],
+        },
+      ],
+    },
+  }
+
   const siteData = normalizeData<RawSiteData, SiteData>(
     query.allSiteDataJson.nodes
   )
-  const resumeData = normalizeData<RawResumeData, ResumeData>(
-    query.allResumeDataJson.nodes
-  )
+
   return {
-    LEGACY_resumeData: placeholderResumeData,
     siteData,
-    resumeData,
   }
 }
