@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "run-s cms:generate:dev ssr:server:dev",
+    "predev": "yarn cms:generate:dev",
+    "dev": "run-p cms:start-proxy ssr:server:dev",
     "build": "yarn cms:generate:dev && vite build && vite build --ssr && vite-plugin-ssr prerender",
     "serve": "serve -s dist/client",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
