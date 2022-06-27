@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "predev": "yarn cms:generate:dev",
+    "predev": "yarn cms:generate:dev && node ./scripts/slug-mapper.js",
+    "prebuild": "node ./scripts/slug-mapper.json",
     "dev": "run-p cms:start-proxy ssr:server:dev",
     "build": "yarn cms:generate:dev && vite build && vite build --ssr && vite-plugin-ssr prerender",
     "serve": "serve -s dist/client",
@@ -28,7 +29,7 @@
   },
   "dependencies": {
     "@mdx-js/mdx": "v1",
-    "@mdx-js/react": "v1",
+    "@mdx-js/react": "^2.1.2",
     "@sendgrid/mail": "^7.7.0",
     "@tailwindcss/typography": "^0.5.2",
     "@vitejs/plugin-react": "^1.3.2",

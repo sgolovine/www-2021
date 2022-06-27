@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid"
 import path from "path"
 import { BlogPost } from "~/model/BlogPost"
 import { fetchPostData, getPostsPathsByGlob } from "~/helpers/postHelpers.node"
@@ -21,17 +20,14 @@ export async function onBeforeRender() {
       return postData
     })
     .filter(item => item.published)
-    .map(item => {
-      const postId = uuidv4()
-      return {
-        id: postId,
-        title: item.title,
-        path: `/blog/posts/${item.slug}`,
-        description: item.description,
-        date: new Date(item.date),
-        type: "local",
-      }
-    })
+    .map(item => ({
+      id: item.slug,
+      title: item.title,
+      path: `/blog/posts/${item.slug}`,
+      description: item.description,
+      date: new Date(item.date),
+      type: "local",
+    }))
 
   return {
     pageContext: {

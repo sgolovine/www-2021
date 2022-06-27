@@ -70,5 +70,8 @@ yarn-error.log
 # Netlify CMS
 public/config.yml
 
-# Posts Script
+# Remote Posts Script
 public/posts/remotePosts.json
+
+# Posts Map
+post-map.json
