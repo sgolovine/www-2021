@@ -37,6 +37,7 @@
     "copy-to-clipboard": "^3.3.1",
     "dayjs": "^1.11.3",
     "glob": "^8.0.3",
+    "gray-matter": "^4.0.3",
     "gutenberg-css": "^0.6.1",
     "handlebars": "^4.7.7",
     "html-minifier": "^4.0.0",

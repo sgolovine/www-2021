@@ -4,9 +4,14 @@ import { withNewLayout } from "~/components/layout"
 import { ContentContainer } from "~/components/layout/ContentContainer"
 import { PostItem } from "~/components/post/PostItem"
 import useBlogPosts from "~/hooks/useBlogPosts"
+import { BlogPost } from "~/model/BlogPost"
 
-const BlogPage: React.FC = () => {
-  const { localPosts, remotePosts } = useBlogPosts()
+interface Props {
+  localPosts: BlogPost[]
+}
+
+const BlogPage: React.FC<Props> = ({ localPosts }) => {
+  const { remotePosts } = useBlogPosts()
 
   return (
     <div>

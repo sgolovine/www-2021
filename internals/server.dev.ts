@@ -30,9 +30,6 @@ async function main() {
   // Render pages
   app.get("*", async (req, res, next) => {
     const url = req.originalUrl
-    // if (url === "/admin") {
-    //   res.status(200).type("html").send(adminTemplate)
-    // }
 
     const { httpResponse } = await renderPage({ url })
 
@@ -45,6 +42,32 @@ async function main() {
       .type(httpResponse.contentType)
       .send(httpResponse.body)
   })
+
+  app.get("/blog/:postId", async (req, res, next) => {
+    const url = req.originalUrl
+    const { httpResponse } = await renderPage({ url })
+    if (!httpResponse) {
+      return next()
+    }
+
+    res
+      .status(httpResponse.statusCode)
+      .type(httpResponse.contentType)
+      .send(httpResponse.body)
+  })
+
+  // app.get("/snippets/:postId", async (req, res, next) => {
+  //   const url = req.originalUrl
+  //   const { httpResponse } = await renderPage({ url })
+  //   if (!httpResponse) {
+  //     return next()
+  //   }
+
+  //   res
+  //     .status(httpResponse.statusCode)
+  //     .type(httpResponse.contentType)
+  //     .send(httpResponse.body)
+  // })
 
   app.listen(defaults.port)
   console.log(`Server running at http://localhost:${defaults.port}`)
