@@ -23,7 +23,7 @@ export async function onBeforeRender() {
     .map(item => ({
       id: item.slug,
       title: item.title,
-      path: `/blog/posts/${item.slug}`,
+      path: `/blog/post/${item.slug}`,
       description: item.description,
       date: new Date(item.date),
       type: "local",

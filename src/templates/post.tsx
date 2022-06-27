@@ -1,56 +1,49 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable react/jsx-props-no-spreading */
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
-import { PrismProvider } from "~/components/codeblocks"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
 
 interface Props {
-  pageContext: {
-    postBody: string
-    postMeta: {
-      title: string
-      description: string
-      date: string
-      path: string
-    }
-    otherPosts: {
-      id: string
-      title: string
-      link: string
-      date: string
-      postType: "local" | "remote"
-    }[]
-  }
+  title: string
+  description: string
+  date: string
+  path: string
+  postHtml: string
+  otherPosts: {
+    id: string
+    title: string
+    link: string
+    date: string
+    postType: "local" | "remote"
+  }[]
 }
 
-const PostTemplate: React.FC<Props> = ({ pageContext }) => {
-  const { postBody, postMeta, otherPosts } = pageContext
-
-  return (
-    <>
-      <PostSEO
-        title={postMeta.title}
-        description={postMeta.description}
-        date={postMeta.date}
-        path={postMeta.path}
-      />
-      <PostLayout
-        showAuthor
-        title={postMeta.title}
-        description={postMeta.description}
-        date={postMeta.date}
-        otherPosts={otherPosts}
-        type="post"
-      >
-        <div className="prose">
-          <PrismProvider>
-            <MDXRenderer>{postBody}</MDXRenderer>
-          </PrismProvider>
-        </div>
-      </PostLayout>
-    </>
-  )
-}
+const PostTemplate = ({
+  title,
+  description,
+  date,
+  path,
+  otherPosts,
+  postHtml,
+}: Props) => (
+  <>
+    <PostSEO title={title} description={description} date={date} path={path} />
+    <PostLayout
+      showAuthor
+      title={title}
+      description={description}
+      date={date}
+      otherPosts={otherPosts}
+      type="post"
+    >
+      <div className="prose">
+        {/* <PrismProvider> */}
+        <div dangerouslySetInnerHTML={{ __html: postHtml }} />
+        {/* </PrismProvider> */}
+      </div>
+    </PostLayout>
+  </>
+)
 
 export default PostTemplate
