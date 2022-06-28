@@ -40,19 +40,49 @@ The process for loading blog posts and snippets is very similar. The only differ
 
 ## Post Metadata
 
-This section covers the convergence of Blog Posts and Snippets under a single data model.
+This section covers the similarities and differences between the types of posts on teh site. There are 3 types of posts that will go on the site: Local Blog Posts, Snippets and Remote Blog Posts.
 
-**Common Metadata**
+**Common Meta**
 
-- title
-- description
-- slug
-- published
+This is metadata common to all objects.
 
-**Post Metadata**
+| Type                           | Name        | Description             |
+| ------------------------------ | ----------- | ----------------------- |
+| string                         | title       | title of the post       |
+| string                         | description | description of the post |
+| boolean                        | published   | is the post published   |
+| post \| remote-post \| snippet | postType    | the type of post        |
 
-- date
+**Local Blog Posts**
 
-**Snippets Metadata**
+| Type   | Name | Description        |
+| ------ | ---- | ------------------ |
+| string | slug | `/blog/post/:slug` |
+| string | date | publish date       |
 
-- tags
+**Remote Blog Posts**
+
+| Type   | Name | Description     |
+| ------ | ---- | --------------- |
+| string | id   | id of the post  |
+| string | url  | URL to the post |
+| string | date | publish date    |
+
+**Other Posts**
+
+The `OtherPosts` object is used to link to other articles. It can either be of type `BlogPostMetadata` or `RemotePostMetadata`. To identify which type you are looking at use this snippet:
+
+```js
+const post: OtherPosts = {...}
+
+if(post.postType === PostType.Post) {
+  const coercedPost = post as BlogPostMetadata
+  // ...
+} else {
+  // Here we can assume this is a remote post. Since there won't be snippets here
+  const coercedPost = post as RemotePostMetadata
+  // ...
+}
+
+
+```
