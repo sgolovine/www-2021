@@ -27,5 +27,5 @@
     }
   },
   "include": ["src/**/*", "resume/**/*"],
-  "exclude": ["node_modules", ".cache", "public"]
+  "exclude": ["node_modules", ".cache", "public", "src/features/ResumePage"]
 }

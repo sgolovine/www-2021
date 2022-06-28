@@ -10,8 +10,7 @@ import ReactDOMServer from "react-dom/server"
 import { PageContext } from "~/root/types"
 import PostTemplate from "~/components/templates/post"
 import { BlogPostMetadata } from "~/model/Posts"
-import { fetchPostDataByFile } from "~/helpers/postHelpers.node"
-import { compilePost } from "~/helpers/compilePost.node"
+import { fetchPostDataByFile, compilePost } from "~/helpers/node"
 
 export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   // Get the post slug from the URL

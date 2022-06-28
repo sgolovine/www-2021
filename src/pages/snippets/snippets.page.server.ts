@@ -1,5 +1,5 @@
 import path from "path"
-import { fetchPostData, getPostsPathsByGlob } from "~/helpers/postHelpers.node"
+import { fetchPostDataByPath, getPostsPathsByGlob } from "~/helpers/node"
 import { SnippetMeta, SnippetMetaRaw } from "~/model/Snippets"
 
 const blogPostPath = path.resolve(process.cwd(), "public", "snippets")
@@ -9,7 +9,7 @@ export async function onBeforeRender() {
 
   const allPostData: SnippetMeta[] = postPaths.files
     .map((path: string) => {
-      const postData = fetchPostData<SnippetMetaRaw>(blogPostPath, path)
+      const postData = fetchPostDataByPath<SnippetMetaRaw>(blogPostPath, path)
 
       return postData
     })

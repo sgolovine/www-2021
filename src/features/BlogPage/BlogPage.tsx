@@ -16,8 +16,9 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
     <ContentContainer>
       {localPosts &&
         localPosts.length > 0 &&
-        localPosts.map(post => (
+        localPosts.map((post, index) => (
           <PostItem
+            key={`${index}-${post.slug}`}
             path={post.slug}
             title={post.title}
             date={post.date}
@@ -33,8 +34,9 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
     <ContentContainer>
       {remotePosts &&
         remotePosts.length > 0 &&
-        remotePosts.map(post => (
+        remotePosts.map((post, index) => (
           <PostItem
+            key={`${index}-${post.id}`}
             path={post.url}
             title={post.title}
             date={post.date}
