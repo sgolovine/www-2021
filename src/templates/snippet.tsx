@@ -1,43 +1,29 @@
-import { MDXRenderer } from "gatsby-plugin-mdx"
+/* eslint-disable react/no-danger */
 import React from "react"
-import { PrismProvider } from "~/components/codeblocks"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
 
 interface Props {
-  pageContext: {
-    body: string
-    meta: {
-      title: string
-      path: string
-      description: string
-    }
-  }
+  title: string
+  description: string
+  path: string
+  postHtml: string
 }
 
-const SnippetTemplate: React.FC<Props> = ({ pageContext }) => {
-  const { body, meta } = pageContext
-
-  return (
-    <>
-      <PostSEO
-        title={meta.title}
-        description={meta.description}
-        path={meta.path}
-      />
-      <PostLayout
-        title={meta.title}
-        description={meta.description}
-        type="snippet"
-      >
-        <div className="prose mx-auto">
-          <PrismProvider>
-            <MDXRenderer>{body}</MDXRenderer>
-          </PrismProvider>
-        </div>
-      </PostLayout>
-    </>
-  )
-}
+const SnippetTemplate: React.FC<Props> = ({
+  title,
+  description,
+  path,
+  postHtml,
+}) => (
+  <>
+    <PostSEO title={title} description={description} path={path} />
+    <PostLayout title={title} description={description} type="snippet">
+      <div className="prose mx-auto">
+        <div dangerouslySetInnerHTML={{ __html: postHtml }} />
+      </div>
+    </PostLayout>
+  </>
+)
 
 export default SnippetTemplate

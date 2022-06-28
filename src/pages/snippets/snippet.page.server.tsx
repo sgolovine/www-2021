@@ -1,21 +1,24 @@
-import React from "react"
-import path from "path"
-import fs from "fs/promises"
 import {
+  dangerouslySkipEscape,
   escapeInject,
   PageContextBuiltIn,
-  dangerouslySkipEscape,
 } from "vite-plugin-ssr"
+import fs from "fs/promises"
+import path from "path"
 import ReactDOMServer from "react-dom/server"
+import React from "react"
+import { compilePost } from "~/helpers/compilePost.node"
+import { fetchPostDataByFile } from "~/helpers/postHelpers.node"
+import { SnippetMeta, SnippetMetaRaw } from "~/model/Snippets"
 import { PageContext } from "~/root/types"
 import PostTemplate from "~/templates/post"
-import { PostMetadata } from "~/model/BlogPost"
-import { fetchPostDataByFile } from "~/helpers/postHelpers.node"
-import { compilePost } from "~/helpers/compilePost.node"
 
 export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   // Get the post slug from the URL
-  const postSlug = pageContext.urlParsed.pathname.replace("/blog/post/", "")
+  const postSlug = pageContext.urlParsed.pathname.replace(
+    "/snippets/snippet/",
+    ""
+  )
 
   // Get the slug map from the root of the project
   const slugMap = JSON.parse(
@@ -23,7 +26,7 @@ export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   )
 
   // Filter out the post that we need, extract the filePath
-  const postRelativeFilepath = slugMap.posts.filter(
+  const postRelativeFilepath = slugMap.snippets.filter(
     (post: { filePath: string; slug: string }) => post.slug === postSlug
   )[0].filePath
 
@@ -31,14 +34,20 @@ export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   const postAbsoluteFilepath = path.resolve(
     process.cwd(),
     "public",
-    "posts",
+    "snippets",
     postRelativeFilepath
   )
 
   // Read the post
   const file = await fs.readFile(postAbsoluteFilepath, "utf-8")
 
-  const postMeta = fetchPostDataByFile<PostMetadata>(file)
+  const postMetaRaw = fetchPostDataByFile<SnippetMetaRaw>(file)
+  const postMeta: SnippetMeta = {
+    ...postMetaRaw,
+    // TODO: Fix this odd remapping.
+    path: postMetaRaw.slug,
+    tags: postMetaRaw.tags.split(","),
+  }
 
   const post = await compilePost(file)
 
@@ -47,8 +56,7 @@ export async function onBeforeRender(pageContext: PageContextBuiltIn) {
       pageProps: {
         title: postMeta.title,
         description: postMeta.description,
-        date: postMeta.date,
-        slug: postMeta.slug,
+        slug: postMeta.path,
         postHtml: post.value,
       },
     },

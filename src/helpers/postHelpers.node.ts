@@ -49,6 +49,11 @@ export function fetchPostData<T>(
   return metadata.data as T
 }
 
+/**
+ *
+ * @param rawFile file that has been read by fs.readFile(...)
+ * @returns metadata for the post.
+ */
 export function fetchPostDataByFile<T>(rawFile: string): T {
   const metadata = matter(rawFile)
 
