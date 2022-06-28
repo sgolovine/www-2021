@@ -9,6 +9,8 @@ import "./styles/global.css"
 import "./styles/styles.css"
 import "./styles/loader.css"
 import "./styles/punk.css"
+// PrismJS Theme
+import "./styles/prism-onedark.css"
 
 type Props = Pick<PageContext, "Page" | "pageProps">
 
