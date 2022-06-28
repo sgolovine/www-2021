@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "predev": "yarn cms:generate:dev && node ./scripts/slug-mapper.js",
-    "prebuild": "node ./scripts/slug-mapper.js",
+    "predev": "run-s cms:generate:dev map-post-slugs fetch-remote-posts",
+    "prebuild": "run-s cms:generate:prod map-post-slugs fetch-remote-posts",
     "dev": "run-p cms:start-proxy ssr:server:dev",
     "build": "yarn cms:generate:dev && vite build && vite build --ssr && vite-plugin-ssr prerender",
     "serve": "serve -s dist/client",
@@ -25,7 +25,9 @@
     "resume:dev": "node ./scripts/resume/devServer.js",
     "resume:build": "node ./scripts/resume/buildServer.js",
     "ssr:server:dev": "ts-node ./internals/server.dev.ts",
-    "ssr:server:prod": "ts-node ./internals/server.prod.ts"
+    "ssr:server:prod": "ts-node ./internals/server.prod.ts",
+    "map-post-slugs": "node ./scripts/slug-mapper.js",
+    "fetch-remote-posts": "node ./scripts/fetch-remote-posts.js"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",

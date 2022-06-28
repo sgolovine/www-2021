@@ -76,5 +76,8 @@ public/posts/remotePosts.json
 # Posts Map
 post-map.json
 
+# Remote Post
+remote-posts.json
+
 # Site Output Files
 dist

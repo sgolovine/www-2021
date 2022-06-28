@@ -8,7 +8,7 @@ import {
 } from "vite-plugin-ssr"
 import ReactDOMServer from "react-dom/server"
 import { PageContext } from "~/root/types"
-import PostTemplate from "~/templates/post"
+import PostTemplate from "~/components/templates/post"
 import { PostMetadata } from "~/model/BlogPost"
 import { fetchPostDataByFile } from "~/helpers/postHelpers.node"
 import { compilePost } from "~/helpers/compilePost.node"

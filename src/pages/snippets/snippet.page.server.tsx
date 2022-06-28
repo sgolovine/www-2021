@@ -11,7 +11,7 @@ import { compilePost } from "~/helpers/compilePost.node"
 import { fetchPostDataByFile } from "~/helpers/postHelpers.node"
 import { SnippetMeta, SnippetMetaRaw } from "~/model/Snippets"
 import { PageContext } from "~/root/types"
-import PostTemplate from "~/templates/post"
+import PostTemplate from "~/components/templates/post"
 
 export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   // Get the post slug from the URL

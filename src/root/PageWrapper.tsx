@@ -3,12 +3,12 @@ import React from "react"
 import SEO from "~/components/common/SEO"
 import { PageContext } from "./types"
 // Styles
-import "../styles/font.css"
-import "../styles/tailwind.css"
-import "../styles/global.css"
-import "../styles/styles.css"
-import "../styles/loader.css"
-import "../styles/punk.css"
+import "./styles/font.css"
+import "./styles/tailwind.css"
+import "./styles/global.css"
+import "./styles/styles.css"
+import "./styles/loader.css"
+import "./styles/punk.css"
 
 type Props = Pick<PageContext, "Page" | "pageProps">
 

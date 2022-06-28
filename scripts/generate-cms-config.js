@@ -24,11 +24,10 @@ const resumeDataConfigPath = path.resolve(configRoot, "resume_data.yml")
 const docsDataConfigPath = path.resolve(configRoot, "snippets.yml")
 
 ;(() => {
-  console.log("🚚 Generating CMS configuration file")
-  console.log(`Mode: ${process.env.NODE_ENV}`)
-
   const backend =
     process.env.NODE_ENV === "production" ? prodBackendPath : devBackendPath
+
+  console.log(`🚚 Generating CMS configuration file (${process.env.NODE_ENV})`)
 
   const output = merge(
     backend,
@@ -39,12 +38,12 @@ const docsDataConfigPath = path.resolve(configRoot, "snippets.yml")
   )
 
   try {
-    console.log(`✍️ Writing config file to ${outputPath}`)
+    console.log(`🚚 Writing config file to ${outputPath}`)
     fs.writeFileSync(outputPath, output)
   } catch (e) {
     console.log("❌ An error occurred writing the file")
     console.error(e)
   } finally {
-    console.log("✅ Successfully Wrote Config File")
+    console.log("📋 Successfully Wrote Config File")
   }
 })()

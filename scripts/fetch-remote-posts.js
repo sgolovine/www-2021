@@ -1,23 +1,14 @@
 /**
  * This script will fetch remote blog posts from dev.to
- * And then put them inside a JSON file in /static/posts/remotePosts.json
  */
 require("dotenv").config()
 const axios = require("axios")
 const fs = require("fs")
 const path = require("path")
 
-const outputPath = path.resolve(
-  __dirname,
-  "..",
-  "static",
-  "posts",
-  "remotePosts.json"
-)
+const username = "sgolovine"
 
-function createUrl(username) {
-  return `https://dev.to/api/articles?username=${username}`
-}
+const outputPath = path.resolve(process.cwd(), "remote-posts.json")
 
 function formatPost(post) {
   return {
@@ -30,13 +21,8 @@ function formatPost(post) {
 }
 
 ;(() => {
-  if (!process.env.GATSBY_DEV_USERNAME) {
-    console.error(
-      "Dev username not found. Please set GATSBY_DEV_USERNAME in your .env"
-    )
-    process.exit(1)
-  }
-  const url = createUrl(process.env.GATSBY_DEV_USERNAME)
+  const url = `https://dev.to/api/articles?username=${username}`
+
   console.log("🚚 Fetching Posts from Dev.to")
 
   axios
