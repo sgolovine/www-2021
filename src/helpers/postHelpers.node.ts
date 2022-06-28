@@ -1,7 +1,3 @@
-import glob from "glob"
-import path from "path"
-import fs from "fs"
-import matter from "gray-matter"
 /**
  * This file is marked as *.node.ts, this means that it will only work
  * with files marked *.server.*
@@ -9,6 +5,13 @@ import matter from "gray-matter"
  * Please make sure to not import this into anything that is not
  * a *.server.* file.
  */
+
+import glob from "glob"
+import path from "path"
+import fs from "fs"
+import matter from "gray-matter"
+import { blogPostRoot, snippetRoot } from "~/defines/paths.node"
+import { BlogPostMetadata, PostType, SnippetsMetadata } from "~/model/Posts"
 
 /**
  * @param basePath path to where to start search
@@ -58,4 +61,36 @@ export function fetchPostDataByFile<T>(rawFile: string): T {
   const metadata = matter(rawFile)
 
   return metadata.data as T
+}
+
+/**
+ *
+ * @returns Promise with an array of blog post metadata
+ */
+export async function fetchBlogPostList(): Promise<BlogPostMetadata[]> {
+  const { files } = await getPostsPathsByGlob(blogPostRoot, "**/*.md")
+  const allPostMetadata = files
+    .map(path => {
+      const postData = fetchPostData<BlogPostMetadata>(blogPostRoot, path)
+      return postData
+    })
+    .filter(item => item.published)
+    .map(item => ({ ...item, postType: PostType.Post }))
+
+  return allPostMetadata
+}
+
+/**
+ * @returns Promise with an array of snippets post metadata.
+ */
+export async function fetchSnippetsList(): Promise<SnippetsMetadata[]> {
+  const { files } = await getPostsPathsByGlob(snippetRoot, "*.md")
+  const allPostMetadata = files
+    .map(path => {
+      const postData = fetchPostData<SnippetsMetadata>(blogPostRoot, path)
+      return postData
+    })
+    .map(item => ({ ...item, postType: PostType.Snippet }))
+
+  return allPostMetadata
 }

@@ -1,24 +1,23 @@
-import path from "path"
-import { BlogPost, PostMetadata } from "~/model/BlogPost"
 import { fetchPostData, getPostsPathsByGlob } from "~/helpers/postHelpers.node"
-
-const blogPostPath = path.resolve(process.cwd(), "public", "posts")
+import { blogPostRoot } from "~/defines/paths.node"
+import { BlogPostMetadata, PostType } from "~/model/Posts"
 
 export async function onBeforeRender() {
-  const postPaths = await getPostsPathsByGlob(blogPostPath, "**/*.md")
-  const allPostData: BlogPost[] = postPaths.files
+  const postPaths = await getPostsPathsByGlob(blogPostRoot, "**/*.md")
+  const allPostData: BlogPostMetadata[] = postPaths.files
     .map((path: string) => {
-      const postData = fetchPostData<PostMetadata>(blogPostPath, path)
+      const postData = fetchPostData<BlogPostMetadata>(blogPostRoot, path)
       return postData
     })
     .filter(item => item.published)
     .map(item => ({
       id: item.slug,
       title: item.title,
-      path: `/blog/post/${item.slug}`,
+      slug: `/blog/post/${item.slug}`,
       description: item.description,
-      date: new Date(item.date),
-      type: "local",
+      date: new Date(item.date).toString(),
+      published: item.published,
+      postType: PostType.Post,
     }))
 
   return {

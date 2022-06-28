@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react"
-import { OtherPosts, PostType } from "~/model/BlogPost"
-import { TopHeader } from ".."
+import { OtherPosts, PostType } from "~/model/Posts"
+import { TopHeader } from "../TopHeader"
 import { PostFooter } from "./PostFooter"
 import PostHeader from "./PostHeader"
 
@@ -11,7 +11,7 @@ interface Props {
   showAuthor?: boolean
   date?: string
   children: ReactNode
-  otherPosts?: OtherPosts[]
+  otherPosts?: OtherPosts
 }
 
 export const PostLayout: React.FC<Props> = ({

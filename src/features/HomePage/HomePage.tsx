@@ -7,7 +7,6 @@ import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
 import Punk from "./components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
-import useBlogPosts from "~/hooks/useBlogPosts"
 import { useData } from "~/hooks/useData"
 import {
   awesomeDevtoolsUrl,
@@ -16,6 +15,12 @@ import {
   otherProjectsUrl,
   tiptrackUrl,
 } from "./constants"
+import {
+  BlogPostMetadata,
+  OtherPosts,
+  PostType,
+  RemotePostMetadata,
+} from "~/model/Posts"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -26,15 +31,48 @@ const headingClasses = classNames([
   "italic",
 ])
 
-const IndexPage: React.FC = () => {
+interface Props {
+  recentPosts: OtherPosts
+}
+
+const IndexPage: React.FC<Props> = ({ recentPosts }) => {
   const { siteData } = useData()
-  const { recentPosts } = useBlogPosts()
 
   const workItems = siteData.work_data.filter(
     item => item.show_in_recent_projects
   )
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
+
+  const renderRecentPosts = () => (
+    <>
+      <h2 className={headingClasses}>Recent Posts</h2>
+      {recentPosts.map(post => {
+        const isRemotePost = post.postType === PostType.RemotePost
+        if (isRemotePost) {
+          const coercedPost = post as RemotePostMetadata
+          return (
+            <PostItem
+              path={coercedPost.url}
+              title={coercedPost.title}
+              date={coercedPost.date}
+              description={coercedPost.description}
+              external
+            />
+          )
+        }
+        const coercedPost = post as BlogPostMetadata
+        return (
+          <PostItem
+            path={coercedPost.slug}
+            title={coercedPost.title}
+            date={coercedPost.date}
+            description={coercedPost.description}
+          />
+        )
+      })}
+    </>
+  )
 
   return (
     <div className="max-w-3xl mx-auto my-4">
@@ -101,18 +139,7 @@ const IndexPage: React.FC = () => {
             />
           ))}
         </div>
-        <div className={sectionClasses}>
-          <h2 className={headingClasses}>Recent Posts</h2>
-          {recentPosts.map(post => (
-            <PostItem
-              path={post.path}
-              title={post.title}
-              date={post.date}
-              description={post.description}
-              external={post.type === "remote"}
-            />
-          ))}
-        </div>
+        <div className={sectionClasses}>{renderRecentPosts()}</div>
         <div className={sectionClasses}>
           <h2 className={headingClasses}>Connect With Me</h2>
           <LinkItem

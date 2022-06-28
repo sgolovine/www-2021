@@ -3,6 +3,7 @@
 import React from "react"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
+import { OtherPosts, PostType } from "~/model/Posts"
 
 interface Props {
   title: string
@@ -10,13 +11,7 @@ interface Props {
   date: string
   path: string
   postHtml: string
-  otherPosts: {
-    id: string
-    title: string
-    link: string
-    date: string
-    postType: "local" | "remote"
-  }[]
+  otherPosts: OtherPosts
 }
 
 const PostTemplate = ({
@@ -35,7 +30,7 @@ const PostTemplate = ({
       description={description}
       date={date}
       otherPosts={otherPosts}
-      type="post"
+      type={PostType.Post}
     >
       <div className="prose">
         {/* <PrismProvider> */}

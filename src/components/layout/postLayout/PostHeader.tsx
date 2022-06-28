@@ -1,16 +1,11 @@
 import React from "react"
-import { PostType } from "~/model/BlogPost"
+import { PostType } from "~/model/Posts"
 
 interface HeaderProps {
   title: string
   date?: string
   description?: string
   type: PostType
-}
-
-const postTypeLabels: Record<PostType, string> = {
-  post: "Post",
-  snippet: "Snippet",
 }
 
 const PostHeader: React.FC<HeaderProps> = ({
@@ -23,7 +18,7 @@ const PostHeader: React.FC<HeaderProps> = ({
     {/* Title */}
     <div className="py-4">
       <p className="text-lg font-heading font-bold text-center text-brand-yellow py-2">
-        {postTypeLabels[type]}
+        {type === PostType.Post ? "Post" : "Snippet"}
       </p>
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-heading font-black text-center">
         {title}

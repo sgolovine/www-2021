@@ -37,3 +37,22 @@ The process for loading blog posts and snippets is very similar. The only differ
 5. Compile post to html with Remark
 6. Render the `PostTemplate` component using `ReactDOMServer.renderToString`, passing in the post html from the previous step that is rendered via `dangerouslySetInnerHtml`
 7. The resulting HTML is returned to the client and displayed.
+
+## Post Metadata
+
+This section covers the convergence of Blog Posts and Snippets under a single data model.
+
+**Common Metadata**
+
+- title
+- description
+- slug
+- published
+
+**Post Metadata**
+
+- date
+
+**Snippets Metadata**
+
+- tags

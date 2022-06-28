@@ -2,6 +2,7 @@
 import React from "react"
 import { PostSEO } from "~/components/common/SEO"
 import { PostLayout } from "~/components/layout"
+import { PostType } from "~/model/Posts"
 
 interface Props {
   title: string
@@ -18,7 +19,7 @@ const SnippetTemplate: React.FC<Props> = ({
 }) => (
   <>
     <PostSEO title={title} description={description} path={path} />
-    <PostLayout title={title} description={description} type="snippet">
+    <PostLayout title={title} description={description} type={PostType.Snippet}>
       <div className="prose mx-auto">
         <div dangerouslySetInnerHTML={{ __html: postHtml }} />
       </div>

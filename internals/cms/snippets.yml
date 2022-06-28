@@ -4,7 +4,7 @@ collections:
     label: "Snippets"
     label_singular: "Snippet"
     description: "Documentation and Code Snippets"
-    folder: "static/snippets"
+    folder: "public/snippets"
     create: true
     extension: md
     format: frontmatter
@@ -15,7 +15,7 @@ collections:
 
       - name: description
         label: "Snippet Description"
-        widget: text 
+        widget: text
 
       - name: slug
         label: "Snippet Slug"
@@ -28,8 +28,8 @@ collections:
       - name: published
         label: Published
         widget: boolean
-      
-      - name: body 
+
+      - name: body
         label: "Snippet Content"
         widget: markdown
         modes: [raw]
@@ -41,7 +41,7 @@ collections:
           <!-- Make sure to change the language -->
 
           ```javascript
-          
+
 
           function foo() {
             console.log('bar')
@@ -49,4 +49,3 @@ collections:
 
 
           ```
-

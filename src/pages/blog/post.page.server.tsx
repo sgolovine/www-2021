@@ -9,7 +9,7 @@ import {
 import ReactDOMServer from "react-dom/server"
 import { PageContext } from "~/root/types"
 import PostTemplate from "~/components/templates/post"
-import { PostMetadata } from "~/model/BlogPost"
+import { BlogPostMetadata } from "~/model/Posts"
 import { fetchPostDataByFile } from "~/helpers/postHelpers.node"
 import { compilePost } from "~/helpers/compilePost.node"
 
@@ -38,7 +38,7 @@ export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   // Read the post
   const file = await fs.readFile(postAbsoluteFilepath, "utf-8")
 
-  const postMeta = fetchPostDataByFile<PostMetadata>(file)
+  const postMeta = fetchPostDataByFile<BlogPostMetadata>(file)
 
   const post = await compilePost(file)
 
