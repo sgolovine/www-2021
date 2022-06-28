@@ -4,6 +4,7 @@ import remarkFrontmatter from "remark-frontmatter"
 import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse/lib"
 import remarkRehype from "remark-rehype"
+import remarkPrism from "remark-prism"
 import { unified } from "unified"
 
 export async function compilePost(rawFile: string) {
@@ -11,6 +12,7 @@ export async function compilePost(rawFile: string) {
     .use(remarkParse)
     .use(remarkFrontmatter)
     .use(remarkGfm)
+    .use(remarkPrism)
     .use(remarkRehype)
     .use(rehypeFormat)
     .use(rehypeStringify)
