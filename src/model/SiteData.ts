@@ -20,6 +20,33 @@ export interface SiteData {
   website: string | null
 }
 
+export interface V2SiteDataWorkItem {
+  name: string
+  description: string
+  type: "side-project" | "professional"
+  showInRecent: boolean
+  url: string | null
+}
+
+export type V2SiteDataLinks = Record<
+  | "devTo"
+  | "email"
+  | "github"
+  | "instagram"
+  | "linkedin"
+  | "phoneNumber"
+  | "phoneNumberAlt"
+  | "twitter"
+  | "website",
+  string
+>
+
+export interface V2SiteData {
+  bio: string[]
+  work: V2SiteDataWorkItem[]
+  links: V2SiteDataLinks
+}
+
 interface ResumeEducationData {
   college_name: string
   degree_earned: string

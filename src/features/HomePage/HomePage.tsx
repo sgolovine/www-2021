@@ -7,7 +7,6 @@ import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
 import Punk from "./components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
-import { useData } from "~/hooks/useData"
 import {
   awesomeDevtoolsUrl,
   employerWebsiteUrl,
@@ -21,6 +20,7 @@ import {
   PostType,
   RemotePostMetadata,
 } from "~/model/Posts"
+import { V2SiteData } from "~/model/SiteData"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -33,21 +33,18 @@ const headingClasses = classNames([
 
 interface Props {
   recentPosts: OtherPosts
+  siteData: V2SiteData
 }
 
-const IndexPage: React.FC<Props> = ({ recentPosts }) => {
-  const { siteData } = useData()
-
-  const workItems = siteData.work_data.filter(
-    item => item.show_in_recent_projects
-  )
+const IndexPage: React.FC<Props> = ({ recentPosts, siteData }) => {
+  const workItems = siteData.work.filter(item => item.showInRecent)
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
 
   const renderRecentPosts = () => (
     <>
       <h2 className={headingClasses}>Recent Posts</h2>
-      {recentPosts.map(post => {
+      {(recentPosts ?? []).map(post => {
         const isRemotePost = post.postType === PostType.RemotePost
         if (isRemotePost) {
           const coercedPost = post as RemotePostMetadata
@@ -134,7 +131,7 @@ const IndexPage: React.FC<Props> = ({ recentPosts }) => {
               key={index}
               name={item.name}
               description={item.description}
-              project_type={item.project_type}
+              project_type={item.type}
               url={item.url}
             />
           ))}
@@ -144,27 +141,27 @@ const IndexPage: React.FC<Props> = ({ recentPosts }) => {
           <h2 className={headingClasses}>Connect With Me</h2>
           <LinkItem
             title="Email"
-            href={siteData.email}
+            href={siteData.links.email}
             type="email"
             icon="email"
             showPreviewOnHover
           />
           <LinkItem
             title="LinkedIn"
-            href={siteData.linkedin}
+            href={siteData.links.linkedin}
             type="linkedin"
             icon="linkedin"
             showPreviewOnHover
           />
           <LinkItem
             title="Github"
-            href={siteData.github}
+            href={siteData.links.github}
             icon="github"
             showPreviewOnHover
           />
           <LinkItem
             title="The Practical Dev"
-            href={siteData.dev_to}
+            href={siteData.links.devTo}
             icon="devto"
             showPreviewOnHover
           />

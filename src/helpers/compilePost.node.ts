@@ -1,3 +1,11 @@
+/**
+ * This file is marked as *.node.ts, this means that it will only work
+ * with files marked *.server.*
+ *
+ * Please make sure to not import this into anything that is not
+ * a *.server.* file.
+ */
+
 import rehypeFormat from "rehype-format"
 import rehypeStringify from "rehype-stringify/lib"
 import remarkFrontmatter from "remark-frontmatter"

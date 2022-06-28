@@ -1,3 +1,12 @@
+import { getSiteData } from "~/helpers/getSiteData.node"
+
 export async function onBeforeRender() {
-  console.log("[HOME] before render")
+  const siteData = await getSiteData()
+  return {
+    pageContext: {
+      pageProps: {
+        siteData,
+      },
+    },
+  }
 }
