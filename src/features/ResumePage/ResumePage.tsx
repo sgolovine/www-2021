@@ -1,6 +1,5 @@
 import React from "react"
 import { withNewLayout } from "~/components/layout"
-import { useResumeData } from "./hooks/useResumeData"
 import { WorkItem } from "./components/WorkItem"
 import { ProjectItem } from "./components/ProjectItem"
 import { EducationItem } from "./components/EducationItem"
@@ -8,7 +7,7 @@ import { ControlSubheader } from "./components/ControlSubheader"
 import { SkillsItem } from "./components/SkillsItem"
 
 const ResumePage: React.FC = () => {
-  const { data } = useResumeData()
+  const data: any = {}
 
   return (
     <>
