@@ -16,3 +16,11 @@ export type OtherPosts = {
 }
 
 export type PostType = "post" | "snippet"
+
+export type PostMetadata = {
+  title: string
+  description: string
+  date: string
+  slug: string
+  published: boolean
+}

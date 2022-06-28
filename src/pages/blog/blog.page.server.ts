@@ -1,16 +1,8 @@
 import path from "path"
-import { BlogPost } from "~/model/BlogPost"
+import { BlogPost, PostMetadata } from "~/model/BlogPost"
 import { fetchPostData, getPostsPathsByGlob } from "~/helpers/postHelpers.node"
 
 const blogPostPath = path.resolve(process.cwd(), "public", "posts")
-
-type PostMetadata = {
-  title: string
-  description: string
-  date: string
-  slug: string
-  published: boolean
-}
 
 export async function onBeforeRender() {
   const postPaths = await getPostsPathsByGlob(blogPostPath, "**/*.md")

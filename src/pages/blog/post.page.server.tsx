@@ -16,6 +16,8 @@ import rehypeStringify from "rehype-stringify"
 import ReactDOMServer from "react-dom/server"
 import { PageContext } from "~/root/types"
 import PostTemplate from "~/templates/post"
+import { PostMetadata } from "~/model/BlogPost"
+import { fetchPostDataByFile } from "~/helpers/postHelpers.node"
 
 export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   // Get the post slug from the URL
@@ -42,6 +44,8 @@ export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   // Read the post
   const file = await fs.readFile(postAbsoluteFilepath, "utf-8")
 
+  const postMeta = fetchPostDataByFile<PostMetadata>(file)
+
   const post = await unified()
     // Allow unified to read the markdown file
     .use(remarkParse)
@@ -61,6 +65,10 @@ export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   return {
     pageContext: {
       pageProps: {
+        title: postMeta.title,
+        description: postMeta.description,
+        date: postMeta.date,
+        slug: postMeta.slug,
         postHtml: post.value,
       },
     },
@@ -72,10 +80,10 @@ export async function render(pageContext: PageContext) {
 
   const rawHtml = ReactDOMServer.renderToString(
     <PostTemplate
-      title="Post"
-      description="Desc"
-      date="1/1/2022"
-      path="/foo/bar"
+      title={pageProps.title}
+      description={pageProps.description}
+      date={pageProps.date}
+      path={pageProps.slug}
       otherPosts={[]}
       postHtml={pageProps.postHtml}
     />

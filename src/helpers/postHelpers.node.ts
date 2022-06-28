@@ -48,3 +48,9 @@ export function fetchPostData<T>(
 
   return metadata.data as T
 }
+
+export function fetchPostDataByFile<T>(rawFile: string): T {
+  const metadata = matter(rawFile)
+
+  return metadata.data as T
+}
