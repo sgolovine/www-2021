@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "run-p cms:proxy start",
     "build": "next build",
-    "start": "next dev",
+    "start": "next dev --port 8080",
     "serve": "next start",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "tsc": "tsc",
