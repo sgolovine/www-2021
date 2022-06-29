@@ -8,7 +8,6 @@ import { PostItem } from "~/components/post/PostItem"
 import Punk from "./components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
 import useBlogPosts from "~/hooks/useBlogPosts"
-import { useData } from "~/hooks/useData"
 import {
   awesomeDevtoolsUrl,
   employerWebsiteUrl,
@@ -16,6 +15,7 @@ import {
   otherProjectsUrl,
   tiptrackUrl,
 } from "./constants"
+import { SiteWorkData } from "~/model/SiteData"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -26,13 +26,13 @@ const headingClasses = classNames([
   "italic",
 ])
 
-const IndexPage: React.FC = () => {
-  const { siteData } = useData()
-  const { recentPosts } = useBlogPosts()
+interface Props {
+  links: Record<"email" | "linkedIn" | "github" | "devTo", string>
+  workItems: SiteWorkData[]
+}
 
-  const workItems = siteData.work_data.filter(
-    item => item.show_in_recent_projects
-  )
+const IndexPage: React.FC<Props> = ({ links, workItems }) => {
+  const { recentPosts } = useBlogPosts()
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
 
@@ -117,27 +117,27 @@ const IndexPage: React.FC = () => {
           <h2 className={headingClasses}>Connect With Me</h2>
           <LinkItem
             title="Email"
-            href={siteData.email}
+            href={links.email}
             type="email"
             icon="email"
             showPreviewOnHover
           />
           <LinkItem
             title="LinkedIn"
-            href={siteData.linkedin}
+            href={links.linkedIn}
             type="linkedin"
             icon="linkedin"
             showPreviewOnHover
           />
           <LinkItem
             title="Github"
-            href={siteData.github}
+            href={links.github}
             icon="github"
             showPreviewOnHover
           />
           <LinkItem
             title="The Practical Dev"
-            href={siteData.dev_to}
+            href={links.devTo}
             icon="devto"
             showPreviewOnHover
           />

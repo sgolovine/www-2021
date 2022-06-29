@@ -70,8 +70,10 @@ yarn-error.log
 # Netlify CMS
 public/admin/config.yml
 
-# Posts Script
-public/posts/remotePosts.json
+# Post Indexes
+public/remote-posts.json
+public/blog-posts.json
+public/snippets.json
 
 # Next.JS
 .next
