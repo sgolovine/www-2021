@@ -1,4 +1,4 @@
-media_folder: "static/images"
+media_folder: "public/images"
 public_folder: "/images"
 publish_mode: editorial_workflow
 site_url: https://sunnygolovine.com

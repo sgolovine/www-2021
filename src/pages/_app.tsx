@@ -1,8 +1,8 @@
 import React from "react"
 import { AppProps } from "next/app"
 
-import "../styles/global.css"
 import "../styles/tailwind.css"
+import "../styles/global.css"
 import "../styles/font.css"
 import "../styles/loader.css"
 import "../styles/punk.css"

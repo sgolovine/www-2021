@@ -2,7 +2,7 @@ collections:
   - name: site-data
     label: "Site Data"
     files:
-      - file: "static/cms/site-data/bio.json"
+      - file: "public/cms/site-data/bio.json"
         name: bio
         label: "Bio"
         fields:
@@ -10,7 +10,7 @@ collections:
             name: "bio"
             widget: "text"
 
-      - file: "static/cms/site-data/contact.json"
+      - file: "public/cms/site-data/contact.json"
         name: contact-info
         label: "Contact Info"
         fields:
@@ -53,7 +53,7 @@ collections:
             required: false
             default: "https://sunnygolovine.com"
 
-      - file: "static/cms/site-data/work.json"
+      - file: "public/cms/site-data/work.json"
         name: "work"
         label: "Work and Side Projects"
         fields:

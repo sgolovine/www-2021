@@ -5,7 +5,7 @@
   "version": "2.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "run-p cms:proxy start",
+    "dev": "pnpm run cms:generate:dev && run-p cms:proxy start",
     "build": "next build",
     "start": "next dev --port 8080",
     "serve": "next start",

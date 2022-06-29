@@ -2,7 +2,7 @@ collections:
   - name: resume-data
     label: "Resume Data"
     files:
-      - file: "static/cms/resume-data/education.json"
+      - file: "public/cms/resume-data/education.json"
         name: education
         label: "Education"
         fields:
@@ -23,7 +23,7 @@ collections:
                 widget: date
                 format: "MMM YYYY"
 
-      - file: "static/cms/resume-data/side-projects.json"
+      - file: "public/cms/resume-data/side-projects.json"
         name: side-projects
         label: "Side Projects"
         fields:
@@ -66,7 +66,7 @@ collections:
                 name: type
                 widget: string
 
-      - file: "static/cms/resume-data/skills.json"
+      - file: "public/cms/resume-data/skills.json"
         name: skills
         label: "Skills"
         fields:
@@ -78,7 +78,7 @@ collections:
                 name: skill
                 widget: text
 
-      - file: "static/cms/resume-data/work-experience.json"
+      - file: "public/cms/resume-data/work-experience.json"
         name: work
         label: "Work Experience"
         fields:

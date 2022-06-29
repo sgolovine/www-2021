@@ -6,6 +6,7 @@ const Document = () => (
   <Html>
     <Head>
       <SiteSEO />
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
     </Head>
     <body>
       <Main />

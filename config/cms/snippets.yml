@@ -4,7 +4,7 @@ collections:
     label: "Snippets"
     label_singular: "Snippet"
     description: "Documentation and Code Snippets"
-    folder: "static/snippets"
+    folder: "public/snippets"
     create: true
     extension: md
     format: frontmatter

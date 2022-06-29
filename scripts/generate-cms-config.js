@@ -11,14 +11,8 @@ const path = require("path")
 const merge = require("@alexlafroscia/yaml-merge")
 const fs = require("fs")
 
-const configRoot = path.resolve(__dirname, "..", "static", "admin", "_config")
-const outputPath = path.resolve(
-  __dirname,
-  "..",
-  "static",
-  "admin",
-  "config.yml"
-)
+const configRoot = path.resolve(process.cwd(), "config", "cms")
+const outputPath = path.resolve(process.cwd(), "public", "admin", "config.yml")
 
 const devBackendPath = path.resolve(configRoot, "backend_dev.yml")
 const prodBackendPath = path.resolve(configRoot, "backend_prod.yml")

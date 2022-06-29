@@ -14,7 +14,7 @@ collections:
   - name: site-data
     label: "Site Data"
     files:
-      - file: "static/cms/site-data/bio.json"
+      - file: "public/cms/site-data/bio.json"
         name: bio
         label: "Bio"
         fields:

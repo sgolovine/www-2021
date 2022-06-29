@@ -68,10 +68,10 @@ yarn-error.log
 .resume-dist
 
 # Netlify CMS
-static/admin/config.yml
+public/admin/config.yml
 
 # Posts Script
-static/posts/remotePosts.json
+public/posts/remotePosts.json
 
 # Next.JS
 .next

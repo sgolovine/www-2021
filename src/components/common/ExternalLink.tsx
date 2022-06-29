@@ -77,8 +77,8 @@ export const ExternalLink: React.FC<Props> = ({
   // We can assume that the link is internal and use
   if (href) {
     return (
-      <Link className={textClasses} href={href}>
-        <a>{label}</a>
+      <Link href={href}>
+        <a className={textClasses}>{label}</a>
       </Link>
     )
   }
