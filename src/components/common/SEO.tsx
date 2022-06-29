@@ -14,8 +14,8 @@ const robots = "index, follow"
 const keywords = "portfolio, personal website, javascript, react"
 const image = "/social-image.jpg"
 
-const SEO = () => (
-  <Helmet>
+export const SiteSEO = () => (
+  <>
     {/* Base Tags */}
     <html lang="en" />
     <title>{title}</title>
@@ -40,7 +40,7 @@ const SEO = () => (
     <meta name="twitter:description" content={description} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:image" content={image} />
-  </Helmet>
+  </>
 )
 
 export const PostSEO: React.FC<PostSEOProps> = ({
@@ -70,6 +70,3 @@ export const PostSEO: React.FC<PostSEOProps> = ({
     </Helmet>
   )
 }
-
-// ts-prune-ignore-next
-export default SEO
