@@ -19,6 +19,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["src/**/*", "resume/**/*", "scripts/resume/buildServer.js"],
-  "exclude": ["node_modules", ".cache", "public"]
+  "include": ["src/**/*", "resume/**/*", "scripts/**/*"],
+  "exclude": ["node_modules", ".cache", "public", "__legacy__"]
 }
