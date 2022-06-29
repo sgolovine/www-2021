@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom/client"
 import React from "react"
 import { getPage } from "vite-plugin-ssr/client"
 import { PageContext } from "./types"
@@ -10,9 +10,9 @@ import { PageWrapper } from "./PageWrapper"
 async function main() {
   const { Page, pageProps } = await getPage<PageContext>()
 
-  ReactDOM.hydrate(
-    <PageWrapper Page={Page} pageProps={pageProps} />,
-    document.getElementById(ROOT_EL)
+  ReactDOM.hydrateRoot(
+    document.getElementById(ROOT_EL)!,
+    <PageWrapper Page={Page} pageProps={pageProps} />
   )
 }
 

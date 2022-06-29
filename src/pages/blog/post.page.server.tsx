@@ -68,7 +68,19 @@ export async function render(pageContext: PageContext) {
     />
   )
 
-  const documentHtml = escapeInject`${dangerouslySkipEscape(rawHtml)}`
+  const postHtml = dangerouslySkipEscape(rawHtml)
+
+  const documentHtml = escapeInject`
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <!-- This area will be populated by react-headroom -->
+      </head>
+      <body>
+        ${postHtml}
+      </body>
+    </html>
+  `
 
   return {
     documentHtml,

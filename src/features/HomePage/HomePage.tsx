@@ -44,12 +44,13 @@ const IndexPage: React.FC<Props> = ({ recentPosts, siteData }) => {
   const renderRecentPosts = () => (
     <>
       <h2 className={headingClasses}>Recent Posts</h2>
-      {(recentPosts ?? []).map(post => {
+      {(recentPosts ?? []).map((post, index) => {
         const isRemotePost = post.postType === PostType.RemotePost
         if (isRemotePost) {
           const coercedPost = post as RemotePostMetadata
           return (
             <PostItem
+              key={`remote-post-${index}`}
               path={coercedPost.url}
               title={coercedPost.title}
               date={coercedPost.date}
@@ -61,7 +62,8 @@ const IndexPage: React.FC<Props> = ({ recentPosts, siteData }) => {
         const coercedPost = post as BlogPostMetadata
         return (
           <PostItem
-            path={coercedPost.slug}
+            key={`local-post-${index}`}
+            path={`/blog/post/${coercedPost.slug}`}
             title={coercedPost.title}
             date={coercedPost.date}
             description={coercedPost.description}
