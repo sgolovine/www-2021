@@ -39,6 +39,7 @@ module.exports = {
     "react/no-array-index-key": 0,
     "react/function-component-definition": 0,
     "react/react-in-jsx-scope": 0,
+    "react/destructuring-assignment": 0,
     "jsx-a11y/anchor-is-valid": 0,
   },
 }

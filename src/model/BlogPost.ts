@@ -1,10 +1,14 @@
-export type BlogPost = {
+export interface RawBlogPost {
   id: string
   title: string
-  date: Date
   description: string
   path: string
-  type: "local" | "remote"
+  type: BlogPostType
+  rawDate: string
+}
+
+export interface BlogPost extends RawBlogPost {
+  date: Date
 }
 
 export type OtherPosts = {
@@ -16,3 +20,10 @@ export type OtherPosts = {
 }
 
 export type PostType = "post" | "snippet"
+
+export enum BlogPostType {
+  // eslint-disable-next-line no-unused-vars
+  Local = "local",
+  // eslint-disable-next-line no-unused-vars
+  Remote = "remote",
+}

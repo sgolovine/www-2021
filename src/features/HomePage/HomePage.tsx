@@ -7,7 +7,6 @@ import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
 import Punk from "./components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
-import useBlogPosts from "~/hooks/useBlogPosts"
 import {
   awesomeDevtoolsUrl,
   employerWebsiteUrl,
@@ -16,6 +15,7 @@ import {
   tiptrackUrl,
 } from "./constants"
 import { SiteWorkData } from "~/model/SiteData"
+import { BlogPost, BlogPostType } from "~/model/BlogPost"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -26,14 +26,17 @@ const headingClasses = classNames([
   "italic",
 ])
 
-interface Props {
+export interface IndexPageProps {
   links: Record<"email" | "linkedIn" | "github" | "devTo", string>
   workItems: SiteWorkData[]
+  recentPosts: BlogPost[]
 }
 
-const IndexPage: React.FC<Props> = ({ links, workItems }) => {
-  const { recentPosts } = useBlogPosts()
-
+const IndexPage: React.FC<IndexPageProps> = ({
+  links,
+  workItems,
+  recentPosts,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
 
   return (
@@ -93,7 +96,7 @@ const IndexPage: React.FC<Props> = ({ links, workItems }) => {
           <h2 className={headingClasses}>My Work</h2>
           {workItems.map((item, index) => (
             <WorkItem
-              key={index}
+              key={`work-item-${index}`}
               name={item.name}
               description={item.description}
               project_type={item.project_type}
@@ -103,13 +106,14 @@ const IndexPage: React.FC<Props> = ({ links, workItems }) => {
         </div>
         <div className={sectionClasses}>
           <h2 className={headingClasses}>Recent Posts</h2>
-          {recentPosts.map(post => (
+          {recentPosts.map((post, index) => (
             <PostItem
+              key={`recent-post-${index}`}
               path={post.path}
               title={post.title}
               date={post.date}
               description={post.description}
-              external={post.type === "remote"}
+              external={post.type === BlogPostType.Remote}
             />
           ))}
         </div>
