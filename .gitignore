@@ -55,10 +55,6 @@ typings/
 .env*
 !.env.example
 
-# gatsby files
-.cache/
-public
-
 # Mac files
 .DS_Store
 
@@ -76,3 +72,6 @@ static/admin/config.yml
 
 # Posts Script
 static/posts/remotePosts.json
+
+# Next.JS
+.next
