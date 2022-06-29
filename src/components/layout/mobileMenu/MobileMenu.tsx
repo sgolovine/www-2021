@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
 import { sidebarRoutes } from "~/defines/navigation"
 
 interface Props {
@@ -14,11 +14,11 @@ const MobileMenu: React.FC<Props> = ({ closeMenu }) => (
           <li className="py-2 uppercase font-bold text-lg" key={route.key}>
             <Link
               onClick={closeMenu}
-              to={route.route}
+              href={route.route}
               className="text-brand-link"
-              activeClassName="link-active"
+              // activeClassName="link-active"
             >
-              {route.name.toUpperCase()}
+              <a>{route.name.toUpperCase()}</a>
             </Link>
           </li>
         ))}

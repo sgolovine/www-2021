@@ -1,4 +1,3 @@
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import React from "react"
 import { PrismProvider } from "~/components/codeblocks"
 import { PostSEO } from "~/components/common/SEO"
@@ -16,7 +15,7 @@ interface Props {
 }
 
 const SnippetTemplate: React.FC<Props> = ({ pageContext }) => {
-  const { body, meta } = pageContext
+  const { meta } = pageContext
 
   return (
     <>
@@ -31,9 +30,10 @@ const SnippetTemplate: React.FC<Props> = ({ pageContext }) => {
         type="snippet"
       >
         <div className="prose mx-auto">
-          <PrismProvider>
+          <p>Post Body</p>
+          {/* <PrismProvider>
             <MDXRenderer>{body}</MDXRenderer>
-          </PrismProvider>
+          </PrismProvider> */}
         </div>
       </PostLayout>
     </>

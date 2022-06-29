@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import Link from "next/link"
 import React, { useState } from "react"
 import Headroom from "react-headroom"
 import { sidebarRoutes } from "~/defines/navigation"
@@ -27,9 +27,9 @@ export const NewHeader = () => {
             <Link
               className="text-lg font-heading font-bold hover:bg-brand-yellow hover:text-off-black px-2 py-1 rounded-sm"
               key={route.key}
-              to={route.route}
+              href={route.route}
             >
-              {route.name}
+              <a>{route.name}</a>
             </Link>
           ))}
         </div>

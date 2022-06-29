@@ -1,4 +1,3 @@
-import { graphql, useStaticQuery } from "gatsby"
 import { SiteData, ResumeData } from "~/model/SiteData"
 
 const placeholderResumeData: any = {

@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import Link from "next/link"
 import React from "react"
 import { sidebarRoutes } from "~/defines/navigation"
 
@@ -12,9 +12,9 @@ export const HomeNav = () => {
         <Link
           className="text-lg font-heading font-bold hover:bg-brand-yellow hover:text-off-black px-2 py-1 rounded-sm"
           key={route.key}
-          to={route.route}
+          href={route.route}
         >
-          {route.name}
+          <a>{route.name}</a>
         </Link>
       ))}
     </div>
