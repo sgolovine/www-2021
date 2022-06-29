@@ -1,5 +1,6 @@
 import axios from "axios"
 import { HomePage, IndexPageProps } from "~/features/HomePage"
+import { sortDescendingByDate } from "~/helpers/sortRawPosts"
 import { BlogPostType, RawBlogPost } from "~/model/BlogPost"
 import {
   BlogPostMapItem,
@@ -10,7 +11,7 @@ import {
 export default (props: IndexPageProps) => {
   const recentPosts = props.recentPosts.map(post => ({
     ...post,
-    date: new Date(post.rawDate),
+    date: new Date(post.rawDate!),
   }))
 
   return (
@@ -46,7 +47,7 @@ export async function getStaticProps() {
         ? `/blog/post/${(item as BlogPostMapItem).slug}`
         : (item as RemotePostItem).url,
     }))
-    .sort((a, b) => -new Date(a.rawDate) - -new Date(b.rawDate))
+    .sort(sortDescendingByDate)
     .slice(0, 3)
 
   return {

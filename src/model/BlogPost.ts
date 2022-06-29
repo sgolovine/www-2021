@@ -4,11 +4,11 @@ export interface RawBlogPost {
   description: string
   path: string
   type: BlogPostType
-  rawDate: string
+  rawDate?: string
 }
 
 export interface BlogPost extends RawBlogPost {
-  date: Date
+  date?: Date
 }
 
 export type OtherPosts = {
