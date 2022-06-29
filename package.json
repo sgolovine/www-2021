@@ -106,6 +106,7 @@
   },
   "engines": {
     "node": ">=16.13.x",
-    "npm": "USE_YARN"
+    "npm": "USE_PNPM",
+    "yarn": "USE_PNPM"
   }
 }
