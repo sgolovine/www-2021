@@ -20,6 +20,6 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "resume/**/*", "scripts/**/*"],
+  "include": ["src/**/*", "resume/**/*", "scripts/**/*", "src/**/[.*].tsx"],
   "exclude": ["node_modules", ".cache", "public", "__legacy__"]
 }

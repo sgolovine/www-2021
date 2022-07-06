@@ -5,6 +5,8 @@ export interface RawBlogPost {
   path: string
   type: BlogPostType
   rawDate?: string
+  published: boolean
+  filePath: string
 }
 
 export interface BlogPost extends RawBlogPost {

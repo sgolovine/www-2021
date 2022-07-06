@@ -1,1 +1,1 @@
-export * from "./PrismProvider"
+export * from "./MDXComponents"

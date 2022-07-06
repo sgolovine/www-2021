@@ -18,6 +18,7 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
         localPosts.length > 0 &&
         localPosts.map(post => (
           <PostItem
+            key={post.id}
             path={post.path}
             title={post.title}
             date={post.date}
@@ -35,6 +36,7 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
         remotePosts.length > 0 &&
         remotePosts.map(post => (
           <PostItem
+            key={post.id}
             path={post.path}
             title={post.title}
             date={post.date}
