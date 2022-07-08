@@ -1,5 +1,4 @@
 import React from "react"
-import { formatPostDate } from "~/helpers/formatPostDate"
 import { ExternalLink } from "../common/ExternalLink"
 
 interface Props {
@@ -26,7 +25,7 @@ export const PostItem: React.FC<Props> = ({
         href={path}
         label={title}
       />
-      {date && <p>{formatPostDate(date)}</p>}
+      {date && <p>{new Date(date).toLocaleDateString()}</p>}
     </div>
     {description && <p className="py-2">{description}</p>}
   </div>
