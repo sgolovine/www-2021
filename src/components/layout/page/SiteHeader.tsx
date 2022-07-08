@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Headroom from "react-headroom"
 import { sidebarRoutes } from "~/defines/navigation"
+import { navContainerClasses, navItemClasses } from "./classes"
 import { MobileMenuTrigger, MobileMenu } from "./MobileMenu"
 
 interface HeaderProps {
@@ -24,12 +25,10 @@ export const SiteHeader: React.FC<HeaderProps> = ({
       {/* Mobile Menu */}
       {menuOpen && <MobileMenu closeMenu={() => setMenuOpen(false)} />}
       {/* Regular Menu Links */}
-      <div className="hidden md:flex flex-row items-center justify-evenly py-4 max-w-3xl mx-auto">
+      <div className={navContainerClasses}>
         {sidebarRoutes.map(route => (
           <Link key={route.key} href={route.route}>
-            <a className="text-lg font-heading font-bold hover:bg-brand-yellow hover:text-off-black px-2 py-1 rounded-sm">
-              {route.name}
-            </a>
+            <a className={navItemClasses}>{route.name}</a>
           </Link>
         ))}
       </div>

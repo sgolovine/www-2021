@@ -1,14 +1,13 @@
 import React from "react"
-import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { WorkItem } from "~/components/work/WorkItem"
 import { SiteWorkData } from "~/model/SiteData"
 import { ContentContainer, PageHeader } from "~/components/layout/page"
 
-interface Props {
+export interface WorkPageProps {
   work: SiteWorkData[]
 }
 
-const WorkPage: React.FC<Props> = ({ work }) => (
+const WorkPage: React.FC<WorkPageProps> = ({ work }) => (
   <>
     <PageHeader title="Work" />
     <ContentContainer>
@@ -25,4 +24,4 @@ const WorkPage: React.FC<Props> = ({ work }) => (
   </>
 )
 
-export default withNewLayout(WorkPage)
+export default WorkPage

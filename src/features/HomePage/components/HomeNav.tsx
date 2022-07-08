@@ -1,5 +1,9 @@
 import Link from "next/link"
 import React from "react"
+import {
+  navContainerClasses,
+  navItemClasses,
+} from "~/components/layout/page/classes"
 import { sidebarRoutes } from "~/defines/navigation"
 
 export const HomeNav = () => {
@@ -7,12 +11,10 @@ export const HomeNav = () => {
   const routesToRender = sidebarRoutes.filter(route => route.route !== "/")
 
   return (
-    <div className="flex flex-row items-center justify-evenly py-4">
+    <div className={navContainerClasses}>
       {routesToRender.map(route => (
         <Link key={route.key} href={route.route}>
-          <a className="text-lg font-heading font-bold hover:bg-brand-yellow hover:text-off-black px-2 py-1 rounded-sm">
-            {route.name}
-          </a>
+          <a className={navItemClasses}>{route.name}</a>
         </Link>
       ))}
     </div>

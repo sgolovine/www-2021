@@ -11,7 +11,7 @@ import "../styles/loader.css"
 import "../styles/punk.css"
 import "../styles/styles.css"
 
-export type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout<Props = {}> = NextPage<Props> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 

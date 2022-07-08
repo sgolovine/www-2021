@@ -1,7 +1,14 @@
 import axios from "axios"
+import { Layout } from "~/components/layout/page"
 import { ResumePage } from "~/features/ResumePage"
+import { ResumePageProps } from "~/features/ResumePage/ResumePage"
+import { NextPageWithLayout } from "./_app"
 
-export default ResumePage
+const Page: NextPageWithLayout<ResumePageProps> = props => (
+  <ResumePage {...props} />
+)
+
+Page.getLayout = page => <Layout noContentMargin>{page}</Layout>
 
 export async function getStaticProps() {
   const resume = await axios.get("/resume/resume.json")
@@ -12,3 +19,5 @@ export async function getStaticProps() {
     },
   }
 }
+
+export default Page

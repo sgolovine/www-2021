@@ -1,5 +1,4 @@
 import React from "react"
-import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { ContentContainer } from "~/components/layout/page/ContentContainer"
 import { PostItem } from "~/components/post/PostItem"
 import { BlogPost } from "~/model/BlogPost"
@@ -51,5 +50,4 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
   </div>
 )
 
-// ts-prune-ignore-next
-export default withNewLayout(BlogPage)
+export default BlogPage

@@ -1,5 +1,6 @@
 import classNames from "classnames"
 import { ReactNode, useState } from "react"
+import { GlobalStyle } from "~/styles/GlobalStyle"
 import { SiteHeader } from "./SiteHeader"
 
 interface LayoutProps {
@@ -18,12 +19,13 @@ export const Layout: React.FC<LayoutProps> = ({
   })
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
   return (
-    <div>
+    <>
+      <GlobalStyle />
       <SiteHeader
         menuOpen={mobileMenuOpen}
         setMenuOpen={(newState: boolean) => setMobileMenuOpen(newState)}
       />
       <div className={classes}>{children}</div>
-    </div>
+    </>
   )
 }

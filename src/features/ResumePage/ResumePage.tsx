@@ -1,5 +1,4 @@
 import React from "react"
-import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { WorkItem } from "./components/WorkItem"
 import { ProjectItem } from "./components/ProjectItem"
 import { EducationItem } from "./components/EducationItem"
@@ -7,11 +6,11 @@ import { ControlSubheader } from "./components/ControlSubheader"
 import { SkillsItem } from "./components/SkillsItem"
 import { Resume } from "~/model/Resume"
 
-interface Props {
+export interface ResumePageProps {
   data: Resume
 }
 
-const ResumePage: React.FC<Props> = ({ data }) => (
+const ResumePage: React.FC<ResumePageProps> = ({ data }) => (
   <>
     <ControlSubheader />
     <div className="max-w-3xl mx-auto my-4 px-4">
@@ -91,4 +90,4 @@ const ResumePage: React.FC<Props> = ({ data }) => (
   </>
 )
 
-export default withNewLayout(ResumePage, true)
+export default ResumePage

@@ -2,8 +2,10 @@ import axios from "axios"
 import { HomePage, IndexPageProps } from "~/features/HomePage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { getRecentPosts } from "~/services/api"
+import { GlobalStyle } from "~/styles/GlobalStyle"
+import { NextPageWithLayout } from "./_app"
 
-export default (props: IndexPageProps) => {
+const Page: NextPageWithLayout<IndexPageProps> = props => {
   const recentPosts = convertBlogPosts(props.recentPosts)
 
   return (
@@ -14,6 +16,13 @@ export default (props: IndexPageProps) => {
     />
   )
 }
+
+Page.getLayout = page => (
+  <>
+    <GlobalStyle />
+    {page}
+  </>
+)
 
 export async function getStaticProps() {
   const contactResp = await axios.get("/cms/site-data/contact.json")
@@ -37,3 +46,5 @@ export async function getStaticProps() {
     },
   }
 }
+
+export default Page

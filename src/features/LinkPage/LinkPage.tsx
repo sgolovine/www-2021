@@ -1,5 +1,4 @@
 import React from "react"
-import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { ContentContainer, PageHeader } from "~/components/layout/page"
 import { LinkItem } from "~/components/links/LinkItem"
 import { useData } from "~/hooks/useData"
@@ -60,4 +59,4 @@ const LinkPage: React.FC = () => {
   )
 }
 
-export default withNewLayout(LinkPage)
+export default LinkPage

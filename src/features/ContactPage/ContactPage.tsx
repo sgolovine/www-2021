@@ -2,7 +2,6 @@ import React from "react"
 import { Button } from "~/components/common/Button"
 import { TextArea, TextInput } from "~/components/common/Input"
 import { Section } from "~/components/common/Section"
-import { withNewLayout } from "~/components/__legacy__/withLayout"
 import useContactForm from "~/hooks/useContactForm"
 import Notifier from "./Notifier"
 import { PageHeader, ContentContainer } from "~/components/layout/page"
@@ -54,4 +53,4 @@ const ContactPage: React.FC = () => {
   )
 }
 
-export default withNewLayout(ContactPage)
+export default ContactPage

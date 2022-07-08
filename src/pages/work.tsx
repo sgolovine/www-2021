@@ -1,8 +1,13 @@
 import axios from "axios"
+import { Layout } from "~/components/layout/page"
 import { WorkPage } from "~/features/WorkPage"
+import { WorkPageProps } from "~/features/WorkPage/WorkPage"
 import { SiteWorkData } from "~/model/SiteData"
+import { NextPageWithLayout } from "./_app"
 
-export default WorkPage
+const Page: NextPageWithLayout<WorkPageProps> = props => <WorkPage {...props} />
+
+Page.getLayout = page => <Layout>{page}</Layout>
 
 export async function getStaticProps() {
   const resp = await axios.get("/cms/site-data/work.json")
@@ -23,3 +28,5 @@ export async function getStaticProps() {
     },
   }
 }
+
+export default Page

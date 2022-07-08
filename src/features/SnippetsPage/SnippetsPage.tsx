@@ -1,5 +1,4 @@
 import React from "react"
-import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { ContentContainer, PageHeader } from "~/components/layout/page"
 import { PostItem } from "~/components/post/PostItem"
 import { BlogPost } from "~/model/BlogPost"
@@ -29,4 +28,4 @@ const SnippetsPage: React.FC<Props> = ({ snippets }) => (
   </>
 )
 
-export default withNewLayout(SnippetsPage)
+export default SnippetsPage
