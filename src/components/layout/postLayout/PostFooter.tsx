@@ -1,25 +1,30 @@
 import React from "react"
-import { ExternalLink } from "~/components/common/ExternalLink"
 import { Subheader } from "~/components/common/Typography"
-import { OtherPosts } from "~/model/BlogPost"
+import { PostItem } from "~/components/post/PostItem"
+import { convertBlogPosts } from "~/helpers/convertBlogPost"
+import { BlogPostType, RawBlogPost } from "~/model/BlogPost"
 
 interface Props {
-  otherPosts: OtherPosts[]
+  otherPosts: RawBlogPost[]
 }
 
-export const PostFooter: React.FC<Props> = ({ otherPosts }) => (
-  <div>
-    <Subheader>More Posts</Subheader>
-    <div className="flex flex-col">
-      {otherPosts.map(post => (
-        <ExternalLink
-          lg
-          label={post.title}
-          href={post.link}
-          external={post.postType === "remote"}
-          containerClassnames="py-2"
-        />
-      ))}
+export const PostFooter: React.FC<Props> = ({ otherPosts }) => {
+  const posts = convertBlogPosts(otherPosts)
+  return (
+    <div>
+      <Subheader>More Posts</Subheader>
+      <div className="flex flex-col">
+        {posts.map(post => (
+          <PostItem
+            key={post.id}
+            path={post.path}
+            title={post.title}
+            date={post.date}
+            description={post.description}
+            external={post.type === BlogPostType.Remote}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}

@@ -91,11 +91,15 @@ export const getPost = async (slug: string) => {
   }
 }
 
-export const getRecentPosts = () => {
+export const getRecentPosts = (filterOutSlug?: string) => {
   const localPosts = getLocalPosts()
   const remotePosts = getRemotePosts()
   const allPosts = [...localPosts, ...remotePosts]
     .sort(sortDescendingByDate)
     .slice(0, 5)
+
+  if (filterOutSlug) {
+    return allPosts.filter(post => post.id !== filterOutSlug)
+  }
   return allPosts
 }

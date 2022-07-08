@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { MDXRemote } from "next-mdx-remote"
-import { getLocalPosts, getPost } from "~/services/api"
+import { getLocalPosts, getPost, getRecentPosts } from "~/services/api"
 import { RawBlogPost } from "~/model/BlogPost"
 import { PostLayout } from "~/components/layout"
 import { PostSEO } from "~/components/common/SEO"
@@ -14,9 +13,10 @@ interface Params {
 interface Props {
   meta: RawBlogPost
   mdx: string
+  otherPosts: RawBlogPost[]
 }
 
-export default ({ meta, mdx }: Props) => (
+export default ({ meta, mdx, otherPosts }: Props) => (
   <>
     <PostSEO
       title={meta.title}
@@ -24,7 +24,14 @@ export default ({ meta, mdx }: Props) => (
       date={meta.rawDate}
       path={meta.path}
     />
-    <PostLayout title={meta.title} type="post">
+    <PostLayout
+      title={meta.title}
+      type="post"
+      description={meta.description}
+      date={meta.rawDate}
+      showAuthor
+      otherPosts={otherPosts}
+    >
       <div className="prose">
         <MDXRemote compiledSource={mdx} />
       </div>
@@ -35,11 +42,13 @@ export default ({ meta, mdx }: Props) => (
 export const getStaticProps = async ({ params }: Params) => {
   const { slug } = params
   const post = await getPost(slug)
+  const otherPosts = getRecentPosts(slug)
 
   return {
     props: {
       meta: post.meta,
       mdx: post.mdx,
+      otherPosts,
     },
   }
 }
