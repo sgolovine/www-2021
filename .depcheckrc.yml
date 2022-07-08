@@ -1,2 +1,2 @@
-ignores: ["autoprefixer", "cssnano"]
+ignores: ["autoprefixer", "cssnano", "postcss"]
 skip-missing: true
