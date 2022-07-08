@@ -2,11 +2,10 @@ import React from "react"
 import { Button } from "~/components/common/Button"
 import { TextArea, TextInput } from "~/components/common/Input"
 import { Section } from "~/components/common/Section"
-import { Header } from "~/components/common/Header"
 import { withNewLayout } from "~/components/__legacy__/withLayout"
-import { ContentContainer } from "~/components/layout/page/ContentContainer"
 import useContactForm from "~/hooks/useContactForm"
 import Notifier from "./Notifier"
+import { PageHeader, ContentContainer } from "~/components/layout/page"
 
 const ContactPage: React.FC = () => {
   const { form, messageState, handleSubmit, handleClear, setFormField } =
@@ -14,7 +13,7 @@ const ContactPage: React.FC = () => {
 
   return (
     <>
-      <Header
+      <PageHeader
         title="Contact"
         additionalText="Enter your information below to send me a message. You can also email me directly at sunny@glvn.co"
       />

@@ -1,7 +1,6 @@
 import React from "react"
-import { Header } from "~/components/common/Header"
 import { withNewLayout } from "~/components/__legacy__/withLayout"
-import { ContentContainer } from "~/components/layout/page/ContentContainer"
+import { ContentContainer, PageHeader } from "~/components/layout/page"
 import { LinkItem } from "~/components/links/LinkItem"
 import { useData } from "~/hooks/useData"
 
@@ -10,7 +9,7 @@ const LinkPage: React.FC = () => {
 
   return (
     <>
-      <Header title="Links" />
+      <PageHeader title="Links" />
       <ContentContainer>
         <LinkItem
           title="Phone"

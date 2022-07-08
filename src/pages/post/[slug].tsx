@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote"
 import { getLocalPosts, getPost, getRecentPosts } from "~/services/api"
-import { RawBlogPost } from "~/model/BlogPost"
+import { PostType, RawBlogPost } from "~/model/BlogPost"
 import { PostLayout } from "~/components/layout/post"
 import { PostSEO } from "~/components/common/SEO"
 
@@ -26,7 +26,7 @@ export default ({ meta, mdx, otherPosts }: Props) => (
     />
     <PostLayout
       title={meta.title}
-      type="post"
+      type={PostType.Post}
       description={meta.description}
       date={meta.rawDate}
       showAuthor

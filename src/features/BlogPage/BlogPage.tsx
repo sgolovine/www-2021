@@ -1,9 +1,9 @@
 import React from "react"
-import { Header } from "~/components/common/Header"
 import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { ContentContainer } from "~/components/layout/page/ContentContainer"
 import { PostItem } from "~/components/post/PostItem"
 import { BlogPost } from "~/model/BlogPost"
+import { PageHeader } from "~/components/layout/page"
 
 interface Props {
   localPosts: BlogPost[]
@@ -12,7 +12,10 @@ interface Props {
 
 const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
   <div>
-    <Header title="Posts" additionalText="Read the latest posts from my blog" />
+    <PageHeader
+      title="Posts"
+      additionalText="Read the latest posts from my blog"
+    />
     <ContentContainer>
       {localPosts &&
         localPosts.length > 0 &&
@@ -27,7 +30,7 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
         ))}
     </ContentContainer>
     <hr className="py-4" />
-    <Header
+    <PageHeader
       title="The Practical Dev"
       additionalText="Read my latest posts from dev.to"
     />

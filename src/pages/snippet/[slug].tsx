@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { MDXRemote } from "next-mdx-remote"
 import { getSnippet, getSnippets } from "~/services/api"
-import { RawBlogPost } from "~/model/BlogPost"
+import { PostType, RawBlogPost } from "~/model/BlogPost"
 import { PostLayout } from "~/components/layout/post"
 import { PostSEO } from "~/components/common/SEO"
 
@@ -24,7 +24,7 @@ export default ({ meta, mdx }: Props) => (
       date={meta.rawDate}
       path={meta.path}
     />
-    <PostLayout title={meta.title} type="snippet">
+    <PostLayout title={meta.title} type={PostType.Snippet}>
       <div className="prose">
         <MDXRemote compiledSource={mdx} />
       </div>

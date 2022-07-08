@@ -1,8 +1,8 @@
 import React from "react"
-import { Header } from "~/components/common/Header"
 import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { WorkItem } from "~/components/work/WorkItem"
 import { SiteWorkData } from "~/model/SiteData"
+import { ContentContainer, PageHeader } from "~/components/layout/page"
 
 interface Props {
   work: SiteWorkData[]
@@ -10,8 +10,8 @@ interface Props {
 
 const WorkPage: React.FC<Props> = ({ work }) => (
   <>
-    <Header title="Work" />
-    <div>
+    <PageHeader title="Work" />
+    <ContentContainer>
       {work.map((item, index) => (
         <WorkItem
           key={index}
@@ -21,7 +21,7 @@ const WorkPage: React.FC<Props> = ({ work }) => (
           url={item.url}
         />
       ))}
-    </div>
+    </ContentContainer>
   </>
 )
 

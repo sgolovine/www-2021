@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react"
 import { PostType, RawBlogPost } from "~/model/BlogPost"
-import { Header } from "../page"
+import { SiteHeader } from "../page"
 import { PostFooter } from "./PostFooter"
 import PostHeader from "./PostHeader"
 
@@ -25,7 +25,7 @@ export const PostLayout: React.FC<Props> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
   return (
     <>
-      <Header menuOpen={mobileMenuOpen} setMenuOpen={setMobileMenuOpen} />
+      <SiteHeader menuOpen={mobileMenuOpen} setMenuOpen={setMobileMenuOpen} />
       <div className="max-w-2xl mx-auto px-2 md:px-0">
         <PostHeader
           type={type}
