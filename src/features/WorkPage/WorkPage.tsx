@@ -1,6 +1,6 @@
 import React from "react"
 import { Header } from "~/components/common/Header"
-import { withNewLayout } from "~/components/layout"
+import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { WorkItem } from "~/components/work/WorkItem"
 import { SiteWorkData } from "~/model/SiteData"
 

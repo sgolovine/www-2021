@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote"
 import { getLocalPosts, getPost, getRecentPosts } from "~/services/api"
 import { RawBlogPost } from "~/model/BlogPost"
-import { PostLayout } from "~/components/layout"
+import { PostLayout } from "~/components/layout/post"
 import { PostSEO } from "~/components/common/SEO"
 
 interface Params {

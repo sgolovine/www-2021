@@ -1,8 +1,7 @@
 import classNames from "classnames"
 import React, { useState } from "react"
 import { HomeNav } from "./components/HomeNav"
-import MobileMenu from "~/components/layout/mobileMenu/MobileMenu"
-import { MobileMenuButton } from "~/components/layout/mobileMenu/MobileMenuIcon"
+import { MobileMenu, MobileMenuTrigger } from "~/components/layout/page"
 import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
 import Punk from "./components/Punk"
@@ -42,7 +41,7 @@ const IndexPage: React.FC<IndexPageProps> = ({
   return (
     <div className="max-w-3xl mx-auto my-4">
       <div className="flex md:hidden p-4 flex-row justify-end items-center">
-        <MobileMenuButton
+        <MobileMenuTrigger
           open={mobileMenuOpen}
           onClick={() => setMobileMenuOpen(prevState => !prevState)}
         />

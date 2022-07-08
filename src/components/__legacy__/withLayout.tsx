@@ -1,5 +1,5 @@
 import React from "react"
-import { NewLayout } from "./NewLayout"
+import { Layout } from "../layout/page"
 
 export const withNewLayout =
   <Props extends object>(
@@ -8,8 +8,8 @@ export const withNewLayout =
   ): React.FC<Props> =>
   ({ ...props }) =>
     (
-      <NewLayout noContentMargin={noContentMargin}>
+      <Layout noContentMargin={noContentMargin}>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Component {...(props as Props)} />
-      </NewLayout>
+      </Layout>
     )

@@ -1,5 +1,5 @@
 import React from "react"
-import { withNewLayout } from "~/components/layout"
+import { withNewLayout } from "~/components/__legacy__/withLayout"
 import { WorkItem } from "./components/WorkItem"
 import { ProjectItem } from "./components/ProjectItem"
 import { EducationItem } from "./components/EducationItem"

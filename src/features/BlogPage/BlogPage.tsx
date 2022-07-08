@@ -1,7 +1,7 @@
 import React from "react"
 import { Header } from "~/components/common/Header"
-import { withNewLayout } from "~/components/layout"
-import { ContentContainer } from "~/components/layout/ContentContainer"
+import { withNewLayout } from "~/components/__legacy__/withLayout"
+import { ContentContainer } from "~/components/layout/page/ContentContainer"
 import { PostItem } from "~/components/post/PostItem"
 import { BlogPost } from "~/model/BlogPost"
 

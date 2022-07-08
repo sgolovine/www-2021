@@ -1,10 +1,4 @@
-html,
-body {
-  /* background-color: #212529; */
-  @apply bg-off-black;
-}
-
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -21,4 +15,4 @@ li {
 
 a {
   @apply text-brand-link;
-}
+} */
