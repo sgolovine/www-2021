@@ -144,3 +144,12 @@ export const getPost = async (slug: string) => {
     mdx: compiledSource,
   }
 }
+
+export const getRecentPosts = () => {
+  const localPosts = getLocalPosts()
+  const remotePosts = getRemotePosts()
+  const allPosts = [...localPosts, ...remotePosts]
+    .sort(sortDescendingByDate)
+    .slice(0, 5)
+  return allPosts
+}
