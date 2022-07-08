@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
+import { MDXRemote } from "next-mdx-remote"
 import { getLocalPosts, getPost } from "~/services/api"
 import { RawBlogPost } from "~/model/BlogPost"
 import { PostLayout } from "~/components/layout"
 import { PostSEO } from "~/components/common/SEO"
-import { Pre } from "~/components/codeblocks"
 
 interface Params {
   params: {
@@ -14,7 +13,7 @@ interface Params {
 
 interface Props {
   meta: RawBlogPost
-  mdx: MDXRemoteSerializeResult
+  mdx: string
 }
 
 export default ({ meta, mdx }: Props) => (
@@ -27,7 +26,7 @@ export default ({ meta, mdx }: Props) => (
     />
     <PostLayout title={meta.title} type="post">
       <div className="prose">
-        <MDXRemote {...mdx} components={{ pre: Pre }} />
+        <MDXRemote compiledSource={mdx} />
       </div>
     </PostLayout>
   </>

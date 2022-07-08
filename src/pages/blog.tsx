@@ -1,7 +1,7 @@
 import { BlogPage } from "~/features/BlogPage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { RawBlogPost } from "~/model/BlogPost"
-import { getLocalPosts } from "~/services/api"
+import { getLocalPosts, getRemotePosts } from "~/services/api"
 
 interface Props {
   localPosts: RawBlogPost[]
@@ -10,16 +10,18 @@ interface Props {
 
 export default (props: Props) => {
   const localPosts = convertBlogPosts(props.localPosts)
+  const remotePosts = convertBlogPosts(props.remotePosts)
 
-  return <BlogPage localPosts={localPosts} remotePosts={props.remotePosts} />
+  return <BlogPage localPosts={localPosts} remotePosts={remotePosts} />
 }
 
 export const getStaticProps = async () => {
   const localPosts = getLocalPosts()
+  const remotePosts = getRemotePosts()
   return {
     props: {
       localPosts,
-      remotePosts: [],
+      remotePosts,
     },
   }
 }
