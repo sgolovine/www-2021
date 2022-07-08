@@ -3,13 +3,13 @@ import { Layout } from "~/components/layout"
 import { WorkPage } from "~/features/WorkPage"
 import { WorkPageProps } from "~/features/WorkPage/WorkPage"
 import { SiteWorkData } from "~/model/SiteData"
-import { NextPageWithLayout } from "./_app"
+import { NextPageWithLayout, StaticProps } from "./_app"
 
 const Page: NextPageWithLayout<WorkPageProps> = props => <WorkPage {...props} />
 
 Page.getLayout = page => <Layout>{page}</Layout>
 
-export async function getStaticProps() {
+export const getStaticProp = async (): StaticProps<WorkPageProps> => {
   const resp = await axios.get("/cms/site-data/work.json")
 
   const siteWorkData: SiteWorkData[] = resp.data["work-data"].map(

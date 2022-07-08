@@ -3,6 +3,7 @@ import {
   BlogPostTemplate,
   BlogPostTemplateProps,
 } from "~/features/PostTemplates"
+import { StaticProps } from "../_app"
 
 interface Params {
   params: {
@@ -12,7 +13,9 @@ interface Params {
 
 export default (props: BlogPostTemplateProps) => <BlogPostTemplate {...props} />
 
-export const getStaticProps = async ({ params }: Params) => {
+export const getStaticProps = async ({
+  params,
+}: Params): StaticProps<BlogPostTemplateProps> => {
   const { slug } = params
   const post = await getPost(slug)
   const otherPosts = getRecentPosts(slug)

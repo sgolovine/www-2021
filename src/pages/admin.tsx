@@ -13,7 +13,7 @@ const CMS = dynamic(
   }
 )
 
-const Page: NextPageWithLayout = () => {
+const Page = () => {
   return <CMS />
 }
 

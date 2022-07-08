@@ -3,7 +3,7 @@ import { BlogPage } from "~/features/BlogPage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { RawBlogPost } from "~/model/BlogPost"
 import { getLocalPosts, getRemotePosts } from "~/services/api"
-import { NextPageWithLayout } from "./_app"
+import { NextPageWithLayout, StaticProps } from "./_app"
 
 interface Props {
   localPosts: RawBlogPost[]
@@ -19,7 +19,7 @@ const Page: NextPageWithLayout<Props> = props => {
 
 Page.getLayout = page => <Layout>{page}</Layout>
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (): StaticProps<Props> => {
   const localPosts = getLocalPosts()
   const remotePosts = getRemotePosts()
   return {

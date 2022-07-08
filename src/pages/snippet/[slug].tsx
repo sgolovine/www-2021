@@ -4,6 +4,7 @@ import {
   SnippetsTemplate,
   SnippetsTemplateProps,
 } from "~/features/PostTemplates"
+import { StaticProps } from "../_app"
 
 interface Params {
   params: {
@@ -13,7 +14,9 @@ interface Params {
 
 export default (props: SnippetsTemplateProps) => <SnippetsTemplate {...props} />
 
-export const getStaticProps = async ({ params }: Params) => {
+export const getStaticProps = async ({
+  params,
+}: Params): StaticProps<SnippetsTemplateProps> => {
   const { slug } = params
   const post = await getSnippet(slug)
 

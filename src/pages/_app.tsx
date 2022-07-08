@@ -5,15 +5,17 @@ import type { ReactElement, ReactNode } from "react"
 import type { NextPage } from "next"
 
 import "../styles/tailwind.css"
-import "../styles/global.css"
 import "../styles/font.css"
-import "../styles/loader.css"
 import "../styles/punk.css"
 import "../styles/styles.css"
 
 export type NextPageWithLayout<Props = {}> = NextPage<Props> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
+
+export type StaticProps<Props = {}> = Promise<{
+  props: Props
+}>
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
