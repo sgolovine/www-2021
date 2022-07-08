@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { MDXRemote } from "next-mdx-remote"
 import { getSnippet, getSnippets } from "~/services/api"
-import { PostType, RawBlogPost } from "~/model/BlogPost"
-import { PostSEO } from "~/components/common/SEO"
-import { PostLayout } from "~/features/PostTemplates/components/PostLayout"
+import {
+  SnippetsTemplate,
+  SnippetsTemplateProps,
+} from "~/features/PostTemplates"
 
 interface Params {
   params: {
@@ -11,26 +11,7 @@ interface Params {
   }
 }
 
-interface Props {
-  meta: RawBlogPost
-  mdx: string
-}
-
-export default ({ meta, mdx }: Props) => (
-  <>
-    <PostSEO
-      title={meta.title}
-      description={meta.description}
-      date={meta.rawDate}
-      path={meta.path}
-    />
-    <PostLayout title={meta.title} type={PostType.Snippet}>
-      <div className="prose">
-        <MDXRemote compiledSource={mdx} />
-      </div>
-    </PostLayout>
-  </>
-)
+export default (props: SnippetsTemplateProps) => <SnippetsTemplate {...props} />
 
 export const getStaticProps = async ({ params }: Params) => {
   const { slug } = params

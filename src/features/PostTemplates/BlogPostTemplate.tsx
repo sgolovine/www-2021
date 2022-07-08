@@ -3,13 +3,13 @@ import { PostSEO } from "./components/PostSEO"
 import { PostLayout } from "./components/PostLayout"
 import { RawBlogPost, PostType } from "~/model/BlogPost"
 
-interface Props {
+export interface BlogPostTemplateProps {
   meta: RawBlogPost
   mdx: string
   otherPosts: RawBlogPost[]
 }
 
-export const BlogPostTemplate: React.FC<Props> = ({
+export const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
   meta,
   mdx,
   otherPosts,

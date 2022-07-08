@@ -3,12 +3,15 @@ import { PostSEO } from "./components/PostSEO"
 import { PostLayout } from "./components/PostLayout"
 import { RawBlogPost, PostType } from "~/model/BlogPost"
 
-interface Props {
+export interface SnippetsTemplateProps {
   meta: RawBlogPost
   mdx: string
 }
 
-export const SnippetsTemplate: React.FC<Props> = ({ meta, mdx }) => (
+export const SnippetsTemplate: React.FC<SnippetsTemplateProps> = ({
+  meta,
+  mdx,
+}) => (
   <>
     <PostSEO
       title={meta.title}

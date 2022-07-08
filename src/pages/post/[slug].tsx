@@ -1,8 +1,8 @@
-import { MDXRemote } from "next-mdx-remote"
 import { getLocalPosts, getPost, getRecentPosts } from "~/services/api"
-import { PostType, RawBlogPost } from "~/model/BlogPost"
-import { PostSEO } from "~/components/common/SEO"
-import { PostLayout } from "~/features/PostTemplates/components/PostLayout"
+import {
+  BlogPostTemplate,
+  BlogPostTemplateProps,
+} from "~/features/PostTemplates"
 
 interface Params {
   params: {
@@ -10,34 +10,7 @@ interface Params {
   }
 }
 
-interface Props {
-  meta: RawBlogPost
-  mdx: string
-  otherPosts: RawBlogPost[]
-}
-
-export default ({ meta, mdx, otherPosts }: Props) => (
-  <>
-    <PostSEO
-      title={meta.title}
-      description={meta.description}
-      date={meta.rawDate}
-      path={meta.path}
-    />
-    <PostLayout
-      title={meta.title}
-      type={PostType.Post}
-      description={meta.description}
-      date={meta.rawDate}
-      showAuthor
-      otherPosts={otherPosts}
-    >
-      <div className="prose">
-        <MDXRemote compiledSource={mdx} />
-      </div>
-    </PostLayout>
-  </>
-)
+export default (props: BlogPostTemplateProps) => <BlogPostTemplate {...props} />
 
 export const getStaticProps = async ({ params }: Params) => {
   const { slug } = params
