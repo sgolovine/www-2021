@@ -1,4 +1,4 @@
-import { Layout } from "~/components/layout/page"
+import { Layout } from "~/components/layout"
 import { LinkPage } from "~/features/LinkPage"
 import { NextPageWithLayout } from "./_app"
 

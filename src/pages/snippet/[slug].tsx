@@ -2,8 +2,8 @@
 import { MDXRemote } from "next-mdx-remote"
 import { getSnippet, getSnippets } from "~/services/api"
 import { PostType, RawBlogPost } from "~/model/BlogPost"
-import { PostLayout } from "~/components/layout/post"
 import { PostSEO } from "~/components/common/SEO"
+import { PostLayout } from "~/features/PostTemplates/components/PostLayout"
 
 interface Params {
   params: {

@@ -1,4 +1,4 @@
-import { Layout } from "~/components/layout/page"
+import { Layout } from "~/components/layout"
 import { ContactPage } from "~/features/ContactPage"
 import { NextPageWithLayout } from "./_app"
 

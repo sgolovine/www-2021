@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react"
 import { PostType, RawBlogPost } from "~/model/BlogPost"
-import { SiteHeader } from "../page"
+import { SiteHeader } from "~/components/layout"
 import { PostFooter } from "./PostFooter"
 import PostHeader from "./PostHeader"
 

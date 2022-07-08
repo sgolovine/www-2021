@@ -4,7 +4,7 @@ import { TextArea, TextInput } from "~/components/common/Input"
 import { Section } from "~/components/common/Section"
 import useContactForm from "~/hooks/useContactForm"
 import Notifier from "./Notifier"
-import { PageHeader, ContentContainer } from "~/components/layout/page"
+import { PageHeader, ContentContainer } from "~/components/layout"
 
 const ContactPage: React.FC = () => {
   const { form, messageState, handleSubmit, handleClear, setFormField } =

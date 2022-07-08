@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import React, { useState } from "react"
 import { HomeNav } from "./components/HomeNav"
-import { MobileMenu, MobileMenuTrigger } from "~/components/layout/page"
+import { MobileMenu, MobileMenuTrigger } from "~/components/layout"
 import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
 import Punk from "./components/Punk"

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Layout } from "~/components/layout/page"
+import { Layout } from "~/components/layout"
 import { ResumePage } from "~/features/ResumePage"
 import { ResumePageProps } from "~/features/ResumePage/ResumePage"
 import { NextPageWithLayout } from "./_app"

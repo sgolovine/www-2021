@@ -1,5 +1,5 @@
 import React from "react"
-import { ContentContainer, PageHeader } from "~/components/layout/page"
+import { ContentContainer, PageHeader } from "~/components/layout"
 import { LinkItem } from "~/components/links/LinkItem"
 import { useData } from "~/hooks/useData"
 

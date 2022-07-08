@@ -1,7 +1,7 @@
 import React from "react"
 import { WorkItem } from "~/components/work/WorkItem"
 import { SiteWorkData } from "~/model/SiteData"
-import { ContentContainer, PageHeader } from "~/components/layout/page"
+import { ContentContainer, PageHeader } from "~/components/layout"
 
 export interface WorkPageProps {
   work: SiteWorkData[]

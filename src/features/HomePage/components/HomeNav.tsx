@@ -3,7 +3,7 @@ import React from "react"
 import {
   navContainerClasses,
   navItemClasses,
-} from "~/components/layout/page/classes"
+} from "~/components/layout/classes"
 import { sidebarRoutes } from "~/defines/navigation"
 
 export const HomeNav = () => {

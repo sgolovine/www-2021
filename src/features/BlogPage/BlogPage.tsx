@@ -1,8 +1,7 @@
 import React from "react"
-import { ContentContainer } from "~/components/layout/page/ContentContainer"
 import { PostItem } from "~/components/post/PostItem"
 import { BlogPost } from "~/model/BlogPost"
-import { PageHeader } from "~/components/layout/page"
+import { PageHeader, ContentContainer } from "~/components/layout"
 
 interface Props {
   localPosts: BlogPost[]

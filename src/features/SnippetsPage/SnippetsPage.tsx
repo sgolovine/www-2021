@@ -1,5 +1,5 @@
 import React from "react"
-import { ContentContainer, PageHeader } from "~/components/layout/page"
+import { ContentContainer, PageHeader } from "~/components/layout"
 import { PostItem } from "~/components/post/PostItem"
 import { BlogPost } from "~/model/BlogPost"
 

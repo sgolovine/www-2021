@@ -1,4 +1,4 @@
-import { Layout } from "~/components/layout/page"
+import { Layout } from "~/components/layout"
 import { SnippetsPage } from "~/features/SnippetsPage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { RawBlogPost } from "~/model/BlogPost"
