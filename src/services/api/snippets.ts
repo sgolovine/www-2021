@@ -4,6 +4,7 @@ import path from "path"
 import matter from "gray-matter"
 import { serialize } from "next-mdx-remote/serialize"
 import { BlogPostType, RawBlogPost } from "~/model/BlogPost"
+import rehypePrism from "@mapbox/rehype-prism"
 
 const snippetsDirectory = path.join(process.cwd(), "public", "snippets")
 
@@ -40,6 +41,9 @@ export const getSnippet = async (slug: string) => {
   const snippetFile = fs.readFileSync(snippetPath, "utf-8")
   const { compiledSource, frontmatter } = await serialize(snippetFile, {
     parseFrontmatter: true,
+    mdxOptions: {
+      rehypePlugins: [rehypePrism],
+    },
   })
 
   const fm = frontmatter as any

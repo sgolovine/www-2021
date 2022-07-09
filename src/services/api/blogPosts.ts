@@ -5,6 +5,7 @@ import fs from "fs"
 import { serialize } from "next-mdx-remote/serialize"
 import { sortDescendingByDate } from "~/helpers/sortRawPosts"
 import { RawBlogPost, BlogPostType } from "~/model/BlogPost"
+import rehypePrism from "@mapbox/rehype-prism"
 
 const postsDirectory = path.join(process.cwd(), "public", "posts")
 
@@ -70,6 +71,9 @@ export const getPost = async (slug: string) => {
   const postFile = fs.readFileSync(postPath, "utf-8")
   const { compiledSource, frontmatter } = await serialize(postFile, {
     parseFrontmatter: true,
+    mdxOptions: {
+      rehypePlugins: [rehypePrism],
+    },
   })
 
   const fm = frontmatter as any

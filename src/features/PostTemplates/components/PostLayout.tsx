@@ -4,6 +4,7 @@ import { SiteHeader } from "~/components/layout"
 import { PostFooter } from "./PostFooter"
 import PostHeader from "./PostHeader"
 import { GlobalStyle } from "~/styles/GlobalStyle"
+import { PrismNordTheme } from "../styles/PrismNordTheme"
 
 interface Props {
   title: string
@@ -27,6 +28,7 @@ export const PostLayout: React.FC<Props> = ({
   return (
     <>
       <GlobalStyle />
+      <PrismNordTheme />
       <SiteHeader menuOpen={mobileMenuOpen} setMenuOpen={setMobileMenuOpen} />
       <div className="max-w-2xl mx-auto px-2 md:px-0">
         <PostHeader
