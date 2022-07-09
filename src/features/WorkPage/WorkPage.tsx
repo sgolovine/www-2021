@@ -1,22 +1,22 @@
 import React from "react"
 import { WorkItem } from "~/components/work/WorkItem"
-import { SiteWorkData } from "~/model/SiteData"
 import { ContentContainer, PageHeader } from "~/components/layout"
+import { SiteData } from "~/model/SiteData"
 
 export interface WorkPageProps {
-  work: SiteWorkData[]
+  siteData: SiteData
 }
 
-const WorkPage: React.FC<WorkPageProps> = ({ work }) => (
+const WorkPage: React.FC<WorkPageProps> = ({ siteData }) => (
   <>
     <PageHeader title="Work" />
     <ContentContainer>
-      {work.map((item, index) => (
+      {siteData.work.map((item, index) => (
         <WorkItem
           key={index}
           name={item.name}
           description={item.description}
-          project_type={item.project_type}
+          projectType={item.projectType}
           url={item.url}
         />
       ))}

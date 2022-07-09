@@ -1,22 +1,25 @@
 import classnames from "classnames"
 import React from "react"
-import { SiteWorkData } from "~/model/SiteData"
 import { ExternalLink } from "~/components/common/ExternalLink"
+import { ProjectType } from "~/model/SiteData"
 
-type Props = Pick<SiteWorkData, "name" | "description" | "project_type" | "url">
-
+interface Props {
+  name: string
+  description: string
+  projectType: ProjectType
+  url: string
+}
 export const WorkItem: React.FC<Props> = ({
   name,
   description,
-  project_type,
+  projectType,
   url,
 }) => {
   const typeDotClasses = classnames("h-3", "w-3", "rounded-full", {
-    "bg-blue-400": project_type === "professional",
-    "bg-green-400": project_type === "side-project",
+    "bg-blue-400": projectType === ProjectType.ProfessionalProject,
+    "bg-green-400": projectType === ProjectType.SideProject,
   })
 
-  console.log(project_type)
   return (
     <div className="pb-12">
       <div className="flex flex-row items-center justify-between">
@@ -24,7 +27,7 @@ export const WorkItem: React.FC<Props> = ({
         <span className="flex flex-row items-center">
           <span className={typeDotClasses} />
           <p className="text-sm font-bold p-1">
-            {project_type === "professional"
+            {projectType === ProjectType.ProfessionalProject
               ? "Professional Project"
               : "Side Project"}
           </p>
