@@ -77,3 +77,6 @@ public/snippets.json
 
 # Next.JS
 .next
+
+# Build Folder
+dist
