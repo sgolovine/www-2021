@@ -8,7 +8,11 @@ const Page: NextPageWithLayout<ResumePageProps> = props => (
   <ResumePage {...props} />
 )
 
-Page.getLayout = page => <Layout noContentMargin>{page}</Layout>
+Page.getLayout = page => (
+  <Layout pageTitle="Resume" noContentMargin>
+    {page}
+  </Layout>
+)
 
 export const getStaticProps = async (): StaticProps<ResumePageProps> => {
   const resume = await axios.get("/resume/resume.json")

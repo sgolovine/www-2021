@@ -29,7 +29,11 @@ export const PostLayout: React.FC<Props> = ({
     <>
       <GlobalStyle />
       <PrismNordTheme />
-      <SiteHeader menuOpen={mobileMenuOpen} setMenuOpen={setMobileMenuOpen} />
+      <SiteHeader
+        pageTitle={type === PostType.Post ? "Post" : "Snippet"}
+        menuOpen={mobileMenuOpen}
+        setMenuOpen={setMobileMenuOpen}
+      />
       <div className="max-w-2xl mx-auto px-2 md:px-0">
         <PostHeader
           type={type}

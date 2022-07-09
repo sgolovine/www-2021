@@ -15,7 +15,7 @@ const Page: NextPageWithLayout<Props> = (props: Props) => {
   return <SnippetsPage snippets={snippets} />
 }
 
-Page.getLayout = page => <Layout>{page}</Layout>
+Page.getLayout = page => <Layout pageTitle="Snippets">{page}</Layout>
 
 export const getStaticProps = async (): StaticProps<Props> => {
   const snippets = getSnippets()

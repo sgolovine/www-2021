@@ -17,7 +17,7 @@ const Page: NextPageWithLayout<Props> = props => {
   return <BlogPage localPosts={localPosts} remotePosts={remotePosts} />
 }
 
-Page.getLayout = page => <Layout>{page}</Layout>
+Page.getLayout = page => <Layout pageTitle="Blog">{page}</Layout>
 
 export const getStaticProps = async (): StaticProps<Props> => {
   const localPosts = getLocalPosts()

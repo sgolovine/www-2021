@@ -5,7 +5,7 @@ import { NextPageWithLayout, StaticProps } from "./_app"
 
 const Page: NextPageWithLayout<LinkPageProps> = props => <LinkPage {...props} />
 
-Page.getLayout = page => <Layout>{page}</Layout>
+Page.getLayout = page => <Layout pageTitle="Links">{page}</Layout>
 
 export const getStaticProps = async (): StaticProps<LinkPageProps> => {
   const contactResp = await axios.get("/cms/site-data/contact.json")

@@ -4,6 +4,7 @@ import { GlobalStyle } from "~/styles/GlobalStyle"
 import { SiteHeader } from "./SiteHeader"
 
 interface LayoutProps {
+  pageTitle: string
   children: ReactNode
   noContentMargin?: boolean
 }
@@ -11,6 +12,7 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({
   children,
   noContentMargin,
+  pageTitle,
 }) => {
   const classes = classNames("mx-auto", {
     "px-4": !noContentMargin,
@@ -22,6 +24,7 @@ export const Layout: React.FC<LayoutProps> = ({
     <>
       <GlobalStyle />
       <SiteHeader
+        pageTitle={pageTitle}
         menuOpen={mobileMenuOpen}
         setMenuOpen={(newState: boolean) => setMobileMenuOpen(newState)}
       />

@@ -7,7 +7,7 @@ import { NextPageWithLayout, StaticProps } from "./_app"
 
 const Page: NextPageWithLayout<WorkPageProps> = props => <WorkPage {...props} />
 
-Page.getLayout = page => <Layout>{page}</Layout>
+Page.getLayout = page => <Layout pageTitle="Work">{page}</Layout>
 
 export const getStaticProps = async (): StaticProps<WorkPageProps> => {
   const resp = await axios.get("/cms/site-data/work.json")
