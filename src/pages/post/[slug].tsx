@@ -4,6 +4,7 @@ import {
   BlogPostTemplateProps,
 } from "~/features/PostTemplates"
 import { StaticProps } from "../_app"
+import { NextPage } from "next"
 
 interface Params {
   params: {
@@ -11,7 +12,9 @@ interface Params {
   }
 }
 
-export default (props: BlogPostTemplateProps) => <BlogPostTemplate {...props} />
+const Page: NextPage<BlogPostTemplateProps> = props => (
+  <BlogPostTemplate {...props} />
+)
 
 export const getStaticProps = async ({
   params,
@@ -40,3 +43,5 @@ export const getStaticPaths = async () => {
     fallback: false,
   }
 }
+
+export default Page

@@ -9,7 +9,7 @@ const Page: NextPageWithLayout<WorkPageProps> = props => <WorkPage {...props} />
 
 Page.getLayout = page => <Layout>{page}</Layout>
 
-export const getStaticProp = async (): StaticProps<WorkPageProps> => {
+export const getStaticProps = async (): StaticProps<WorkPageProps> => {
   const resp = await axios.get("/cms/site-data/work.json")
 
   const siteWorkData: SiteWorkData[] = resp.data["work-data"].map(

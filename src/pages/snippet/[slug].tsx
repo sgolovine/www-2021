@@ -5,6 +5,7 @@ import {
   SnippetsTemplateProps,
 } from "~/features/PostTemplates"
 import { StaticProps } from "../_app"
+import { NextPage } from "next"
 
 interface Params {
   params: {
@@ -12,7 +13,9 @@ interface Params {
   }
 }
 
-export default (props: SnippetsTemplateProps) => <SnippetsTemplate {...props} />
+const Page: NextPage<SnippetsTemplateProps> = props => (
+  <SnippetsTemplate {...props} />
+)
 
 export const getStaticProps = async ({
   params,
@@ -39,3 +42,5 @@ export const getStaticPaths = async () => {
     fallback: false,
   }
 }
+
+export default Page

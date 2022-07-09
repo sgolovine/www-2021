@@ -21,6 +21,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
+// eslint-disable-next-line
 useRequestInterceptor()
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
