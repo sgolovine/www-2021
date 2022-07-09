@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 module.exports = {
   darkMode: "class",
-  content: ["./src/**/*.tsx"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,html,md}"],
   theme: {
     extend: {
       typography: theme => ({

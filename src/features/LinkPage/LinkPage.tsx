@@ -1,64 +1,65 @@
 import React from "react"
-import { Header } from "~/components/common/Header"
-import { withNewLayout } from "~/components/layout"
-import { ContentContainer } from "~/components/layout/ContentContainer"
+import { ContentContainer, PageHeader } from "~/components/layout"
 import { LinkItem } from "~/components/links/LinkItem"
-import { useData } from "~/hooks/useData"
 
-const LinkPage: React.FC = () => {
-  const { siteData } = useData()
+export type LinkPageProps = Record<
+  "phone" | "email" | "instagram" | "twitter" | "github" | "linkedin" | "devto",
+  string
+>
 
-  return (
-    <>
-      <Header title="Links" />
-      <ContentContainer>
-        <LinkItem
-          title="Phone"
-          href={siteData.linkedin}
-          type="phone"
-          icon="phone"
-          showPreviewOnHover
-        />
-        <LinkItem
-          title="Email"
-          href={siteData.email}
-          type="email"
-          icon="email"
-          showPreviewOnHover
-        />
-        <LinkItem
-          title="Instagram"
-          href={siteData.instagram}
-          icon="instagram"
-          showPreviewOnHover
-        />
-        <LinkItem
-          title="Twitter"
-          href={siteData.twitter}
-          icon="twitter"
-          showPreviewOnHover
-        />
-        <LinkItem
-          title="Github"
-          href={siteData.github}
-          icon="github"
-          showPreviewOnHover
-        />
-        <LinkItem
-          title="LinkedIn"
-          href={siteData.linkedin}
-          icon="linkedin"
-          showPreviewOnHover
-        />
-        <LinkItem
-          title="The Practical Dev"
-          href={siteData.dev_to}
-          icon="devto"
-          showPreviewOnHover
-        />
-      </ContentContainer>
-    </>
-  )
-}
+const LinkPage: React.FC<LinkPageProps> = ({
+  phone,
+  email,
+  instagram,
+  twitter,
+  github,
+  linkedin,
+  devto,
+}) => (
+  <>
+    <PageHeader title="Links" />
+    <ContentContainer>
+      <LinkItem
+        title="Phone"
+        href={phone}
+        type="phone"
+        icon="phone"
+        showPreviewOnHover
+      />
+      <LinkItem
+        title="Email"
+        href={email}
+        type="email"
+        icon="email"
+        showPreviewOnHover
+      />
+      <LinkItem
+        title="Instagram"
+        href={instagram}
+        icon="instagram"
+        showPreviewOnHover
+      />
+      <LinkItem
+        title="Twitter"
+        href={twitter}
+        icon="twitter"
+        showPreviewOnHover
+      />
+      <LinkItem title="Github" href={github} icon="github" showPreviewOnHover />
+      <LinkItem
+        title="LinkedIn"
+        href={linkedin}
+        icon="linkedin"
+        showPreviewOnHover
+      />
+      <LinkItem
+        title="The Practical Dev"
+        href={devto}
+        icon="devto"
+        showPreviewOnHover
+      />
+    </ContentContainer>
+  </>
+)
 
-export default withNewLayout(LinkPage)
+export default LinkPage

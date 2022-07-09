@@ -75,10 +75,8 @@ yarn <<command_name>>
 | `typecheck` / `tsc`    | Run typechecking        | Typescript | `tsconfig.json`    | yes                  |
 | `lint`                 | Run lining              | ESLint     | `.eslintrc.js`     | yes                  |
 | `format`               | Format code             | Prettier   | `.prettierrc`      | yes                  |
-| `clean`                | Clean project           | Script     | ---                | no                   |
 | `find-unused-code`     | Find unused (dead) code | ts-prune   | `.ts-prunerc.json` | yes                  |
 | `find-unused-packages` | Find unused packages    | depcheck   | `.depcheckrc.yml`  | yes                  |
-| `cms:lint`             | Lint CMS config         | yamllint   | ---                | no                   |
 
 ## Architecture
 
@@ -86,23 +84,19 @@ This section goes over the architecture of teh website. The website is built wit
 
 ### Data
 
-- **Website Data**: Data for the website is inputted via [NetlifyCMS](https://www.netlifycms.org/). This data is stored in `static/cms/site-data`. It is read by Gatsby using [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/) and [gatsby-transformer-json](https://www.gatsbyjs.com/plugins/gatsby-transformer-json/).
-- **Blog Data**: Blog posts are located in `static/posts`. Blog posts use [MDX](https://mdxjs.com/) to render the posts.
-- **Snippets Data**: Snippets are the same as blog posts under the hood. They are also rendered using [MDX](https://mdxjs.com/)
-- **Resume Data**: Resume data is stored in `static/resume/resume.json` and uses a heavily modified version of [JSON Resume](https://jsonresume.org/)
-- **dev.to posts** - The blog also fetches posts from dev.to. These are fetched using `scripts/fetch-remote-blog-posts.js` script. The data is stored in `static/posts/remotePosts.js`
+- **Website Data**: Data for the website is inputted via [NetlifyCMS](https://www.netlifycms.org/). This data is stored in `public/cms/site-data`. It is read directly using FS and other Node utilities in `src/pages`.
+- **Blog Posts / Snippets**: These are fetched in the same manner with MDX. Pages are built dynamically using NextJS slug pages and are kept under `/post/:slug` and `/snippet/:slug`
+- **Resume Data**: Resume data is stored in `public/resume/resume.json` and uses a heavily modified version of [JSON Resume](https://jsonresume.org/)
+- **dev.to posts** - The blog also fetches posts from dev.to. These are fetched using `scripts/fetch-remote-blog-posts.js` script. The data is stored in `public/posts/remotePosts.js`
 
 ### Folder Structure
 
-The folder structure uses a modified version of [bulletproof react](https://github.com/alan2207/bulletproof-react). All pages are stored in `src/features` and are only referenced in `src/pages`. This allows for a more flexible model over the standard Gatsby model.
+The folder structure uses a modified version of [bulletproof react](https://github.com/alan2207/bulletproof-react). All page UI is stored in `src/features`. The pages are then used in `src/pages`. Any NextJS specific logic such as `getStaticProps`, `getStaticPaths`, and `Component.getLayout` is kept in `src/pages` as well.
 
 ### UI
 
 The UI for the site is built using [TailwindCSS](https://tailwindcss.com/). We also use several utilities like [classnames](https://www.npmjs.com/package/classnames) for custom CSS logic intertwined with JS.
 
-### Dry Building
-
-Part of the "Production CI" is doing a "dry build" to make sure that no code changes caused errors in the Gatsby build process. Dry building is just like regular builds except, we do not fetch actual data for the website and instead use a script to inject test data to speed up the process. The script for generating these files can be located at: `scripts/generate-dry-build-files.js`
 
 ### PDF Resume
 

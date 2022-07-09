@@ -1,5 +1,5 @@
 import classnames from "classnames"
-import { Link } from "gatsby"
+import Link from "next/link"
 import React from "react"
 import { ExternalLinkIcon } from "~/icons/ExternalLink"
 
@@ -75,11 +75,10 @@ export const ExternalLink: React.FC<Props> = ({
 
   // If we have an href but external is not specified
   // We can assume that the link is internal and use
-  // Gatsby's Link component
   if (href) {
     return (
-      <Link className={textClasses} to={href}>
-        {label}
+      <Link href={href}>
+        <a className={textClasses}>{label}</a>
       </Link>
     )
   }

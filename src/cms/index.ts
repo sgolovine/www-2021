@@ -1,0 +1,1 @@
+export { cmsConfig } from "./config"

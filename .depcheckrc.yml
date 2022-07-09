@@ -1,2 +1,2 @@
-ignores: ["gatsby-remark-images", "autoprefixer", "cssnano"]
+ignores: ["autoprefixer", "cssnano", "postcss", "serve"]
 skip-missing: true

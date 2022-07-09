@@ -1,18 +1,28 @@
-export type BlogPost = {
+export interface RawBlogPost {
   id: string
   title: string
-  date: Date
   description: string
   path: string
-  type: "local" | "remote"
+  type: BlogPostType
+  rawDate?: string
+  published: boolean
+  filePath: string
 }
 
-export type OtherPosts = {
-  id: string
-  title: string
-  link: string
-  date: string
-  postType: "local" | "remote"
+export interface BlogPost extends RawBlogPost {
+  date?: Date
 }
 
-export type PostType = "post" | "snippet"
+export enum PostType {
+  // eslint-disable-next-line no-unused-vars
+  Post = "post",
+  // eslint-disable-next-line no-unused-vars
+  Snippet = "snippet",
+}
+
+export enum BlogPostType {
+  // eslint-disable-next-line no-unused-vars
+  Local = "local",
+  // eslint-disable-next-line no-unused-vars
+  Remote = "remote",
+}

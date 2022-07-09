@@ -1,14 +1,11 @@
 import classNames from "classnames"
 import React, { useState } from "react"
 import { HomeNav } from "./components/HomeNav"
-import MobileMenu from "~/components/layout/mobileMenu/MobileMenu"
-import { MobileMenuButton } from "~/components/layout/mobileMenu/MobileMenuIcon"
+import { MobileMenu, MobileMenuTrigger } from "~/components/layout"
 import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
 import Punk from "./components/Punk"
 import { WorkItem } from "~/components/work/WorkItem"
-import useBlogPosts from "~/hooks/useBlogPosts"
-import { useData } from "~/hooks/useData"
 import {
   awesomeDevtoolsUrl,
   employerWebsiteUrl,
@@ -16,6 +13,8 @@ import {
   otherProjectsUrl,
   tiptrackUrl,
 } from "./constants"
+import { SiteWorkData } from "~/model/SiteData"
+import { BlogPost, BlogPostType } from "~/model/BlogPost"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -26,20 +25,23 @@ const headingClasses = classNames([
   "italic",
 ])
 
-const IndexPage: React.FC = () => {
-  const { siteData } = useData()
-  const { recentPosts } = useBlogPosts()
+export interface IndexPageProps {
+  links: Record<"email" | "linkedIn" | "github" | "devTo", string>
+  workItems: SiteWorkData[]
+  recentPosts: BlogPost[]
+}
 
-  const workItems = siteData.work_data.filter(
-    item => item.show_in_recent_projects
-  )
-
+const IndexPage: React.FC<IndexPageProps> = ({
+  links,
+  workItems,
+  recentPosts,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
 
   return (
     <div className="max-w-3xl mx-auto my-4">
       <div className="flex md:hidden p-4 flex-row justify-end items-center">
-        <MobileMenuButton
+        <MobileMenuTrigger
           open={mobileMenuOpen}
           onClick={() => setMobileMenuOpen(prevState => !prevState)}
         />
@@ -93,7 +95,7 @@ const IndexPage: React.FC = () => {
           <h2 className={headingClasses}>My Work</h2>
           {workItems.map((item, index) => (
             <WorkItem
-              key={index}
+              key={`work-item-${index}`}
               name={item.name}
               description={item.description}
               project_type={item.project_type}
@@ -103,13 +105,14 @@ const IndexPage: React.FC = () => {
         </div>
         <div className={sectionClasses}>
           <h2 className={headingClasses}>Recent Posts</h2>
-          {recentPosts.map(post => (
+          {recentPosts.map((post, index) => (
             <PostItem
+              key={`recent-post-${index}`}
               path={post.path}
               title={post.title}
               date={post.date}
               description={post.description}
-              external={post.type === "remote"}
+              external={post.type === BlogPostType.Remote}
             />
           ))}
         </div>
@@ -117,27 +120,27 @@ const IndexPage: React.FC = () => {
           <h2 className={headingClasses}>Connect With Me</h2>
           <LinkItem
             title="Email"
-            href={siteData.email}
+            href={links.email}
             type="email"
             icon="email"
             showPreviewOnHover
           />
           <LinkItem
             title="LinkedIn"
-            href={siteData.linkedin}
+            href={links.linkedIn}
             type="linkedin"
             icon="linkedin"
             showPreviewOnHover
           />
           <LinkItem
             title="Github"
-            href={siteData.github}
+            href={links.github}
             icon="github"
             showPreviewOnHover
           />
           <LinkItem
             title="The Practical Dev"
-            href={siteData.dev_to}
+            href={links.devTo}
             icon="devto"
             showPreviewOnHover
           />

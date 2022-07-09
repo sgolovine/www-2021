@@ -1,28 +1,27 @@
 import React from "react"
-import { Header } from "~/components/common/Header"
-import { withNewLayout } from "~/components/layout"
 import { WorkItem } from "~/components/work/WorkItem"
-import { useData } from "~/hooks/useData"
+import { SiteWorkData } from "~/model/SiteData"
+import { ContentContainer, PageHeader } from "~/components/layout"
 
-const WorkPage: React.FC = () => {
-  const { siteData } = useData()
-
-  return (
-    <>
-      <Header title="Work" />
-      <div>
-        {siteData.work_data.map((item, index) => (
-          <WorkItem
-            key={index}
-            name={item.name}
-            description={item.description}
-            project_type={item.project_type}
-            url={item.url}
-          />
-        ))}
-      </div>
-    </>
-  )
+export interface WorkPageProps {
+  work: SiteWorkData[]
 }
 
-export default withNewLayout(WorkPage)
+const WorkPage: React.FC<WorkPageProps> = ({ work }) => (
+  <>
+    <PageHeader title="Work" />
+    <ContentContainer>
+      {work.map((item, index) => (
+        <WorkItem
+          key={index}
+          name={item.name}
+          description={item.description}
+          project_type={item.project_type}
+          url={item.url}
+        />
+      ))}
+    </ContentContainer>
+  </>
+)
+
+export default WorkPage
