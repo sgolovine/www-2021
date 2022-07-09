@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - master
-      - dev-2022
+      - develop
 
 jobs:
   production-tests:
@@ -44,6 +44,3 @@ jobs:
 
       - name: Run Typechecking
         run: yarn tsc
-
-      - name: Lint CMS Config
-        run: yarn cms:lint
