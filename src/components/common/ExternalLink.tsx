@@ -68,7 +68,7 @@ export const ExternalLink: React.FC<Props> = ({
         <a className={textClasses} href={href}>
           {label}
         </a>
-        {!noIcon && <ExternalLinkIcon className={iconClasses} />}
+        <ExternalLinkIcon className={iconClasses} />
       </span>
     )
   }

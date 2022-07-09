@@ -1,8 +1,8 @@
 export interface SiteWorkData {
   name: string
   description: string
-  project_type: "side-project" | "professional"
-  show_in_recent_projects: boolean
+  "project-type": "side-project" | "professional"
+  "show-in-recent-projects": boolean
   url: string | null
 }
 

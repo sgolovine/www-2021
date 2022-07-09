@@ -24,6 +24,7 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
             title={post.title}
             date={post.date}
             description={post.description}
+            external={false}
           />
         ))}
     </ContentContainer>
@@ -42,7 +43,7 @@ const BlogPage: React.FC<Props> = ({ localPosts, remotePosts }) => (
             title={post.title}
             date={post.date}
             description={post.description}
-            external
+            external={true}
           />
         ))}
     </ContentContainer>

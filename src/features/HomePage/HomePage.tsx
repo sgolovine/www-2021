@@ -98,7 +98,7 @@ const IndexPage: React.FC<IndexPageProps> = ({
               key={`work-item-${index}`}
               name={item.name}
               description={item.description}
-              project_type={item.project_type}
+              project_type={item["project-type"]}
               url={item.url}
             />
           ))}

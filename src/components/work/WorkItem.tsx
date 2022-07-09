@@ -15,6 +15,8 @@ export const WorkItem: React.FC<Props> = ({
     "bg-blue-400": project_type === "professional",
     "bg-green-400": project_type === "side-project",
   })
+
+  console.log(project_type)
   return (
     <div className="pb-12">
       <div className="flex flex-row items-center justify-between">
