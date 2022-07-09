@@ -26,7 +26,7 @@ export const sidebarRoutes: SidebarRoutes = [
   },
   {
     name: "Contact",
-    route: "/contact",
+    route: "mailto:sunny@glvn.co",
     enabled: true,
     key: "contact",
   },

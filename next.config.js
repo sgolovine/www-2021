@@ -11,6 +11,11 @@ module.exports = {
         destination: "/snippet/:slug",
         permanent: true,
       },
+      {
+        source: "/contact",
+        destination: "/links",
+        permanent: false,
+      },
     ]
   },
 }
