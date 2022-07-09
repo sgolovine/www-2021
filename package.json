@@ -5,7 +5,8 @@
   "version": "2.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "pnpm run build-post-indexes && run-p cms:proxy start",
+    "dev": "yarn build-post-indexes && run-p cms:proxy start",
+    "prebuild": "yarn build-post-indexes",
     "build": "next build && next export -o dist",
     "start": "next dev --port 8080",
     "serve": "serve -s dist",
