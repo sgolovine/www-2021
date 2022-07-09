@@ -1,4 +1,5 @@
 import axios from "axios"
+import Head from "next/head"
 import { Layout } from "~/components/layout"
 import { ResumePage } from "~/features/ResumePage"
 import { ResumePageProps } from "~/features/ResumePage/ResumePage"
@@ -9,9 +10,14 @@ const Page: NextPageWithLayout<ResumePageProps> = props => (
 )
 
 Page.getLayout = page => (
-  <Layout pageTitle="Resume" noContentMargin>
-    {page}
-  </Layout>
+  <>
+    <Head>
+      <title>Sunny Golovine :: Resume</title>
+    </Head>
+    <Layout pageTitle="Resume" noContentMargin>
+      {page}
+    </Layout>
+  </>
 )
 
 export const getStaticProps = async (): StaticProps<ResumePageProps> => {

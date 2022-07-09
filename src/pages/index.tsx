@@ -1,4 +1,5 @@
 import axios from "axios"
+import Head from "next/head"
 import { HomePage, IndexPageProps } from "~/features/HomePage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { getRecentPosts } from "~/services/api"
@@ -19,6 +20,9 @@ const Page: NextPageWithLayout<IndexPageProps> = props => {
 
 Page.getLayout = page => (
   <>
+    <Head>
+      <title>Sunny Golovine</title>
+    </Head>
     <GlobalStyle />
     {page}
   </>

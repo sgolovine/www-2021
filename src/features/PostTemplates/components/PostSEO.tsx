@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet"
+import Head from "next/head"
 
 interface PostSEOProps {
   title: string
@@ -16,7 +16,7 @@ export const PostSEO: React.FC<PostSEOProps> = ({
   const formattedDate = date ? new Date(date).toISOString() : null
   const canonicalURL = `https://sunnygolovine.com${path}`
   return (
-    <Helmet>
+    <Head>
       <title>{title}</title>
       <meta name="og:title" content={title} />
       <meta name="twitter:title" content={title} />
@@ -31,6 +31,6 @@ export const PostSEO: React.FC<PostSEOProps> = ({
       )}
 
       <link rel="canonical" href={canonicalURL} />
-    </Helmet>
+    </Head>
   )
 }

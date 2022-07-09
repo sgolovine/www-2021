@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { Layout } from "~/components/layout"
 import { SnippetsPage } from "~/features/SnippetsPage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
@@ -15,7 +16,14 @@ const Page: NextPageWithLayout<Props> = (props: Props) => {
   return <SnippetsPage snippets={snippets} />
 }
 
-Page.getLayout = page => <Layout pageTitle="Snippets">{page}</Layout>
+Page.getLayout = page => (
+  <>
+    <Head>
+      <title>Sunny Golovine :: Snippets</title>
+    </Head>
+    <Layout pageTitle="Snippets">{page}</Layout>
+  </>
+)
 
 export const getStaticProps = async (): StaticProps<Props> => {
   const snippets = getSnippets()

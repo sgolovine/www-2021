@@ -5,14 +5,12 @@ interface Props {
   children?: any
 }
 
-const languageLabels = {
-  "language-javascript": "Javascript",
-}
+export const MDXPreComponent: React.FC<Props> = props => {
+  const { className, children } = props
 
-export const MDXPreComponent: React.FC<Props> = ({ className, children }) => {
   const match = (className ?? "").match(/language-([\0-\uFFFF]*)/)
-
   const label = (match ?? [])[1] ?? ""
+
   return (
     <div>
       {/* Header */}
