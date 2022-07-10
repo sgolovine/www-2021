@@ -97,7 +97,6 @@ The folder structure uses a modified version of [bulletproof react](https://gith
 
 The UI for the site is built using [TailwindCSS](https://tailwindcss.com/). We also use several utilities like [classnames](https://www.npmjs.com/package/classnames) for custom CSS logic intertwined with JS.
 
-
 ### PDF Resume
 
 In order to export our JSON Resume as a PDF, a number of tools are used:
