@@ -10,6 +10,7 @@ import {
 } from "~/icons/Brands"
 import { ExternalLinkIcon2 } from "~/icons/ExternalLink"
 import { stripHttp } from "~/helpers/stripHttp"
+import classNames from "classnames"
 
 interface Props {
   title: string
@@ -71,20 +72,27 @@ export const LinkItem: React.FC<Props> = ({
     setIsHovering(false)
   }
 
+  const iconContainerClasses = classNames("h-4", "w-4", "mr-2", {
+    "fill-white": !isHovering,
+    "fill-brand-yellow": isHovering,
+  })
+
   return (
-    <span className="flex flex-row items-center mb-6">
-      <div className="h-6 w-6">{Icon}</div>
-      <a
-        href={formattedHref}
-        className="ml-2 text-2xl text-brand-link font-bold hover:text-brand-yellow"
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
-      >
-        {title}
-      </a>
+    <a
+      href={formattedHref}
+      className="border-2 hover:ring-1 ring-brand-yellow border-gray-600 hover:border-brand-yellow p-4 mb-4 flex flex-row items-center justify-between"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+    >
+      <div className="flex flex-row items-center">
+        <div className={iconContainerClasses}>{Icon}</div>
+        <p className="text-md font-medium">{title}</p>
+      </div>
       {showPreviewOnHover && isHovering && (
-        <p className="ml-4 text-sm text-brand-link">{stripHttp(href)}</p>
+        <p className="text-sm font-medium text-brand-yellow">
+          {stripHttp(href)}
+        </p>
       )}
-    </span>
+    </a>
   )
 }
