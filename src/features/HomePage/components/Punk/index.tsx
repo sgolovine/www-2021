@@ -1,6 +1,10 @@
 import React from "react"
 import PunkSVG from "./PunkSVG"
 import { usePunk } from "./usePunk"
+import Image from "next-image-export-optimizer"
+
+const eyesImage = "images/eyes.png"
+const sunglassesImage = "images/sunglasses.png"
 
 const Punk = () => {
   const {
@@ -22,23 +26,16 @@ const Punk = () => {
         <div className="punk-container-top">
           <button type="button" className="punk-button" onClick={toggleShades}>
             <div>
-              {/* {showShades ? (
-                <StaticImage
-                  src="./assets/eyes.png"
-                  alt="eyes"
-                  placeholder="none"
-                  height={48}
-                  width={48}
-                />
+              {showShades ? (
+                <Image src={eyesImage} alt="eyes" height={48} width={48} />
               ) : (
-                <StaticImage
-                  src="./assets/sunglasses.png"
+                <Image
+                  src={sunglassesImage}
                   alt="shades"
-                  placeholder="none"
                   height={48}
                   width={48}
                 />
-              )} */}
+              )}
               {/* TODO: Fix Images  */}
             </div>
           </button>
