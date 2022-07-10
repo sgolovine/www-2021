@@ -3,7 +3,7 @@ title: Migrating from Gatsby to NextJS
 description: Instead of rebuilding my website this year, I migrated it from Gatsby to NextJS. Here's how that went.
 date: Jul 9, 2022
 slug: migrating-from-gatsby-to-nextjs
-published: false
+published: true
 ---
 
 I have a tradition of sorts, every year I will rebuild my website from scratch. This year thought as it was getting to be around that time, I found myself looking at my website and not really wanting to change the design in any meaningful way. That's when I decided that this year rather than a full rebuild, I would instead migrate my site from Gatsby to NextJS.
