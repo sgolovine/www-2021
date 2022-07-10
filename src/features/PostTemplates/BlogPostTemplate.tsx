@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote"
 import { PostSEO } from "./components/PostSEO"
 import { PostLayout } from "./components/PostLayout"
 import { RawBlogPost, PostType } from "~/model/BlogPost"
+import { MDXPreComponent } from "./components/CodeBlock"
 
 export interface BlogPostTemplateProps {
   meta: RawBlogPost
@@ -30,7 +31,7 @@ export const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({
       otherPosts={otherPosts}
     >
       <div className="prose">
-        <MDXRemote compiledSource={mdx} />
+        <MDXRemote components={{ pre: MDXPreComponent }} compiledSource={mdx} />
       </div>
     </PostLayout>
   </>

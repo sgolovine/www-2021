@@ -1,11 +1,19 @@
 import axios from "axios"
+import Head from "next/head"
 import { Layout } from "~/components/layout"
 import { LinkPage, LinkPageProps } from "~/features/LinkPage"
 import { NextPageWithLayout, StaticProps } from "./_app"
 
 const Page: NextPageWithLayout<LinkPageProps> = props => <LinkPage {...props} />
 
-Page.getLayout = page => <Layout>{page}</Layout>
+Page.getLayout = page => (
+  <>
+    <Head>
+      <title>Sunny Golovine :: Links</title>
+    </Head>
+    <Layout pageTitle="Links">{page}</Layout>
+  </>
+)
 
 export const getStaticProps = async (): StaticProps<LinkPageProps> => {
   const contactResp = await axios.get("/cms/site-data/contact.json")

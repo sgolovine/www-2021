@@ -13,8 +13,8 @@ import {
   otherProjectsUrl,
   tiptrackUrl,
 } from "./constants"
-import { SiteWorkData } from "~/model/SiteData"
 import { BlogPost, BlogPostType } from "~/model/BlogPost"
+import { SiteData } from "~/model/SiteData"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -26,16 +26,11 @@ const headingClasses = classNames([
 ])
 
 export interface IndexPageProps {
-  links: Record<"email" | "linkedIn" | "github" | "devTo", string>
-  workItems: SiteWorkData[]
+  siteData: SiteData
   recentPosts: BlogPost[]
 }
 
-const IndexPage: React.FC<IndexPageProps> = ({
-  links,
-  workItems,
-  recentPosts,
-}) => {
+const IndexPage: React.FC<IndexPageProps> = ({ siteData, recentPosts }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
 
   return (
@@ -93,12 +88,12 @@ const IndexPage: React.FC<IndexPageProps> = ({
         </div>
         <div className={sectionClasses}>
           <h2 className={headingClasses}>My Work</h2>
-          {workItems.map((item, index) => (
+          {siteData.recentWork.map((item, index) => (
             <WorkItem
               key={`work-item-${index}`}
               name={item.name}
               description={item.description}
-              project_type={item.project_type}
+              projectType={item.projectType}
               url={item.url}
             />
           ))}
@@ -120,27 +115,27 @@ const IndexPage: React.FC<IndexPageProps> = ({
           <h2 className={headingClasses}>Connect With Me</h2>
           <LinkItem
             title="Email"
-            href={links.email}
+            href={siteData.email}
             type="email"
             icon="email"
             showPreviewOnHover
           />
           <LinkItem
             title="LinkedIn"
-            href={links.linkedIn}
+            href={siteData.linkedin}
             type="linkedin"
             icon="linkedin"
             showPreviewOnHover
           />
           <LinkItem
             title="Github"
-            href={links.github}
+            href={siteData.github}
             icon="github"
             showPreviewOnHover
           />
           <LinkItem
             title="The Practical Dev"
-            href={links.devTo}
+            href={siteData.devTo}
             icon="devto"
             showPreviewOnHover
           />

@@ -19,8 +19,10 @@ export const MobileMenu: React.FC<MenuProps> = ({ closeMenu }) => (
       {sidebarRoutes.length > 0 &&
         sidebarRoutes.map(route => (
           <li className="py-2 uppercase font-bold text-lg" key={route.key}>
-            <Link onClick={closeMenu} href={route.route}>
-              <a className="text-brand-link">{route.name.toUpperCase()}</a>
+            <Link href={route.route}>
+              <a onClick={closeMenu} className="text-brand-link">
+                {route.name.toUpperCase()}
+              </a>
             </Link>
           </li>
         ))}
