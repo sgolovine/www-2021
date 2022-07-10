@@ -1,4 +1,5 @@
 import { Layout } from "~/components/layout"
+import { PageSEO } from "~/components/seo"
 import { BlogPage } from "~/features/BlogPage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { RawBlogPost } from "~/model/BlogPost"
@@ -17,8 +18,12 @@ const Page: NextPageWithLayout<Props> = props => {
   return <BlogPage localPosts={localPosts} remotePosts={remotePosts} />
 }
 
-Page.getLayout = page => <Layout pageTitle="Blog">{page}</Layout>
-
+Page.getLayout = page => (
+  <>
+    <PageSEO pageTitle="Blog" pagePath="blog" />
+    <Layout pageTitle="Blog">{page}</Layout>
+  </>
+)
 export const getStaticProps = async (): StaticProps<Props> => {
   const localPosts = getLocalPosts()
   const remotePosts = getRemotePosts()

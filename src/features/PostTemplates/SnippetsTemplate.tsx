@@ -1,5 +1,4 @@
 import { MDXRemote } from "next-mdx-remote"
-import { PostSEO } from "./components/PostSEO"
 import { PostLayout } from "./components/PostLayout"
 import { RawBlogPost, PostType } from "~/model/BlogPost"
 import { MDXPreComponent } from "./components/CodeBlock"
@@ -14,12 +13,6 @@ export const SnippetsTemplate: React.FC<SnippetsTemplateProps> = ({
   mdx,
 }) => (
   <>
-    <PostSEO
-      title={meta.title}
-      description={meta.description}
-      date={meta.rawDate}
-      path={meta.path}
-    />
     <PostLayout title={meta.title} type={PostType.Snippet}>
       <div className="prose">
         <MDXRemote compiledSource={mdx} components={{ pre: MDXPreComponent }} />

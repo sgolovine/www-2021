@@ -4,6 +4,7 @@ import {
   BlogPostTemplateProps,
 } from "~/features/PostTemplates"
 import { StaticProps } from "../_app"
+import { PostSEO } from "~/components/seo"
 import { NextPage } from "next"
 
 interface Params {
@@ -13,7 +14,15 @@ interface Params {
 }
 
 const Page: NextPage<BlogPostTemplateProps> = props => (
-  <BlogPostTemplate {...props} />
+  <>
+    <PostSEO
+      title={props.meta.title}
+      description={props.meta.description}
+      slug={props.meta.id}
+      date={props.meta.rawDate}
+    />
+    <BlogPostTemplate {...props} />
+  </>
 )
 
 export const getStaticProps = async ({

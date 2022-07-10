@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { getSnippet, getSnippets } from "~/services/api"
 import {
   SnippetsTemplate,
@@ -6,6 +5,7 @@ import {
 } from "~/features/PostTemplates"
 import { StaticProps } from "../_app"
 import { NextPage } from "next"
+import { SnippetSEO } from "~/components/seo"
 
 interface Params {
   params: {
@@ -14,7 +14,14 @@ interface Params {
 }
 
 const Page: NextPage<SnippetsTemplateProps> = props => (
-  <SnippetsTemplate {...props} />
+  <>
+    <SnippetSEO
+      title={props.meta.title}
+      description={props.meta.description}
+      slug={props.meta.id}
+    />
+    <SnippetsTemplate {...props} />
+  </>
 )
 
 export const getStaticProps = async ({
