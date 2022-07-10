@@ -1,4 +1,3 @@
-import axios from "axios"
 import Head from "next/head"
 import { HomePage, IndexPageProps } from "~/features/HomePage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"

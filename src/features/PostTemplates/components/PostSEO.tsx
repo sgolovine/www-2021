@@ -21,6 +21,8 @@ export const PostSEO: React.FC<PostSEOProps> = ({
       <meta name="og:title" content={title} />
       <meta name="twitter:title" content={title} />
 
+      <meta name="POST_SEO_KEY" content="KEY_CONTENT" />
+
       <meta name="description" content={description} />
       <meta name="og:description" content={description} />
       <meta name="twitter:description" content={description} />
