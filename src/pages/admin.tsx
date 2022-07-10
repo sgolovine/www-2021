@@ -1,7 +1,7 @@
 import { NextPage } from "next"
+import { NextSeo } from "next-seo"
 import dynamic from "next/dynamic"
 import { cmsConfig } from "~/cms"
-import { NextPageWithLayout } from "./_app"
 
 const CMS = dynamic(
   () =>
@@ -14,8 +14,11 @@ const CMS = dynamic(
   }
 )
 
-const Page: NextPage = () => {
-  return <CMS />
-}
+const Page: NextPage = () => (
+  <>
+    <NextSeo title="CMS" nofollow noindex />
+    <CMS />
+  </>
+)
 
 export default Page
