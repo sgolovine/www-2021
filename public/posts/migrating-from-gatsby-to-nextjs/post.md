@@ -6,13 +6,12 @@ slug: migrating-from-gatsby-to-nextjs
 published: true
 ---
 
-I have a tradition of sorts, every year I will rebuild my website from scratch. This year thought as it was getting to be around that time, I found myself looking at my website and not really wanting to change the design in any meaningful way. That's when I decided that this year rather than a full rebuild, I would instead migrate my site from Gatsby to NextJS.
+Over the past few weeks, I successfully migrated my website from Gatsby to NextJS. The process was fairly straightforward but not without a few hiccups at times. In this post I'll break down all the changes I had to make and examine the migration process for a website with a built in blog and connected to a CMS. Overall the migration was a success thought it took quite a bit of work getting away from some of the heavy handed aspects of Gatsby.
 
-My first attempt at a migration happened about a month ago when I tried to move from Gatsby to a combination of Vite and [vite-plugin-ssr](https://vite-plugin-ssr.com/). Though this seemed like the ideal solution at first, I quickly found myself writing far too much code to work around some of the limitations of the plugin, before scrapping the work altogether and migrating to NextJS instead.
 
 ## But Why
 
-I'm sure you are wondering, why migrate? There is nothing inherently wrong with Gatsby as a framework, in-fact when you compare feature sets, it's pretty dang close to what NextJS offers. For me it came down to two reasons: first NextJS recently came out with their own compiler which uses [SWC](https://swc.rs/) under the hood, this was much faster than Gatsby's webpack implementation. The other big reason is React 18, Gatsby kinda has support for React 18 with full support in the works, NextJS already has full support. But beyond that the other big reason was simply: I wanted to (if I'm being honest this was the main reason).
+I'm sure you are wondering, why migrate? There is nothing inherently wrong with Gatsby as a framework, in-fact when you compare feature sets, it's pretty dang close to what NextJS offers. For me it came down to two reasons: first NextJS recently came out with their own compiler which uses [SWC](https://swc.rs/) under the hood, this was much faster than Gatsby's webpack implementation. The other big reason is React 18, Gatsby kinda has support for React 18 with full support in the works, NextJS already has full support. But beyond that I just wanted to see what such a process would look like. When it comes to building SSR websites in React, the two top frameworks are Gatsby and NextJS, both with some major players using each one. I wanted to see how hard it would be to move from one framework to the other.
 
 ## Getting Ready
 
@@ -49,7 +48,7 @@ There is actually not a whole lot to be said about this part, I didn't run into 
 
 Now that the site was back up and running, the next step was to get everything back up like my CMS, Blog Posts and Snippets.
 
-First came my CMS. Rather than loading the CMS through an index file in the `public/admin` folder, I instead opted to use `CMS.init()` which initialized the UI locally within my site. This yielded one big advantage: a typed configuration. One of the most painful parts of NetlifyCMS was having to write all your configurations out in YAML. I had to use a number of tools such as [yaml-merge]() and [yamllint]() to validate and build the configuration which was crumbsome. Moving my config inside of my JS allowed me to painlessly recreate the config, split it up based on collections, and add certain conditional logic based on the deployed environment.
+First came my CMS. Rather than loading the CMS through an index file in the `public/admin` folder, I instead opted to use `CMS.init()` which initialized the UI locally within my site. This yielded one big advantage: a typed configuration. One of the most painful parts of NetlifyCMS was having to write all your configurations out in YAML. I had to use a number of tools such as [yaml-merge](https://github.com/alexlafroscia/yaml-merge) and [yaml-lint](https://www.npmjs.com/package/yaml-lint) to validate and build the configuration which was crumbsome. Moving my config inside of my JS allowed me to painlessly recreate the config, split it up based on collections, and add certain conditional logic based on the deployed environment.
 
 Next came the blog and snippets. In my site, blog posts and snippets are basically the same under the hood, the only exception is blog posts have dates whereas snippets do not. I managed to put everything together here using node tools and [MDXRemote](https://github.com/hashicorp/next-mdx-remote). Using MDXRemote here was crucial because of some of the assumption that MDX makes, namely that your MDX will live right next to your website code. While this might be fine for some, I wanted a clear separation of concerns between my UI and content.
 
@@ -162,7 +161,7 @@ export const getSiteData = (): SiteData => {
 
 ```
 
-This helper is by no means perfect and my next steps will be to modify it so it only returns the fields that you request.
+This helper is by no means perfect and my next steps will be to modify it so it only returns the fields that you request. In the end this was perhaps the hardest and most complex part of the migration. For things like blogs, Gatsby's GraphQL interface combined with some plugins make this process much easier and simpler for a developer, though this comes at the cost of being a partial black box. With NextJS the developer is forced to figure out routing data to the page, and all NextJS does is provide a neat way of building those pages and supplying data to them. While implementing something like a blog with NextJS will be harder, the tradeoff is you get much more control over the process. 
 
 ## Better Layouts
 
@@ -202,7 +201,45 @@ Putting this all together, my pages in `src/pages` only do 3 things:
 2. Provide the layout
 3. Render the component
 
-This gives me a ton of flexibility and makes for easier debugging because its never a question of where the source of a problem is, if there is an issue fetching it will always be on one of those pages or inside an api helper, the UI code stays "dumb", only ever accepting and displaying data.
+This gives me a ton of flexibility and makes for easier debugging because its never a question of where the source of a problem is, if there is an issue fetching it will always be on one of those pages or inside an api helper, the UI code stays "dumb", only ever accepting and displaying data. This separation of concerns yields this pattern for creating new pages.
+
+```javascript
+// Here all the actual pages logic is locked away in `SomeComponent`
+// Some component does not fetch data or do anything except provide
+// the UI elements.
+const Page = (props) => (
+  <SomeFeature {...props} />
+)
+
+// Page.getLayout will handle the "concern" of supplying the layout
+// styles and <head> components to the page.
+Page.getLayout = (page) => (
+  <>
+  <SEOComponent />
+  <SomeGlobalStyle />
+  <SomeLayout>
+    {page}
+  </SomeLayout>
+  </>
+)
+
+// getStaticProps handles getting the data to the page
+// it uses node functions such as fs to read data from the
+// filesystem and provide it to the page at build time
+export const getStaticProps = async () => {
+  // ...logic
+  return {
+    props: {
+      // ...props
+    }
+  }
+}
+
+```
+
+While the idea of co-locating my build time fetching logic with my other logic seemed wired at first, I like the system because you can easily figure out where a
+problem is. This works really well with helpers like `getSiteData`, allowing you to supply data quite effortlessly once it's all setup.
+
 
 ## Looking Ahead
 
