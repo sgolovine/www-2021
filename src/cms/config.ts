@@ -1,5 +1,6 @@
 import { CmsConfig, CmsBackend } from "netlify-cms-core"
 import { siteDataCollection } from "./siteDataCollection"
+import { siteSettingsCollection } from "./siteSettingsCollection"
 import { snippetsCollection } from "./snippetsCollection"
 
 const isDev = process.env.NODE_ENV === "development"
@@ -28,5 +29,5 @@ export const cmsConfig: CmsConfig = {
     clean_accents: true,
     sanitize_replacement: "_",
   },
-  collections: [siteDataCollection, snippetsCollection],
+  collections: [siteDataCollection, snippetsCollection, siteSettingsCollection],
 }

@@ -1,0 +1,40 @@
+{
+  "contact": {
+    "page-title": "Contact",
+    "show-in-nav": true
+  },
+  "blog": {
+    "page-title": "Blog",
+    "show-in-nav": true
+  },
+  "resume": {
+    "page-title": "Resume",
+    "show-in-nav": true
+  },
+  "work": {
+    "page-title": "Work",
+    "show-in-nav": true
+  },
+  "debug": {
+    "page-title": "Debug",
+    "show-in-nav": false
+  },
+  "blog-slug": {
+    "page-title": "Post"
+  },
+  "snippets": {
+    "page-title": "Snippets",
+    "show-in-nav": true
+  },
+  "links": {
+    "page-title": "Links",
+    "show-in-nav": true
+  },
+  "snippet-slug": {
+    "page-title": "Snippet"
+  },
+  "home": {
+    "page-title": "Home",
+    "show-in-nav": true
+  }
+}
