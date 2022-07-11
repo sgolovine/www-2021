@@ -26,7 +26,7 @@ const headingClasses = classNames([
 ])
 
 export interface IndexPageProps {
-  siteData: SiteData
+  siteData: Partial<SiteData>
   recentPosts: BlogPost[]
 }
 
@@ -88,7 +88,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ siteData, recentPosts }) => {
         </div>
         <div className={sectionClasses}>
           <h2 className={headingClasses}>My Work</h2>
-          {siteData.recentWork.map((item, index) => (
+          {siteData?.recentWork?.map((item, index) => (
             <WorkItem
               key={`work-item-${index}`}
               name={item.name}
@@ -115,27 +115,27 @@ const IndexPage: React.FC<IndexPageProps> = ({ siteData, recentPosts }) => {
           <h2 className={headingClasses}>Connect With Me</h2>
           <LinkItem
             title="Email"
-            href={siteData.email}
+            href={siteData.email ?? ""}
             type="email"
             icon="email"
             showPreviewOnHover
           />
           <LinkItem
             title="LinkedIn"
-            href={siteData.linkedin}
+            href={siteData.linkedin ?? ""}
             type="linkedin"
             icon="linkedin"
             showPreviewOnHover
           />
           <LinkItem
             title="Github"
-            href={siteData.github}
+            href={siteData.github ?? ""}
             icon="github"
             showPreviewOnHover
           />
           <LinkItem
             title="The Practical Dev"
-            href={siteData.devTo}
+            href={siteData.devTo ?? ""}
             icon="devto"
             showPreviewOnHover
           />

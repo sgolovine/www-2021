@@ -5,8 +5,8 @@
   "version": "2.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "yarn build-post-indexes && run-p cms:proxy start",
-    "prebuild": "yarn build-post-indexes",
+    "dev": "yarn build-post-indexes && yarn generate-version && run-p cms:proxy start",
+    "prebuild": "yarn build-post-indexes && yarn generate-version",
     "build": "next build && next export -o dist && next-image-export-optimizer",
     "start": "next dev --port 8080",
     "serve": "serve -s dist",
@@ -20,7 +20,8 @@
     "cms:proxy": "netlify-cms-proxy-server",
     "resume:dev": "node ./scripts/resume/devServer.js",
     "resume:build": "node ./scripts/resume/buildServer.js",
-    "build-post-indexes": "node ./scripts/create-post-index.js"
+    "build-post-indexes": "node ./scripts/create-post-index.js",
+    "generate-version": "node ./scripts/generate-version.js"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
