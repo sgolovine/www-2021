@@ -1,33 +1,31 @@
 import React from "react"
-import { Header } from "~/components/common/Header"
-import { withNewLayout } from "~/components/layout"
-import { ContentContainer } from "~/components/layout/ContentContainer"
+import { ContentContainer, PageHeader } from "~/components/layout"
 import { PostItem } from "~/components/post/PostItem"
-import { useSnippets } from "~/hooks/useSnippets"
+import { BlogPost } from "~/model/BlogPost"
 
-const SnippetsPage: React.FC = () => {
-  const snippets = useSnippets()
-
-  return (
-    <>
-      <div className="mb-4">
-        <Header
-          title="Snippets"
-          additionalText="Code snippets and commonly used configurations"
-        />
-      </div>
-      <ContentContainer>
-        {snippets.map(snippet => (
-          <PostItem
-            key={snippet.id}
-            title={snippet.title}
-            description={snippet.description}
-            path={snippet.path}
-          />
-        ))}
-      </ContentContainer>
-    </>
-  )
+interface Props {
+  snippets: BlogPost[]
 }
 
-export default withNewLayout(SnippetsPage)
+const SnippetsPage: React.FC<Props> = ({ snippets }) => (
+  <>
+    <div className="mb-4">
+      <PageHeader
+        title="Snippets"
+        additionalText="Code snippets and commonly used configurations"
+      />
+    </div>
+    <ContentContainer>
+      {snippets.map(snippet => (
+        <PostItem
+          key={snippet.id}
+          title={snippet.title}
+          description={snippet.description}
+          path={snippet.path}
+        />
+      ))}
+    </ContentContainer>
+  </>
+)
+
+export default SnippetsPage

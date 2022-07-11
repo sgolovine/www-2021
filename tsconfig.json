@@ -1,24 +1,31 @@
 {
   "compilerOptions": {
-    "strict": true,
     "target": "ESNext",
     "module": "ESNext",
-    "jsx": "react",
+    "jsx": "preserve",
     "moduleResolution": "node",
     "lib": ["DOM", "ES5", "ES6"],
+    "strict": true,
     "allowJs": false,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    },
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*", "resume/**/*", "scripts/resume/buildServer.js"],
-  "exclude": ["node_modules", ".cache", "public"]
+  "include": [
+    "src/**/*",
+    "resume/**/*",
+    "scripts/**/*",
+    "typings",
+    "src/**/[.*].tsx"
+  ],
+  "exclude": ["node_modules", ".cache", "public", ".next", "dist"]
 }

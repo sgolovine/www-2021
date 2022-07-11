@@ -36,8 +36,6 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Typescript v1 declaration files
-typings/
 
 # Optional npm cache directory
 .npm
@@ -55,10 +53,6 @@ typings/
 .env*
 !.env.example
 
-# gatsby files
-.cache/
-public
-
 # Mac files
 .DS_Store
 
@@ -72,7 +66,18 @@ yarn-error.log
 .resume-dist
 
 # Netlify CMS
-static/admin/config.yml
+public/admin/config.yml
 
-# Posts Script
-static/posts/remotePosts.json
+# Version Config
+public/version.json
+
+# Post Indexes
+public/remote-posts.json
+public/blog-posts.json
+public/snippets.json
+
+# Next.JS
+.next
+
+# Build Folder
+dist

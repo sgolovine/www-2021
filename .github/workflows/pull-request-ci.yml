@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - master
-      - dev-2022
+      - develop
 
 jobs:
   pr-tests:
@@ -34,16 +34,10 @@ jobs:
         run: yarn install
 
       - name: Run Typechecking
-        run: yarn typecheck
+        run: yarn tsc
 
       - name: Run Prettier
         run: yarn format
 
       - name: Run ESLint
         run: yarn lint
-
-      - name: Lint CMS Config
-        run: yarn cms:lint
-
-      - name: Run Dry Build
-        run: yarn dry-build
