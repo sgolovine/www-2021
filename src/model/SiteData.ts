@@ -24,4 +24,8 @@ export interface SiteData {
   linkedin: string
   work: Work[]
   recentWork: Work[]
+  debug: {
+    version: string
+    commit: string
+  }
 }

@@ -68,6 +68,9 @@ yarn-error.log
 # Netlify CMS
 public/admin/config.yml
 
+# Version Config
+public/version.json
+
 # Post Indexes
 public/remote-posts.json
 public/blog-posts.json

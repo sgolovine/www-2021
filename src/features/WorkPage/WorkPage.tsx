@@ -4,14 +4,14 @@ import { ContentContainer, PageHeader } from "~/components/layout"
 import { SiteData } from "~/model/SiteData"
 
 export interface WorkPageProps {
-  siteData: SiteData
+  siteData: Partial<SiteData>
 }
 
 const WorkPage: React.FC<WorkPageProps> = ({ siteData }) => (
   <>
     <PageHeader title="Work" />
     <ContentContainer>
-      {siteData.work.map((item, index) => (
+      {siteData?.work?.map((item, index) => (
         <WorkItem
           key={index}
           name={item.name}
