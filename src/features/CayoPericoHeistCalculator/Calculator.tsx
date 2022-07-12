@@ -1,43 +1,13 @@
-import classNames from "classnames"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { CloseIcon } from "~/icons/Close"
 import { SettingsIcon } from "~/icons/Settings"
-import { CalculatorUI } from "./CalculatorUI"
-import { primaryTargetOptions, secondaryCardOptions } from "./defines"
-import { SettingsUI } from "./SettingsUI"
-
-type TargetKeys = "cash" | "weed" | "painting" | "cocaine" | "gold"
-
-type SecondaryTargets = Record<TargetKeys, number>
+import { PayoutContext } from "./CalculatorContext"
+import { CalculatorUI } from "./components/CalculatorUI"
+import { SettingsUI } from "./components/SettingsUI"
 
 export const Calculator = () => {
+  const payoutContext = useContext(PayoutContext)
   const [showSettingsUI, setShowSettingsUI] = useState<boolean>(false)
-  const [selectedPrimaryTarget, setSelectedPrimaryTarget] = useState<string>("")
-  const [secondaryTargets, setSecondaryTargets] = useState<SecondaryTargets>({
-    cash: 0,
-    weed: 0,
-    painting: 0,
-    cocaine: 0,
-    gold: 0,
-  })
-
-  const increaseAmount = (value: TargetKeys) => {
-    const newValue = secondaryTargets[value] + 1
-    setSecondaryTargets(prev => ({
-      ...prev,
-      [value]: newValue,
-    }))
-  }
-
-  const decreaseAmount = (value: TargetKeys) => {
-    const newValue = secondaryTargets[value] - 1
-    if (newValue >= 0) {
-      setSecondaryTargets(prev => ({
-        ...prev,
-        [value]: newValue,
-      }))
-    }
-  }
 
   return (
     <div className="max-w-2xl mx-auto py-4 px-2">
@@ -53,14 +23,18 @@ export const Calculator = () => {
         </div>
       </div>
       {showSettingsUI ? (
-        <SettingsUI />
+        <SettingsUI
+          close={() => setShowSettingsUI(false)}
+          config={payoutContext.state.config}
+          setConfig={payoutContext.actions.setConfig}
+        />
       ) : (
         <CalculatorUI
-          selectedPrimaryTarget={selectedPrimaryTarget}
-          setSelectedPrimaryTarget={setSelectedPrimaryTarget}
-          secondaryTargets={secondaryTargets}
-          increaseAmount={increaseAmount}
-          decreaseAmount={decreaseAmount}
+          selectedPrimaryTarget={payoutContext.state.selections.primaryTarget}
+          setSelectedPrimaryTarget={payoutContext.actions.setPrimaryTarget}
+          secondaryTargets={payoutContext.state.selections.secondaryTargets}
+          increaseAmount={payoutContext.actions.addSecondaryTargetStack}
+          decreaseAmount={payoutContext.actions.removeSecondaryTargetStack}
         />
       )}
     </div>

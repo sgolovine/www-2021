@@ -1,13 +1,17 @@
-import { primaryTargetOptions, secondaryCardOptions } from "./defines"
+import { primaryTargetOptions, secondaryCardOptions } from "../defines"
 import classNames from "classnames"
-import { SecondaryTargets, TargetKeys } from "./types"
+import {
+  SecondaryTargets,
+  SecondaryTargetKeys,
+  PrimaryTargetKeys,
+} from "../types"
 
 interface Props {
   selectedPrimaryTarget: string
   secondaryTargets: SecondaryTargets
-  setSelectedPrimaryTarget: (newValue: string) => void
-  increaseAmount: (key: TargetKeys) => void
-  decreaseAmount: (key: TargetKeys) => void
+  setSelectedPrimaryTarget: (newValue: PrimaryTargetKeys) => void
+  increaseAmount: (key: SecondaryTargetKeys) => void
+  decreaseAmount: (key: SecondaryTargetKeys) => void
 }
 
 export const CalculatorUI: React.FC<Props> = ({
@@ -68,14 +72,18 @@ export const CalculatorUI: React.FC<Props> = ({
               <p className="text-sm font-bold">{opt.label}</p>
               <div className="flex flex-row items-center gap-4 lg:pt-4">
                 <button
-                  onClick={() => decreaseAmount(opt.value as TargetKeys)}
+                  onClick={() =>
+                    decreaseAmount(opt.value as SecondaryTargetKeys)
+                  }
                   className="border h-12 w-12"
                 >
                   -
                 </button>
-                <p>{secondaryTargets[opt.value as TargetKeys]}</p>
+                <p>{secondaryTargets[opt.value as SecondaryTargetKeys]}</p>
                 <button
-                  onClick={() => increaseAmount(opt.value as TargetKeys)}
+                  onClick={() =>
+                    increaseAmount(opt.value as SecondaryTargetKeys)
+                  }
                   className="border h-12 w-12"
                 >
                   +

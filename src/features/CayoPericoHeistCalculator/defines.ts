@@ -1,7 +1,12 @@
-export const primaryTargetOptions = [
+import { Config, PrimaryTargetKeys, SecondaryTargetKeys } from "./types"
+
+export const primaryTargetOptions: {
+  label: string
+  value: PrimaryTargetKeys
+}[] = [
   {
-    label: "Tequilla",
-    value: "tequilla",
+    label: "Tequila",
+    value: "tequila",
   },
   {
     label: "Ruby Necklace",
@@ -21,7 +26,10 @@ export const primaryTargetOptions = [
   },
 ]
 
-export const secondaryCardOptions = [
+export const secondaryCardOptions: {
+  label: string
+  value: SecondaryTargetKeys
+}[] = [
   {
     label: "Cash",
     value: "cash",
@@ -44,9 +52,9 @@ export const secondaryCardOptions = [
   },
 ]
 
-export const config = {
+export const config: Config = {
   primaryTargets: {
-    tequilla: {
+    tequila: {
       normal: 900000,
       hard: 990000,
     },
@@ -69,27 +77,32 @@ export const config = {
   },
   secondaryTargets: {
     cash: {
-      stackValue: 90000,
+      normalStackValue: 90000,
+      hardStackValue: 0,
       stackWeight: 0.25,
       fullBagValue: 360000,
     },
     weed: {
-      stackValue: 147870,
+      normalStackValue: 147870,
+      hardStackValue: 0,
       stackWeight: 0.33,
       fullBagValue: 443610,
     },
     painting: {
-      stackValue: 189500,
+      normalStackValue: 189500,
+      hardStackValue: 0,
       stackWeight: 0.5,
       fullBagValue: 379000,
     },
     cocaine: {
-      stackValue: 220095,
+      normalStackValue: 220095,
+      hardStackValue: 0,
       stackWeight: 0.5,
       fullBagValue: 440190,
     },
     gold: {
-      stackValue: 332184,
+      normalStackValue: 332184,
+      hardStackValue: 0,
       stackWeight: 0.66,
       fullBagValue: 498276,
     },
