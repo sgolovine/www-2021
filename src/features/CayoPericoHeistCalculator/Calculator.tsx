@@ -30,6 +30,10 @@ export const Calculator = () => {
         />
       ) : (
         <CalculatorUI
+          hardMode={payoutContext.state.hardMode}
+          setHardMode={payoutContext.actions.setHardMode}
+          totalTake={payoutContext.state.results.totalTake}
+          crewRequired={payoutContext.state.results.requiredCrew}
           selectedPrimaryTarget={payoutContext.state.selections.primaryTarget}
           setSelectedPrimaryTarget={payoutContext.actions.setPrimaryTarget}
           secondaryTargets={payoutContext.state.selections.secondaryTargets}

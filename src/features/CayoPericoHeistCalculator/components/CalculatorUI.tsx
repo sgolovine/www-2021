@@ -5,16 +5,25 @@ import {
   SecondaryTargetKeys,
   PrimaryTargetKeys,
 } from "../types"
+import numeral from "numeral"
 
 interface Props {
   selectedPrimaryTarget: string
   secondaryTargets: SecondaryTargets
+  totalTake: number
+  crewRequired: number
+  hardMode: boolean
+  setHardMode: (hardMode: boolean) => void
   setSelectedPrimaryTarget: (newValue: PrimaryTargetKeys) => void
   increaseAmount: (key: SecondaryTargetKeys) => void
   decreaseAmount: (key: SecondaryTargetKeys) => void
 }
 
 export const CalculatorUI: React.FC<Props> = ({
+  totalTake = 0,
+  crewRequired = 0,
+  hardMode = false,
+  setHardMode,
   selectedPrimaryTarget,
   secondaryTargets,
   setSelectedPrimaryTarget,
@@ -35,9 +44,21 @@ export const CalculatorUI: React.FC<Props> = ({
         make this process a little less painful.
       </p>
       <hr className="my-6" />
+      <div className="border m-2 p-4 flex flex-col lg:flex-row items-center justify-start lg:justify-between">
+        <p className="text-xl font-bold">
+          Total Take: ${numeral(totalTake ?? 0).format("0,0")}
+        </p>
+        <p className="text-xl font-bold">Required Crew: {crewRequired ?? 0}</p>
+      </div>
+
       <div className="mb-4">
         <label>
-          <input type="checkbox" />
+          <input
+            defaultChecked={hardMode}
+            checked={hardMode}
+            type="checkbox"
+            onChange={() => setHardMode(!hardMode)}
+          />
           <span className="pl-2 font-bold text-zinc-700">Hard Mode</span>
         </label>
       </div>

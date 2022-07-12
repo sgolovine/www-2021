@@ -2,7 +2,7 @@
  * Payout calculator context
  * Keeps track of all state in this app.
  */
-import React, { ReactNode } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import {
   Config,
   PrimaryTargetKeys,
@@ -17,6 +17,10 @@ type State = {
   selections: {
     primaryTarget: PrimaryTargetKeys
     secondaryTargets: SecondaryTargets
+  }
+  results: {
+    requiredCrew: number
+    totalTake: number
   }
 }
 
@@ -47,6 +51,8 @@ export const PayoutContext = React.createContext<Context>({} as Context)
 export const PayoutContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const [requiredCrew, setRequiredCrew] = useState<number>(0)
+  const [totalTake, setTotalTake] = useState<number>(0)
   const [hardMode, setHardMode] = React.useState<boolean>(false)
   const [config, setConfig] = React.useState<Config>(baseConfig)
   const [primaryTargetSelection, setPrimaryTargetSelection] =
@@ -60,6 +66,59 @@ export const PayoutContextProvider: React.FC<{ children: ReactNode }> = ({
       painting: 0,
     })
 
+  useEffect(() => {
+    // Multiply the number of stacks by the stack weight for each target
+    const cashWeight =
+      secondaryTargetSelection.cash * config.secondaryTargets.cash.stackWeight
+    const weedWeight =
+      secondaryTargetSelection.weed * config.secondaryTargets.weed.stackWeight
+    const cocaineWeight =
+      secondaryTargetSelection.cocaine *
+      config.secondaryTargets.cocaine.stackWeight
+    const goldWeight =
+      secondaryTargetSelection.gold * config.secondaryTargets.gold.stackWeight
+    const paintingWeight =
+      secondaryTargetSelection.painting *
+      config.secondaryTargets.painting.stackWeight
+    const totalWeight =
+      cashWeight + weedWeight + cocaineWeight + goldWeight + paintingWeight
+
+    // Get the ceiling (round up) to get # of crew members
+    const requiredCrew = Math.ceil(totalWeight)
+
+    const difficulty = hardMode ? "hardStackValue" : "normalStackValue"
+
+    // TODO: Calculate Total Take
+    const primaryTargetValue =
+      config.primaryTargets[primaryTargetSelection][
+        hardMode ? "hard" : "normal"
+      ]
+
+    const cashValue =
+      config.secondaryTargets.cash[difficulty] * secondaryTargetSelection.cash
+    const weedValue =
+      config.secondaryTargets.weed[difficulty] * secondaryTargetSelection.weed
+    const cocaineValue =
+      config.secondaryTargets.cocaine[difficulty] *
+      secondaryTargetSelection.cocaine
+    const goldValue =
+      config.secondaryTargets.gold[difficulty] * secondaryTargetSelection.gold
+    const paintingValue =
+      config.secondaryTargets.painting[difficulty] *
+      secondaryTargetSelection.painting
+
+    const totalValue =
+      primaryTargetValue +
+      cashValue +
+      weedValue +
+      cocaineValue +
+      goldValue +
+      paintingValue
+
+    setRequiredCrew(requiredCrew)
+    setTotalTake(totalValue)
+  }, [hardMode, primaryTargetSelection, secondaryTargetSelection, config])
+
   const setPrimaryTarget = (target: PrimaryTargetKeys) =>
     setPrimaryTargetSelection(target)
 
@@ -71,12 +130,17 @@ export const PayoutContextProvider: React.FC<{ children: ReactNode }> = ({
   }
 
   const removeSecondaryTargetStack = (target: SecondaryTargetKeys) => {
-    if (secondaryTargetSelection[target] >= 0) {
-      setSecondaryTargetSelection(prevState => ({
-        ...prevState,
-        [target]: prevState[target] - 1,
-      }))
-    }
+    setSecondaryTargetSelection(prevState => {
+      if (prevState[target] > 0) {
+        return {
+          ...prevState,
+          [target]: prevState[target] - 1,
+        }
+      } else {
+        // no-op
+        return prevState
+      }
+    })
   }
 
   const value: Context = {
@@ -86,6 +150,10 @@ export const PayoutContextProvider: React.FC<{ children: ReactNode }> = ({
       selections: {
         primaryTarget: primaryTargetSelection,
         secondaryTargets: secondaryTargetSelection,
+      },
+      results: {
+        requiredCrew,
+        totalTake,
       },
     },
     actions: {
