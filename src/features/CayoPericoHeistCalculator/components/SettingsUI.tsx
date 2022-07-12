@@ -32,11 +32,9 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
   }
 
   const setSecondaryTargetValues = ({
-    hardMode,
     target,
     newValue,
   }: {
-    hardMode: boolean
     target: SecondaryTargetKeys
     newValue: number
   }) => {
@@ -46,9 +44,7 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
         ...prevState.secondaryTargets,
         [target]: {
           ...prevState.secondaryTargets[target],
-          ...(hardMode
-            ? { hardStackValue: newValue }
-            : { normalStackValue: newValue }),
+          stackValue: newValue,
         },
       },
     }))
@@ -89,7 +85,15 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
       <h1 className="text-2xl font-bold text-center py-4">Settings</h1>
       <p className="text-center">
         The numbers that this app uses to calculate payouts. If you believe them
-        to be incorrect you can change them here
+        to be incorrect you can change them here. Default values are taken from{" "}
+        <a
+          href="https://www.reddit.com/r/gtaonline/comments/kjg6t4/cayo_perico_primarysecondary_targets_payout_guide/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          this reddit post on /r/gtaonline
+        </a>
       </p>
       <hr className="my-6" />
       <h2 className="text-lg font-bold py-4">Primary Target Values</h2>
@@ -267,7 +271,6 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
           <tr>
             <th>Target</th>
             <th>Value (Normal)</th>
-            <th>Value (Hard)</th>
             <th>Weight</th>
           </tr>
         </thead>
@@ -276,26 +279,11 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
             <td>Cash</td>
             <td>
               <input
-                value={internalConfig.secondaryTargets.cash.normalStackValue}
+                value={internalConfig.secondaryTargets.cash.stackValue}
                 type="number"
                 className="border"
                 onChange={e =>
                   setSecondaryTargetValues({
-                    hardMode: false,
-                    target: "cash",
-                    newValue: Number(e.target.value),
-                  })
-                }
-              />
-            </td>
-            <td>
-              <input
-                value={internalConfig.secondaryTargets.cash.hardStackValue}
-                type="number"
-                className="border"
-                onChange={e =>
-                  setSecondaryTargetValues({
-                    hardMode: true,
                     target: "cash",
                     newValue: Number(e.target.value),
                   })
@@ -320,32 +308,18 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
             <td>Weed</td>
             <td>
               <input
-                value={internalConfig.secondaryTargets.weed.normalStackValue}
+                value={internalConfig.secondaryTargets.weed.stackValue}
                 type="number"
                 className="border"
                 onChange={e =>
                   setSecondaryTargetValues({
-                    hardMode: false,
                     target: "weed",
                     newValue: Number(e.target.value),
                   })
                 }
               />
             </td>
-            <td>
-              <input
-                value={internalConfig.secondaryTargets.weed.hardStackValue}
-                type="number"
-                className="border"
-                onChange={e =>
-                  setSecondaryTargetValues({
-                    hardMode: true,
-                    target: "weed",
-                    newValue: Number(e.target.value),
-                  })
-                }
-              />
-            </td>
+
             <td>
               <input
                 value={internalConfig.secondaryTargets.weed.stackWeight}
@@ -364,34 +338,18 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
             <td>Painting</td>
             <td>
               <input
-                value={
-                  internalConfig.secondaryTargets.painting.normalStackValue
-                }
+                value={internalConfig.secondaryTargets.painting.stackValue}
                 type="number"
                 className="border"
                 onChange={e =>
                   setSecondaryTargetValues({
-                    hardMode: false,
                     target: "painting",
                     newValue: Number(e.target.value),
                   })
                 }
               />
             </td>
-            <td>
-              <input
-                value={internalConfig.secondaryTargets.painting.hardStackValue}
-                type="number"
-                className="border"
-                onChange={e =>
-                  setSecondaryTargetValues({
-                    hardMode: true,
-                    target: "painting",
-                    newValue: Number(e.target.value),
-                  })
-                }
-              />
-            </td>
+
             <td>
               <input
                 value={internalConfig.secondaryTargets.painting.stackWeight}
@@ -410,32 +368,18 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
             <td>Cocaine</td>
             <td>
               <input
-                value={internalConfig.secondaryTargets.cocaine.normalStackValue}
+                value={internalConfig.secondaryTargets.cocaine.stackValue}
                 type="number"
                 className="border"
                 onChange={e =>
                   setSecondaryTargetValues({
-                    hardMode: false,
                     target: "cocaine",
                     newValue: Number(e.target.value),
                   })
                 }
               />
             </td>
-            <td>
-              <input
-                value={internalConfig.secondaryTargets.cocaine.hardStackValue}
-                type="number"
-                className="border"
-                onChange={e =>
-                  setSecondaryTargetValues({
-                    hardMode: true,
-                    target: "cocaine",
-                    newValue: Number(e.target.value),
-                  })
-                }
-              />
-            </td>
+
             <td>
               <input
                 value={internalConfig.secondaryTargets.cocaine.stackWeight}
@@ -454,26 +398,11 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
             <td>Gold</td>
             <td>
               <input
-                value={internalConfig.secondaryTargets.gold.normalStackValue}
+                value={internalConfig.secondaryTargets.gold.stackValue}
                 type="number"
                 className="border"
                 onChange={e =>
                   setSecondaryTargetValues({
-                    hardMode: false,
-                    target: "gold",
-                    newValue: Number(e.target.value),
-                  })
-                }
-              />
-            </td>
-            <td>
-              <input
-                value={internalConfig.secondaryTargets.gold.hardStackValue}
-                type="number"
-                className="border"
-                onChange={e =>
-                  setSecondaryTargetValues({
-                    hardMode: true,
                     target: "gold",
                     newValue: Number(e.target.value),
                   })

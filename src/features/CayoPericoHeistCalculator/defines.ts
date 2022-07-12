@@ -77,32 +77,27 @@ export const config: Config = {
   },
   secondaryTargets: {
     cash: {
-      normalStackValue: 90000,
-      hardStackValue: 0,
+      stackValue: 90000,
       stackWeight: 0.25,
       fullBagValue: 360000,
     },
     weed: {
-      normalStackValue: 147870,
-      hardStackValue: 0,
+      stackValue: 147870,
       stackWeight: 0.33,
       fullBagValue: 443610,
     },
     painting: {
-      normalStackValue: 189500,
-      hardStackValue: 0,
+      stackValue: 189500,
       stackWeight: 0.5,
       fullBagValue: 379000,
     },
     cocaine: {
-      normalStackValue: 220095,
-      hardStackValue: 0,
+      stackValue: 220095,
       stackWeight: 0.5,
       fullBagValue: 440190,
     },
     gold: {
-      normalStackValue: 332184,
-      hardStackValue: 0,
+      stackValue: 332184,
       stackWeight: 0.66,
       fullBagValue: 498276,
     },

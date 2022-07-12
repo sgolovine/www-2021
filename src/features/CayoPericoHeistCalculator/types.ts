@@ -17,7 +17,7 @@ export type SecondaryTargets = Record<SecondaryTargetKeys, number>
 type PrimaryTarget = Record<"normal" | "hard", number>
 
 type SecondaryTarget = Record<
-  "normalStackValue" | "hardStackValue" | "stackWeight" | "fullBagValue",
+  "stackValue" | "stackWeight" | "fullBagValue",
   number
 >
 

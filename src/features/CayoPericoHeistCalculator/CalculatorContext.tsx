@@ -86,8 +86,6 @@ export const PayoutContextProvider: React.FC<{ children: ReactNode }> = ({
     // Get the ceiling (round up) to get # of crew members
     const requiredCrew = Math.ceil(totalWeight)
 
-    const difficulty = hardMode ? "hardStackValue" : "normalStackValue"
-
     // TODO: Calculate Total Take
     const primaryTargetValue =
       config.primaryTargets[primaryTargetSelection][
@@ -95,16 +93,16 @@ export const PayoutContextProvider: React.FC<{ children: ReactNode }> = ({
       ]
 
     const cashValue =
-      config.secondaryTargets.cash[difficulty] * secondaryTargetSelection.cash
+      config.secondaryTargets.cash.stackValue * secondaryTargetSelection.cash
     const weedValue =
-      config.secondaryTargets.weed[difficulty] * secondaryTargetSelection.weed
+      config.secondaryTargets.weed.stackValue * secondaryTargetSelection.weed
     const cocaineValue =
-      config.secondaryTargets.cocaine[difficulty] *
+      config.secondaryTargets.cocaine.stackValue *
       secondaryTargetSelection.cocaine
     const goldValue =
-      config.secondaryTargets.gold[difficulty] * secondaryTargetSelection.gold
+      config.secondaryTargets.gold.stackValue * secondaryTargetSelection.gold
     const paintingValue =
-      config.secondaryTargets.painting[difficulty] *
+      config.secondaryTargets.painting.stackValue *
       secondaryTargetSelection.painting
 
     const totalValue =
