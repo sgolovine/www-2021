@@ -2,7 +2,7 @@
   "name": "sunny-golovine-dot-com",
   "private": true,
   "description": "My Personal Website",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "scripts": {
     "dev": "yarn build-post-indexes && yarn generate-version && run-p cms:proxy start",
