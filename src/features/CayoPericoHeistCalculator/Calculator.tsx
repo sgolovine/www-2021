@@ -30,6 +30,11 @@ export const Calculator = () => {
         />
       ) : (
         <CalculatorUI
+          breakdownValues={payoutContext.state.breakdown}
+          hiddenSafe={payoutContext.state.hiddenSafe}
+          setHiddenSafe={payoutContext.actions.setHiddenSafe}
+          eliteChallenge={payoutContext.state.eliteChallenge}
+          setEliteChallenge={payoutContext.actions.setEliteChallenge}
           hardMode={payoutContext.state.hardMode}
           setHardMode={payoutContext.actions.setHardMode}
           totalTake={payoutContext.state.results.totalTake}

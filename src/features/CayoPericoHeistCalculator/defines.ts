@@ -102,4 +102,12 @@ export const config: Config = {
       fullBagValue: 498276,
     },
   },
+  extras: {
+    hiddenSafeValue: 75000,
+    eliteChallengePerPlayer: 50000,
+  },
+  fees: {
+    fencingFeePercentage: 0.1,
+    pavelFeePercentage: 0.02,
+  },
 }

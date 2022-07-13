@@ -21,7 +21,29 @@ type SecondaryTarget = Record<
   number
 >
 
+export type ConfigExtras = Record<
+  "hiddenSafeValue" | "eliteChallengePerPlayer",
+  number
+>
+
+export type ConfigFees = Record<
+  "fencingFeePercentage" | "pavelFeePercentage",
+  number
+>
+
 export type Config = {
   primaryTargets: Record<PrimaryTargetKeys, PrimaryTarget>
   secondaryTargets: Record<SecondaryTargetKeys, SecondaryTarget>
+  extras: ConfigExtras
+  fees: ConfigFees
 }
+
+export type BreakdownValues = Record<
+  | "primaryTarget"
+  | "secondaryTarget"
+  | "hiddenSafe"
+  | "eliteChallenge"
+  | "fencingFee"
+  | "pavelFee",
+  number
+>
