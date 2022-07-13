@@ -1,5 +1,11 @@
 import { useState } from "react"
-import { Config, PrimaryTargetKeys, SecondaryTargetKeys } from "../types"
+import {
+  Config,
+  ConfigExtras,
+  ConfigFees,
+  PrimaryTargetKeys,
+  SecondaryTargetKeys,
+} from "../types"
 
 interface Props {
   config: Config
@@ -69,6 +75,38 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
     }))
   }
 
+  const setFees = ({
+    target,
+    newValue,
+  }: {
+    target: keyof ConfigFees
+    newValue: number
+  }) => {
+    setInternalConfig(prevState => ({
+      ...prevState,
+      fees: {
+        ...prevState.fees,
+        [target]: newValue,
+      },
+    }))
+  }
+
+  const setExtras = ({
+    target,
+    newValue,
+  }: {
+    target: keyof ConfigExtras
+    newValue: number
+  }) => {
+    setInternalConfig(prevState => ({
+      ...prevState,
+      extras: {
+        ...prevState.extras,
+        [target]: newValue,
+      },
+    }))
+  }
+
   const handleSave = () => {
     setConfig(internalConfig)
     alert("changes saved")
@@ -80,22 +118,8 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
     close()
   }
 
-  return (
-    <div>
-      <h1 className="text-2xl font-bold text-center py-4">Settings</h1>
-      <p className="text-center">
-        The numbers that this app uses to calculate payouts. If you believe them
-        to be incorrect you can change them here. Default values are taken from{" "}
-        <a
-          href="https://www.reddit.com/r/gtaonline/comments/kjg6t4/cayo_perico_primarysecondary_targets_payout_guide/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          this reddit post on /r/gtaonline
-        </a>
-      </p>
-      <hr className="my-6" />
+  const renderPrimaryTargetSettings = () => (
+    <>
       <h2 className="text-lg font-bold py-4">Primary Target Values</h2>
       <table className="table-auto">
         <thead>
@@ -263,6 +287,11 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
           </tr>
         </tbody>
       </table>
+    </>
+  )
+
+  const renderSecondaryTargetSettings = () => (
+    <>
       <h2 className="text-lg font-bold py-4">
         Secondary Target Values and Weights
       </h2>
@@ -425,6 +454,104 @@ export const SettingsUI: React.FC<Props> = ({ config, setConfig, close }) => {
           </tr>
         </tbody>
       </table>
+    </>
+  )
+
+  const renderExtrasAndFees = () => (
+    <>
+      <h2 className="text-lg font-bold py-4">Extras and Fees</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fencing Fee (Percentage)</td>
+            <td>
+              <input
+                className="border"
+                value={config.fees.fencingFeePercentage}
+                onChange={e =>
+                  setFees({
+                    target: "fencingFeePercentage",
+                    newValue: Number(e.target.value),
+                  })
+                }
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Pavel Fee (Percentage)</td>
+            <td>
+              <input
+                className="border"
+                value={config.fees.pavelFeePercentage}
+                onChange={e =>
+                  setFees({
+                    target: "pavelFeePercentage",
+                    newValue: Number(e.target.value),
+                  })
+                }
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Hidden Safe Value</td>
+            <td>
+              <input
+                className="border"
+                value={config.extras.hiddenSafeValue}
+                onChange={e =>
+                  setExtras({
+                    target: "hiddenSafeValue",
+                    newValue: Number(e.target.value),
+                  })
+                }
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Elite Challenge Bonus (per player)</td>
+            <td>
+              <input
+                className="border"
+                value={config.extras.eliteChallengePerPlayer}
+                onChange={e =>
+                  setExtras({
+                    target: "eliteChallengePerPlayer",
+                    newValue: Number(e.target.value),
+                  })
+                }
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  )
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold text-center py-4">Settings</h1>
+      <p className="text-center">
+        The numbers that this app uses to calculate payouts. If you believe them
+        to be incorrect you can change them here. Default values are taken from{" "}
+        <a
+          href="https://www.reddit.com/r/gtaonline/comments/kjg6t4/cayo_perico_primarysecondary_targets_payout_guide/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          this reddit post on /r/gtaonline
+        </a>
+      </p>
+      <hr className="my-6" />
+      {renderPrimaryTargetSettings()}
+      {renderSecondaryTargetSettings()}
+      {renderExtrasAndFees()}
       <div className="py-6">
         <button
           className="border px-4 py-2 rounded shadow bg-red-500 hover:bg-red-400 active:bg-red-600 text-white"
