@@ -41,6 +41,8 @@ module.exports = {
         linkedin: "#0077B5",
         github: "#181717",
         "brand-yellow": "#ffd23f",
+        "brand-yellow-darker": "#fec300",
+        "brand-yellow-lighter": "#ffdb65",
         "brand-blue": "#5FBFF9",
         "brand-green": "#20FC8F",
         "brand-white": "#f7fff7",
@@ -50,6 +52,9 @@ module.exports = {
       fontFamily: {
         heading: ["Montserrat", "sans-serif"],
       },
+      spacing: {
+        '128': '32rem',
+      }
     },
   },
   variants: {

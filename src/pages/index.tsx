@@ -1,4 +1,5 @@
 import { PageSEO } from "~/components/seo/PageSEO"
+import { ContactMe } from "~/features/ContactMeWidget"
 import { HomePage, IndexPageProps } from "~/features/HomePage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { getRecentPosts } from "~/services/api"
@@ -9,7 +10,12 @@ import { NextPageWithLayout, StaticProps } from "./_app"
 const Page: NextPageWithLayout<IndexPageProps> = props => {
   const recentPosts = convertBlogPosts(props.recentPosts)
 
-  return <HomePage siteData={props.siteData} recentPosts={recentPosts} />
+  return (
+    <>
+      <HomePage siteData={props.siteData} recentPosts={recentPosts} />
+      <ContactMe />
+    </>
+  )
 }
 
 Page.getLayout = page => (
