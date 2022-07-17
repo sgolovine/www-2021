@@ -1,20 +1,19 @@
 import { useEffect, useRef, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import { Mail } from "~/icons/Mail"
-import { initialState } from "./constants/formState"
-import { ContactForm } from "./ContactForm"
-import { FormState } from "./types/FormState"
+import { ContactForm } from "./components/ContactForm"
+import { SuccessUI } from "./components/SuccessUI"
+import { useContactWidgetStore } from "./store"
 
 export const ContactMe = () => {
   const sheetRef = useRef<HTMLDivElement>(null)
-
-  const [sheetVisible, setSheetVisible] = useState<boolean>(true)
-  const [formState, setFormState] = useState<FormState>(initialState)
+  const store = useContactWidgetStore()
+  const { setErrors, setHasSubmitted, toggleModal } = store.actions
 
   useEffect(() => {
     const clickOutEvent = (e: any) => {
       if (sheetRef.current && !sheetRef.current.contains(e.target)) {
-        setSheetVisible(false)
+        toggleModal()
       }
     }
 
@@ -23,59 +22,40 @@ export const ContactMe = () => {
     return () => {
       document.removeEventListener("mousedown", clickOutEvent)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sheetRef])
 
-  const handleTriggerClick = () => setSheetVisible(prevState => !prevState)
-
-  const closeModal = () => {
-    setSheetVisible(false)
-    setFormState(initialState)
-  }
-
   const handleSubmit = () => {
-    // TODO: Handle Submit Stuff
-    closeModal()
+    const mockError = false
+    // TODO: Placeholder for error states
+    if (mockError) {
+      setErrors("sendError", true)
+    }
+
+    // If the submission went ok.
+    setHasSubmitted()
   }
 
   return (
-    <>
+    <div ref={sheetRef}>
       {/* Sheet */}
-      {sheetVisible && (
-        <Sheet
-          ref={sheetRef}
-          className="fixed bg-gray-700 w-96 right-16 rounded-lg shadow-xl p-4 overflow-y-scroll"
-        >
-          <ContactForm
-            name={formState.name}
-            email={formState.email}
-            subject={formState.subject}
-            message={formState.message}
-            onCancel={closeModal}
-            onClose={closeModal}
-            onSubmit={handleSubmit}
-            onEmailChange={(val: string) =>
-              setFormState(prev => ({ ...prev, email: val }))
-            }
-            onNameChange={(val: string) =>
-              setFormState(prev => ({ ...prev, name: val }))
-            }
-            onSubjectChange={(val: string) =>
-              setFormState(prev => ({ ...prev, subject: val }))
-            }
-            onMessageChange={(val: string) =>
-              setFormState(prev => ({ ...prev, message: val }))
-            }
-          />
+      {store.state.visible && (
+        <Sheet className="fixed bg-gray-700 w-96 right-16 rounded-lg shadow-xl p-4 overflow-y-scroll">
+          {store.state.hasSubmitted ? (
+            <SuccessUI onClose={toggleModal} />
+          ) : (
+            <ContactForm onClose={toggleModal} onSubmit={handleSubmit} />
+          )}
         </Sheet>
       )}
       {/* Trigger */}
       <button
-        onClick={handleTriggerClick}
+        onClick={toggleModal}
         className="fixed bottom-10 right-10 bg-brand-yellow hover:bg-brand-yellow-darker active:bg-brand-yellow-lighter p-4 rounded-full drop-shadow-lg"
       >
         <Mail />
       </button>
-    </>
+    </div>
   )
 }
 

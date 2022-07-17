@@ -1,8 +1,8 @@
 import classNames from "classnames"
+import { ChangeEvent } from "react"
 import { CloseIcon } from "~/icons/Close"
-import { ExternalLinkIcon } from "~/icons/ExternalLink"
-import { labels } from "./constants/labels"
-import { ContactFormProps } from "./types/ContactForm"
+import { labels } from "../constants/labels"
+import { useContactWidgetStore } from "../store"
 
 const containerClasses = classNames("flex", "flex-col")
 
@@ -17,19 +17,29 @@ const inputClasses = classNames(
 
 const labelClasses = classNames("text-brand-yellow", "font-medium")
 
-export const ContactForm: React.FC<ContactFormProps> = ({
-  name,
-  email,
-  subject,
-  message,
-  onCancel,
-  onClose,
-  onEmailChange,
-  onMessageChange,
-  onNameChange,
-  onSubjectChange,
-  onSubmit,
-}) => {
+export const ContactForm: React.FC<{
+  onSubmit: () => void
+  onClose: () => void
+}> = ({ onSubmit, onClose }) => {
+  const { state, actions } = useContactWidgetStore()
+  const { name, email, subject, message } = state.form
+
+  const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    actions.setFormState("name", e.target.value)
+  }
+
+  const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    actions.setFormState("email", e.target.value)
+  }
+
+  const onSubjectChange = (e: ChangeEvent<HTMLInputElement>) => {
+    actions.setFormState("subject", e.target.value)
+  }
+
+  const onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    actions.setFormState("message", e.target.value)
+  }
+
   return (
     <div>
       <div className="flex flex-row items-center justify-between pb-4">
@@ -47,7 +57,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <input
           placeholder={labels.namePlaceholder}
           value={name}
-          onChange={e => onNameChange(e.target.value)}
+          onChange={onNameChange}
           className={inputClasses}
         />
       </div>
@@ -56,7 +66,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <input
           placeholder={labels.emailPlaceholder}
           name={email}
-          onChange={e => onEmailChange(e.target.value)}
+          onChange={onEmailChange}
           className={inputClasses}
         />
       </div>
@@ -65,7 +75,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <input
           placeholder={labels.subjectPlaceholder}
           value={subject}
-          onChange={e => onSubjectChange(e.target.value)}
+          onChange={onSubjectChange}
           className={inputClasses}
         />
       </div>
@@ -73,7 +83,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <label className={labelClasses}>{labels.messageLabel}</label>
         <textarea
           value={message}
-          onChange={e => onMessageChange(e.target.value)}
+          onChange={onMessageChange}
           cols={10}
           className={classNames(inputClasses, "h-28")}
           placeholder={labels.messagePlaceholder}
@@ -87,7 +97,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           {labels.submitBtnText}
         </button>
         <button
-          onClick={onCancel}
+          onClick={onClose}
           className="bg-red-700 p-2 rounded-lg shadow-lg text-gray-200"
         >
           {labels.cancelBtnText}

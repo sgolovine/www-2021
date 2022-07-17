@@ -5,27 +5,58 @@ exports.handler = async function (event, _context, callback) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   try {
     const bodyContent = JSON.parse(event.body)
-    const { name, email, message } = bodyContent
+    const { name, email, subject, message } = bodyContent
 
-    // Check that we have all the right
-    // parts of the message
-    if (!name || !email || !message) {
-      callback(null, { statusCode: 400, body: "Missing params" })
-      return
+    if (!name) {
+      callback(null, {
+        statusCode: 400,
+        body: "Name Missing",
+      })
+    }
+
+    if (!email) {
+      callback(null, {
+        statusCode: 400,
+        body: "Missing Email",
+      })
+    }
+
+    if (!subject) {
+      callback(null, {
+        statusCode: 400,
+        body: "Missing Subject",
+      })
+    }
+
+    if (!message) {
+      callback(null, {
+        statusCode: 400,
+        body: "Missing Message",
+      })
     }
 
     // Compose the message
     const composedMessage = {
       to: process.env.REPLY_TO,
       from: `noreply@glvn.co`,
-      subject: `sunnygolovine.com - New Message from ${name}[${email}]`,
+      subject: `[sunnygolovine.com] New Contact Form Submission`,
       text: `
         Someone sent you a message from sunnygolovine.com
 
-        Name: ${name}
-        Email: ${email}
+        Name:
+        ----------------
+        ${name}
+        
+        Email:
+        ----------------
+        ${email}
+
+        Subject:
+        ----------------
+        ${subject}
 
         Message:
+        ----------------
         ${message}
       `,
     }

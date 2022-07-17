@@ -10,4 +10,6 @@ export const labels = {
   messagePlaceholder: "I wanted to discuss something...",
   cancelBtnText: "Cancel",
   submitBtnText: "Submit",
+  submitMessage: "Message Sent Successfully",
+  closeWindow: "Close Window",
 }
