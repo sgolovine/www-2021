@@ -6,6 +6,7 @@ import { getRecentPosts } from "~/services/api"
 import { getSiteData } from "~/services/api/siteData"
 import { GlobalStyle } from "~/styles/GlobalStyle"
 import { NextPageWithLayout, StaticProps } from "./_app"
+import FeatureFlags from "~/defines/featureFlags"
 
 const Page: NextPageWithLayout<IndexPageProps> = props => {
   const recentPosts = convertBlogPosts(props.recentPosts)
@@ -13,7 +14,7 @@ const Page: NextPageWithLayout<IndexPageProps> = props => {
   return (
     <>
       <HomePage siteData={props.siteData} recentPosts={recentPosts} />
-      <ContactMe />
+      {FeatureFlags.ContactMeWidget && <ContactMe />}
     </>
   )
 }

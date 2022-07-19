@@ -1,14 +1,18 @@
-import { useEffect, useRef, useState } from "react"
+import { useMutation } from "@tanstack/react-query"
+import { useEffect, useRef } from "react"
 import styled, { keyframes } from "styled-components"
 import { Mail } from "~/icons/Mail"
 import { ContactForm } from "./components/ContactForm"
 import { SuccessUI } from "./components/SuccessUI"
+import { sendEmail } from "./services/sendEmail"
 import { useContactWidgetStore } from "./store"
 
 export const ContactMe = () => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const store = useContactWidgetStore()
-  const { setErrors, setHasSubmitted, toggleModal } = store.actions
+  const { setErrors, toggleModal } = store.actions
+  const { errors, form } = store.state
+  const { isLoading, isError, isSuccess, mutate } = useMutation(sendEmail)
 
   useEffect(() => {
     const clickOutEvent = (e: any) => {
@@ -26,25 +30,55 @@ export const ContactMe = () => {
   }, [sheetRef])
 
   const handleSubmit = () => {
-    const mockError = false
-    // TODO: Placeholder for error states
-    if (mockError) {
-      setErrors("sendError", true)
+    // validate name
+    if (!form.name) {
+      setErrors("name", true)
+      return
     }
 
-    // If the submission went ok.
-    setHasSubmitted()
+    // validate email
+    if (!form.email) {
+      setErrors("email", true)
+      return
+    }
+
+    // validate subject
+    if (!form.subject) {
+      setErrors("subject", true)
+      return
+    }
+
+    // validate message
+    if (!form.message) {
+      setErrors("message", true)
+      return
+    }
+
+    mutate({
+      name: form.name,
+      email: form.email,
+      subject: form.subject,
+      message: form.message,
+    })
   }
 
   return (
     <div ref={sheetRef}>
       {/* Sheet */}
       {store.state.visible && (
-        <Sheet className="fixed bg-gray-700 w-96 right-16 rounded-lg shadow-xl p-4 overflow-y-scroll">
-          {store.state.hasSubmitted ? (
+        <Sheet className="fixed bg-gray-700 w-96 right-16 rounded-lg shadow-xl">
+          {isSuccess ? (
             <SuccessUI onClose={toggleModal} />
           ) : (
-            <ContactForm onClose={toggleModal} onSubmit={handleSubmit} />
+            <ContactForm
+              loading={isLoading}
+              errors={{
+                ...errors,
+                sendError: isError,
+              }}
+              onClose={toggleModal}
+              onSubmit={handleSubmit}
+            />
           )}
         </Sheet>
       )}
@@ -67,9 +101,7 @@ const slideUp = keyframes`
   }
   to {
     bottom: 7rem;
-
-    height: 34rem;
-
+    min-height: 34rem;
     width: 24rem;
   }
 `

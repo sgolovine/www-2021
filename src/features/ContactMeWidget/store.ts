@@ -4,14 +4,12 @@ import { FormErrors, FormState } from "./types/FormState"
 interface State {
   form: FormState
   errors: FormErrors
-  hasSubmitted: boolean
   visible: boolean
 }
 
 interface Actions {
   setFormState: (key: keyof FormState, value: string) => void
   setErrors: (key: keyof FormErrors, value: boolean) => void
-  setHasSubmitted: () => void
   toggleModal: () => void
 }
 
@@ -32,9 +30,7 @@ const initialState: State = {
     email: false,
     subject: false,
     message: false,
-    sendError: false,
   },
-  hasSubmitted: false,
   visible: false,
 }
 
@@ -47,6 +43,10 @@ export const useContactWidgetStore = create<Store>(set => {
         form: {
           ...store.state.form,
           [key]: value,
+        },
+        errors: {
+          ...store.state.errors,
+          [key]: false,
         },
       },
     }))
@@ -61,16 +61,6 @@ export const useContactWidgetStore = create<Store>(set => {
           ...store.state.errors,
           [key]: value,
         },
-      },
-    }))
-  }
-
-  const setHasSubmitted = () => {
-    set(store => ({
-      ...store,
-      state: {
-        ...store.state,
-        hasSubmitted: true,
       },
     }))
   }
@@ -103,7 +93,6 @@ export const useContactWidgetStore = create<Store>(set => {
     actions: {
       setFormState,
       setErrors,
-      setHasSubmitted,
       toggleModal,
     },
   }

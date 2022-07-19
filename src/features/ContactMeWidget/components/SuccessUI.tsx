@@ -4,7 +4,7 @@ import { labels } from "../constants/labels"
 
 export const SuccessUI = ({ onClose }: { onClose: () => void }) => {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col p-4">
       <div className="flex-grow">
         <div className="flex flex-row items-center justify-end pb-4">
           <button className="text-brand-yellow hover:text-brand-yellow-darker active:text-brand-yellow-lighter">
