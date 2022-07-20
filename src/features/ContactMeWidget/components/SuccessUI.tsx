@@ -7,7 +7,10 @@ export const SuccessUI = ({ onClose }: { onClose: () => void }) => {
     <div className="h-full flex flex-col p-4">
       <div className="flex-grow">
         <div className="flex flex-row items-center justify-end pb-4">
-          <button className="text-brand-yellow hover:text-brand-yellow-darker active:text-brand-yellow-lighter">
+          <button
+            onClick={onClose}
+            className="text-brand-yellow hover:text-brand-yellow-darker active:text-brand-yellow-lighter"
+          >
             <CloseIcon className="h-6 w-6" />
           </button>
         </div>
