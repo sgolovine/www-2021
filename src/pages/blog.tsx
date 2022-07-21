@@ -1,6 +1,7 @@
 import { Layout } from "~/components/layout"
 import { PageSEO } from "~/components/seo"
 import { BlogPage } from "~/features/BlogPage"
+import { ContactMeWidget } from "~/features/ContactMeWidget"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { RawBlogPost } from "~/model/BlogPost"
 import { getLocalPosts, getRemotePosts } from "~/services/api"
@@ -15,7 +16,12 @@ const Page: NextPageWithLayout<Props> = props => {
   const localPosts = convertBlogPosts(props.localPosts)
   const remotePosts = convertBlogPosts(props.remotePosts)
 
-  return <BlogPage localPosts={localPosts} remotePosts={remotePosts} />
+  return (
+    <>
+      <BlogPage localPosts={localPosts} remotePosts={remotePosts} />
+      <ContactMeWidget />
+    </>
+  )
 }
 
 Page.getLayout = page => (

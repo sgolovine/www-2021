@@ -24,10 +24,4 @@ export const sidebarRoutes: SidebarRoutes = [
     enabled: true,
     key: "snippets",
   },
-  {
-    name: "Contact",
-    route: "mailto:sunny@glvn.co",
-    enabled: true,
-    key: "contact",
-  },
 ].filter(item => item.enabled)

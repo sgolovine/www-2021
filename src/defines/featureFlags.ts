@@ -1,8 +1,6 @@
 /**
  * Feature Flags
  */
-const FeatureFlags = {
-  ContactMeWidget: true,
-}
+const FeatureFlags = {}
 
 export default FeatureFlags

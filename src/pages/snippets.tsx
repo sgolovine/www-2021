@@ -1,5 +1,6 @@
 import { Layout } from "~/components/layout"
 import { PageSEO } from "~/components/seo"
+import { ContactMeWidget } from "~/features/ContactMeWidget"
 import { SnippetsPage } from "~/features/SnippetsPage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
 import { RawBlogPost } from "~/model/BlogPost"
@@ -13,7 +14,12 @@ interface Props {
 const Page: NextPageWithLayout<Props> = (props: Props) => {
   const snippets = convertBlogPosts(props.snippets)
 
-  return <SnippetsPage snippets={snippets} />
+  return (
+    <>
+      <SnippetsPage snippets={snippets} />
+      <ContactMeWidget />
+    </>
+  )
 }
 
 Page.getLayout = page => (
