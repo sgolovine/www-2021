@@ -10,7 +10,7 @@ import { useContactWidgetStore } from "./store"
 export const ContactMe = () => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const store = useContactWidgetStore()
-  const { setErrors, closeModal } = store.actions
+  const { setErrors, closeModal, openModal } = store.actions
   const { errors, form } = store.state
   const { isLoading, isError, isSuccess, mutate, reset } =
     useMutation(sendEmail)
@@ -71,26 +71,47 @@ export const ContactMe = () => {
   return (
     <div ref={sheetRef}>
       {/* Sheet */}
+
       {store.state.visible && (
-        <Sheet className="fixed bg-gray-700 w-96 right-16 rounded-lg shadow-xl">
-          {isSuccess ? (
-            <SuccessUI onClose={handleCloseModal} />
-          ) : (
-            <ContactForm
-              loading={isLoading}
-              errors={{
-                ...errors,
-                sendError: isError,
-              }}
-              onClose={handleCloseModal}
-              onSubmit={handleSubmit}
-            />
-          )}
-        </Sheet>
+        <>
+          {/* Desktop Widget */}
+          <div className="hidden md:block">
+            <Sheet className="fixed bg-gray-700 h-128 mx-auto sm:right-16 rounded-lg shadow-xl">
+              {isSuccess ? (
+                <SuccessUI onClose={handleCloseModal} />
+              ) : (
+                <ContactForm
+                  loading={isLoading}
+                  errors={{
+                    ...errors,
+                    sendError: isError,
+                  }}
+                  onClose={handleCloseModal}
+                  onSubmit={handleSubmit}
+                />
+              )}
+            </Sheet>
+          </div>
+
+          {/* Mobile Widget */}
+          <div className="fixed md:hidden top-0 bottom-0 left-0 right-0 bg-gray-700 z-50">
+            <div className="text-left">
+              <ContactForm
+                loading={isLoading}
+                errors={{
+                  ...errors,
+                  sendError: isError,
+                }}
+                onClose={handleCloseModal}
+                onSubmit={handleSubmit}
+              />
+            </div>
+          </div>
+        </>
       )}
       {/* Trigger */}
       <button
-        onClick={handleCloseModal}
+        onClick={() => (store.state.visible ? handleCloseModal() : openModal())}
         className="fixed bottom-10 right-10 bg-brand-yellow hover:bg-brand-yellow-darker active:bg-brand-yellow-lighter p-4 rounded-full drop-shadow-lg"
       >
         <Mail />
