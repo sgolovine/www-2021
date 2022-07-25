@@ -50,7 +50,7 @@ export const SuccessUI: React.FC<Props> = ({ onClose, lightTheme }) => {
     <div className="h-full flex flex-col p-4">
       <div className="flex-grow h-full">
         <div className="flex flex-row items-center justify-end pb-4">
-          <button className={closeButtonClasses}>
+          <button onClick={onClose} className={closeButtonClasses}>
             <CloseIcon className="h-6 w-6" />
           </button>
         </div>

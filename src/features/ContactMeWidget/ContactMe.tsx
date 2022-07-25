@@ -32,9 +32,21 @@ export const ContactMe: React.FC<Props> = ({ lightTheme }) => {
   const sheetClasses = classNames(
     "fixed",
     "w-96",
+    "h-128",
     "right-16",
     "rounded-lg",
     "shadow-xl",
+    lightTheme ? "bg-white" : "bg-gray-700"
+  )
+
+  const mobileSheetClasses = classNames(
+    "fixed",
+    "md:hidden",
+    "top-0",
+    "bottom-0",
+    "left-0",
+    "right-0",
+    "z-50",
     lightTheme ? "bg-white" : "bg-gray-700"
   )
 
@@ -128,23 +140,19 @@ export const ContactMe: React.FC<Props> = ({ lightTheme }) => {
         <>
           {/* Desktop Widget */}
           <div className="hidden md:block">
-            <Sheet className="fixed bg-gray-700 h-128 mx-auto sm:right-16 rounded-lg shadow-xl">
-              {renderContents()}
-            </Sheet>
+            <Sheet className={sheetClasses}>{renderContents()}</Sheet>
           </div>
 
           {/* Mobile Widget */}
-          <div className="fixed md:hidden top-0 bottom-0 left-0 right-0 bg-gray-700 z-50">
-            <div className="text-left">{renderContents()}</div>
-          </div>
+          <div className={mobileSheetClasses}>{renderContents()}</div>
         </>
       )}
       {/* Trigger */}
       <button
         onClick={() => (store.state.visible ? handleCloseModal() : openModal())}
-        className="fixed bottom-10 right-10 bg-brand-yellow hover:bg-brand-yellow-darker active:bg-brand-yellow-lighter p-4 rounded-full drop-shadow-lg"
+        className={triggerClasses}
       >
-        <Mail />
+        <Mail classNames="h-6 w-6" />
       </button>
     </div>
   )

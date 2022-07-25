@@ -1,6 +1,11 @@
-export const Mail = () => (
+interface Props {
+  classNames?: string
+}
+
+export const Mail: React.FC<Props> = ({ classNames = "" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    className={classNames}
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"

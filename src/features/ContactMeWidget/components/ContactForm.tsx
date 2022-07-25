@@ -70,7 +70,7 @@ export const ContactForm: React.FC<Props> = ({
   }
 
   return (
-    <>
+    <div className="h-full">
       {loading && (
         <div
           style={{ backgroundColor: "rgba(0,0,0,0.75)" }}
@@ -159,6 +159,6 @@ export const ContactForm: React.FC<Props> = ({
           </button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
