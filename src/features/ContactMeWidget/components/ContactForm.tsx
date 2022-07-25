@@ -8,17 +8,6 @@ import { FormErrors } from "../types/FormState"
 
 const containerClasses = classNames("flex", "flex-col")
 
-const inputClasses = classNames(
-  "my-2",
-  "bg-gray-800",
-  "p-2",
-  "text-white",
-  "rounded",
-  "shadow-lg"
-)
-
-const labelClasses = classNames("text-brand-yellow", "font-medium")
-
 interface Errors extends FormErrors {
   sendError: boolean
 }
@@ -28,6 +17,7 @@ interface Props {
   onClose: () => void
   errors: Errors
   loading: boolean
+  lightTheme: boolean
 }
 
 export const ContactForm: React.FC<Props> = ({
@@ -35,7 +25,31 @@ export const ContactForm: React.FC<Props> = ({
   onClose,
   errors,
   loading,
+  lightTheme,
 }) => {
+  const inputClasses = classNames(
+    "my-2",
+    "p-2",
+    "rounded",
+    "shadow-lg",
+    lightTheme ? ["bg-gray-100", "text-black"] : ["bg-gray-800", "text-white"]
+  )
+
+  const labelClasses = classNames(
+    "font-medium",
+    lightTheme ? "text-gray-800" : "text-brand-yellow"
+  )
+
+  const closeButtonClasses = classNames(
+    lightTheme
+      ? ["text-gray-800", "hover:text-gray-600", "active:text-gray-700"]
+      : [
+          "text-brand-yellow",
+          "hover:text-brand-yellow-darker",
+          "active:text-brand-yellow-lighter",
+        ]
+  )
+
   const { state, actions } = useContactWidgetStore()
   const { name, email, subject, message } = state.form
 
@@ -70,10 +84,7 @@ export const ContactForm: React.FC<Props> = ({
       <div className="p-4">
         <div className="flex flex-row items-center justify-between pb-2">
           <h1 className="text-2xl text-center">{labels.header}</h1>
-          <button
-            onClick={onClose}
-            className="text-brand-yellow hover:text-brand-yellow-darker active:text-brand-yellow-lighter"
-          >
+          <button onClick={onClose} className={closeButtonClasses}>
             <CloseIcon className="h-6 w-6" />
           </button>
         </div>

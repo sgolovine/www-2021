@@ -14,6 +14,7 @@ export interface Work {
 export interface SiteData {
   bio: string
   phoneNumber: string
+  whatsApp: string
   phoneNumberAlt: string
   email: string
   github: string

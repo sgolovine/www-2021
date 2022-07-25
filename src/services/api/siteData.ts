@@ -40,6 +40,7 @@ export const getSiteData = (keys?: (keyof SiteData)[]): Partial<SiteData> => {
     bio: bioJSON.bio,
     phoneNumber: contactJSON["phone-number"],
     phoneNumberAlt: contactJSON["phone-number-alt"],
+    whatsApp: contactJSON["whats-app"],
     email: contactJSON.email,
     github: contactJSON.github,
     instagram: contactJSON.instagram,

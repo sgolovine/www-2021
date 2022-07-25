@@ -40,6 +40,7 @@ module.exports = {
         instagram: "#E4405F",
         linkedin: "#0077B5",
         github: "#181717",
+        whatsapp: "#25D366",
         "brand-yellow": "#ffd23f",
         "brand-yellow-darker": "#fec300",
         "brand-yellow-lighter": "#ffdb65",
