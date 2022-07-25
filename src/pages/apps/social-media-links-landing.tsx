@@ -8,6 +8,7 @@ interface Props {
   instagram: string
   linkedin: string
   website: string
+  whatsApp: string
 }
 
 const Page: NextPage<Props> = ({
@@ -16,6 +17,7 @@ const Page: NextPage<Props> = ({
   instagram,
   linkedin,
   website,
+  whatsApp,
 }) => (
   <SocialMediaLinksPage
     email={email}
@@ -23,6 +25,7 @@ const Page: NextPage<Props> = ({
     instagram={instagram}
     linkedin={linkedin}
     website={website}
+    whatsApp={whatsApp}
   />
 )
 
@@ -33,6 +36,7 @@ export const getStaticProps = async () => {
     "instagram",
     "linkedin",
     "website",
+    "whatsApp",
   ])
 
   return {
@@ -42,6 +46,7 @@ export const getStaticProps = async () => {
       instagram: siteData.instagram,
       linkedin: siteData.linkedin,
       website: siteData.website,
+      whatsApp: siteData.whatsApp,
     },
   }
 }
