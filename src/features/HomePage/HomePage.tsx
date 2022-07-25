@@ -4,7 +4,7 @@ import { HomeNav } from "./components/HomeNav"
 import { MobileMenu, MobileMenuTrigger } from "~/components/layout"
 import { LinkItem } from "~/components/links/LinkItem"
 import { PostItem } from "~/components/post/PostItem"
-import Punk from "./components/Punk"
+import Punk from "~/components/punk"
 import { WorkItem } from "~/components/work/WorkItem"
 import {
   awesomeDevtoolsUrl,

@@ -87,7 +87,9 @@ export const ContactMe = () => {
         onClick={openModal}
         className="fixed bottom-10 right-10 bg-brand-yellow hover:bg-brand-yellow-darker active:bg-brand-yellow-lighter p-4 rounded-full drop-shadow-lg"
       >
-        <Mail />
+        <div className="h-6 w-6">
+          <Mail />
+        </div>
       </button>
     </div>
   )

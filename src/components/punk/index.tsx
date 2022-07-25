@@ -3,8 +3,8 @@ import PunkSVG from "./PunkSVG"
 import { usePunk } from "./usePunk"
 import Image from "next-image-export-optimizer"
 
-const eyesImage = "images/eyes.png"
-const sunglassesImage = "images/sunglasses.png"
+const eyesImage = "/images/eyes.png"
+const sunglassesImage = "/images/sunglasses.png"
 
 const Punk = () => {
   const {
