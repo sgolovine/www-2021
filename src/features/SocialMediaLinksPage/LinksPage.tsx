@@ -7,6 +7,7 @@ import { Document } from "~/icons/Document"
 import { Globe } from "~/icons/Globe"
 import { Mail } from "~/icons/Mail"
 import { WhatsApp } from "~/icons/WhatsApp"
+import { ContactMeWidget } from "../ContactMeWidget"
 
 interface Props {
   email: string
@@ -95,5 +96,6 @@ export const LinksPage: React.FC<Props> = ({
       </Link>
     </div>
     <CopyrightText />
+    <ContactMeWidget lightTheme />
   </div>
 )
