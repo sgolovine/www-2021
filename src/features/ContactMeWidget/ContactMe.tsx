@@ -10,20 +10,20 @@ import { useContactWidgetStore } from "./store"
 export const ContactMe = () => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const store = useContactWidgetStore()
-  const { setErrors, openModal, closeModal } = store.actions
+  const { setErrors, closeModal } = store.actions
   const { errors, form } = store.state
   const { isLoading, isError, isSuccess, mutate, reset } =
     useMutation(sendEmail)
 
-  const closeModal = () => {
+  const handleCloseModal = () => {
     reset()
-    toggleModal()
+    closeModal()
   }
 
   useEffect(() => {
     const clickOutEvent = (e: any) => {
       if (sheetRef.current && !sheetRef.current.contains(e.target)) {
-        closeModal()
+        handleCloseModal()
       }
     }
 
@@ -74,7 +74,7 @@ export const ContactMe = () => {
       {store.state.visible && (
         <Sheet className="fixed bg-gray-700 w-96 right-16 rounded-lg shadow-xl">
           {isSuccess ? (
-            <SuccessUI onClose={closeModal} />
+            <SuccessUI onClose={handleCloseModal} />
           ) : (
             <ContactForm
               loading={isLoading}
@@ -82,7 +82,7 @@ export const ContactMe = () => {
                 ...errors,
                 sendError: isError,
               }}
-              onClose={closeModal}
+              onClose={handleCloseModal}
               onSubmit={handleSubmit}
             />
           )}
@@ -90,7 +90,7 @@ export const ContactMe = () => {
       )}
       {/* Trigger */}
       <button
-        onClick={closeModal}
+        onClick={handleCloseModal}
         className="fixed bottom-10 right-10 bg-brand-yellow hover:bg-brand-yellow-darker active:bg-brand-yellow-lighter p-4 rounded-full drop-shadow-lg"
       >
         <Mail />
