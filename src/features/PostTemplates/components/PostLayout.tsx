@@ -5,6 +5,7 @@ import { PostFooter } from "./PostFooter"
 import PostHeader from "./PostHeader"
 import { GlobalStyle } from "~/styles/GlobalStyle"
 import { PrismNordTheme } from "../styles/PrismNordTheme"
+import { CopyrightText } from "~/components/common/CopyrightText"
 
 interface Props {
   title: string
@@ -29,27 +30,30 @@ export const PostLayout: React.FC<Props> = ({
     <>
       <GlobalStyle />
       <PrismNordTheme />
-      <SiteHeader
-        pageTitle={type === PostType.Post ? "Post" : "Snippet"}
-        menuOpen={mobileMenuOpen}
-        setMenuOpen={setMobileMenuOpen}
-      />
-      <div className="max-w-2xl mx-auto px-2 md:px-0">
-        <PostHeader
-          type={type}
-          title={title}
-          description={description}
-          date={date}
+      <div className="flex flex-col min-h-screen min-w-screen">
+        <SiteHeader
+          pageTitle={type === PostType.Post ? "Post" : "Snippet"}
+          menuOpen={mobileMenuOpen}
+          setMenuOpen={setMobileMenuOpen}
         />
-        <div className="py-4">{children}</div>
-        {otherPosts && otherPosts.length > 0 && (
-          <>
-            <hr className="my-2 py-2" />
-            <div className="pb-4">
-              <PostFooter otherPosts={otherPosts} />
-            </div>
-          </>
-        )}
+        <div className="max-w-2xl mx-auto px-2 md:px-0 flex-grow">
+          <PostHeader
+            type={type}
+            title={title}
+            description={description}
+            date={date}
+          />
+          <div className="py-4">{children}</div>
+          {otherPosts && otherPosts.length > 0 && (
+            <>
+              <hr className="my-2 py-2" />
+              <div className="pb-4">
+                <PostFooter otherPosts={otherPosts} />
+              </div>
+            </>
+          )}
+        </div>
+        <CopyrightText />
       </div>
     </>
   )

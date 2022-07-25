@@ -37,6 +37,11 @@ const config: CmsCollection = {
           widget: "string",
         },
         {
+          label: "WhatsApp",
+          name: "whats-app",
+          widget: "string",
+        },
+        {
           label: "Instagram",
           name: "instagram",
           widget: "string",

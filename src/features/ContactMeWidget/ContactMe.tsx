@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query"
+import classNames from "classnames"
 import { useEffect, useRef } from "react"
 import styled, { keyframes } from "styled-components"
 import { Mail } from "~/icons/Mail"
@@ -7,7 +8,36 @@ import { SuccessUI } from "./components/SuccessUI"
 import { sendEmail } from "./services/sendEmail"
 import { useContactWidgetStore } from "./store"
 
-export const ContactMe = () => {
+interface Props {
+  lightTheme?: boolean
+}
+
+export const ContactMe: React.FC<Props> = ({ lightTheme }) => {
+  const triggerClasses = classNames(
+    "fixed",
+    "bottom-10",
+    "right-10",
+    "p-4",
+    "rounded-full",
+    "drop-shadow-lg",
+    lightTheme
+      ? ["bg-white", "hover:bg-gray-300", "active:bg-gray-200"]
+      : [
+          "bg-brand-yellow",
+          "hover:bg-brand-yellow-darker",
+          "active:bg-brand-yellow-lighter",
+        ]
+  )
+
+  const sheetClasses = classNames(
+    "fixed",
+    "w-96",
+    "right-16",
+    "rounded-lg",
+    "shadow-xl",
+    lightTheme ? "bg-white" : "bg-gray-700"
+  )
+
   const sheetRef = useRef<HTMLDivElement>(null)
   const store = useContactWidgetStore()
   const { setErrors, closeModal, openModal } = store.actions
@@ -68,6 +98,28 @@ export const ContactMe = () => {
     })
   }
 
+  const renderContents = () => (
+    <>
+      {isSuccess ? (
+        <SuccessUI
+          onClose={handleCloseModal}
+          lightTheme={lightTheme ?? false}
+        />
+      ) : (
+        <ContactForm
+          lightTheme={lightTheme ?? false}
+          loading={isLoading}
+          errors={{
+            ...errors,
+            sendError: isError,
+          }}
+          onClose={handleCloseModal}
+          onSubmit={handleSubmit}
+        />
+      )}
+    </>
+  )
+
   return (
     <div ref={sheetRef}>
       {/* Sheet */}
@@ -77,35 +129,13 @@ export const ContactMe = () => {
           {/* Desktop Widget */}
           <div className="hidden md:block">
             <Sheet className="fixed bg-gray-700 h-128 mx-auto sm:right-16 rounded-lg shadow-xl">
-              {isSuccess ? (
-                <SuccessUI onClose={handleCloseModal} />
-              ) : (
-                <ContactForm
-                  loading={isLoading}
-                  errors={{
-                    ...errors,
-                    sendError: isError,
-                  }}
-                  onClose={handleCloseModal}
-                  onSubmit={handleSubmit}
-                />
-              )}
+              {renderContents()}
             </Sheet>
           </div>
 
           {/* Mobile Widget */}
           <div className="fixed md:hidden top-0 bottom-0 left-0 right-0 bg-gray-700 z-50">
-            <div className="text-left">
-              <ContactForm
-                loading={isLoading}
-                errors={{
-                  ...errors,
-                  sendError: isError,
-                }}
-                onClose={handleCloseModal}
-                onSubmit={handleSubmit}
-              />
-            </div>
+            <div className="text-left">{renderContents()}</div>
           </div>
         </>
       )}
