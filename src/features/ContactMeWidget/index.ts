@@ -1,1 +1,1 @@
-export * from "./ContactMe"
+export { ContactMe as ContactMeWidget } from "./ContactMe"

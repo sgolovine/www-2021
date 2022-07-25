@@ -10,7 +10,8 @@ interface State {
 interface Actions {
   setFormState: (key: keyof FormState, value: string) => void
   setErrors: (key: keyof FormErrors, value: boolean) => void
-  toggleModal: () => void
+  openModal: () => void
+  closeModal: () => void
 }
 
 interface Store {
@@ -65,27 +66,24 @@ export const useContactWidgetStore = create<Store>(set => {
     }))
   }
 
-  const toggleModal = () => {
-    set(store => {
-      if (store.state.visible) {
-        // Modal is open. Clear state and close
-        return {
-          ...store,
-          // We do not need to to pass 'visible'
-          // Since it's false in initialState
-          state: initialState,
-        }
-      } else {
-        // Modal is closed. Simply open it
-        return {
-          ...store,
-          state: {
-            ...store.state,
-            visible: true,
-          },
-        }
-      }
-    })
+  const openModal = () => {
+    set(store => ({
+      ...store,
+      state: {
+        ...store.state,
+        visible: true,
+      },
+    }))
+  }
+
+  const closeModal = () => {
+    set(store => ({
+      ...store,
+      state: {
+        ...store.state,
+        visible: false,
+      },
+    }))
   }
 
   return {
@@ -93,7 +91,8 @@ export const useContactWidgetStore = create<Store>(set => {
     actions: {
       setFormState,
       setErrors,
-      toggleModal,
+      openModal,
+      closeModal,
     },
   }
 })

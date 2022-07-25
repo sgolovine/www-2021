@@ -10,7 +10,7 @@ import { useContactWidgetStore } from "./store"
 export const ContactMe = () => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const store = useContactWidgetStore()
-  const { setErrors, toggleModal } = store.actions
+  const { setErrors, openModal, closeModal } = store.actions
   const { errors, form } = store.state
   const { isLoading, isError, isSuccess, mutate, reset } =
     useMutation(sendEmail)

@@ -1,10 +1,16 @@
 import axios from "axios"
 import { Layout } from "~/components/layout"
 import { PageSEO } from "~/components/seo"
+import { ContactMeWidget } from "~/features/ContactMeWidget"
 import { LinkPage, LinkPageProps } from "~/features/LinkPage"
 import { NextPageWithLayout, StaticProps } from "./_app"
 
-const Page: NextPageWithLayout<LinkPageProps> = props => <LinkPage {...props} />
+const Page: NextPageWithLayout<LinkPageProps> = props => (
+  <>
+    <LinkPage {...props} />
+    <ContactMeWidget />
+  </>
+)
 
 Page.getLayout = page => (
   <>
