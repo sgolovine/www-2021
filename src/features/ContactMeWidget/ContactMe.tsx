@@ -32,22 +32,40 @@ export const ContactMe: React.FC<Props> = ({ lightTheme }) => {
   const sheetClasses = classNames(
     "fixed",
     "w-96",
+    "h-128",
     "right-16",
     "rounded-lg",
     "shadow-xl",
     lightTheme ? "bg-white" : "bg-gray-700"
   )
 
+  const mobileSheetClasses = classNames(
+    "fixed",
+    "md:hidden",
+    "top-0",
+    "bottom-0",
+    "left-0",
+    "right-0",
+    "z-50",
+    lightTheme ? "bg-white" : "bg-gray-700"
+  )
+
   const sheetRef = useRef<HTMLDivElement>(null)
   const store = useContactWidgetStore()
-  const { setErrors, openModal, closeModal } = store.actions
+  const { setErrors, closeModal, openModal } = store.actions
   const { errors, form } = store.state
-  const { isLoading, isError, isSuccess, mutate } = useMutation(sendEmail)
+  const { isLoading, isError, isSuccess, mutate, reset } =
+    useMutation(sendEmail)
+
+  const handleCloseModal = () => {
+    reset()
+    closeModal()
+  }
 
   useEffect(() => {
     const clickOutEvent = (e: any) => {
       if (sheetRef.current && !sheetRef.current.contains(e.target)) {
-        closeModal()
+        handleCloseModal()
       }
     }
 
@@ -92,32 +110,49 @@ export const ContactMe: React.FC<Props> = ({ lightTheme }) => {
     })
   }
 
+  const renderContents = () => (
+    <>
+      {isSuccess ? (
+        <SuccessUI
+          onClose={handleCloseModal}
+          lightTheme={lightTheme ?? false}
+        />
+      ) : (
+        <ContactForm
+          lightTheme={lightTheme ?? false}
+          loading={isLoading}
+          errors={{
+            ...errors,
+            sendError: isError,
+          }}
+          onClose={handleCloseModal}
+          onSubmit={handleSubmit}
+        />
+      )}
+    </>
+  )
+
   return (
     <div ref={sheetRef}>
       {/* Sheet */}
+
       {store.state.visible && (
-        <Sheet className={sheetClasses}>
-          {isSuccess ? (
-            <SuccessUI onClose={closeModal} lightTheme={lightTheme ?? false} />
-          ) : (
-            <ContactForm
-              lightTheme={lightTheme ?? false}
-              loading={isLoading}
-              errors={{
-                ...errors,
-                sendError: isError,
-              }}
-              onClose={closeModal}
-              onSubmit={handleSubmit}
-            />
-          )}
-        </Sheet>
+        <>
+          {/* Desktop Widget */}
+          <div className="hidden md:block">
+            <Sheet className={sheetClasses}>{renderContents()}</Sheet>
+          </div>
+
+          {/* Mobile Widget */}
+          <div className={mobileSheetClasses}>{renderContents()}</div>
+        </>
       )}
       {/* Trigger */}
-      <button onClick={openModal} className={triggerClasses}>
-        <div className="h-6 w-6">
-          <Mail />
-        </div>
+      <button
+        onClick={() => (store.state.visible ? handleCloseModal() : openModal())}
+        className={triggerClasses}
+      >
+        <Mail classNames="h-6 w-6" />
       </button>
     </div>
   )

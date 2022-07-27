@@ -21,29 +21,48 @@ const Page: NextPageWithLayout<DebugPageProps> = ({
   version,
   commit,
   githubLink,
-}) => (
-  <>
-    <PageHeader title="Debug Information" />
-    <ContentContainer>
-      <div className="mb-4">
-        <p className="text-sm font-bold text-brand-yellow">Version</p>
-        <p className="text-lg font-medium font-mono p-2">{version ?? ""}</p>
-      </div>
+}) => {
+  const renderSection = ({
+    label,
+    value,
+  }: {
+    label: string
+    value?: string
+  }) => (
+    <div className="mb-4">
+      <p className="text-sm font-bold text-brand-yellow">{label}</p>
+      <p className="text-lg font-medium font-mono p-2">{value ?? ""}</p>
+    </div>
+  )
+  return (
+    <>
+      <PageHeader title="Debug Information" />
+      <ContentContainer>
+        {renderSection({
+          label: "Node ENV",
+          value: process?.env?.NODE_ENV,
+        })}
 
-      <div className="mb-4">
-        <p className="text-sm font-bold text-brand-yellow">Commit</p>
-        <p className="text-lg font-medium font-mono p-2">{commit ?? ""}</p>
-      </div>
+        {renderSection({
+          label: "Version",
+          value: version,
+        })}
 
-      <div className="mb-4">
-        <p className="text-sm font-bold text-brand-yellow">Github Link</p>
-        <a href={githubLink} className="text-lg font-medium font-mono p-2">
-          Link
-        </a>
-      </div>
-    </ContentContainer>
-  </>
-)
+        {renderSection({
+          label: "Commit",
+          value: commit,
+        })}
+
+        <div className="mb-4">
+          <p className="text-sm font-bold text-brand-yellow">Github Link</p>
+          <a href={githubLink} className="text-lg font-medium font-mono p-2">
+            Link
+          </a>
+        </div>
+      </ContentContainer>
+    </>
+  )
+}
 
 Page.getLayout = page => <Layout pageTitle="Debug Information">{page}</Layout>
 

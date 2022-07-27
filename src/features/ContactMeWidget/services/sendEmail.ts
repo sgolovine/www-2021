@@ -8,15 +8,23 @@ export async function sendEmail({
   subject,
   message,
 }: Args): Promise<{ statusCode: number; body: string }> {
-  const resp = await axios.post<string>("/.netlify/functions/sendEmail", {
-    name,
-    email,
-    subject,
-    message,
-  })
+  if (process.env.NODE_ENV === "production") {
+    const resp = await axios.post<string>("/.netlify/functions/sendEmail", {
+      name,
+      email,
+      subject,
+      message,
+    })
 
-  return {
-    statusCode: resp.status,
-    body: resp.data,
+    return {
+      statusCode: resp.status,
+      body: resp.data,
+    }
   }
+
+  // Return a mock success message when running in development
+  return Promise.resolve({
+    statusCode: 200,
+    body: "Mock Success!",
+  })
 }
