@@ -19,14 +19,19 @@ const Page: NextPage<Props> = ({
   website,
   whatsApp,
 }) => (
-  <SocialMediaLinksPage
-    email={email}
-    github={github}
-    instagram={instagram}
-    linkedin={linkedin}
-    website={website}
-    whatsApp={whatsApp}
-  />
+  <>
+    {/* Spoof instagram tracking cookies */}
+    <span id="iab-pcm-sdk"></span>
+    <span id="iab-autofill-sdk"></span>
+    <SocialMediaLinksPage
+      email={email}
+      github={github}
+      instagram={instagram}
+      linkedin={linkedin}
+      website={website}
+      whatsApp={whatsApp}
+    />
+  </>
 )
 
 export const getStaticProps = async () => {
