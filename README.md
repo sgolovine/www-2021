@@ -78,6 +78,10 @@ yarn <<command_name>>
 | `find-unused-code`     | Find unused (dead) code | ts-prune   | `.ts-prunerc.json` | yes                  |
 | `find-unused-packages` | Find unused packages    | depcheck   | `.depcheckrc.yml`  | yes                  |
 
+### Updating Packages
+
+To update packages, use [npm-check-updates](https://www.npmjs.com/package/npm-check-updates). To check for outdated packages run: `ncu`. Then to upgrade those packages run: `ncu -u && yarn`. This should be done with care as package updates can break the site.
+
 ## Architecture
 
 This section goes over the architecture of teh website. The website is built with [Gatsby](https://www.gatsbyjs.com/) and is hosted on [Netlify](https://www.netlify.com/).
