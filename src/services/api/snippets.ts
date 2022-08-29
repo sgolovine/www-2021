@@ -3,8 +3,7 @@ import { glob } from "glob"
 import path from "path"
 import matter from "gray-matter"
 import { serialize } from "next-mdx-remote/serialize"
-import { BlogPostType, RawBlogPost } from "~/model/BlogPost"
-import rehypePrism from "@mapbox/rehype-prism"
+import { BlogPostType, RawBlogPost, Snippet } from "~/model/BlogPost"
 import { mdxSerializeOptions } from "./constants"
 
 const snippetsDirectory = path.join(process.cwd(), "public", "snippets")
@@ -17,7 +16,9 @@ export const getSnippets = () => {
       const snippetsFile = fs.readFileSync(snippetsPath, "utf-8")
       const snippetsData = matter(snippetsFile)
       const fm = snippetsData.data
-      const snippet: RawBlogPost = {
+      const postTags =
+        fm?.tags?.split(",").map((item: string) => item.trim()) ?? []
+      const snippet: Snippet = {
         id: fm.slug,
         title: fm.title,
         description: fm.description,
@@ -25,6 +26,7 @@ export const getSnippets = () => {
         type: BlogPostType.Local,
         published: fm.published,
         filePath: file,
+        tags: postTags,
       }
       return snippet
     })

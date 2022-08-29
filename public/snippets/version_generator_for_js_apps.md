@@ -5,7 +5,7 @@ description: Often times it's advantageous to have the current version of your
   the current version from package.json and the latest commit, the place it in
   your public folder for your app to pickup.
 slug: /version-generator-script
-tags: javascript
+tags: javascript,scripts
 published: true
 ---
 

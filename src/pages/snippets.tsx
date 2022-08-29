@@ -3,12 +3,12 @@ import { PageSEO } from "~/components/seo"
 import { ContactMeWidget } from "~/features/ContactMeWidget"
 import { SnippetsPage } from "~/features/SnippetsPage"
 import { convertBlogPosts } from "~/helpers/convertBlogPost"
-import { RawBlogPost } from "~/model/BlogPost"
+import { Snippet } from "~/model/BlogPost"
 import { getSnippets } from "~/services/api"
 import { NextPageWithLayout, StaticProps } from "./_app"
 
 interface Props {
-  snippets: RawBlogPost[]
+  snippets: Snippet[]
 }
 
 const Page: NextPageWithLayout<Props> = (props: Props) => {

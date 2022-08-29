@@ -4,13 +4,17 @@ export interface RawBlogPost {
   description: string
   path: string
   type: BlogPostType
-  rawDate?: string
   published: boolean
   filePath: string
+  rawDate?: string
 }
 
 export interface BlogPost extends RawBlogPost {
   date?: Date
+}
+
+export interface Snippet extends RawBlogPost {
+  tags?: string[]
 }
 
 export enum PostType {
