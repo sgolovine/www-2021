@@ -16,6 +16,7 @@ import {
 import { BlogPost, BlogPostType } from "~/model/BlogPost"
 import { SiteData } from "~/model/SiteData"
 import { CopyrightText } from "~/components/common/CopyrightText"
+import { Announcement } from "./components/Announcement"
 
 const sectionClasses = classNames(["py-4"])
 const headingClasses = classNames([
@@ -33,9 +34,13 @@ export interface IndexPageProps {
 
 const IndexPage: React.FC<IndexPageProps> = ({ siteData, recentPosts }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
+  const [announcementOpen, setAnnouncementOpen] = useState<boolean>(true)
 
   return (
     <>
+      {announcementOpen && (
+        <Announcement onClose={() => setAnnouncementOpen(false)} />
+      )}
       <div className="max-w-3xl mx-auto my-4">
         <div className="flex md:hidden p-4 flex-row justify-end items-center">
           <MobileMenuTrigger
