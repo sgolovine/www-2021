@@ -1,5 +1,7 @@
 import classNames from "classnames"
+import { useContext } from "react"
 import { Button } from "~/components/apps/Button"
+import { recruiterSearchContext } from "./RecruiterSearchContext"
 
 const formContainerClasses = classNames(
   "my-6",
@@ -14,34 +16,60 @@ const formInputClasses = classNames("border", "px-4", "py-2", "rounded-md")
 const labelClasses = classNames("text-sm", "font-bold", "text-gray-700")
 
 const RecruiterSearchTool = () => {
+  const { form, setFormField } = useContext(recruiterSearchContext)
+
   const renderForm = () => {
     return (
       <div className={formContainerClasses}>
         <div className={formItemContainer}>
           <label className={labelClasses}>Country</label>
-          <input className={formInputClasses} />
+          <input
+            value={form.country}
+            onChange={e => setFormField("country", e.target.value)}
+            className={formInputClasses}
+          />
         </div>
         <div className={formItemContainer}>
           <label className={labelClasses}>Job Title</label>
-          <input className={formInputClasses} />
+          <input
+            value={form.jobTitle}
+            onChange={e => setFormField("jobTitle", e.target.value)}
+            className={formInputClasses}
+          />
         </div>
         <div className={formItemContainer}>
           <label className={labelClasses}>
             Location or Keywords to Include
           </label>
-          <input className={formInputClasses} />
+          <input
+            value={form.includeKeywords}
+            onChange={e => setFormField("includeKeywords", e.target.value)}
+            className={formInputClasses}
+          />
         </div>
         <div className={formItemContainer}>
           <label className={labelClasses}>Keywords to Exclude</label>
-          <input className={formInputClasses} />
+          <input
+            value={form.excludeKeywords}
+            onChange={e => setFormField("excludeKeywords", e.target.value)}
+            className={formInputClasses}
+          />
         </div>
         <div className={formItemContainer}>
           <label className={labelClasses}>Education</label>
-          <input className={formInputClasses} />
+          <input
+            value={form.education}
+            onChange={e => setFormField("education", e.target.value)}
+            className={formInputClasses}
+          />
         </div>
         <div className={formItemContainer}>
           <label className={labelClasses}>Current Employer</label>
-          <input className={formInputClasses} />
+          <input
+            value={form.currentEmployer}
+            onChange={e => setFormField("currentEmployer", e.target.value)}
+            className={formInputClasses}
+          />
         </div>
       </div>
     )
@@ -72,7 +100,7 @@ const RecruiterSearchTool = () => {
       <div className="mt-6 flex flex-col items-start md:flex-row md:items-center justify-start gap-5">
         <Button title="Search with Google" />
         <Button title="Copy to Clipboard" />
-        <Button title="Save Search" />
+        {/* <Button title="Save Search" /> */}
         <Button secondary title="Clear Search" />
       </div>
     </div>

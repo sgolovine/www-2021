@@ -1,1 +1,1 @@
-export { default as RecruiterSearchTool } from "./RecruiterSearchTool"
+export { default as RecruiterSearchTool } from "./RecruiterSearchWrapper"
