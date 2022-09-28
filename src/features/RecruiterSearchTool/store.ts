@@ -22,6 +22,7 @@ const defaultSearch: Search = {
 
 interface Store {
   currentSearch: Search
+  documentCount: number
   savedSearches: {
     [searchId: string]: Search
   }
@@ -32,13 +33,53 @@ interface Store {
 }
 
 export const useSavedSearchStore = create<Store>(set => {
-  const updateCurrentSearch = (search: Partial<Search>) => {}
-  const loadSearch = (searchId: string) => {}
-  const saveCurrentSearch = (searchLabel?: string) => {}
-  const clearCurrentSearch = () => {}
+  const updateCurrentSearch = (search: Partial<Search>) => {
+    set(prevState => ({
+      ...prevState,
+      currentSearch: {
+        ...prevState.currentSearch,
+        ...search,
+      },
+    }))
+  }
+
+  const loadSearch = (searchId: string) => {
+    set(prevState => {
+      const savedSearch = prevState.savedSearches[searchId]
+      if (savedSearch) {
+        return {
+          ...prevState,
+          currentSearch: savedSearch,
+        }
+      }
+      return prevState
+    })
+  }
+
+  const saveCurrentSearch = (searchLabel?: string) => {
+    set(prevState => {
+      return {
+        savedSearches: {
+          ...prevState.savedSearches,
+          [`doc-${prevState.documentCount}`]: {
+            ...prevState.currentSearch,
+            label: searchLabel ?? `Search #${prevState.documentCount}`,
+          },
+        },
+      }
+    })
+  }
+
+  const clearCurrentSearch = () => {
+    set(prevState => ({
+      ...prevState,
+      currentSearch: defaultSearch,
+    }))
+  }
 
   return {
     currentSearch: defaultSearch,
+    documentCount: 0,
     savedSearches: {},
     updateCurrentSearch,
     loadSearch,
